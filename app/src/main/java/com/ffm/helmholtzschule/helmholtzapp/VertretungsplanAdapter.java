@@ -11,44 +11,44 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import io.github.birdy2014.VertretungsplanLib.Vertretung;
+
 class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 
     public VertretungsplanAdapter(Context context, ArrayList<Vertretung> list) {
 
 
-            super(context, R.layout.vertretungsplan_row, list);
+        super(context, R.layout.vertretungsplan_row, list);
 
     }
 
 
-
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater Menu2Inflater = LayoutInflater.from(getContext()) ;
+        LayoutInflater Menu2Inflater = LayoutInflater.from(getContext());
         View customView = Menu2Inflater.inflate(R.layout.vertretungsplan_row, parent, false);
 
 
-
-        String fach = getItem(position).getFach() ;
+        String fach = getItem(position).getFach();
         String klasse = getItem(position).getKlasse();
-        String stunde = getItem(position) .getStunde();
-        String vertretungslehrer = getItem(position) .getVertretungslehrer();
-        String fuerLehrer = getItem(position) .getFuerLehrer();
-        String raum = getItem(position) .getRaum();
-        String hinweis = getItem(position) .getHinweis();
-        String art = getItem(position) .getArt();
+        String stunde = getItem(position).getStunde();
+        String vertretungslehrer = getItem(position).getVertretungsLehrer();
+        String fuerLehrer = getItem(position).getFuer();
+        String raum = getItem(position).getRaum();
+        String hinweis = getItem(position).getHinweis();
+        String art = getItem(position).getArt();
 
-        TextView txtKlasse = (TextView) customView.findViewById (R.id.txtKlasse);
-        TextView txtStunde = (TextView) customView.findViewById (R.id.txtStunde);
-        TextView txtFach = (TextView) customView.findViewById (R.id.txtFach);
-        TextView txtVertretungslehrer = (TextView) customView.findViewById (R.id.txtVertretungslehrer);
-        TextView txtFuerLehrer = (TextView) customView.findViewById (R.id.txtFuerLehrer);
-        TextView txtRaum = (TextView) customView.findViewById (R.id.txtRaum);
-        TextView txtHinweis = (TextView) customView.findViewById (R.id.txtHinweis);
-        TextView txtArt = (TextView) customView.findViewById (R.id.txtArt);
+        TextView txtKlasse = (TextView) customView.findViewById(R.id.txtKlasse);
+        TextView txtStunde = (TextView) customView.findViewById(R.id.txtStunde);
+        TextView txtFach = (TextView) customView.findViewById(R.id.txtFach);
+        TextView txtVertretungslehrer = (TextView) customView.findViewById(R.id.txtVertretungslehrer);
+        TextView txtFuerLehrer = (TextView) customView.findViewById(R.id.txtFuerLehrer);
+        TextView txtRaum = (TextView) customView.findViewById(R.id.txtRaum);
+        TextView txtHinweis = (TextView) customView.findViewById(R.id.txtHinweis);
+        TextView txtArt = (TextView) customView.findViewById(R.id.txtArt);
 
 
-        txtFach.setText (fach) ;
+        txtFach.setText(fach);
         txtKlasse.setText(klasse);
         txtStunde.setText(stunde);
         txtVertretungslehrer.setText(vertretungslehrer);
@@ -70,6 +70,4 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 
         return customView;
     }
-
-
 }

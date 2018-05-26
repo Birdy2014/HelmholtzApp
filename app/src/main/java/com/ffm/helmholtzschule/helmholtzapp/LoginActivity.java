@@ -23,13 +23,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("Öffne Login");
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-        /*SharedPreferences.Editor editor = mySPR.edit();
-        editor.putString("myKey1", "Schueler");
-        editor.putString("myKey2", "7a");
-        editor.putString("myKey3", "1912");
-        editor.putString("auth", "gagagagahhbehbwehbwe");
-        editor.commit();*/
-
 
         if(mySPR.getString("auth", "").equals("gagagagahhbehbwehbwe")){
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
@@ -78,13 +71,11 @@ public class LoginActivity extends AppCompatActivity {
                 String value2 = text2.getText().toString();
 
 
-                Vertretungsplan vertretungsplan = new Vertretungsplan();
-                //if (value.equals("Schueler") && value1.equals("1912")) {
-
+                Vertretungsplan vertretungsplan = new Vertretungsplan(value, value1);
                 Thread thread = new Thread() {
                     @Override
                     public void run() {
-                        if (vertretungsplan.verifyCredentials(value, value1)) {
+                        if (vertretungsplan.verifyCredentials()) {
                             editor.putString("username", value);
                             editor.putString("password", value1);
                             editor.putString("auth", "gagagagahhbehbwehbwe");

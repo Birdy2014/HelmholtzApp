@@ -1,4 +1,4 @@
-#Wed May 23 21:11:18 CEST 2018
-base.0=/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/transforms/dexMerger/debug/2
+#Sat May 26 20:38:41 CEST 2018
+base.0=/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/transforms/dexMerger/debug/3
 path.0=classes.dex
 renamed.0=classes.dex

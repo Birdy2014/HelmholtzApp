@@ -204,10 +204,6 @@
         "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1558085aff7888161bf3b02a636d7f1b/res/drawable-mdpi-v4/abc_list_divider_mtrl_alpha.9.png"
     },
     {
-        "merged": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/res/merged/debug/layout_activity_mensa.xml.flat",
-        "source": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/res/layout/activity_mensa.xml"
-    },
-    {
         "merged": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_switch_track_mtrl_alpha.9.png.flat",
         "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1558085aff7888161bf3b02a636d7f1b/res/drawable-hdpi-v4/abc_switch_track_mtrl_alpha.9.png"
     },
@@ -686,10 +682,6 @@
     {
         "merged": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4_abc_btn_radio_to_on_mtrl_015.png.flat",
         "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1558085aff7888161bf3b02a636d7f1b/res/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
-    },
-    {
-        "merged": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/res/merged/debug/layout_activity_news.xml.flat",
-        "source": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/res/layout/activity_news.xml"
     },
     {
         "merged": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_abc_scrubber_control_to_pressed_mtrl_005.png.flat",

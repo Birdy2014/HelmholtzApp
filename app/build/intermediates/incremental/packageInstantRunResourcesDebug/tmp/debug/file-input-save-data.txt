@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Sat May 26 21:04:38 CEST 2018
+#Sun Jun 03 17:23:45 CEST 2018
 2.path=com/tom_roush/fontbox/resources/cmap/UniHojo-UTF32-H
 14.set=ASSET
 107.baseType=DIRECTORY

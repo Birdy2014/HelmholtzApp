@@ -7,10 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import org.jsoup.Connection;
+
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
 
@@ -71,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                 String value2 = text2.getText().toString();
 
 
-                Vertretungsplan vertretungsplan = new Vertretungsplan(value, value1);
+                Vertretungsplan vertretungsplan = new Vertretungsplan(Base64.encodeToString((value + ":" + value1).getBytes(), Base64.DEFAULT));
                 Thread thread = new Thread() {
                     @Override
                     public void run() {

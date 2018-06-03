@@ -121,7 +121,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-idling-resource-2.2.2" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-26.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.madgag.spongycastle:prov:1.51.0.0@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/home/moritz/AndroidStudioProjects/HelmholtzApp/app/libs/VertretungsplanLib-1.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.annotation:javax.annotation-api:1.2@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:transition-26.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.madgag.spongycastle:pkix:1.51.0.0@jar" level="project" />
@@ -140,6 +139,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.google.code.findbugs:jsr305:2.0.1@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:recyclerview-v7-26.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: javax.inject:javax.inject:1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/home/moritz/AndroidStudioProjects/HelmholtzApp/app/libs/VertretungsplanLib-1.2.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.tom_roush:pdfbox-android-1.8.9.1" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support.constraint:constraint-layout-1.0.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.12@jar" level="project" />

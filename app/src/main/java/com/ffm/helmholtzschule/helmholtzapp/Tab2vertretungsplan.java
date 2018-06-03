@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,7 @@ public class Tab2vertretungsplan extends Fragment {
         String username = mySPR.getString("username", "");
         String password = mySPR.getString("password", "");
 
-        vertretungsplan = new Vertretungsplan(username, password);
+        vertretungsplan = new Vertretungsplan(Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
         downloadVertretungsplan(username, password);
         //debugAll();
         dataAccess();

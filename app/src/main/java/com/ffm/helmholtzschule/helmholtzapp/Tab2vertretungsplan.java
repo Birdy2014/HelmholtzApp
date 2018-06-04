@@ -1,28 +1,19 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
 import android.content.SharedPreferences;
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.text.Html;
+import android.support.v4.app.Fragment;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
-
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Scanner;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretung;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
@@ -84,13 +75,15 @@ public class Tab2vertretungsplan extends Fragment {
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1)) list.add(vertretung);
+                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1))
+                        list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0)) list.add(vertretung);
+                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0))
+                        list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
@@ -115,7 +108,6 @@ public class Tab2vertretungsplan extends Fragment {
                 vertretungenAdapter.notifyDataSetChanged();
             }
         });
-
 
         klasseButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -124,13 +116,15 @@ public class Tab2vertretungsplan extends Fragment {
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1)) list.add(vertretung);
+                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1))
+                        list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0)) list.add(vertretung);
+                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0))
+                        list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
@@ -155,8 +149,6 @@ public class Tab2vertretungsplan extends Fragment {
                 vertretungenAdapter.notifyDataSetChanged();
             }
         });
-
-
     }
 
     protected void downloadVertretungsplan(String username, String password) {
@@ -236,7 +228,7 @@ public class Tab2vertretungsplan extends Fragment {
         daten.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Hinw.", "Art"));
 */
         SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
-        String klasse1 = mySPR.getString("myKey2", "8a"); // TODO: Klasse
+        String klasse1 = mySPR.getString("klasse", "");
 
         if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'e') {
             klasse1 = Character.toUpperCase(klasse1.charAt(0)) + klasse1.substring(1);

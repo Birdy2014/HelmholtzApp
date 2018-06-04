@@ -1,72 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="23"
+    abi="armeabi-v7a,armeabi"
+    api-level="25"
     build-mode="COLD"
     density="xhdpi"
     format="10"
     ir-eligibility="FIELD_REMOVED"
     plugin-version="3.1.2"
-    timestamp="1528040986154"
+    timestamp="1528137106628"
     token="210282472272560713"
     verifier="COLD_SWAP_REQUESTED" >
 
     <task
         name="javac"
-        duration="184" />
+        duration="470" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="14" />
+        duration="87" />
     <task
         name="verifier"
-        duration="16" />
+        duration="31" />
 
-    <artifact
-        location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-        type="SPLIT" />
     <artifact
         location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
         type="SPLIT" />
-    <artifact
-        location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-        type="SPLIT_MAIN" />
 
     <build
         build-mode="FULL"
-        timestamp="1528039423998"
+        timestamp="1528136150324"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
             type="SPLIT" />
         <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
             type="SPLIT" />
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_2.apk"
             type="SPLIT" />
         <artifact
+            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
+            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
+            type="SPLIT" />
+        <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
         <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_0.apk"
+            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
         <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
+            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_6.apk"
             type="SPLIT" />
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
-            type="SPLIT" />
-        <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_9.apk"
@@ -77,27 +71,12 @@
     </build>
     <build
         build-mode="COLD"
-        ir-eligibility="FIELD_ADDED"
-        timestamp="1528040685422"
-        verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
-    </build>
-    <build
-        build-mode="COLD"
         ir-eligibility="FIELD_REMOVED"
-        timestamp="1528040986154"
+        timestamp="1528137106628"
         verifier="COLD_SWAP_REQUESTED" >
-        <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
         <artifact
             location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
-        <artifact
-            location="/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/instant-run-apk/debug/app-debug.apk"
-            type="SPLIT_MAIN" />
     </build>
 
 </instant-run>

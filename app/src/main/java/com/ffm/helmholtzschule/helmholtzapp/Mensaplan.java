@@ -10,10 +10,9 @@ public class Mensaplan {
 
     public Mensaplan(String tag, String fleisch, String veg, String dessert) {
         this.tag = tag;
-        this.fleisch = fleisch ;
+        this.fleisch = fleisch;
         this.veg = veg;
         this.dessert = dessert;
-
     }
 
     public String getTag() {

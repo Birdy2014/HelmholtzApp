@@ -1,7 +1,6 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +15,9 @@ import java.util.ArrayList;
 
 public class NewsAdapter extends ArrayAdapter<News> {
 
-    public NewsAdapter(Context context, ArrayList<News> list) {
-
-
+    NewsAdapter(Context context, ArrayList<News> list) {
         super(context, R.layout.news_row, list);
-
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
@@ -39,7 +34,6 @@ public class NewsAdapter extends ArrayAdapter<News> {
         txtTitel.setText(titel);
 
         return customView;
-
     }
 }
 

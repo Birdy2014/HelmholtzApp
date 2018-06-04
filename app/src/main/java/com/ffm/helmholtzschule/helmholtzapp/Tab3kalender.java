@@ -1,13 +1,12 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ToggleButton;
 
 /**
  * Created by Staudinger on 28.06.2017.
@@ -16,11 +15,9 @@ import android.widget.ToggleButton;
 public class Tab3kalender extends Fragment {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab3kalender, container, false);
         return rootView;
-
-
     }
 
     @Override
@@ -32,11 +29,6 @@ public class Tab3kalender extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 
-
-
-
         super.onViewCreated(view, savedInstanceState);
     }
-
-
 }

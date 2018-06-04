@@ -15,19 +15,14 @@ import io.github.birdy2014.VertretungsplanLib.Vertretung;
 
 class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 
-    public VertretungsplanAdapter(Context context, ArrayList<Vertretung> list) {
-
-
+    VertretungsplanAdapter(Context context, ArrayList<Vertretung> list) {
         super(context, R.layout.vertretungsplan_row, list);
-
     }
-
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater Menu2Inflater = LayoutInflater.from(getContext());
         View customView = Menu2Inflater.inflate(R.layout.vertretungsplan_row, parent, false);
-
 
         String fach = getItem(position).getFach();
         String klasse = getItem(position).getKlasse();

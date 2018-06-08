@@ -4,7 +4,7 @@
             "outputFile": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/6602fe8be7dabc05b19205d44f835133/res/values-v24/values-v24.xml",
+                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1558085aff7888161bf3b02a636d7f1b/res/values-v24/values-v24.xml",
+                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

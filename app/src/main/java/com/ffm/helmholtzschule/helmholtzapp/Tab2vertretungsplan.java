@@ -43,14 +43,12 @@ public class Tab2vertretungsplan extends Fragment {
         lstMenu.setAdapter(MenuAdapter);
 
         SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
-        String klasse1 = mySPR.getString("myKey2", "8a"); // TODO: 8a wieder rausnehmen
+        String klasse1 = mySPR.getString("klasse", "");
         String username = mySPR.getString("username", "");
         String password = mySPR.getString("password", "");
 
         vertretungsplan = new Vertretungsplan(Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
         downloadVertretungsplan(username, password);
-        //debugAll();
-        dataAccess();
 
         System.out.println("Why do java developers wear glasses?\nBecause they can\'t C#.");
         System.out.println("Programmiert von Jonas Schröter und Moritz Vogel.");
@@ -68,6 +66,9 @@ public class Tab2vertretungsplan extends Fragment {
         }
         final String klasse = klasse1;
         System.out.println("Klasse: " + klasse);
+
+        dataAccess(klasse);
+
         heuteMorgen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -221,28 +222,28 @@ public class Tab2vertretungsplan extends Fragment {
         }
     }
 
-    public void dataAccess() {
+    public void dataAccess(String klasse) {
         ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
 
         /*
         daten.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Hinw.", "Art"));
 */
-        SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
-        String klasse1 = mySPR.getString("klasse", "");
+        //SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
+        //String klasse1 = mySPR.getString("klasse", "");
 
-        if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'e') {
-            klasse1 = Character.toUpperCase(klasse1.charAt(0)) + klasse1.substring(1);
-        } else {
-            int indexLetter = klasse1.length() - 1;
-            klasse1 = klasse1.substring(0, indexLetter) + Character.toLowerCase(klasse1.charAt(indexLetter));
-        }
+        //if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'e') {
+        //    klasse1 = Character.toUpperCase(klasse1.charAt(0)) + klasse1.substring(1);
+        //} else {
+        //    int indexLetter = klasse1.length() - 1;
+        //    klasse1 = klasse1.substring(0, indexLetter) + Character.toLowerCase(klasse1.charAt(indexLetter));
+        //}
 
         ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
 
         ArrayList<Vertretung> list = new ArrayList<>();
         list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
         for (Vertretung v : vertretungsplan.getVertretungen().get(0)) {
-            if (v.getKlasse().contains(klasse1)) list.add(v);
+            if (v.getKlasse().contains(klasse)) list.add(v);
         }
         VertretungsplanAdapter vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
         ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);

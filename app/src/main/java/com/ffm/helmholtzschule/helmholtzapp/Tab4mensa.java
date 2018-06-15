@@ -64,7 +64,7 @@ public class Tab4mensa extends Fragment {
         gerichte.add(new Mensaplan("Donnerstag", data[3][0], data[3][1], data[3][2]));
         gerichte.add(new Mensaplan("Freitag", data[4][0], data[4][1], data[4][2]));
 
-        mensaAdapter = new MensaAdapter(getView().getContext(), gerichte); //TODO alte Zeilen bei neuem öffnen des Tabs entfernen
+        mensaAdapter = new MensaAdapter(getView().getContext(), gerichte);
         lstMenu = (ListView) getView().findViewById(R.id.mensaMenu);
 
         lstMenu.setAdapter(mensaAdapter);

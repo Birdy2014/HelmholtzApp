@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            Toast.makeText(getApplicationContext(), "Benutzername und/oder Passwort falsch eingegeben.", Toast.LENGTH_LONG).show();
+                            //Toast.makeText(getApplicationContext(), "Benutzername und/oder Passwort falsch eingegeben.", Toast.LENGTH_LONG).show();
                         }
                     }
                 };

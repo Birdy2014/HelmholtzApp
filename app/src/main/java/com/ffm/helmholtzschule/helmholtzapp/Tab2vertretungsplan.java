@@ -55,6 +55,12 @@ public class Tab2vertretungsplan extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
+
+
+
+
+
+
         final ToggleButton klasseButton = (ToggleButton) getView().findViewById(R.id.toggleButton3);
         final ToggleButton heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
 
@@ -224,19 +230,6 @@ public class Tab2vertretungsplan extends Fragment {
 
     public void dataAccess(String klasse) {
         ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
-
-        /*
-        daten.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Hinw.", "Art"));
-*/
-        //SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
-        //String klasse1 = mySPR.getString("klasse", "");
-
-        //if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'e') {
-        //    klasse1 = Character.toUpperCase(klasse1.charAt(0)) + klasse1.substring(1);
-        //} else {
-        //    int indexLetter = klasse1.length() - 1;
-        //    klasse1 = klasse1.substring(0, indexLetter) + Character.toLowerCase(klasse1.charAt(indexLetter));
-        //}
 
         ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
 

@@ -6,7 +6,7 @@ INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/Andro
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/d0f8fda81c6590aede46cb045a8364b6/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:2:1-11:12
 MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:2:1-16:12
 MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:17:1-28:12
@@ -52,8 +52,8 @@ MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/tran
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/d0f8fda81c6590aede46cb045a8364b6/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/d0f8fda81c6590aede46cb045a8364b6/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
 MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
 MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
 MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:22:5-26:19
@@ -104,8 +104,6 @@ ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidM
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:21:13-45
 	android:configChanges
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:20:13-74
-	android:theme
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:22:13-56
 	android:name
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:19:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
@@ -132,8 +130,8 @@ MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/tran
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:21:5-23:62
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/d0f8fda81c6590aede46cb045a8364b6/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/d0f8fda81c6590aede46cb045a8364b6/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
 MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
 MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:7:5-9:41

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v12/values-v12.xml",
+            "outputFile": "C:\\Users\\Marco\\AndroidStudioProjects\\HelmholtzApp\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v12\\values-v12.xml",
             "map": [
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/res/values-v12/values-v12.xml",
+                    "source": "C:\\Users\\Marco\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-26.1.0.aar\\4b09ed287529a801f2be3852d2ab5290\\res\\values-v12\\values-v12.xml",
                     "from": {
                         "startLines": "2,5,8,9",
                         "startColumns": "4,4,4,4",

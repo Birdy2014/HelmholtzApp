@@ -189,7 +189,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Tab4mensa mensa = new Tab4mensa();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
-        } else if (id == R.id.nav_change_class) {
+        } else if(id ==R.id.nav_hausaufgaben) {
+            Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+        } else if(id == R.id.nav_change_class) {
             SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
             SharedPreferences.Editor editor = mySPR.edit();
             editor.putString("auth", "");

@@ -1,214 +1,214 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:2:1-11:12
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:2:1-16:12
-MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:2:1-13:12
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:17:1-31:12
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:17:1-31:12
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:2:1-16:12
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:17:1-30:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+MERGED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b40d29c6b0de238fe9f114b250d4ddb5\AndroidManifest.xml:2:1-11:12
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:2:1-16:12
+MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\pdfbox-android-1.8.9.1.aar\4415cc15001af0b1203f5456f2fa0eca\AndroidManifest.xml:2:1-13:12
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:17:1-31:12
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:17:1-31:12
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:2:1-16:12
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:17:1-30:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:3:5-51
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:3:5-51
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:5:5-66
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:11:5-67
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:5:5-66
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:11:5-67
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:5:22-64
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:8:5-33:19
-MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:22:5-26:19
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:25:5-29:19
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:25:5-29:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:13:5-14:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:24:5-28:19
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:24:5-28:19
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:8:5-33:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b40d29c6b0de238fe9f114b250d4ddb5\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b40d29c6b0de238fe9f114b250d4ddb5\AndroidManifest.xml:9:5-20
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:13:5-14:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:25:5-29:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:13:5-14:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:24:5-28:19
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:11:9-41
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:11:9-41
 	android:hardwareAccelerated
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:15:9-44
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:15:9-44
 	android:roundIcon
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:12:9-49
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:12:9-49
 	android:largeHeap
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:16:9-33
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:16:9-33
 	android:icon
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:10:9-44
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:10:9-44
 	android:allowBackup
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:9:9-35
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:14:9-40
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:14:9-40
 activity#com.ffm.helmholtzschule.helmholtzapp.LoginActivity
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:18:9-29:20
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:18:9-29:20
 	android:screenOrientation
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:23:13-49
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:23:13-49
 	android:label
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:21:13-45
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:21:13-45
 	android:configChanges
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:20:13-74
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:20:13-74
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:19:13-42
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:19:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:24:13-28:29
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:24:13-28:29
 action#android.intent.action.MAIN
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:25:17-69
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:25:17-69
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:25:25-66
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:25:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:27:17-77
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:27:17-77
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:27:27-74
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:27:27-74
 activity#com.ffm.helmholtzschule.helmholtzapp.MainActivity
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:30:9-32:11
+ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:30:9-32:11
 	android:screenOrientation
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:31:13-49
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:31:13-49
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:30:19-47
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:30:19-47
 uses-sdk
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
-MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:7:5-9:41
-MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:21:5-23:58
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:7:5-9:41
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:20:5-22:41
-MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:20:5-22:41
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b40d29c6b0de238fe9f114b250d4ddb5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\b40d29c6b0de238fe9f114b250d4ddb5\AndroidManifest.xml:5:5-7:41
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\b99bffa74ed62067427a320a19ce2daa\AndroidManifest.xml:7:5-9:41
+MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\pdfbox-android-1.8.9.1.aar\4415cc15001af0b1203f5456f2fa0eca\AndroidManifest.xml:7:5-9:41
+MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\pdfbox-android-1.8.9.1.aar\4415cc15001af0b1203f5456f2fa0eca\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:21:5-23:58
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\f6a709e26b37ba857f7580892adf8867\AndroidManifest.xml:7:5-9:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:20:5-22:41
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml
 meta-data#android.support.VERSION
-ADDED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:animated-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/fb3542071092416ebca17f9b330222c6/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-vector-drawable:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/5b37f46697db7d198c43432aef4431b2/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:recyclerview-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-26.1.0.aar/d4d26a2612154c7219e1372482a2e927/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:23:9-25:38
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-media-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/58ccdd52d0b4ec1211e5741d478dad19/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/217e5ba42551275eb70cc7a044bf83fe/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:26:9-28:38
-MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:26:9-28:38
+ADDED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:appcompat-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\appcompat-v7-26.1.0.aar\4b09ed287529a801f2be3852d2ab5290\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:transition:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\transition-26.1.0.aar\34a5f5f3534c110d98f0867c98303c8f\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-v4:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-v4-26.1.0.aar\e65aa9d5d193ad50b46156138271919c\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:animated-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-26.1.0.aar\63c0ba3713333a03d7421b1dc84cfb98\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-vector-drawable:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-26.1.0.aar\2da567fee1b0eb9f81e6e8a05b0b7f45\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:recyclerview-v7:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-26.1.0.aar\f625b4b033f4a6964194606be75ec700\AndroidManifest.xml:23:9-25:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-media-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-media-compat-26.1.0.aar\18567e7b84563f5e378674e4b51fded1\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-fragment:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-fragment-26.1.0.aar\22a0c90d74c5df4a3c7e40344465de5a\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-utils:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-utils-26.1.0.aar\a05049c5dc7683cb30f725e0392dba4e\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-core-ui:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-core-ui-26.1.0.aar\9b6d82f861dbae0a652822ece1d3d970\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:26:9-28:38
+MERGED from [com.android.support:support-compat:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\support-compat-26.1.0.aar\f9cbb6b356871a00997a6bffbd6cb70e\AndroidManifest.xml:26:9-28:38
 	android:value
-		ADDED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:28:13-35
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:28:13-35
 	android:name
-		ADDED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:27:13-51
+		ADDED from [com.android.support:design:26.1.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\design-26.1.0.aar\58c2c3bcb088ea024e332a5dc17c83b9\AndroidManifest.xml:27:13-51
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:11:5-81
+ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\pdfbox-android-1.8.9.1.aar\4415cc15001af0b1203f5456f2fa0eca\AndroidManifest.xml:11:5-81
 	android:name
-		ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:11:22-78
+		ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\pdfbox-android-1.8.9.1.aar\4415cc15001af0b1203f5456f2fa0eca\AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-35:12 reason: com.tom_roush.pdfbox requested WRITE_EXTERNAL_STORAGE
+IMPLIED from C:\Users\Marco\AndroidStudioProjects\HelmholtzApp\app\src\main\AndroidManifest.xml:2:1-35:12 reason: com.tom_roush.pdfbox requested WRITE_EXTERNAL_STORAGE
 meta-data#android.arch.lifecycle.VERSION
-ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:25:9-27:47
+ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:25:9-27:47
 	android:value
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:27:13-44
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:27:13-44
 	android:name
-		ADDED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:26:13-58
+		ADDED from [android.arch.lifecycle:runtime:1.0.0] C:\Users\Marco\.gradle\caches\transforms-1\files-1.1\runtime-1.0.0.aar\c40921083cb6705a278644801bdc3d9d\AndroidManifest.xml:26:13-58

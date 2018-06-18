@@ -10,6 +10,7 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
@@ -107,5 +108,26 @@ class DataStorage {
 
     public ArrayList<Mensaplan> getGerichte() {
         return gerichte;
+    }
+
+    public boolean isInternetReachable() {
+        final boolean[] reachable = new boolean[1];
+        Thread thread = new Thread(() -> {
+            try {
+                URL url = new URL("http://www.helmholtzschule-frankfurt.de");
+                HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
+                Object objData = urlConnect.getContent();
+                reachable[0] = true;
+            } catch (Exception e) {
+                reachable[0] = false;
+            }
+        });
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return reachable[0];
     }
 }

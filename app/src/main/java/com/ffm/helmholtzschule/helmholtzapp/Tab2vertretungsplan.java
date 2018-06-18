@@ -23,7 +23,7 @@ import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
  */
 
 public class Tab2vertretungsplan extends Fragment {
-    public Vertretungsplan vertretungsplan;
+    public DataStorage dataStorage = DataStorage.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -44,22 +44,11 @@ public class Tab2vertretungsplan extends Fragment {
 
         SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
         String klasse1 = mySPR.getString("klasse", "");
-        String username = mySPR.getString("username", "");
-        String password = mySPR.getString("password", "");
-
-        vertretungsplan = new Vertretungsplan(Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
-        downloadVertretungsplan(username, password);
 
         System.out.println("Why do java developers wear glasses?\nBecause they can\'t C#.");
         System.out.println("Programmiert von Jonas Schröter und Moritz Vogel.");
 
         super.onViewCreated(view, savedInstanceState);
-
-
-
-
-
-
 
         final ToggleButton klasseButton = (ToggleButton) getView().findViewById(R.id.toggleButton3);
         final ToggleButton heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
@@ -82,35 +71,35 @@ public class Tab2vertretungsplan extends Fragment {
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1))
+                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0))
+                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung v : vertretungsplan.getVertretungen().get(1)) {
+                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else {
                     ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung v : vertretungsplan.getVertretungen().get(0)) {
+                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 }
-                ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
+                ListView lstMenu = getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
                 vertretungenAdapter.notifyDataSetChanged();
             }
@@ -123,33 +112,33 @@ public class Tab2vertretungsplan extends Fragment {
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(1))
+                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung vertretung : vertretungsplan.getVertretungen().get(0))
+                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
                     ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung v : vertretungsplan.getVertretungen().get(1)) {
+                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(1));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else {
                     ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-                    for (Vertretung v : vertretungsplan.getVertretungen().get(0)) {
+                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
+                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 }
                 ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
@@ -158,84 +147,14 @@ public class Tab2vertretungsplan extends Fragment {
         });
     }
 
-    protected void downloadVertretungsplan(String username, String password) {
-        Thread thread = new Thread() {
-            @Override
-            public void run() {
-                try {
-                    vertretungsplan.updateVertretungsplan();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void debugAll() {
-        System.out.println("Nachrichten heute:");
-        for (String str : vertretungsplan.getNachrichten().get(0)) {
-            System.out.println(str);
-        }
-        System.out.println("Vertretungen heute:");
-        if (vertretungsplan.getNachrichten().get(0).size() == 0)
-            System.out.println("Keine Vertretungen");
-        for (int i = 0; i < vertretungsplan.getVertretungen().get(0).size(); i++) {
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getKlasse());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getStunde());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getFach());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getVertretungsLehrer());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getFuer());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getRaum());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(0).get(i).getHinweis());
-            System.out.print(", ");
-            System.out.println(vertretungsplan.getVertretungen().get(0).get(i).getArt());
-        }
-        System.out.println("Nachrichten morgen:");
-        for (String str : vertretungsplan.getNachrichten().get(1)) {
-            System.out.println(str);
-        }
-        System.out.println("Vertretungen morgen:");
-        if (vertretungsplan.getNachrichten().get(1).size() == 0)
-            System.out.println("Keine Vertretungen");
-        for (int i = 0; i < vertretungsplan.getVertretungen().get(1).size(); i++) {
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getKlasse());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getStunde());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getFach());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getVertretungsLehrer());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getFuer());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getRaum());
-            System.out.print(", ");
-            System.out.print(vertretungsplan.getVertretungen().get(1).get(i).getHinweis());
-            System.out.print(", ");
-            System.out.println(vertretungsplan.getVertretungen().get(1).get(i).getArt());
-        }
-    }
-
     public void dataAccess(String klasse) {
         ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
 
-        ((TextView) getView().findViewById(R.id.dateText)).setText(vertretungsplan.getDate(0));
+        ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
 
         ArrayList<Vertretung> list = new ArrayList<>();
         list.add(new Vertretung("Kl.", "Std.", "Fach", "Vertr.", "Für", "Raum", "Von", "Hinw.", "Art"));
-        for (Vertretung v : vertretungsplan.getVertretungen().get(0)) {
+        for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
             if (v.getKlasse().contains(klasse)) list.add(v);
         }
         VertretungsplanAdapter vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);

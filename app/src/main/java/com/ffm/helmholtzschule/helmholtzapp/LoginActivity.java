@@ -14,13 +14,35 @@ import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
 
 public class LoginActivity extends AppCompatActivity {
+    boolean authorized;
+    DataStorage dataStorage = DataStorage.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("Öffne Login");
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
 
-        if (mySPR.getString("auth", "").equals("gagagagahhbehbwehbwe")) {
+        dataStorage.initialize(mySPR.getString("auth", "").trim());
+
+        Thread thread = new Thread() {
+            @Override
+            public void run() { authorized = dataStorage.getVertretungsplan().verifyCredentials(); }
+        };
+        thread.start();
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        if (authorized) {
+            try {
+                dataStorage.update();
+            } catch (NoConnectionException e) {
+                //Kein Internet
+                System.out.println("Kein Internet");
+                e.printStackTrace();
+            }
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
             finish();
@@ -48,25 +70,36 @@ public class LoginActivity extends AppCompatActivity {
                 String klasse = editTextKlasse.getText().toString();
 
 
-                Vertretungsplan vertretungsplan = new Vertretungsplan(Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
+                dataStorage.initialize(Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT).trim());
                 Thread thread = new Thread() {
                     @Override
-                    public void run() {
-                        if (vertretungsplan.verifyCredentials()) {
-                            editor.putString("username", username);
-                            editor.putString("password", password);
-                            editor.putString("klasse", klasse);
-                            editor.putString("auth", "gagagagahhbehbwehbwe");
-                            editor.commit();
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            //Toast.makeText(getApplicationContext(), "Benutzername und/oder Passwort falsch eingegeben.", Toast.LENGTH_LONG).show();
-                        }
-                    }
+                    public void run() { authorized = dataStorage.getVertretungsplan().verifyCredentials(); }
                 };
                 thread.start();
+
+                try {
+                    thread.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                if (authorized) {
+                    try {
+                        dataStorage.update();
+                    } catch (NoConnectionException e) {
+                        //Kein Internet
+                        System.out.println("Kein Internet");
+                        e.printStackTrace();
+                    }
+                    editor.putString("klasse", klasse);
+                    editor.putString("auth", Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
+                    editor.commit();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Benutzername und/oder Passwort falsch eingegeben.", Toast.LENGTH_LONG).show();
+                }
             }
         });
     }

@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/nav_group_1">
         <item
+            android:icon="@drawable/ic_news"
             android:id="@+id/nav_news"
             android:title="News" />
         <item
+            android:icon="@drawable/ic_vertretungsplan"
             android:id="@+id/nav_vertretungsplan"
             android:title="Vertretungsplan" />
         <item
+            android:icon="@drawable/ic_nachrichten"
             android:id="@+id/nav_nachrichten"
             android:title="Nachrichten" />
         <item
+            android:icon="@drawable/ic_calendar"
             android:id="@+id/nav_kalender"
             android:title="Kalender" />
         <item
+            android:icon="@drawable/ic_mensa"
             android:id="@+id/nav_mensaplan"
             android:title="Mensaplan" />
     </group>
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single" android:id="@+id/nav_group_2">
         <item
+            android:icon="@drawable/ic_settings"
             android:id="@+id/nav_change_class"
             android:title="Klasse ändern" />
     </group>

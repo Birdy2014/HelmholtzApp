@@ -25,6 +25,7 @@ public class Tab1news extends Fragment {
     public ListView lstMenu;
     public ArrayList<News> daten;
     public NewsAdapter menuAdapter;
+    DataStorage dataStorage = DataStorage.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -35,70 +36,10 @@ public class Tab1news extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         daten = new ArrayList<News>();
 
-        menuAdapter = new NewsAdapter(this.getContext(), daten);
+        menuAdapter = new NewsAdapter(this.getContext(), dataStorage.getNews());
         lstMenu = (ListView) getView().findViewById(R.id.lstNews);
         lstMenu.setAdapter(menuAdapter);
-
-        Ion.with(this.getContext()).load("http://www.helmholtzschule-frankfurt.de").asString().setCallback(new FutureCallback<String>() {
-            @Override
-            public void onCompleted(Exception e, String result) {
-                int g = 0;
-                int o = 0;
-                int gf = 0;
-                String news = "";
-                String h = "";
-                String html = result;
-
-                int z = 0;
-                gf = html.indexOf("data-history-node-id=\"");
-                gf = gf + 22;
-                news = "http://www.helmholtzschule-frankfurt.de/node/" + html.charAt(gf) + html.charAt(gf + 1) + html.charAt(gf + 2);
-                gf = html.indexOf("field--label-hidden\">");
-
-                gf = gf + 21;
-                z = gf;
-
-                while (!(html.charAt(z) + "").equals("<")) {
-                    h = h + "" + html.charAt(z);
-                    z++;
-                }
-
-                o = z + 5;
-
-                System.out.println(h + " " + news);
-                daten.add(new News(h, news));
-
-                while (html.indexOf("string field--label-hidden\">", o) != -1) {
-                    h = "";
-
-                    gf = html.indexOf("data-history-node-id=\"", o);
-                    gf = gf + 22;
-
-                    news = "http://www.helmholtzschule-frankfurt.de/node/" + html.charAt(gf) + html.charAt(gf + 1) + html.charAt(gf + 2);
-                    gf = html.indexOf("string field--label-hidden\">", o);
-
-                    gf = gf + 28;
-                    z = gf;
-
-                    while (!(html.charAt(z) + "").equals("<")) {
-                        h = h + "" + html.charAt(z);
-                        z++;
-                        o = z;
-                    }
-                    o = z;
-                    for (int f = 0; f <= 500; f++) {
-                        if (h.indexOf("&quot;") == f) {
-                            h = korrektur(h);
-                        }
-                    }
-                    System.out.println(h + " " + news);
-                    daten.add(new News(h, news));
-                }
-                menuAdapter.notifyDataSetChanged();
-
-
-            }
-        });
+        menuAdapter.notifyDataSetChanged();
 
         lstMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -115,48 +56,5 @@ public class Tab1news extends Fragment {
         );
 
         super.onViewCreated(view, savedInstanceState);
-    }
-
-    public static String korrektur(String h) {
-        boolean kokos = false;
-        int k = 0;
-        int p = 0;
-        String l = "";
-        int u = 0;
-        while (h.indexOf("&quot;", p) > 0) {
-
-            k = h.indexOf("&quot", p);
-
-            if (p == 0) {
-                for (int j = 0; j < k; j++) {
-                    l = l + h.charAt(j);
-
-                }
-            }
-
-            p = k + 7;
-            int a = k;
-
-            k = h.indexOf("&quot", p);
-            u = k;
-
-            if (p != 0) {
-                for (a = a + 6; a < u; a++) {
-
-                    l = l + h.charAt(a);
-                    if (a >= h.length()) {
-                        kokos = true;
-                        break;
-
-                    }
-
-                }
-            }
-            if (kokos) {
-                break;
-            }
-        }
-
-        return l;
     }
 }

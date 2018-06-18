@@ -37,6 +37,7 @@
         <activity
             android:name="com.ffm.helmholtzschule.helmholtzapp.MainActivity"
             android:screenOrientation="portrait" />
+        <activity android:name="com.ffm.helmholtzschule.helmholtzapp.LoadingActivity" />
 
         <meta-data
             android:name="android.support.VERSION"

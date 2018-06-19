@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoadingActivity">
+    android:orientation="vertical"
+    android:gravity="center" >
+
+    <ImageView
+        android:layout_width="@android:dimen/app_icon_size"
+        android:layout_height="@android:dimen/app_icon_size"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/version_view"
+        android:layout_width="70dp"
+        android:layout_height="@android:dimen/app_icon_size" />
+
+    <ProgressBar
+        android:theme="@style/greenProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:progressDrawable="@drawable/circular_progress_bar" />
 
     <TextView
         android:text="Loading...."
         android:id="@+id/loadingtext"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

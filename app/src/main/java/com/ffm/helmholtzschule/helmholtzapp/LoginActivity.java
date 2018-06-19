@@ -19,46 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*
-        System.out.println("Öffne Login");
-
-        if (!dataStorage.isInternetReachable())
-            Toast.makeText(getApplicationContext(), "Keine Internetverbindung.", Toast.LENGTH_LONG).show();
-        else {
-            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-
-            dataStorage.initialize(mySPR.getString("auth", "").trim());
-
-            Thread thread = new Thread() {
-                @Override
-                public void run() {
-                    authorized = dataStorage.getVertretungsplan().verifyCredentials();
-                }
-            };
-            thread.start();
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-            if (authorized) {
-                try {
-                    dataStorage.update();
-                } catch (NoConnectionException e) {
-                    //Kein Internet
-                    System.out.println("Kein Internet");
-                    e.printStackTrace();
-                }
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-
-            }
-        }*/
-
-        System.out.println("LoginActivity");
-
         boolean tryLoginAgain;
 
         try {
@@ -106,39 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
                 startActivity(intent);
                 finish();
-                /*Thread thread = new Thread() {
-                    @Override
-                    public void run() {
-                        authorized = dataStorage.getVertretungsplan().verifyCredentials();
-                    }
-                };
-                thread.start();
-
-                try {
-                    thread.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-                if (authorized) {
-                    try {
-                        dataStorage.update();
-                    } catch (NoConnectionException e) {
-                        //Kein Internet
-                        System.out.println("Kein Internet");
-                        e.printStackTrace();
-                    }
-                    editor.putString("klasse", klasse);
-                    editor.putString("auth", Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT));
-                    editor.commit();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Benutzername und/oder Passwort falsch eingegeben.", Toast.LENGTH_LONG).show();
-                }*/
             }
-
         });
     }
 }

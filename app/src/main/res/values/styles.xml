@@ -19,4 +19,8 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="greenProgress" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">#6AA026</item>
+    </style>
+
 </resources>

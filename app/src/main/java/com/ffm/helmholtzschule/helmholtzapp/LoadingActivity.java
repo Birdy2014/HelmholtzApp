@@ -1,6 +1,8 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,43 +16,47 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
 
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        try {
+            PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
+            String version = pInfo.versionName;
+            ((TextView) findViewById(R.id.version_view)).setText(version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        Thread thread = new Thread() {
             @Override
             public void run() {
                 TextView textView = (TextView) findViewById(R.id.loadingtext);
 
                 if (!dataStorage.isInternetReachable()) {
-                    textView.setText("Kein Internet");
-                } else {
-                    final boolean[] authorized = new boolean[1];
-                    Thread thread = new Thread() {
+                    textView.post(new Runnable() {
                         @Override
                         public void run() {
-                            System.out.println("Veryfy cred");
-                            authorized[0] = dataStorage.getVertretungsplan().verifyCredentials();
-                            System.out.println(authorized[0]);
+                            textView.setText("Kein Internet");
                         }
-                    };
-                    thread.start();
-                    try {
-                        thread.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    });
+                } else {
+                    final boolean authorized;
 
-                    if (!authorized[0]) {
-                        System.out.println("Back to Login");
+                    authorized = dataStorage.getVertretungsplan().verifyCredentials();
+                    System.out.println(authorized);
+
+                    if (!authorized) {
                         Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
                         intent.putExtra("tryLoginAgain", "true");
                         startActivity(intent);
                         finish();
-                        System.out.println("Should be back to login");
                     } else {
                         try {
                             dataStorage.update();
                         } catch (NoConnectionException e) {
-                            textView.setText("Kein Internet");
+                            textView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    textView.setText("Kein Internet");
+                                }
+                            });
                             e.printStackTrace();
                         }
 
@@ -60,6 +66,7 @@ public class LoadingActivity extends AppCompatActivity {
                     }
                 }
             }
-        }, 100);
+        };
+        thread.start();
     }
 }

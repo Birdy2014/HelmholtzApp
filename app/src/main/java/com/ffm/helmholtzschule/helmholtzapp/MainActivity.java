@@ -169,37 +169,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
 
-        if (id == R.id.nav_news) {
-            Tab1news news = new Tab1news();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
-        } else if (id == R.id.nav_vertretungsplan) {
-            Tab2vertretungsplan vertretungsplan = new Tab2vertretungsplan();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
-        } else if (id == R.id.nav_nachrichten) {
-            //TODO add vertretungsplan nachrichten
-        } else if (id == R.id.nav_kalender) {
-            Tab3kalender kalender = new Tab3kalender();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
-        } else if (id == R.id.nav_mensaplan) {
-            Tab4mensa mensa = new Tab4mensa();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
-        } else if (id == R.id.nav_change_class) {
-            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-            SharedPreferences.Editor editor = mySPR.edit();
-            editor.putString("auth", "");
-            editor.commit();
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-        } else if (id == R.id.nav_lehrerliste) {
-            Tab5LehrerListe lehrerListe = new Tab5LehrerListe();
-            FragmentManager manager = getSupportFragmentManager();
-            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
+        //Moritz is happy now, this looks way better than stupid if-statements:D
+        switch (item.getItemId()){
+            case R.id.nav_news: {
+                Tab1news news = new Tab1news();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
+                break;
+            }
+            case R.id.nav_vertretungsplan: {
+                Tab2vertretungsplan vertretungsplan = new Tab2vertretungsplan();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
+                break;
+            }
+            case R.id.nav_nachrichten: {
+                Tab6Benachrichtigungen benachrichtigungen = new Tab6Benachrichtigungen();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, benachrichtigungen, benachrichtigungen.getTag()).commit();
+                break;
+            }
+            case R.id.nav_kalender: {
+                Tab3kalender kalender = new Tab3kalender();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
+                break;
+            }
+            case R.id.nav_mensaplan: {
+                Tab4mensa mensa = new Tab4mensa();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
+                break;
+            }
+            case R.id.nav_change_class: {
+                SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+                SharedPreferences.Editor editor = mySPR.edit();
+                editor.putString("auth", "");
+                editor.commit();
+                Intent intent = new Intent(this, LoginActivity.class);
+                startActivity(intent);
+                break;
+            }
+            case R.id.nav_lehrerliste: {
+                Tab5LehrerListe lehrerListe = new Tab5LehrerListe();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
+                break;
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

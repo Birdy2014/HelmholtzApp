@@ -1,8 +1,10 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -143,6 +145,15 @@ public class Tab2vertretungsplan extends Fragment {
                 ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
                 vertretungenAdapter.notifyDataSetChanged();
+            }
+        });
+
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_vertretungsplan);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getContext(), LoadingActivity.class);
+                startActivity(intent);
             }
         });
     }

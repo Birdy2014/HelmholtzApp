@@ -1,7 +1,9 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,15 @@ public class Tab4mensa extends Fragment {
 
         lstMenu.setAdapter(mensaAdapter);
         mensaAdapter.notifyDataSetChanged();
+
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_mensa);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getContext(), LoadingActivity.class);
+                startActivity(intent);
+            }
+        });
 
         super.onViewCreated(view, savedInstanceState);
     }

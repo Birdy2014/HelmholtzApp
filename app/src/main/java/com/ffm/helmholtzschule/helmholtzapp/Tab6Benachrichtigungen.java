@@ -1,7 +1,9 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +50,15 @@ public class Tab6Benachrichtigungen extends Fragment {
                 adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listToday);
                 nachrichtenView.setAdapter(adapter);
                 ((TextView)getView().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(0));
+            }
+        });
+
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getContext(), LoadingActivity.class);
+                startActivity(intent);
             }
         });
     }

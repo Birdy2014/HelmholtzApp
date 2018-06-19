@@ -25,8 +25,8 @@ class DataStorage {
     private Vertretungsplan vertretungsplan;
     private String mensaplanRawData;
     private String newsRawData;
-    private ArrayList<Mensaplan> gerichte  = new ArrayList<>();
-    private ArrayList<News> news = new ArrayList<>();
+    private ArrayList<Mensaplan> gerichte;
+    private ArrayList<News> news;
     private String lehrerlisteRawData;
     private String[] lehrerliste;
 
@@ -84,6 +84,8 @@ class DataStorage {
     }
 
     private void parseMensaplan() {
+        gerichte = new ArrayList<>();
+
         Gson gson = new Gson();
         String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {}.getType());
         gerichte.add(new Mensaplan("Montag", data[0][0], data[0][1], data[0][2]));
@@ -93,6 +95,8 @@ class DataStorage {
         gerichte.add(new Mensaplan("Freitag", data[4][0], data[4][1], data[4][2]));
     }
     private void parseNews(){
+        news = new ArrayList<>();
+
         Document doc = Jsoup.parse(newsRawData);
         Elements titles = doc.getElementsByClass("node__title");
         for(Element e : titles){

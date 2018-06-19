@@ -196,6 +196,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             editor.commit();
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+        } else if (id == R.id.nav_lehrerliste) {
+            Tab5LehrerListe lehrerListe = new Tab5LehrerListe();
+            FragmentManager manager = getSupportFragmentManager();
+            manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

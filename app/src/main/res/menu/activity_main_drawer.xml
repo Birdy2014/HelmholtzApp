@@ -12,7 +12,7 @@
         <item
             android:icon="@drawable/ic_nachrichten"
             android:id="@+id/nav_nachrichten"
-            android:title="Nachrichten" />
+            android:title="Benachrichtigungen" />
         <item
             android:icon="@drawable/ic_calendar"
             android:id="@+id/nav_kalender"
@@ -21,6 +21,10 @@
             android:icon="@drawable/ic_mensa"
             android:id="@+id/nav_mensaplan"
             android:title="Mensaplan" />
+        <item
+            android:icon="@drawable/ic_lehrerliste"
+            android:id="@+id/nav_lehrerliste"
+            android:title="Lehrerliste" />
     </group>
     <group android:checkableBehavior="single" android:id="@+id/nav_group_2">
         <item

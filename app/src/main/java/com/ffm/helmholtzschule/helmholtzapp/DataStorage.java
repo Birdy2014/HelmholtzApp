@@ -27,6 +27,8 @@ class DataStorage {
     private String newsRawData;
     private ArrayList<Mensaplan> gerichte  = new ArrayList<>();
     private ArrayList<News> news = new ArrayList<>();
+    private String lehrerlisteRawData;
+    private String[] lehrerliste;
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -51,6 +53,7 @@ class DataStorage {
                 vertretungsplan.updateVertretungsplan();
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
+                lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -66,6 +69,7 @@ class DataStorage {
         if (mensaplanRawData == null || newsRawData == null) throw new NoConnectionException("No internet connection present.");
         parseMensaplan();
         parseNews();
+        parseLehrerliste();
     }
 
     private String download(String website) throws IOException {
@@ -81,8 +85,7 @@ class DataStorage {
 
     private void parseMensaplan() {
         Gson gson = new Gson();
-        String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {
-        }.getType());
+        String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {}.getType());
         gerichte.add(new Mensaplan("Montag", data[0][0], data[0][1], data[0][2]));
         gerichte.add(new Mensaplan("Dienstag", data[1][0], data[1][1], data[1][2]));
         gerichte.add(new Mensaplan("Mittwoch", data[2][0], data[2][1], data[2][2]));
@@ -110,6 +113,10 @@ class DataStorage {
         return gerichte;
     }
 
+    public String[] getLehrerliste() {
+        return lehrerliste;
+    }
+
     public boolean isInternetReachable() {
         final boolean[] reachable = new boolean[1];
         Thread thread = new Thread(() -> {
@@ -129,5 +136,10 @@ class DataStorage {
             e.printStackTrace();
         }
         return reachable[0];
+    }
+
+    private void parseLehrerliste() {
+        Gson gson = new Gson();
+        lehrerliste = gson.fromJson(lehrerlisteRawData, new TypeToken<String[]>() {}.getType());
     }
 }

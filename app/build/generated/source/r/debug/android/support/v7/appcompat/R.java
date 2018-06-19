@@ -475,14 +475,14 @@ public final class R {
         public static final int notification_subtext_size = 0x7f060096;
         public static final int notification_top_pad = 0x7f060097;
         public static final int notification_top_pad_large_text = 0x7f060098;
-        public static final int tooltip_corner_radius = 0x7f060099;
-        public static final int tooltip_horizontal_padding = 0x7f06009a;
-        public static final int tooltip_margin = 0x7f06009b;
-        public static final int tooltip_precise_anchor_extra_offset = 0x7f06009c;
-        public static final int tooltip_precise_anchor_threshold = 0x7f06009d;
-        public static final int tooltip_vertical_padding = 0x7f06009e;
-        public static final int tooltip_y_offset_non_touch = 0x7f06009f;
-        public static final int tooltip_y_offset_touch = 0x7f0600a0;
+        public static final int tooltip_corner_radius = 0x7f06009b;
+        public static final int tooltip_horizontal_padding = 0x7f06009c;
+        public static final int tooltip_margin = 0x7f06009d;
+        public static final int tooltip_precise_anchor_extra_offset = 0x7f06009e;
+        public static final int tooltip_precise_anchor_threshold = 0x7f06009f;
+        public static final int tooltip_vertical_padding = 0x7f0600a0;
+        public static final int tooltip_y_offset_non_touch = 0x7f0600a1;
+        public static final int tooltip_y_offset_touch = 0x7f0600a2;
     }
     public static final class drawable {
         public static final int abc_ab_share_pack_mtrl_alpha = 0x7f070006;
@@ -568,20 +568,20 @@ public final class R {
         public static final int abc_textfield_search_default_mtrl_alpha = 0x7f070056;
         public static final int abc_textfield_search_material = 0x7f070057;
         public static final int abc_vector_test = 0x7f070058;
-        public static final int notification_action_background = 0x7f070068;
-        public static final int notification_bg = 0x7f070069;
-        public static final int notification_bg_low = 0x7f07006a;
-        public static final int notification_bg_low_normal = 0x7f07006b;
-        public static final int notification_bg_low_pressed = 0x7f07006c;
-        public static final int notification_bg_normal = 0x7f07006d;
-        public static final int notification_bg_normal_pressed = 0x7f07006e;
-        public static final int notification_icon_background = 0x7f07006f;
-        public static final int notification_template_icon_bg = 0x7f070070;
-        public static final int notification_template_icon_low_bg = 0x7f070071;
-        public static final int notification_tile_bg = 0x7f070072;
-        public static final int notify_panel_notification_icon_bg = 0x7f070073;
-        public static final int tooltip_frame_dark = 0x7f070074;
-        public static final int tooltip_frame_light = 0x7f070075;
+        public static final int notification_action_background = 0x7f070069;
+        public static final int notification_bg = 0x7f07006a;
+        public static final int notification_bg_low = 0x7f07006b;
+        public static final int notification_bg_low_normal = 0x7f07006c;
+        public static final int notification_bg_low_pressed = 0x7f07006d;
+        public static final int notification_bg_normal = 0x7f07006e;
+        public static final int notification_bg_normal_pressed = 0x7f07006f;
+        public static final int notification_icon_background = 0x7f070070;
+        public static final int notification_template_icon_bg = 0x7f070071;
+        public static final int notification_template_icon_low_bg = 0x7f070072;
+        public static final int notification_tile_bg = 0x7f070073;
+        public static final int notify_panel_notification_icon_bg = 0x7f070074;
+        public static final int tooltip_frame_dark = 0x7f070075;
+        public static final int tooltip_frame_light = 0x7f070076;
     }
     public static final class id {
         public static final int action0 = 0x7f080006;
@@ -680,9 +680,9 @@ public final class R {
         public static final int titleDividerNoCustom = 0x7f0800bf;
         public static final int title_template = 0x7f0800c0;
         public static final int topPanel = 0x7f0800c4;
-        public static final int uniform = 0x7f0800d4;
-        public static final int up = 0x7f0800d5;
-        public static final int wrap_content = 0x7f0800dc;
+        public static final int uniform = 0x7f0800d6;
+        public static final int up = 0x7f0800d7;
+        public static final int wrap_content = 0x7f0800de;
     }
     public static final class integer {
         public static final int abc_config_activityDefaultDur = 0x7f090000;

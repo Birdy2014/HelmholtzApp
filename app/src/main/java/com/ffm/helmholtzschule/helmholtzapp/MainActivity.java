@@ -2,6 +2,7 @@ package com.ffm.helmholtzschule.helmholtzapp;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -9,14 +10,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     /*
@@ -126,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     */
 
     private DrawerLayout mDrawerLayout;
+    Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +140,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
@@ -190,7 +198,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
         } else if(id ==R.id.nav_hausaufgaben) {
-            Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
             FragmentManager manager = getSupportFragmentManager();
             manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
         } else if(id == R.id.nav_change_class) {
@@ -212,9 +219,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if(hausaufgaben.isVisible()){
+            // make homework webView go back
+            hausaufgaben.goBack();
         } else {
             super.onBackPressed();
         }
     }
 
+    public void openPlaystore(View v) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.hmwk.homework")));
+    }
 }

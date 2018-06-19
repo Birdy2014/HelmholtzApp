@@ -8,7 +8,6 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 

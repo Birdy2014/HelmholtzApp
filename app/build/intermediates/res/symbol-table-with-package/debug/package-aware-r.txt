@@ -766,7 +766,7 @@ int drawable design_snackbar_background 0x7f070060
 int drawable dessert 0x7f070061
 int drawable fleisch 0x7f070062
 int drawable hhs_logo_2 0x7f070063
-int drawable hmwk_icon 0x7f070064
+int drawable ic_homework 0x7f070064
 int drawable ic_menu 0x7f070065
 int drawable leer 0x7f070066
 int drawable logoglobusam 0x7f070067

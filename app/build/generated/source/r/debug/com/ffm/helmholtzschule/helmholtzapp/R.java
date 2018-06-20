@@ -3465,7 +3465,7 @@ public final class R {
     public static final int dessert=0x7f070061;
     public static final int fleisch=0x7f070062;
     public static final int hhs_logo_2=0x7f070063;
-    public static final int hmwk_icon=0x7f070064;
+    public static final int ic_homework=0x7f070064;
     public static final int ic_menu=0x7f070065;
     public static final int leer=0x7f070066;
     public static final int logoglobusam=0x7f070067;

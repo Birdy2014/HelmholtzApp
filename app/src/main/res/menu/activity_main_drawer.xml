@@ -17,6 +17,7 @@
             android:id="@+id/nav_mensaplan"
             android:title="Mensaplan" />
         <item
+            android:icon="@drawable/ic_homework"
             android:id="@+id/nav_hausaufgaben"
             android:title="Hausaufgaben" />
     </group>

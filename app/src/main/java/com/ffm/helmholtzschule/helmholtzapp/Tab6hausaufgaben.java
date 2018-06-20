@@ -38,6 +38,21 @@ public class Tab6hausaufgaben extends Fragment {
             // reject anything other
             return true;
         }
+
+        public void onPageFinished(WebView view, String url) {
+            super.onPageFinished(view, url);
+            view.loadUrl(
+                    "javascript:(function() {" +
+                            "var nav = document.getElementsByClassName('nav-wrapper');" +
+                            "nav[0].style.display=\"none\";" +
+                            "var blueElements = $(\".blue\");" +
+                            "for(var i = 0; i <= blueElements.length; i++) {" +
+                            "blueElements[i].style.backgroundColor=\"#5a9016\";" +
+                            "blueElements[i].classList.remove('blue');" +
+                            "}" +
+                            "})()"
+            );
+        }
     }
 
     @Override

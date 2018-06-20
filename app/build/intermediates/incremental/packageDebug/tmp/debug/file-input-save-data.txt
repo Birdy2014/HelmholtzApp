@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jun 19 15:11:59 CEST 2018
+#Wed Jun 20 18:59:37 CEST 2018
 2.path=com/tom_roush/fontbox/resources/cmap/Roman
 14.set=ASSET
 107.baseType=DIRECTORY

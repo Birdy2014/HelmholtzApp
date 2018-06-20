@@ -7,7 +7,6 @@ INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/Andro
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:2:1-11:12
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:2:1-16:12
 MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:2:1-13:12
 MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:17:1-28:12
 MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:17:1-31:12
@@ -19,7 +18,6 @@ MERGED from [com.android.support:support-fragment:26.1.0] /home/moritz/.gradle/c
 MERGED from [com.android.support:support-core-utils:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/71643648cabb67eb6e4d52c0f21125c8/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:17:1-31:12
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:2:1-16:12
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:17:1-30:12
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
@@ -40,10 +38,6 @@ INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/Andro
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:5:5-67
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:11:5-67
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:11:5-67
 	android:name
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:5:22-64
 application
@@ -54,8 +48,6 @@ MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/cache
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:9:5-20
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:13:5-14:19
 MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:22:5-26:19
 MERGED from [com.android.support:support-v4:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/d3de46c12ba223d1681298532bad7509/AndroidManifest.xml:25:5-29:19
@@ -76,8 +68,6 @@ MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/ca
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:25:5-29:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:13:5-14:19
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:13:5-14:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:24:5-28:19
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:24:5-28:19
 	android:supportsRtl
@@ -136,8 +126,6 @@ MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/cache
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/AndroidManifest.xml:21:5-23:78
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/986bb91603c7f648402f4f9b159f17d2/AndroidManifest.xml:5:5-7:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.ion:ion:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/ion-2.2.1.aar/26b4161f5b5cf358f75edc7da9bab64e/AndroidManifest.xml:7:5-9:41
 MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/ff909891667d36cc1dadbba2e2b3edc4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:transition:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/transition-26.1.0.aar/b19d2ae3d2a2fed1abc054256ef03cd8/AndroidManifest.xml:20:5-44
@@ -160,8 +148,6 @@ MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/ca
 MERGED from [com.android.support:support-core-ui:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/3c2ee5b07cd6e2a19adf7d8ff687d429/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-compat:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/3b35e4826b97415559fde70e4420a8c0/AndroidManifest.xml:21:5-23:58
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.koushikdutta.async:androidasync:2.2.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/androidasync-2.2.1.aar/34345918e147f81115c0f0d7d304f9b3/AndroidManifest.xml:7:5-9:41
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:20:5-22:41
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/1e225789d558148604c8fdca7dce4a2f/AndroidManifest.xml:20:5-22:41
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml

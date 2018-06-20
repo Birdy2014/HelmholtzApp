@@ -22,18 +22,21 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
-        <EditText
-            android:id="@+id/etKlasse"
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
-            android:ems="10"
-            android:hint="Klasse"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="67dp" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textStyle="bold"
+            android:text="Klasse wählen:" />
+
+        <Spinner
+            android:id="@+id/choose_klasse"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etBenutzername"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
 
         <EditText
             android:id="@+id/etPasswort"

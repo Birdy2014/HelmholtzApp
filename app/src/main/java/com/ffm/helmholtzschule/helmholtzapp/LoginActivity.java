@@ -6,9 +6,14 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import java.util.Arrays;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
@@ -20,6 +25,8 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         boolean tryLoginAgain;
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
 
         try {
             tryLoginAgain = getIntent().getStringExtra("tryLoginAgain").equals("true");
@@ -35,9 +42,10 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
+        Spinner dropdown = (Spinner)findViewById(R.id.choose_klasse);
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, dataStorage.klassen);
+        dropdown.setAdapter(adapter);
 
         Button btn = (Button) findViewById(R.id.bLogIn);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -53,13 +61,12 @@ public class LoginActivity extends AppCompatActivity {
                 EditText editTextPassword = (EditText) findViewById(R.id.etPasswort);
                 String password = editTextPassword.getText().toString();
 
-                EditText editTextKlasse = (EditText) findViewById(R.id.etKlasse);
-                String klasse = editTextKlasse.getText().toString();
+                String klasse = dropdown.getSelectedItem().toString();
 
                 String base64credentials = Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT).trim();
 
                 editor.putString("auth", base64credentials);
-                editor.putString("klasse", klasse);
+                dataStorage.setKlasse(LoginActivity.this, klasse);
                 editor.apply();
                 dataStorage.initialize(base64credentials);
 

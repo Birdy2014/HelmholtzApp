@@ -80,6 +80,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+        navigationView.getMenu().getItem(0).setChecked(true);
+
         Tab1news news = new Tab1news();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
@@ -131,13 +133,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
                 break;
             }
-            case R.id.nav_change_class: {
-                SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-                SharedPreferences.Editor editor = mySPR.edit();
-                editor.putString("auth", "");
-                editor.commit();
-                Intent intent = new Intent(this, LoginActivity.class);
-                startActivity(intent);
+            case R.id.nav_settings: {
+                Settings settings = new Settings();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
                 break;
             }
             case R.id.nav_lehrerliste: {
@@ -145,6 +144,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
                 break;
+            }
+            case R.id.nav_about: {
+                Tab7AppInfo about = new Tab7AppInfo();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
             }
         }
 

@@ -55,7 +55,7 @@ public class Tab2vertretungsplan extends Fragment {
         final ToggleButton klasseButton = (ToggleButton) getView().findViewById(R.id.toggleButton3);
         final ToggleButton heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
 
-        if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'e') {
+        if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'q') {
             klasse1 = Character.toUpperCase(klasse1.charAt(0)) + klasse1.substring(1);
         } else {
             int indexLetter = klasse1.length() - 1;

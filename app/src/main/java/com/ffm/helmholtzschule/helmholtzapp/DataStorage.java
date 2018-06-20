@@ -1,5 +1,8 @@
 package com.ffm.helmholtzschule.helmholtzapp;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,12 +32,26 @@ class DataStorage {
     private ArrayList<News> news;
     private String lehrerlisteRawData;
     private String[] lehrerliste;
+    String[] klassen;
 
     public static DataStorage getInstance() {
         return ourInstance;
     }
 
     private DataStorage() {
+        String[] posfixes = {"a", "b", "c", "d", "e"};
+        ArrayList<String> list = new ArrayList<>();
+        for(int i = 5; i < 10; i++){
+            for(String s : posfixes){
+                list.add(i + s);
+            }
+        }
+        list.add("E1");
+        list.add("E2");
+        for(int i = 1; i < 5; i++){
+            list.add("Q" + i);
+        }
+        klassen = list.toArray(new String[]{});
     }
 
     private boolean isInitialized() {
@@ -145,5 +162,20 @@ class DataStorage {
     private void parseLehrerliste() {
         Gson gson = new Gson();
         lehrerliste = gson.fromJson(lehrerlisteRawData, new TypeToken<String[]>() {}.getType());
+    }
+    public void setKlasse(Activity activity, String klasse){
+        SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
+        SharedPreferences.Editor editor = mySPR.edit();
+
+        //TODO drop down
+        if(klasse.contains("q") || klasse.charAt(0) == 'e') klasse = klasse.toUpperCase();
+        if(Character.isDigit(klasse.charAt(0)))klasse = klasse.toLowerCase();
+
+        editor.putString("klasse", klasse);
+        editor.apply();
+    }
+    public String getKlasse(Activity activity){
+        SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
+        return mySPR.getString("klasse", "");
     }
 }

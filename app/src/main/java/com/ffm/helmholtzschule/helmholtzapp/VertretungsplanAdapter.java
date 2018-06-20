@@ -45,23 +45,12 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 
         txtFach.setText(fach);
         txtKlasse.setText(klasse);
-        txtStunde.setText(stunde);
+        txtStunde.setText("Stunde: " + stunde);
         txtVertretungslehrer.setText(vertretungslehrer);
         txtFuerLehrer.setText(fuerLehrer);
         txtRaum.setText(raum);
         txtHinweis.setText(hinweis);
         txtArt.setText(art);
-
-        if (position == 0) {
-            txtFach.setTypeface(null, Typeface.BOLD);
-            txtArt.setTypeface(null, Typeface.BOLD);
-            txtKlasse.setTypeface(null, Typeface.BOLD);
-            txtRaum.setTypeface(null, Typeface.BOLD);
-            txtHinweis.setTypeface(null, Typeface.BOLD);
-            txtStunde.setTypeface(null, Typeface.BOLD);
-            txtVertretungslehrer.setTypeface(null, Typeface.BOLD);
-            txtFuerLehrer.setTypeface(null, Typeface.BOLD);
-        }
 
         return customView;
     }

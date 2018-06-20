@@ -1,42 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/swiperefresh_benachrichtigungen"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context=".Tab6Benachrichtigungen">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/tab6Date"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
+        android:text="Tag" />
+
+    <ToggleButton
+        android:id="@+id/toggleButtonSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tab6Date"
+        android:checked="false"
+        android:text="ToggleButton"
+        android:textOff="Heute"
+        android:textOn="Morgen" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/tab6Date"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:text="Tag" />
-
-        <ToggleButton
-            android:id="@+id/toggleButtonSwitch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tab6Date"
-            android:checked="false"
-            android:text="ToggleButton"
-            android:textOff="Heute"
-            android:textOn="Morgen" />
-
+        android:layout_height="wrap_content"
+        android:id="@+id/swiperefresh_benachrichtigungen"
+        android:layout_below="@+id/toggleButtonSwitch">
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/toggleButtonSwitch"
             android:id="@+id/nachrichtenview" />
 
-    </RelativeLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

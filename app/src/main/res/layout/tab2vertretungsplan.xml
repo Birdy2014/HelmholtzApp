@@ -1,6 +1,5 @@
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/swiperefresh_vertretungsplan"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -9,27 +8,29 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.ffm.helmholtzschule.helmholtzapp.MainActivity">
 
-    <RelativeLayout
+    <TextView
+        android:id="@+id/dateText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tag" />
+
+    <ToggleButton
+        android:id="@+id/butShowAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/dateText"
+        android:layout_alignStart="@+id/dateText"
+        android:layout_below="@+id/dateText"
+        android:checked="false"
+        android:text="heute"
+        android:textOff="Heute"
+        android:textOn="Morgen" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:id="@+id/dateText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tag" />
-
-        <ToggleButton
-            android:id="@+id/butShowAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/dateText"
-            android:layout_alignStart="@+id/dateText"
-            android:layout_below="@+id/dateText"
-            android:checked="false"
-            android:text="heute"
-            android:textOff="Heute"
-            android:textOn="Morgen" />
+        android:layout_height="wrap_content"
+        android:id="@+id/swiperefresh_vertretungsplan"
+        android:layout_below="@id/butShowAll">
 
         <ListView
             android:id="@+id/lstMenu"
@@ -43,17 +44,17 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="0dp" />
 
-        <ToggleButton
-            android:id="@+id/toggleButton3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/lstMenu"
-            android:layout_alignRight="@+id/lstMenu"
-            android:layout_alignTop="@+id/butShowAll"
-            android:text="ToggleButton"
-            android:textOff="Nur meine Klasse anzeigen"
-            android:textOn="Alle Klassen anzeigen" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    </RelativeLayout>
+    <ToggleButton
+        android:id="@+id/toggleButton3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/swiperefresh_vertretungsplan"
+        android:layout_alignRight="@+id/swiperefresh_vertretungsplan"
+        android:layout_alignTop="@+id/butShowAll"
+        android:text="ToggleButton"
+        android:textOff="Nur meine Klasse anzeigen"
+        android:textOn="Alle Klassen anzeigen" />
 
-</android.support.v4.widget.SwipeRefreshLayout>
+</RelativeLayout>

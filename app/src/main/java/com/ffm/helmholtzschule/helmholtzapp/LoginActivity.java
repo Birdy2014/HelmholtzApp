@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mySPR.edit();
 
                 EditText editTextUsername = (EditText) findViewById(R.id.etBenutzername);
-                String username = editTextUsername.getText().toString();
+                String username = editTextUsername.getText().toString().replaceAll(" ", "");
 
                 EditText editTextPassword = (EditText) findViewById(R.id.etPasswort);
                 String password = editTextPassword.getText().toString();

@@ -5,15 +5,21 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
 
 public class LoginActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                             editor.putString("klasse", klasse);
                             editor.putString("auth", "gagagagahhbehbwehbwe");
                             editor.commit();
+
+                            // PUSH Notifications
+                            unscribeAll();
+                            FirebaseMessaging.getInstance().subscribeToTopic("fra.hhs." + klasse);
+
+
                             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();
@@ -70,4 +82,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    // PUSH NOTIFICATIONS
+    private void unscribeAll(){
+        for(int i=5; i<11; i++){
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs."+i+"a");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs."+i+"b");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs."+i+"c");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs."+i+"d");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs."+i+"e");
+        }
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.e1");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.e2");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.q1");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.q2");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.q3");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("fra.hhs.q4");
+
+    }
+
+
 }

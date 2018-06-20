@@ -40,12 +40,19 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
+    // PUSH NOTIFICATION
+    implementation 'com.google.firebase:firebase-messaging:11.8.0'
+    implementation 'com.google.firebase:firebase-core:11.8.0'
+    implementation 'com.firebase:firebase-jobdispatcher:0.6.0'
+
     androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    api 'com.android.support:appcompat-v7:26.+'
-    api 'com.android.support:design:26.+'
-    api 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    api 'com.android.support:appcompat-v7:26.1.0'
+    api 'com.android.support:design:26.1.0'
+    api 'com.android.support.constraint:constraint-layout:1.1.2'
     api 'com.koushikdutta.ion:ion:2.2.1'
     api 'com.tom_roush:pdfbox-android:1.8.9.1'
     testImplementation 'junit:junit:4.12'
@@ -62,3 +69,6 @@ repositories {
     }
     google()
 }
+
+// PUSH NOTIFICATION
+apply plugin: 'com.google.gms.google-services'

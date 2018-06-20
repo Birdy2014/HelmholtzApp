@@ -18,6 +18,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     /*
     /**
@@ -154,6 +159,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Tab1news news = new Tab1news();
         FragmentManager manager = getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
+
+
+
     }
 
     @Override

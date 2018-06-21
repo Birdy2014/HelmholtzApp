@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:542044720740:android:7f36896c8fe4f7ae",
         "android_client_info": {
-          "package_name": "com.ffm.helmholtzschule.helmholtzapp"
+          "package_name": "de.helmholtzschule_frankfurt.helmholtzapp"
         }
       },
       "oauth_client": [

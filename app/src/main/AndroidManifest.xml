@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ffm.helmholtzschule.helmholtzapp">
+    package="de.helmholtzschule_frankfurt.helmholtzapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".LoginActivity"
+            android:name="de.helmholtzschule_frankfurt.helmholtzapp.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".LoadingActivity"></activity>
+        <activity android:name="de.helmholtzschule_frankfurt.helmholtzapp.LoadingActivity"></activity>
     </application>
 
 </manifest>

@@ -3,7 +3,7 @@
     android:id="@+id/swiperefresh_mensa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.ffm.helmholtzschule.helmholtzapp.MainActivity$PlaceholderFragment">
+    tools:context="com.ffm.helmholtzschule.helmholtzapp.de.helmholtzschule_frankfurt.helmholtzapp.MainActivity$PlaceholderFragment">
 
     <ListView
         android:id="@+id/mensaMenu"

@@ -13,6 +13,7 @@
         android:src="@drawable/logo" />
 
     <TextView
+        android:gravity="center"
         android:id="@+id/version_view"
         android:layout_width="70dp"
         android:layout_height="@android:dimen/app_icon_size"

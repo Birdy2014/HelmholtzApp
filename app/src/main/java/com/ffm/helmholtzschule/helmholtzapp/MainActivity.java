@@ -150,6 +150,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
             }
+            case R.id.nav_homework: {
+                Tab8hausaufgaben hausaufgaben = new Tab8hausaufgaben();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/2c1d74a5b3d78121b60b1ab429bd0839/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/53a6ecba0e669c1acebaae794e7f0fbd/AndroidManifest.xml:17:1-31:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /home/moritz/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/5f93a28d9423417a6bd0155b30dba6ff/AndroidManifest.xml:2:1-11:12
@@ -35,20 +35,20 @@ MERGED from [com.google.firebase:firebase-common-license:11.8.0] /home/moritz/.g
 MERGED from [android.arch.lifecycle:runtime:1.0.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/5e79cf4b0132387137c81e9d8360f7e6/AndroidManifest.xml:17:1-30:12
 MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/firebase-analytics-impl-license-11.8.0.aar/800a953f933660d2b3e9b0dca2ad9f49/AndroidManifest.xml:2:1-6:12
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/300caa1a8f5bc76ff22c7499aee44d47/AndroidManifest.xml:2:1-6:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
-INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
+INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
 	package
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:3:5-51
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12
 		INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:11-69
@@ -63,7 +63,7 @@ MERGED from [com.google.firebase:firebase-iid:11.8.0] /home/moritz/.gradle/cache
 	android:name
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:5:22-64
 application
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:7:5-31:19
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:7:5-32:19
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/2c1d74a5b3d78121b60b1ab429bd0839/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:design:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/2c1d74a5b3d78121b60b1ab429bd0839/AndroidManifest.xml:25:5-29:19
 MERGED from [com.android.support:appcompat-v7:26.1.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/53a6ecba0e669c1acebaae794e7f0fbd/AndroidManifest.xml:25:5-29:19
@@ -125,51 +125,53 @@ MERGED from [com.google.firebase:firebase-analytics-impl-license:11.8.0] /home/m
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/300caa1a8f5bc76ff22c7499aee44d47/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-tasks-license:11.8.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/play-services-tasks-license-11.8.0.aar/300caa1a8f5bc76ff22c7499aee44d47/AndroidManifest.xml:5:5-20
 	android:supportsRtl
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:14:9-35
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:15:9-35
 	android:label
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:11:9-41
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:12:9-41
 	android:hardwareAccelerated
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:9:9-44
-	android:roundIcon
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:13:9-49
-	android:largeHeap
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:12:9-33
-	android:icon
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:10:9-44
-	android:allowBackup
+	android:debuggable
 		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:8:9-35
+	android:roundIcon
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:14:9-49
+	android:largeHeap
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:13:9-33
+	android:icon
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:11:9-44
+	android:allowBackup
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:9:9-35
 	android:theme
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:15:9-40
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:16:9-40
 activity#com.ffm.helmholtzschule.helmholtzapp.LoginActivity
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:16:9-26:20
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:17:9-27:20
 	android:screenOrientation
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:20:13-49
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:21:13-49
 	android:label
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:19:13-45
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:20:13-45
 	android:configChanges
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:18:13-74
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:19:13-74
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:17:13-42
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:18:13-42
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:21:13-25:29
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:22:13-26:29
 action#android.intent.action.MAIN
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:22:17-69
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:23:17-69
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:22:25-66
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:23:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:24:17-77
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:25:17-77
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:24:27-74
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:25:27-74
 activity#com.ffm.helmholtzschule.helmholtzapp.MainActivity
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:27:9-29:52
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:28:9-30:52
 	android:screenOrientation
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:29:13-49
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:30:13-49
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:28:13-41
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:29:13-41
 activity#com.ffm.helmholtzschule.helmholtzapp.LoadingActivity
-ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:30:9-62
+ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:31:9-62
 	android:name
-		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:30:19-50
+		ADDED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:31:19-50
 uses-sdk
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml
@@ -281,7 +283,7 @@ ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/tr
 	android:name
 		ADDED from [com.tom_roush:pdfbox-android:1.8.9.1] /home/moritz/.gradle/caches/transforms-1/files-1.1/pdfbox-android-1.8.9.1.aar/822de8cbd43a0a30161c862a1ae8fa00/AndroidManifest.xml:11:22-78
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-33:12 reason: com.tom_roush.pdfbox requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /home/moritz/AndroidStudioProjects/HelmholtzApp/app/src/main/AndroidManifest.xml:2:1-34:12 reason: com.tom_roush.pdfbox requested WRITE_EXTERNAL_STORAGE
 service#com.google.firebase.messaging.FirebaseMessagingService
 ADDED from [com.google.firebase:firebase-messaging:11.8.0] /home/moritz/.gradle/caches/transforms-1/files-1.1/firebase-messaging-11.8.0.aar/20093378f8a801f53ac38922ebbe9ec3/AndroidManifest.xml:28:9-34:19
 	android:exported

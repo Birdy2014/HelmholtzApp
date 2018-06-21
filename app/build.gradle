@@ -7,8 +7,8 @@ android {
         applicationId "com.ffm.helmholtzschule.helmholtzapp"
         minSdkVersion 15
         targetSdkVersion 26
-        versionCode 8
-        versionName "1.2.0-pre4"
+        versionCode 9
+        versionName "1.2.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

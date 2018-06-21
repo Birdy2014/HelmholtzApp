@@ -149,11 +149,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Tab7AppInfo about = new Tab7AppInfo();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
+                break;
             }
             case R.id.nav_homework: {
                 Tab8hausaufgaben hausaufgaben = new Tab8hausaufgaben();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+                break;
             }
         }
 

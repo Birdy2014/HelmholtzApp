@@ -13,6 +13,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+
 import java.util.Arrays;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;

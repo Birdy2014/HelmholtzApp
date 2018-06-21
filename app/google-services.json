@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "542044720740",
+    "firebase_url": "https://helmholtzapp.firebaseio.com",
+    "project_id": "helmholtzapp",
+    "storage_bucket": "helmholtzapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542044720740:android:7f36896c8fe4f7ae",
+        "android_client_info": {
+          "package_name": "com.ffm.helmholtzschule.helmholtzapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542044720740-pcotdd01246a5hqqjqg7itpe2953bb96.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "542044720740-pcotdd01246a5hqqjqg7itpe2953bb96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdfk-MpFyRDR5z2mumfcZna0fV_WUWFGs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

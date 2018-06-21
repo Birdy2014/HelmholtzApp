@@ -4,7 +4,7 @@
             "outputFile": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/res/values-night-v8/values-night-v8.xml",
+                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/53a6ecba0e669c1acebaae794e7f0fbd/res/values-night-v8/values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",

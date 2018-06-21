@@ -4,7 +4,7 @@
             "outputFile": "/home/moritz/AndroidStudioProjects/HelmholtzApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/4cb863d1fb817909548d840caa861bd4/res/values-land/values-land.xml",
+                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/design-26.1.0.aar/2c1d74a5b3d78121b60b1ab429bd0839/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/1e1a549771e31ff22220163bab12aaa5/res/values-land/values-land.xml",
+                    "source": "/home/moritz/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/53a6ecba0e669c1acebaae794e7f0fbd/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

@@ -3,6 +3,9 @@ package com.ffm.helmholtzschule.helmholtzapp;
 import android.app.Activity;
 import android.content.SharedPreferences;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -167,15 +170,34 @@ class DataStorage {
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         SharedPreferences.Editor editor = mySPR.edit();
 
-        //TODO drop down
         if(klasse.contains("q") || klasse.charAt(0) == 'e') klasse = klasse.toUpperCase();
         if(Character.isDigit(klasse.charAt(0)))klasse = klasse.toLowerCase();
 
         editor.putString("klasse", klasse);
         editor.apply();
+
+        // PUSH Notifications
+        unscribeAll();
+        FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + klasse);
     }
     public String getKlasse(Activity activity){
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         return mySPR.getString("klasse", "");
+    }
+
+    private void unscribeAll(){
+        for(int i=5; i<11; i++){
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"a");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"b");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"c");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"d");
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"e");
+        }
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.e1");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.e2");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q1");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q2");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q3");
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q4");
     }
 }

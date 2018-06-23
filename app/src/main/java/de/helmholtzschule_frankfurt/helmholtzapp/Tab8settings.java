@@ -13,7 +13,7 @@ import android.widget.Spinner;
 import java.util.Arrays;
 
 
-public class Settings extends Fragment {
+public class Tab8settings extends Fragment {
 
     DataStorage storage = DataStorage.getInstance();
 

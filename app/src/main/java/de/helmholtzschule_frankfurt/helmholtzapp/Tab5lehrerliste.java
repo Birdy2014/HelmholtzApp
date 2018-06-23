@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
-public class Tab5LehrerListe extends Fragment {
+public class Tab5lehrerliste extends Fragment {
 
     DataStorage dataStorage = DataStorage.getInstance();
 

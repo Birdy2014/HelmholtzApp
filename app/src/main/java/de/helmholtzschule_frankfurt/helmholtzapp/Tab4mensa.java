@@ -33,6 +33,7 @@ public class Tab4mensa extends Fragment {
             @Override
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
+                intent.putExtra("fragmentIndex", 4);
                 startActivity(intent);
             }
         });

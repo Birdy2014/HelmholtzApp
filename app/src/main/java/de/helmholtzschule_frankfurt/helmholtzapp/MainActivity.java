@@ -19,6 +19,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
+    private static int menuIndexSelected = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
 
-        //DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
         toggle.syncState();
@@ -70,16 +70,75 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                for (int i = 0; i < navigationView.getMenu().size(); i++){
+                    if(navigationView.getMenu().getItem(i).isChecked()){
+                        menuIndexSelected = i;
+                    }
+                }
                 Intent intent = new Intent(MainActivity.this, LoadingActivity.class);
+                intent.putExtra("fragmentIndex", menuIndexSelected);
                 startActivity(intent);
             }
         });
+        menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);
 
-        navigationView.getMenu().getItem(0).setChecked(true);
-
-        Tab1news news = new Tab1news();
-        FragmentManager manager = getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
+        navigationView.getMenu().getItem(menuIndexSelected).setChecked(true);
+        switch (menuIndexSelected){
+            case 0: {
+                Tab0news news = new Tab0news();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
+                break;
+            }
+            case 1: {
+                Tab1vertretungsplan vertretungsplan = new Tab1vertretungsplan();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
+                break;
+            }
+            case 2: {
+                Tab2benachrichtigungen benachrichtigungen = new Tab2benachrichtigungen();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, benachrichtigungen, benachrichtigungen.getTag()).commit();
+                break;
+            }
+            case 3: {
+                Tab3kalender kalender = new Tab3kalender();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
+                break;
+            }
+            case 4: {
+                Tab4mensa mensa = new Tab4mensa();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
+                break;
+            }
+            case 8: {
+                Tab8settings settings = new Tab8settings();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
+                break;
+            }
+            case 5: {
+                Tab5lehrerliste lehrerListe = new Tab5lehrerliste();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
+                break;
+            }
+            case 7 :{
+                Tab7appinfo about = new Tab7appinfo();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
+                break;
+            }
+            case 6: {
+                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+                break;
+            }
+        }
     }
 
     @Override
@@ -99,19 +158,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Moritz is happy now, this looks way better than stupid if-statements:D
         switch (item.getItemId()){
             case R.id.nav_news: {
-                Tab1news news = new Tab1news();
+                Tab0news news = new Tab0news();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
                 break;
             }
             case R.id.nav_vertretungsplan: {
-                Tab2vertretungsplan vertretungsplan = new Tab2vertretungsplan();
+                Tab1vertretungsplan vertretungsplan = new Tab1vertretungsplan();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
                 break;
             }
             case R.id.nav_nachrichten: {
-                Tab6Benachrichtigungen benachrichtigungen = new Tab6Benachrichtigungen();
+                Tab2benachrichtigungen benachrichtigungen = new Tab2benachrichtigungen();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, benachrichtigungen, benachrichtigungen.getTag()).commit();
                 break;
@@ -129,25 +188,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_settings: {
-                Settings settings = new Settings();
+                Tab8settings settings = new Tab8settings();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
                 break;
             }
             case R.id.nav_lehrerliste: {
-                Tab5LehrerListe lehrerListe = new Tab5LehrerListe();
+                Tab5lehrerliste lehrerListe = new Tab5lehrerliste();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
                 break;
             }
             case R.id.nav_about: {
-                Tab7AppInfo about = new Tab7AppInfo();
+                Tab7appinfo about = new Tab7appinfo();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
                 break;
             }
             case R.id.nav_homework: {
-                Tab8hausaufgaben hausaufgaben = new Tab8hausaufgaben();
+                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
                 break;

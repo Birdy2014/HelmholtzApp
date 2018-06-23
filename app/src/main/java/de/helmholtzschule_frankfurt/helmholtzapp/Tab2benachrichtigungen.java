@@ -12,7 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-public class Tab6Benachrichtigungen extends Fragment {
+public class Tab2benachrichtigungen extends Fragment {
 
     DataStorage dataStorage = DataStorage.getInstance();
 
@@ -58,6 +58,7 @@ public class Tab6Benachrichtigungen extends Fragment {
             @Override
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
+                intent.putExtra("fragmentIndex", 2);
                 startActivity(intent);
             }
         });

@@ -21,7 +21,7 @@ import io.github.birdy2014.VertretungsplanLib.Vertretung;
  * Created by Staudinger on 28.06.2017.
  */
 
-public class Tab2vertretungsplan extends Fragment {
+public class Tab1vertretungsplan extends Fragment {
     public DataStorage dataStorage = DataStorage.getInstance();
 
     @Override
@@ -142,6 +142,7 @@ public class Tab2vertretungsplan extends Fragment {
             @Override
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
+                intent.putExtra("fragmentIndex", 1);
                 startActivity(intent);
             }
         });

@@ -6,7 +6,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.ffm.helmholtzschule.helmholtzapp.de.helmholtzschule_frankfurt.helmholtzapp.MainActivity">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity">
 
     <TextView
         android:id="@+id/dateText"
@@ -30,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/swiperefresh_vertretungsplan"
-        android:layout_below="@id/butShowAll">
+        android:layout_below="@id/butShowAll"
+        android:layout_marginBottom="40dp">
 
         <ListView
             android:id="@+id/lstMenu"

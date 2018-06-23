@@ -16,7 +16,7 @@ import android.webkit.WebViewClient;
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
  */
-public class Tab8hausaufgaben extends Fragment {
+public class Tab6hausaufgaben extends Fragment {
 
     WebView webView;
 

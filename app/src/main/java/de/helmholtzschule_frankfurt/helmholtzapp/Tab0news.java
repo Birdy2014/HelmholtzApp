@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * Created by Staudinger on 28.06.2017.
  */
 
-public class Tab1news extends Fragment {
+public class Tab0news extends Fragment {
     public ListView lstMenu;
     public ArrayList<News> daten;
     public NewsAdapter menuAdapter;
@@ -58,6 +58,7 @@ public class Tab1news extends Fragment {
             @Override
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
+                intent.putExtra("fragmentIndex", 0);
                 startActivity(intent);
             }
         });

@@ -59,7 +59,9 @@ public class LoadingActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+                        int index = getIntent().getIntExtra("fragmentIndex", 0);
                         Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
+                        intent.putExtra("fragmentIndex", index);
                         startActivity(intent);
                         finish();
                     }

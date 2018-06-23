@@ -20,7 +20,7 @@ public class Tab5lehrerliste extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab5_lehrerliste, container, false);
+        View rootView = inflater.inflate(R.layout.tab5lehrerliste, container, false);
         super.onCreateView(inflater, container, savedInstanceState);
 
         return rootView;

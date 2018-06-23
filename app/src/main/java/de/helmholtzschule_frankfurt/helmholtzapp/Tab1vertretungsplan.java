@@ -26,7 +26,7 @@ public class Tab1vertretungsplan extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab2vertretungsplan, container, false);
+        View rootView = inflater.inflate(R.layout.tab1vertretungsplan, container, false);
         return rootView;
 
     }

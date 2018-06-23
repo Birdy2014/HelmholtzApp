@@ -59,7 +59,7 @@ public class Tab6hausaufgaben extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         
-        View view = inflater.inflate(R.layout.tab8hausaufgaben, container, false);
+        View view = inflater.inflate(R.layout.tab6hausaufgaben, container, false);
 
         webView = (WebView) view.findViewById(R.id.webView);
         // Apply upper WebViewClient

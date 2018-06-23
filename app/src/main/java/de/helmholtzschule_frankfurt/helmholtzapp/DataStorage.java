@@ -34,6 +34,7 @@ class DataStorage {
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     String[] klassen;
+    private boolean pushNotificationsActive = true;
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -197,5 +198,12 @@ class DataStorage {
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q2");
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q3");
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q4");
+    }
+    public void setPushNotificationsActive(boolean b, Activity activity){
+        pushNotificationsActive = b;
+        unscribeAll();
+        if(b){
+            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse(activity));
+        }
     }
 }

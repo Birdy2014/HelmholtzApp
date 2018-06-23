@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Switch;
 
 import java.util.Arrays;
 
@@ -20,7 +21,7 @@ public class Tab8settings extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.settings, container, false);
+        return inflater.inflate(R.layout.tab8settings, container, false);
     }
 
     @Override
@@ -47,5 +48,7 @@ public class Tab8settings extends Fragment {
             }
 
         });
+        /*Switch switch1 = getView().findViewById(R.id.settings_edit_push);
+        switch1.setOnCheckedChangeListener((compoundButton, b) -> storage.setPushNotificationsActive(b, getActivity()));*/
     }
 }

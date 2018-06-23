@@ -12,7 +12,7 @@
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tag" />
+        android:text="Tag"/>
 
     <ToggleButton
         android:id="@+id/butShowAll"
@@ -43,7 +43,7 @@
             android:layout_below="@+id/butShowAll"
             android:layout_marginTop="5dp"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -27,7 +27,7 @@ public class Tab0news extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab1news, container, false);
+        return inflater.inflate(R.layout.tab0news, container, false);
     }
 
     @Override

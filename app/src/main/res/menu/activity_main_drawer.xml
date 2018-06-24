@@ -29,13 +29,16 @@
             android:icon="@drawable/ic_homework"
             android:id="@+id/nav_homework"
             android:title="Hausaufgaben" />
+    </group>
+    <group android:checkableBehavior="single" android:id="@+id/nav_group_2">
         <item
             android:icon="@drawable/ic_about"
             android:id="@+id/nav_about"
             android:title="Über die App" />
-
-    </group>
-    <group android:checkableBehavior="single" android:id="@+id/nav_group_2">
+        <item
+            android:icon="@drawable/ic_share"
+            android:id="@+id/nav_share"
+            android:title="Teilen" />
         <item
             android:icon="@drawable/ic_settings"
             android:id="@+id/nav_settings"

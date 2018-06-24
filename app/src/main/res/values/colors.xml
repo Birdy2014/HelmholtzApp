@@ -8,4 +8,13 @@
     <color name="colorBackgroundGrey">#DDDDDD</color>
     <color name="colorBorderGrey">#999999</color>
     <color name="colorLightBorderGrey">#DDDDDD</color>
+    <color name="colorLightGrey">#FEFEFE</color>
+
+    <color name="colorVertretung">#3A9637</color>
+    <color name="colorSondereinsatz">#B538A4</color>
+    <color name="colorAbsenz">#3A9637</color>
+    <color name="colorAenderung">#E5C834</color>
+    <color name="colorEigArbeiten">#57007F</color>
+    <color name="colorEntfall">#FF0000</color>
+    <color name="colorVeranstaltung">#FF7B23</color>
 </resources>

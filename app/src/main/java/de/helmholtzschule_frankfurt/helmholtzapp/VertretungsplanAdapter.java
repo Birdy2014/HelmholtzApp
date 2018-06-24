@@ -2,6 +2,8 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +20,7 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         super(context, R.layout.vertretungsplan_row, list);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater Menu2Inflater = LayoutInflater.from(getContext());
@@ -50,6 +53,33 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         txtRaum.setText(raum);
         txtHinweis.setText(hinweis);
         txtArt.setText(art);
+
+        switch (art){
+            case "Veranst.": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_veranstaltung));
+                break;
+            }
+            case "Vertretung": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_vertretung));
+                break;
+            }
+            case "Sondereins.": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_sondereinsatz));
+                break;
+            }
+            case "Unterricht geändert": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_aenderung));
+                break;
+            }
+            case "Trotz Absenz": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_absenzl));
+                break;
+            }
+            case "Entfall": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_entfall));
+            }
+            if(art.contains("Arbeiten"))customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten));
+        }
 
         return customView;
     }

@@ -1,5 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
@@ -24,18 +26,29 @@ public class Tab7appinfo extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        PackageInfo pInfo = null;
+        try {
+            pInfo = getActivity().getPackageManager().getPackageInfo(getActivity().getPackageName(), 0);
+            String version = pInfo.versionName;
+            ((TextView)getActivity().findViewById(R.id.version_view2)).setText("Version: " + version);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
         TextView linkImpressum = (TextView) getActivity().findViewById(R.id.impressum_link);
-
-        Spanned TextImp = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/impressum-app'>Aktuelles Impressum</a>");
-
+        Spanned textImpressum = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/impressum-app'>Aktuelles Impressum</a>");
         linkImpressum.setMovementMethod(LinkMovementMethod.getInstance());
-        linkImpressum.setText(TextImp);
+        linkImpressum.setText(textImpressum);
 
-        TextView LinkDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_link);
 
-        Spanned TextData = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/datenschutz-app'>Aktuelle Datenschutzerklärung</a>");
+        TextView linkDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_link);
+        Spanned textDatenschutz = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/datenschutz-app'>Aktuelle Datenschutzerklärung</a>");
+        linkDatenschutz.setMovementMethod(LinkMovementMethod.getInstance());
+        linkDatenschutz.setText(textDatenschutz);
 
-        LinkDatenschutz.setMovementMethod(LinkMovementMethod.getInstance());
-        LinkDatenschutz.setText(TextData);
+        TextView linkStore = (TextView) getActivity().findViewById(R.id.store_link);
+        Spanned textStore = Html.fromHtml("<a href='https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de'>Google Play<</a>");
+        linkStore.setMovementMethod(LinkMovementMethod.getInstance());
+        linkStore.setText(textStore);
     }
 }

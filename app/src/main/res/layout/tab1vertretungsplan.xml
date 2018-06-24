@@ -13,6 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
+        android:textSize="15sp"
+        android:textStyle="bold"
         android:text="Tag"/>
 
     <ToggleButton
@@ -23,16 +25,20 @@
         android:layout_alignStart="@+id/dateText"
         android:layout_below="@+id/dateText"
         android:checked="false"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="heute"
         android:textOff="Heute"
-        android:textOn="Morgen" />
+        android:textOn="Morgen"
+        android:background="@drawable/toggle_button_background_unchecked"/>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/swiperefresh_vertretungsplan"
         android:layout_below="@id/butShowAll"
-        android:layout_marginBottom="40dp">
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="50dp">
 
         <ListView
             android:id="@+id/lstMenu"
@@ -42,21 +48,25 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/butShowAll"
-            android:layout_marginTop="5dp"
             tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="0dp"/>
+            tools:layout_editor_absoluteY="0dp"
+            android:divider="@color/colorLightGrey"
+            android:dividerHeight="10dp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <ToggleButton
         android:id="@+id/toggleButton3"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignEnd="@+id/swiperefresh_vertretungsplan"
         android:layout_alignRight="@+id/swiperefresh_vertretungsplan"
         android:layout_alignTop="@+id/butShowAll"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
         android:text="ToggleButton"
         android:textOff="Nur meine Klasse anzeigen"
-        android:textOn="Alle Klassen anzeigen" />
+        android:textOn="Alle Klassen anzeigen"
+        android:background="@drawable/toggle_button_selector"/>
 
 </RelativeLayout>

@@ -15,8 +15,7 @@
             android:layout_height="70dp"
             android:ems="10"
             android:hint="Benutzername"
-            android:inputType="textPersonName"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            android:inputType="textPersonName"/>
 
         <TextView
             android:layout_width="match_parent"

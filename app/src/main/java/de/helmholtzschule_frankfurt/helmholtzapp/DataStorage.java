@@ -91,7 +91,6 @@ class DataStorage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
         if (mensaplanRawData == null || newsRawData == null) throw new NoConnectionException("No internet connection present.");
         parseMensaplan();
         parseNews();
@@ -106,6 +105,7 @@ class DataStorage {
         while (scanner.hasNextLine()) {
             data += scanner.nextLine();
         }
+        System.out.println(data);
         return data;
     }
 

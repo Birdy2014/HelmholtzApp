@@ -5,76 +5,159 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="20dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginEnd="10dp">
 
     <TextView
         android:id="@+id/about_app"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
+        android:layout_marginTop="15dp"
         android:text="Über die App"
-        android:textColor="#7cb238"
-        android:textSize="36sp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/version_view2"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/about_app"
+        android:textColor="#000000"
+        android:text="Version:"/>
 
     <TextView
         android:id="@+id/impressum_ueberschrift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
-        android:text="Impressum"
+        android:text="Impressum: "
         android:textColor="#000000"
-        android:textSize="24sp"
-        android:layout_below="@+id/about_app"
-        tools:text="Impressum" />
+        android:layout_below="@+id/version_view2"/>
 
     <TextView
         android:id="@+id/impressum_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
         android:text="http://www.helmholtzschule-frankfurt.de/impressum-app"
         android:textColor="#333333"
-        android:layout_below="@id/impressum_ueberschrift"
-        android:textColorLink="@color/colorLink"/>
+        android:layout_toEndOf="@+id/impressum_ueberschrift"
+        android:layout_toRightOf="@+id/impressum_ueberschrift"
+        android:layout_below="@id/version_view2"
+        android:textColorLink="@color/colorLink" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBorderGrey"
+        android:layout_below="@id/impressum_link"
+        android:id="@+id/rule1"/>
+
+    <TextView
+        android:id="@+id/feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Feedback &amp; Hilfe"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@id/impressum_link"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/feedbackmail_ueberschrift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Feedback &amp; Hilfe: "
+        android:textColor="#000000"
+        android:layout_below="@+id/feedback" />
+
+    <TextView
+        android:id="@+id/feedbackmail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="8dp"
+        android:text="emailaddresse"
+        android:textColor="#333333"
+        android:layout_toEndOf="@+id/feedbackmail_ueberschrift"
+        android:layout_toRightOf="@+id/feedbackmail_ueberschrift"
+        android:layout_below="@id/feedback"
+        android:textColorLink="@color/colorLink" />
+
+    <TextView
+        android:id="@+id/store_ueberschrift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="App bewerten: "
+        android:textColor="#000000"
+        android:layout_below="@+id/feedbackmail_address" />
+
+    <TextView
+        android:id="@+id/store_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="8dp"
+        android:text="https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&amp;hl=de"
+        android:textColor="#333333"
+        android:layout_toEndOf="@+id/store_ueberschrift"
+        android:layout_toRightOf="@+id/store_ueberschrift"
+        android:layout_below="@id/feedbackmail_address"
+        android:textColorLink="@color/colorLink" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBorderGrey"
+        android:layout_below="@id/store_link"
+        android:id="@+id/rule2"/>
+
+    <TextView
+        android:id="@+id/sonstiges"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Sonstiges"
+        android:textColor="@color/colorPrimary"
+        android:layout_below="@id/store_link"
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/datenschutz_ueberschrift"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:text="Datenschutz"
+        android:layout_marginTop="8dp"
+        android:text="Datenschutz: "
         android:textAllCaps="false"
         android:textColor="#000000"
-        android:textSize="24dp"
-        android:layout_below="@id/impressum_link"
+        android:layout_below="@id/sonstiges"
         tools:layout_editor_absoluteY="152dp" />
 
     <TextView
         android:id="@+id/datenschutz_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
         android:text="http://www.helmholtzschule-frankfurt.de/datenschutz-app"
         android:textColor="#333333"
-        android:layout_below="@+id/datenschutz_ueberschrift"
+        android:layout_toEndOf="@+id/datenschutz_ueberschrift"
+        android:layout_toRightOf="@+id/datenschutz_ueberschrift"
+        android:layout_below="@+id/sonstiges"
         android:textColorLink="@color/colorLink"/>
 
 </RelativeLayout>

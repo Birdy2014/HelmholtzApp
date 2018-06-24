@@ -25,7 +25,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
         View customView = Menu2Inflater.inflate(R.layout.news_row, parent, false);
 
         //Here you change the border
-        customView.setBackgroundResource(R.drawable.rounded_corners);
+        //customView.setBackgroundResource(R.drawable.boxes);
 
         String titel = getItem(position).getTitel();
         String url = getItem(position).getUrl();

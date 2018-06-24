@@ -7,4 +7,5 @@
     <color name="colorLink">#0000EE</color>
     <color name="colorBackgroundGrey">#DDDDDD</color>
     <color name="colorBorderGrey">#999999</color>
+    <color name="colorLightBorderGrey">#DDDDDD</color>
 </resources>

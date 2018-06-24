@@ -113,6 +113,7 @@ class DataStorage {
         gerichte.add(new Mensaplan("Donnerstag", data[3][0], data[3][1], data[3][2]));
         gerichte.add(new Mensaplan("Freitag", data[4][0], data[4][1], data[4][2]));
     }
+
     private void parseNews(){
         news = new ArrayList<>();
 
@@ -165,6 +166,7 @@ class DataStorage {
         Gson gson = new Gson();
         lehrerliste = gson.fromJson(lehrerlisteRawData, new TypeToken<String[]>() {}.getType());
     }
+
     public void setKlasse(Activity activity, String klasse){
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         SharedPreferences.Editor editor = mySPR.edit();
@@ -179,6 +181,7 @@ class DataStorage {
         unscribeAll();
         FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + klasse);
     }
+
     public String getKlasse(Activity activity){
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         return mySPR.getString("klasse", "");
@@ -199,6 +202,7 @@ class DataStorage {
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q3");
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q4");
     }
+
     public void setPushNotificationsActive(boolean b, Activity activity){
         pushNotificationsActive = b;
         unscribeAll();

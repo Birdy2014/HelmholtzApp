@@ -29,12 +29,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/swiperefresh_benachrichtigungen"
-        android:layout_below="@+id/toggleButtonSwitch">
+        android:layout_below="@+id/toggleButtonSwitch"
+        android:layout_marginBottom="50dp">
 
         <ListView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/nachrichtenview" />
+            android:id="@+id/nachrichtenview"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

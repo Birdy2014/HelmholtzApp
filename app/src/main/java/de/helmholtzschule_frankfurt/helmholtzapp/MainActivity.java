@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
 
-        //Moritz is happy now, this looks way better than stupid if-statements:D
         switch (item.getItemId()){
             case R.id.nav_news: {
                 Tab0news news = new Tab0news();

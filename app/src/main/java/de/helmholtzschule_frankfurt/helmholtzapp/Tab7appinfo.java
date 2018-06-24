@@ -1,5 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.content.res.ColorStateList;
+import android.content.res.XmlResourceParser;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -22,12 +24,12 @@ public class Tab7appinfo extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView LinkImpressum = (TextView) getActivity().findViewById(R.id.impressum_link);
+        TextView linkImpressum = (TextView) getActivity().findViewById(R.id.impressum_link);
 
         Spanned TextImp = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/impressum-app'>Aktuelles Impressum</a>");
 
-        LinkImpressum.setMovementMethod(LinkMovementMethod.getInstance());
-        LinkImpressum.setText(TextImp);
+        linkImpressum.setMovementMethod(LinkMovementMethod.getInstance());
+        linkImpressum.setText(TextImp);
 
         TextView LinkDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_link);
 

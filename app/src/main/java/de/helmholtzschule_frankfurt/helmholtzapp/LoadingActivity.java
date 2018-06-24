@@ -1,20 +1,27 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class LoadingActivity extends AppCompatActivity {
     DataStorage dataStorage = DataStorage.getInstance();
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
-
         try {
             PackageInfo pInfo = this.getPackageManager().getPackageInfo(getPackageName(), 0);
             String version = pInfo.versionName;
@@ -48,7 +55,7 @@ public class LoadingActivity extends AppCompatActivity {
                         finish();
                     } else {
                         try {
-                            dataStorage.update();
+                            dataStorage.update(LoadingActivity.this);
                         } catch (NoConnectionException e) {
                             textView.post(new Runnable() {
                                 @Override

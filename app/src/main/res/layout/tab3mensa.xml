@@ -3,7 +3,10 @@
     android:id="@+id/swiperefresh_mensa"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
     android:layout_marginBottom="55dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity">
 
     <ListView

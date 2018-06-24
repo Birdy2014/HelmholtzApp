@@ -2,6 +2,8 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
@@ -66,13 +68,18 @@ class DataStorage {
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update() throws NoConnectionException {
+    public void update(Activity a) throws NoConnectionException {
         Thread thread = new Thread(() -> {
             try {
+                ProgressBar bar = a.findViewById(R.id.progressBar2);
                 vertretungsplan.updateVertretungsplan();
+                bar.setProgress(35);
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
+                bar.setProgress(45);
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
+                bar.setProgress(70);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
+                bar.setProgress(100);
             } catch (IOException e) {
                 e.printStackTrace();
             }

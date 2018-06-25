@@ -20,7 +20,7 @@
         android:textStyle="bold"/>
 
     <ProgressBar
-        android:theme="@style/greenProgress"
+        android:theme="@style/primaryDarkForeground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
@@ -42,7 +42,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp"
         android:indeterminate="false"
-        android:theme="@style/greenProgress"
+        android:theme="@style/primaryDarkForeground"
         android:max="100"/>
 
 </LinearLayout>

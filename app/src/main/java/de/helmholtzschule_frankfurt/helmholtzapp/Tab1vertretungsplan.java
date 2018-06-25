@@ -34,19 +34,11 @@ public class Tab1vertretungsplan extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
-        ArrayList<Vertretung> meineDaten = new ArrayList<Vertretung>();
 
         ListAdapter MenuAdapter = new VertretungsplanAdapter(getContext(), daten);
         ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
 
         lstMenu.setAdapter(MenuAdapter);
-
-        if (daten.isEmpty()){
-            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
-        }
-        else {
-            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
-        }
 
         SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
         String klasse1 = mySPR.getString("klasse", "");
@@ -115,29 +107,18 @@ public class Tab1vertretungsplan extends Fragment {
             public void onClick(View view) {
                 VertretungsplanAdapter vertretungenAdapter;
                 ArrayList<Vertretung> list = new ArrayList<Vertretung>();
-                if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
-                        list.add(vertretung);
-                    vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
-                } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
-                    for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
-                        list.add(vertretung);
-                    vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
-                } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
-                        if (v.getKlasse().contains(klasse)) list.add(v);
-                    }
-                    vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
-                } else {
-                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
-                        if (v.getKlasse().contains(klasse)) list.add(v);
-                    }
-                    vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
-                    ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
+
+                int heuteMorgenInt = !heuteMorgen.isChecked() ? 0 : 1;
+                if(klasseButton.isChecked()){
+                    list.addAll(dataStorage.getVertretungsplan().getVertretungen().get(heuteMorgenInt));
                 }
+                else {
+                    for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(heuteMorgenInt)) {
+                        if (v.getKlasse().contains(klasse)) list.add(v);
+                    }
+                }
+                ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(heuteMorgenInt));
+                vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                 ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
                 vertretungenAdapter.notifyDataSetChanged();
@@ -163,6 +144,16 @@ public class Tab1vertretungsplan extends Fragment {
 
     public void dataAccess(String klasse) {
         ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
+
+        for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
+            if (v.getKlasse().contains(klasse)) daten.add(v);
+        }
+        if (daten.isEmpty()){
+            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
+        }
+        else {
+            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
+        }
 
         ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
 

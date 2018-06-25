@@ -13,6 +13,7 @@
         android:textSize="30sp"
         android:textStyle="bold"
         android:text="8a"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:textAlignment="center" />
 
@@ -25,6 +26,7 @@
         android:layout_toRightOf="@id/txtKlasse"
         android:layout_toEndOf="@+id/txtKlasse"
         android:text="Info"
+
         android:layout_marginRight="10dp"
         android:textAlignment="center" />
 
@@ -45,6 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtKlasse"
+        android:layout_marginLeft="10dp"
         android:text="Stunde 1-2"
         android:textSize="17sp"
         android:textAlignment="center" />
@@ -55,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtStunde"
         android:textSize="17sp"
+        android:layout_marginLeft="10dp"
         tools:text="Ca" />
 
     <TextView
@@ -88,6 +92,7 @@
         android:layout_below="@id/txtVertretungslehrer"
         android:textAlignment="center"
         android:textSize="17sp"
+        android:layout_marginLeft="10dp"
         tools:text="Vertretung" />
 
     <TextView
@@ -96,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/txtArt"
         android:textSize="17sp"
+        android:layout_marginLeft="10dp"
         tools:text="Test für App" />
 
 </RelativeLayout>

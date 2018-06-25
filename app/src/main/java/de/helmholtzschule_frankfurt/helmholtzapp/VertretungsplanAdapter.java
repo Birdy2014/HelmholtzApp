@@ -44,15 +44,15 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         TextView txtHinweis = (TextView) customView.findViewById(R.id.txtHinweis);
         TextView txtArt = (TextView) customView.findViewById(R.id.txtArt);
 
-
-        txtFach.setText(fach);
-        txtKlasse.setText(klasse);
-        txtStunde.setText("Stunde: " + stunde);
-        txtVertretungslehrer.setText(vertretungslehrer);
-        txtFuerLehrer.setText(fuerLehrer);
-        txtRaum.setText(raum);
-        txtHinweis.setText(hinweis);
-        txtArt.setText(art);
+        txtFach.setText(!fach.equals("") ? fach : "-");
+        txtKlasse.setText(!klasse.equals("") ? klasse : "-");
+        txtStunde.setText("Stunde: " + (!stunde.equals("") ? stunde : " -"));
+        txtVertretungslehrer.setText(!vertretungslehrer.equals("") ? vertretungslehrer : "-");
+        txtFuerLehrer.setText(!fuerLehrer.equals("") ? fuerLehrer : " -");
+        if(raum.equals(""))txtRaum.setText("-");
+        txtRaum.setText(!raum.equals("") ? raum : "-");
+        txtHinweis.setText(!hinweis.equals("") ? hinweis : "   -");
+        txtArt.setText(!art.equals("") ? art : "   -");
 
         switch (art){
             case "Veranst.": {

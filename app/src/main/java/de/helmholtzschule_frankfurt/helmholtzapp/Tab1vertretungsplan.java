@@ -41,6 +41,13 @@ public class Tab1vertretungsplan extends Fragment {
 
         lstMenu.setAdapter(MenuAdapter);
 
+        if (daten.isEmpty()){
+            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
+        }
+        else {
+            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
+        }
+
         SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
         String klasse1 = mySPR.getString("klasse", "");
 
@@ -67,27 +74,24 @@ public class Tab1vertretungsplan extends Fragment {
             @Override
             public void onClick(View view) {
                 VertretungsplanAdapter vertretungenAdapter;
+                ArrayList<Vertretung> list = new ArrayList<>();
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<>();
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<>();
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else {
-                    ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
@@ -97,6 +101,12 @@ public class Tab1vertretungsplan extends Fragment {
                 ListView lstMenu = getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
                 vertretungenAdapter.notifyDataSetChanged();
+                if (list.isEmpty()){
+                    ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
+                }
+                else {
+                    ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
+                }
             }
         });
 
@@ -104,27 +114,24 @@ public class Tab1vertretungsplan extends Fragment {
             @Override
             public void onClick(View view) {
                 VertretungsplanAdapter vertretungenAdapter;
+                ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                 if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<>();
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<>();
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
                 } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
-                    ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
                 } else {
-                    ArrayList<Vertretung> list = new ArrayList<Vertretung>();
                     for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
@@ -134,6 +141,12 @@ public class Tab1vertretungsplan extends Fragment {
                 ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
                 lstMenu.setAdapter(vertretungenAdapter);
                 vertretungenAdapter.notifyDataSetChanged();
+                if (list.isEmpty()){
+                    ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
+                }
+                else {
+                    ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
+                }
             }
         });
 

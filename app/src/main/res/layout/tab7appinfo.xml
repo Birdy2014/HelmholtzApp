@@ -47,12 +47,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
-        android:text="http://www.helmholtzschule-frankfurt.de/impressum-app"
-        android:textColor="#333333"
+        android:text="@string/impressum"
+        android:textColor="@color/colorHyperlink"
         android:layout_toEndOf="@+id/impressum_ueberschrift"
         android:layout_toRightOf="@+id/impressum_ueberschrift"
-        android:layout_below="@id/version_view2"
-        android:textColorLink="@color/colorLink" />
+        android:layout_below="@id/version_view2" />
 
     <View
         android:layout_width="match_parent"
@@ -88,12 +87,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
-        android:text="emailaddresse"
-        android:textColor="#333333"
+        android:text=""
+        android:textColor="@color/colorHyperlink"
         android:layout_toEndOf="@+id/feedbackmail_ueberschrift"
         android:layout_toRightOf="@+id/feedbackmail_ueberschrift"
-        android:layout_below="@id/feedback"
-        android:textColorLink="@color/colorLink" />
+        android:layout_below="@id/feedback"/>
 
     <TextView
         android:id="@+id/store_ueberschrift"
@@ -111,12 +109,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
-        android:text="https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&amp;hl=de"
-        android:textColor="#333333"
+        android:text="@string/playStore"
+        android:textColor="@color/colorHyperlink"
         android:layout_toEndOf="@+id/store_ueberschrift"
         android:layout_toRightOf="@+id/store_ueberschrift"
-        android:layout_below="@id/feedbackmail_address"
-        android:textColorLink="@color/colorLink" />
+        android:layout_below="@id/feedbackmail_address" />
 
     <View
         android:layout_width="match_parent"
@@ -153,11 +150,10 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="8dp"
-        android:text="http://www.helmholtzschule-frankfurt.de/datenschutz-app"
-        android:textColor="#333333"
+        android:text="@string/datenschutz"
+        android:textColor="@color/colorHyperlink"
         android:layout_toEndOf="@+id/datenschutz_ueberschrift"
         android:layout_toRightOf="@+id/datenschutz_ueberschrift"
-        android:layout_below="@+id/sonstiges"
-        android:textColorLink="@color/colorLink"/>
+        android:layout_below="@+id/sonstiges"/>
 
 </RelativeLayout>

@@ -23,9 +23,8 @@ public class Tab3kalender extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
-        WebView webView = (WebView) getView().findViewById(R.id.webView);
+        WebView webView = (WebView) getView().findViewById(R.id.webViewKalender);
         webView.loadUrl("http://calendar.google.com/calendar/embed?src=helmholtzschule-ffm.net_9nvqfopgdvrspcvj93q2b4p188%40group.calendar.google.com&ctz=EuropeBerlin");
-        //webView.loadData(Karlfritzke, "text/html", null);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setWebViewClient(new WebViewClient());
 

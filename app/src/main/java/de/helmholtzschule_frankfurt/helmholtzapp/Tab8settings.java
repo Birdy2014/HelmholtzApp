@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Switch;
 
@@ -48,7 +49,9 @@ public class Tab8settings extends Fragment {
             }
 
         });
-        /*Switch switch1 = getView().findViewById(R.id.settings_edit_push);
-        switch1.setOnCheckedChangeListener((compoundButton, b) -> storage.setPushNotificationsActive(b, getActivity()));*/
+        CheckBox box = getActivity().findViewById(R.id.settings_edit_push_notes);
+        box.setOnClickListener(view1 -> {
+            storage.setPushNotificationsActive(box.isChecked(), getActivity());
+        });
     }
 }

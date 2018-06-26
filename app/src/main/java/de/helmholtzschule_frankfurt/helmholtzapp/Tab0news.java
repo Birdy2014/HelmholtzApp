@@ -48,7 +48,7 @@ public class Tab0news extends Fragment {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
                         intent.setData(Uri.parse(url));
-                        startActivity(intent);
+                        startActivity(Intent.createChooser(intent, "Öffnen in"));
                     }
                 }
         );

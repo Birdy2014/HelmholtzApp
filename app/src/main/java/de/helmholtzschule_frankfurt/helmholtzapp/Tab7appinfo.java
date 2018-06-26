@@ -1,9 +1,11 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.XmlResourceParser;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Html;
@@ -36,19 +38,40 @@ public class Tab7appinfo extends Fragment {
         }
 
         TextView linkImpressum = (TextView) getActivity().findViewById(R.id.impressum_link);
-        Spanned textImpressum = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/impressum-app'>Aktuelles Impressum</a>");
-        linkImpressum.setMovementMethod(LinkMovementMethod.getInstance());
-        linkImpressum.setText(textImpressum);
-
+        linkImpressum.setOnClickListener(listener -> {
+            String url = "http://www.helmholtzschule-frankfurt.de/impressum-app";
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(intent, "Öffnen in"));
+        });
 
         TextView linkDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_link);
-        Spanned textDatenschutz = Html.fromHtml("<a href='http://www.helmholtzschule-frankfurt.de/datenschutz-app'>Aktuelle Datenschutzerklärung</a>");
-        linkDatenschutz.setMovementMethod(LinkMovementMethod.getInstance());
-        linkDatenschutz.setText(textDatenschutz);
+        linkDatenschutz.setOnClickListener(listener -> {
+            String url = "http://www.helmholtzschule-frankfurt.de/datenschutz-app";
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(intent, "Öffnen in"));
+        });
 
         TextView linkStore = (TextView) getActivity().findViewById(R.id.store_link);
-        Spanned textStore = Html.fromHtml("<a href='https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de'>Google Play<</a>");
-        linkStore.setMovementMethod(LinkMovementMethod.getInstance());
-        linkStore.setText(textStore);
+        linkStore.setOnClickListener(listener -> {
+            String url = "https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(intent, "Öffnen in"));
+        });
+
+        TextView linkMail = (TextView) getActivity().findViewById(R.id.feedbackmail_address);
+        linkMail.setText(getActivity().getResources().getString(R.string.emailHelp));
+        linkMail.setOnClickListener(listener -> {
+            String mailStr = "mailto:" + getActivity().getResources().getString(R.string.emailHelp);
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse(mailStr));
+            startActivity(Intent.createChooser(intent, "Senden via"));
+        });
     }
 }

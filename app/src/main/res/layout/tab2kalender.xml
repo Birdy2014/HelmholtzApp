@@ -10,7 +10,7 @@
 
 
     <WebView
-        android:id="@+id/webView"
+        android:id="@+id/webViewKalender"
         android:layout_width="368dp"
         android:layout_height="495dp"
         android:layout_alignParentBottom="true"
@@ -20,5 +20,5 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp" />
+        tools:layout_editor_absoluteY="8dp"/>
 </RelativeLayout>

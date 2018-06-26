@@ -4,11 +4,14 @@
     <color name="colorPrimaryDark">#6AA026</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
-    <color name="colorLink">#0000EE</color>
     <color name="colorBackgroundGrey">#DDDDDD</color>
     <color name="colorBorderGrey">#999999</color>
     <color name="colorLightBorderGrey">#DDDDDD</color>
     <color name="colorLightGrey">#FEFEFE</color>
+    <color name="colorHyperlink">#0000EE</color>
+
+
+    <!--Vertretungsart-->
 
     <color name="colorVertretung">#3A9637</color>
     <color name="colorSondereinsatz">#B538A4</color>

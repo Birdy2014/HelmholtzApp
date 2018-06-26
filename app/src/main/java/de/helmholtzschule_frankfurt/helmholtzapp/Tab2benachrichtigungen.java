@@ -1,6 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -12,16 +13,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
+
 public class Tab2benachrichtigungen extends Fragment {
 
+    public ListView lstMenu;
+    public ArrayList<Benachrichtigung> daten = new ArrayList<>();
+    public BenachrichtigungAdapter menuAdapter;
     DataStorage dataStorage = DataStorage.getInstance();
-
-    String[] listToday = dataStorage.getVertretungsplan().getNachrichten().get(0).toArray(new String[]{});
-    String[] listTomorrow = dataStorage.getVertretungsplan().getNachrichten().get(1).toArray(new String[]{});
-
-
-    private ListView nachrichtenView;
-    private ArrayAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -34,25 +33,18 @@ public class Tab2benachrichtigungen extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        nachrichtenView = (ListView) getView().findViewById(R.id.nachrichtenview);
-        adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listToday);
-        ((TextView)getView().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(0));
+        int heuteMorgenInt = ((ToggleButton)getActivity().findViewById(R.id.toggleButtonSwitch)).isChecked() ? 1 : 0;
+        for(String s : dataStorage.getVertretungsplan().getNachrichten().get(heuteMorgenInt)){
+            daten.add(new Benachrichtigung(s));
+        }
+        ((TextView)getActivity().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(heuteMorgenInt));
+        menuAdapter = new BenachrichtigungAdapter(this.getContext(), daten);
+        lstMenu = (ListView) getView().findViewById(R.id.nachrichtenview);
+        lstMenu.setAdapter(menuAdapter);
+        menuAdapter.notifyDataSetChanged();
 
-        nachrichtenView.setAdapter(adapter);
-        ToggleButton button = getView().findViewById(R.id.toggleButtonSwitch);
-        button.setOnClickListener(view1 -> {
-            if(button.isChecked()){
-                adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listTomorrow);
-                nachrichtenView.setAdapter(adapter);
-                ((TextView)getView().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(1));
-            }
-            else {
-                adapter = new ArrayAdapter(getContext(), android.R.layout.simple_list_item_1, listToday);
-                nachrichtenView.setAdapter(adapter);
-                ((TextView)getView().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(0));
-            }
-        });
-
+        lstMenu.setAdapter(menuAdapter);
+        super.onViewCreated(view, savedInstanceState);
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

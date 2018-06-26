@@ -52,7 +52,7 @@ public class Tab5lehrerliste extends Fragment {
             Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
             emailIntent.setType("text/plain");
             emailIntent.setData(uri);
-            startActivity(Intent.createChooser(emailIntent, "Send Email"));
+            startActivity(Intent.createChooser(emailIntent, "Senden via"));
         });
 
         lstMenu.setAdapter(menuAdapter);

@@ -91,7 +91,7 @@ class DataStorage {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (mensaplanRawData == null || newsRawData == null) throw new NoConnectionException("No internet connection present.");
+        if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null) throw new NoConnectionException("No internet connection present.");
         parseMensaplan();
         parseNews();
         parseLehrerliste();
@@ -210,10 +210,10 @@ class DataStorage {
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q4");
     }
 
-    public void setPushNotificationsActive(boolean b, Activity activity){
+    public void setPushNotificationsActive(boolean b, Activity activity) {
         pushNotificationsActive = b;
         unscribeAll();
-        if(b){
+        if (b) {
             FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse(activity));
         }
     }

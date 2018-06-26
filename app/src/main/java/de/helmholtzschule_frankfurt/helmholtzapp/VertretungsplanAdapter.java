@@ -72,7 +72,7 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
                 break;
             }
             case "Trotz Absenz": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_absenzl));
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_absenz));
                 break;
             }
             case "Entfall": {

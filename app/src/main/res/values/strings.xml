@@ -4,8 +4,8 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="playStore">Play Store</string>
-    <string name="datenschutz">Aktuelle Datenschutzerklärung</string>
-    <string name="impressum">Aktuelles Impressum</string>
+    <string name="playStore"><u>Play Store</u></string>
+    <string name="datenschutz"><u>Aktuelle Datenschutzerklärung</u></string>
+    <string name="impressum"><u>Aktuelles Impressum</u></string>
     <string name="emailHelp">helmholtzapp.hilfe@gmail.com</string>
 </resources>

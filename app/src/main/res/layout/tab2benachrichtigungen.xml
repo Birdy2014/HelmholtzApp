@@ -33,12 +33,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/swiperefresh_benachrichtigungen"
         android:layout_below="@+id/toggleButtonSwitch"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="50dp">
+
+        android:layout_marginBottom="10dp">
 
         <ListView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/nachrichtenview"
             android:divider="@color/colorBorderGrey"/>
 

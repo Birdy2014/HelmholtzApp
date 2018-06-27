@@ -35,7 +35,11 @@ public class Tab2benachrichtigungen extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         int heuteMorgenInt = ((ToggleButton)getActivity().findViewById(R.id.toggleButtonSwitch)).isChecked() ? 1 : 0;
         for(String s : dataStorage.getVertretungsplan().getNachrichten().get(heuteMorgenInt)){
-            daten.add(new Benachrichtigung(s));
+            if(s.contains("Abwesende Klassen"))daten.add(new Benachrichtigung(s.substring(0, 17) + ":\n" + s.substring(18)));
+            else if(s.contains("Blockierte Räume"))daten.add(new Benachrichtigung(s.substring(0, 16) + ":\n" + s.substring(17)));
+            else if(s.contains("Betroffene Klassen"))daten.add(new Benachrichtigung(s.substring(0, 18) + ":\n" + s.substring(19)));
+            else if(s.contains("Betroffene Räume"))daten.add(new Benachrichtigung(s.substring(0, 16) + ":\n" + s.substring(17)));
+            else daten.add(new Benachrichtigung(s));
         }
         ((TextView)getActivity().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(heuteMorgenInt));
         menuAdapter = new BenachrichtigungAdapter(this.getContext(), daten);

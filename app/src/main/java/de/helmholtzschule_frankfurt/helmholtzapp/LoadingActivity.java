@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class LoadingActivity extends AppCompatActivity {
+public class LoadingActivity extends AppCompatActivity{
     DataStorage dataStorage = DataStorage.getInstance();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
@@ -63,14 +63,8 @@ public class LoadingActivity extends AppCompatActivity {
                                     textView.setText("Kein Internet");
                                 }
                             });
-                            e.printStackTrace();
                         }
 
-                        int index = getIntent().getIntExtra("fragmentIndex", 0);
-                        Intent intent = new Intent(LoadingActivity.this, MainActivity.class);
-                        intent.putExtra("fragmentIndex", index);
-                        startActivity(intent);
-                        finish();
                     }
                 }
             }

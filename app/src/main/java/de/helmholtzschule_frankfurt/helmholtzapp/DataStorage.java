@@ -1,11 +1,14 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.sip.SipSession;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -19,12 +22,14 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.EventListener;
 import java.util.Scanner;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
-class DataStorage {
+class DataStorage{
 
     private static final DataStorage ourInstance = new DataStorage();
     private String base64credentials;
@@ -36,7 +41,6 @@ class DataStorage {
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     String[] klassen;
-    private boolean pushNotificationsActive = true;
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -68,7 +72,7 @@ class DataStorage {
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity a) throws NoConnectionException {
+    public void update(Activity a) throws NoConnectionException{
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = a.findViewById(R.id.progressBar2);
@@ -80,21 +84,36 @@ class DataStorage {
                 bar.setProgress(70);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
                 bar.setProgress(100);
-            } catch (IOException e) {
+                if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
+                parseMensaplan();
+                parseNews();
+                parseLehrerliste();
+                int index = a.getIntent().getIntExtra("fragmentIndex", 0);
+                Intent intent = new Intent(a, MainActivity.class);
+                intent.putExtra("fragmentIndex", index);
+                a.startActivity(intent);
+                a.finish();
+            }
+            catch (UnknownHostException e){
+                System.out.println("Download error. How to fix it?");
+                a.findViewById(R.id.loadingtext).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ((TextView)a.findViewById(R.id.loadingtext)).setText("Download Timeout");
+                    }
+                });
+                return;
+            }
+            catch (IOException e) {
                 e.printStackTrace();
             }
         });
-
         thread.start();
         try {
             thread.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null) throw new NoConnectionException("No internet connection present.");
-        parseMensaplan();
-        parseNews();
-        parseLehrerliste();
     }
 
     private String download(String website) throws IOException {
@@ -178,41 +197,21 @@ class DataStorage {
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         SharedPreferences.Editor editor = mySPR.edit();
 
-        if(klasse.contains("q") || klasse.charAt(0) == 'e') klasse = klasse.toUpperCase();
-        if(Character.isDigit(klasse.charAt(0)))klasse = klasse.toLowerCase();
-
         editor.putString("klasse", klasse);
         editor.apply();
 
-        // PUSH Notifications
-        unscribeAll();
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + mySPR.getString("klasse", "5a").toLowerCase());
         FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + klasse);
     }
 
-    public String getKlasse(Activity activity){
+    public String getKlasse(Activity activity) {
         SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
         return mySPR.getString("klasse", "");
     }
 
-    private void unscribeAll(){
-        for(int i=5; i<11; i++){
-            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"a");
-            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"b");
-            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"c");
-            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"d");
-            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra."+i+"e");
-        }
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.e1");
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.e2");
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q1");
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q2");
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q3");
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra.q4");
-    }
-
     public void setPushNotificationsActive(boolean b, Activity activity) {
-        pushNotificationsActive = b;
-        unscribeAll();
+        //add unsubscribeAll
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + activity.getSharedPreferences("MySPFILE", 0).getString("klasse", "5a").toLowerCase());
         if (b) {
             FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse(activity));
         }

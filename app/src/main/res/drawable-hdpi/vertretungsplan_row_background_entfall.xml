@@ -10,14 +10,12 @@
         <shape
             android:shape="rectangle">
             <solid android:color="#55666666"/>
-            <corners android:radius="20dp"/>
         </shape>
     </item>
     <item >
         <shape
             android:shape="rectangle">
             <solid android:color="@color/colorEntfall"/>
-            <corners android:radius="20dp"/>
             <stroke android:color="#55777777" android:width="3dp"/>
         </shape>
     </item>

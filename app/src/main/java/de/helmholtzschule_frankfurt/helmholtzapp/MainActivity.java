@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private static int menuIndexSelected = 0;
 
+    Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -133,7 +135,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case 6: {
-                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
                 break;
@@ -205,7 +206,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_homework: {
-                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
+
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
                 break;
@@ -229,6 +230,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if(hausaufgaben.isVisible()) {
+            hausaufgaben.goBack();
         } else {
             super.onBackPressed();
         }

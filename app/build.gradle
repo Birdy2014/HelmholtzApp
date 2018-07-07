@@ -3,6 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
+    useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "de.helmholtzschule_frankfurt.helmholtzapp"
         minSdkVersion 15
@@ -56,6 +57,7 @@ dependencies {
     //classpath 'com.android.tools.build:gradle:3.1.2'
     implementation 'org.jsoup:jsoup:1.11.3'
     implementation 'com.google.code.gson:gson:2.8.5'
+
 
 }
 

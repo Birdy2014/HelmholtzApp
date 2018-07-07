@@ -1,6 +1,8 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,8 +13,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ImageView;
+
+import org.apache.http.util.EncodingUtils;
+
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 
 /**
@@ -22,47 +29,61 @@ import android.widget.TextView;
 public class Tab6hausaufgaben extends Fragment {
 
     WebView webView;
+    private static String lastSelectedClass = null;
 
     public class MyWebViewClient extends WebViewClient {
-        public boolean shuldOverrideKeyEvent (WebView view, KeyEvent event) {
+        public boolean shouldOverrideKeyEvent (WebView view, KeyEvent event) {
 
             return true;
         }
 
         public boolean shouldOverrideUrlLoading (WebView view, String url) {
-            if (Uri.parse(url).getHost().equals("hmwk.me")) {
-                // This is my web site, so do not override; let my WebView load the page
-                if(Uri.parse(url).getPath().equals("/")) {
-                    view.loadUrl("https://hmwk.me/mobile");
-                } else {
-                    return false;
+
+            URI originalUri = null;
+            try {
+                originalUri = new URI(url);
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            }
+
+            String query = originalUri.getQuery();
+
+            query = (query == null) ? "hhsapp=true" : query + "&hhsapp=true";
+
+            try {
+
+                URI newUri = new URI(originalUri.getScheme(), originalUri.getAuthority(),
+                        originalUri.getPath(), query, originalUri.getFragment());
+
+                if (newUri.getHost().equals("hmwk.me")) {
+                    // This is my web site, so do not override; let my WebView load the page
+                    if(newUri.getPath().equals("/")) {
+                        view.loadUrl("https://hmwk.me/mobile?hhsapp=true");
+                    } else if(newUri.getPath().equals("/selectSchool")) {
+                        String postData = "school=Helmholtzschule&schoolPassword=1912";
+                        view.postUrl("https://hmwk.me/selectSchool", EncodingUtils.getBytes(postData, "BASE64"));
+                    } else {
+                        view.loadUrl(String.valueOf(newUri.toURL()));
+                    }
                 }
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
             }
 
             // reject anything other
             return true;
         }
-
-        public void onPageFinished(WebView view, String url) {
-            super.onPageFinished(view, url);
-            view.loadUrl(
-                    "javascript:(function() {" +
-                            "var nav = document.getElementsByClassName('nav-wrapper');" +
-                            "nav[0].style.display=\"none\";" +
-                            "var blueElements = $(\".blue\");" +
-                            "for(var i = 0; i <= blueElements.length; i++) {" +
-                            "blueElements[i].style.backgroundColor=\"#5a9016\";" +
-                            "blueElements[i].classList.remove('blue');" +
-                            "}" +
-                            "})()"
-            );
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        
         View view = inflater.inflate(R.layout.tab6hausaufgaben, container, false);
+
+        // Check if class has changed
+        SharedPreferences prefs = getContext().getSharedPreferences("MySPFILE", Context.MODE_PRIVATE);
+        String selectedClass = prefs.getString("klasse", null);
 
         webView = (WebView) view.findViewById(R.id.webView);
         // Apply upper WebViewClient
@@ -71,9 +92,14 @@ public class Tab6hausaufgaben extends Fragment {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
 
-        if (savedInstanceState == null) {
-            webView.loadUrl("https://hmwk.me/mobile");
+        if (lastSelectedClass != null && !lastSelectedClass.equals(selectedClass)) {
+            webView.loadUrl("https://hmwk.me/leaveClass");
+        } else if (savedInstanceState == null) {
+            webView.loadUrl("https://hmwk.me/mobile?hhsapp=true");
         }
+
+
+        lastSelectedClass = selectedClass;
 
         return view;
     }
@@ -81,16 +107,13 @@ public class Tab6hausaufgaben extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView tvHw = getActivity().findViewById(R.id.tvHomework);
-        tvHw.setOnClickListener(l -> {
-            openPlaystore(tvHw);
+        ImageView ivHomework = getActivity().findViewById(R.id.ivHomework);
+        ivHomework.setOnClickListener(l -> {
+            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.hmwk.homework"));
+            startActivity(browser);
         });
     }
 
-    public void openPlaystore(View v) {
-        Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.hmwk.homework"));
-        startActivity(browser);
-    }
 
     public void goBack() {
         webView.goBack();

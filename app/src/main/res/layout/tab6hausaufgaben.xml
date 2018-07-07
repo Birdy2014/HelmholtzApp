@@ -10,41 +10,51 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#ffffff">
 
         <WebView
             android:id="@+id/webView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvHomeworkSubtitle"
+            app:layout_constraintBottom_toTopOf="@+id/tvHomework"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
-
-        <TextView
-            android:id="@+id/tvHomeworkSubtitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Powered by"
-            app:layout_constraintBottom_toTopOf="@+id/tvHomework"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/webView"/>
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tvHomework"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="9dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="4dp"
+            android:text="Powered by"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/webView" />
+
+        <ImageView
+            android:id="@+id/ivHomework"
+            android:layout_width="195dp"
+            android:layout_height="30dp"
             android:layout_marginBottom="8dp"
-            android:text="Homework"
-            android:textSize="18sp"
+            android:layout_marginEnd="124dp"
+            android:layout_marginLeft="124dp"
+            android:layout_marginRight="124dp"
+            android:layout_marginStart="124dp"
+            android:src="@drawable/homework_title"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvHomework" />
 
     </android.support.constraint.ConstraintLayout>
 </FrameLayout>

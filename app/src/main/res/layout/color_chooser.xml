@@ -2,25 +2,30 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:background="#dcdcdc">
 
     <TextView
         android:id="@+id/colorChooserHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Farbe wählen"
+        android:textSize="20dp"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"/>
+        android:layout_marginBottom="20dp"/>
     
     <GridView
         android:id="@+id/colorGrid"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:layout_below="@id/colorChooserHeader"
-        android:numColumns="3"/>
+        android:numColumns="3"
+        android:verticalSpacing="5dp"/>
 
 </RelativeLayout>

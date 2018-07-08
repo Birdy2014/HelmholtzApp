@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -61,12 +62,12 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
             }
             else if(getItem(position) instanceof StundenplanItem){
-                showPopup(getItem(position));
+                showPopup(getItem(position), nameView);
             }
         });
         return customView;
     }
-    public void showPopup(StundenplanCell item){
+    public void showPopup(StundenplanCell item, TextView view){
         inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
         Dialog dialog = new Dialog(getContext());
@@ -88,9 +89,12 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         ImageButton editButton = popupView.findViewById(R.id.popupButtonEdit);
         ImageButton applyButton = popupView.findViewById(R.id.popupButtonApply);
         ImageButton colorButton = popupView.findViewById(R.id.popupButtonColor);
+        ImageButton resetButton = popupView.findViewById(R.id.popupButtonReset);
 
         editButton.setOnClickListener(click -> {
             applyButton.setVisibility(View.VISIBLE);
+            colorButton.setVisibility(View.VISIBLE);
+            resetButton.setVisibility(View.VISIBLE);
             editButton.setVisibility(View.INVISIBLE);
 
             setEditable(lessonName, true);
@@ -99,6 +103,8 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         });
         applyButton.setOnClickListener(click -> {
             applyButton.setVisibility(View.INVISIBLE);
+            colorButton.setVisibility(View.INVISIBLE);
+            resetButton.setVisibility(View.INVISIBLE);
             editButton.setVisibility(View.VISIBLE);
 
             setEditable(lessonName, false);
@@ -109,24 +115,31 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             ((StundenplanItem)item).setLehrer(teacher.getText().toString());
             ((StundenplanItem)item).setRaum(room.getText().toString());
 
-            DataStorage.getInstance().saveStundenplan(getContext());
+            this.notifyDataSetChanged();
 
-            dialog.cancel();
+            DataStorage.getInstance().saveStundenplan(getContext());
         });
         colorButton.setOnClickListener(click ->{
 
             inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             popupView = inflater.inflate(R.layout.color_chooser, null);
             Dialog colorDialog = new Dialog(getContext());
-            colorDialog.addContentView(popupView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1000));
-            List<ImageButton> colors = new ArrayList<>();
-            for(StundenplanColor color : StundenplanColor.values()){
-                ImageButton button = new ImageButton(getContext());
-                button.setBackgroundColor(color.getCode());
-                colors.add(button);
-            }
-            //ArrayAdapter<ImageButton> adapter = new ArrayAdapter<ImageButton>(getContext(), R.id.colorGrid, colors);
+            colorDialog.addContentView(popupView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            ColorFieldAdapter adapter = new ColorFieldAdapter(getContext(), new ArrayList<>(Arrays.asList(StundenplanColor.values())), (StundenplanItem)item, colorDialog, this);
+            System.out.println("ColorArr Size: " + new ArrayList<>(Arrays.asList(StundenplanColor.values())).size());
+            GridView gridView = popupView.findViewById(R.id.colorGrid);
+            gridView.setAdapter(adapter);
             colorDialog.show();
+        });
+        resetButton.setOnClickListener(click -> {
+            lessonName.setText("");
+            teacher.setText("");
+            room.setText("");
+            //view.setBackgroundColor(StundenplanColor.WHITE.getCode());
+            //view.setTextColor(StundenplanColor.WHITE.getTextColor());
+            ((StundenplanItem) item).setColor(StundenplanColor.WHITE);
+            this.notifyDataSetChanged();
+            DataStorage.getInstance().saveStundenplan(getContext());
         });
     }
     private static void setEditable(EditText text, boolean b){

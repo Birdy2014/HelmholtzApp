@@ -69,7 +69,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_view_comfy_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/opt/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_delete_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -79,8 +79,10 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_stundenplan_2" />
-                            <entry key="sourceFile" value="C:\Users\Jonas Schroeter" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="outputName" value="ic_reset" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="$USER_HOME$/C:\Users\Jonas Schroeter" />
                           </map>
                         </option>
                       </PersistentState>

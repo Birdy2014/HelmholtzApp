@@ -247,6 +247,7 @@ class DataStorage{
                 stundenplan.set(i, getTimeAtHour(i / 6, a));
             }
             else {
+                if(list == null)continue;
                 stundenplan.set(i, list.get(index++));
             }
         }

@@ -5,7 +5,7 @@ import java.util.Arrays;
 public enum StundenplanColor {
 
     BLACK(0xFF000000),
-    GREY(0x404040),
+    GREY(0xFF404040),
     RED(0xFFFF0000),
     ORANGE(0xFFFF6A00),
     YELLOW(0xFFFFD800),
@@ -26,8 +26,9 @@ public enum StundenplanColor {
     public int getCode() {
         return code;
     }
+
     public int getTextColor(){
-        StundenplanColor[] blackBg = {YELLOW, WHITE, GREY};
+        StundenplanColor[] blackBg = {YELLOW, WHITE};
         return Arrays.asList(blackBg).contains(this) ? 0xFF000000 : 0xFFFFFFFF;
     }
 }

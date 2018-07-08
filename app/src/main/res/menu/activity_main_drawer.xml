@@ -29,6 +29,10 @@
             android:icon="@drawable/ic_homework"
             android:id="@+id/nav_homework"
             android:title="Hausaufgaben" />
+        <item
+            android:icon="@drawable/ic_stundenplan_2"
+            android:id="@+id/nav_stundenplan"
+            android:title="Stundenplan" />
     </group>
     <group android:checkableBehavior="single" android:id="@+id/nav_group_2">
         <item
@@ -40,9 +44,9 @@
             android:id="@+id/nav_share"
             android:title="Teilen" />
         <item
-            android:icon="@drawable/ic_settings"
-            android:id="@+id/nav_settings"
-            android:title="Einstellungen" />
+        android:icon="@drawable/ic_settings"
+        android:id="@+id/nav_settings"
+        android:title="Einstellungen" />
     </group>
 
 </menu>

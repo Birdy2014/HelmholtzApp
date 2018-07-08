@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
                 break;
             }
-            case 8: {
+            case 9: {
                 Tab8settings settings = new Tab8settings();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
@@ -126,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
                 break;
             }
-            case 7 :{
+            case 8 :{
                 Tab7appinfo about = new Tab7appinfo();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
@@ -136,6 +136,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+                break;
+            }
+            case 7: {
+                Tab9Stundenplan stundenplan = new Tab9Stundenplan();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, stundenplan, stundenplan.getTag()).commit();
                 break;
             }
         }
@@ -216,6 +222,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!\nhttps://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
+            }
+            case R.id.nav_stundenplan: {
+                Tab9Stundenplan stundenplan = new Tab9Stundenplan();
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, stundenplan, stundenplan.getTag()).commit();
+                break;
             }
         }
 

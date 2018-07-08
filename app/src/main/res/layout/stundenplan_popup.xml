@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/popup_background">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fachLayout"
+        android:background="@color/colorBackgroundGrey">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fach"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:id="@+id/fachHeader"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/popupButtonEdit"
+            android:src="@drawable/ic_edit"
+            android:layout_toEndOf="@+id/fachHeader"
+            android:layout_toRightOf="@+id/fachHeader"
+            android:background="@drawable/popup_edit_button_background"
+            android:layout_marginStart="190dp"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="20dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/popupButtonApply"
+            android:src="@drawable/ic_done"
+            android:background="@color/colorBackgroundGrey"
+            android:layout_marginStart="190dp"
+            android:layout_marginLeft="190dp"
+            android:layout_marginTop="25dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fach"
+            android:gravity="center_vertical"
+            android:id="@+id/popupTextFach"
+            android:inputType="text"
+            android:theme="@style/primaryForeground"
+            android:layout_below="@id/fachHeader"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fachLayout"
+        android:background="@color/colorLightGrey"
+        android:id="@+id/subLayout">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lehrer"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:id="@+id/lehrerHeader"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_toEndOf="@id/popupIconLehrer"
+            android:layout_toRightOf="@id/popupIconLehrer"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_teacher"
+            android:gravity="center_vertical"
+            android:id="@+id/popupIconLehrer"
+            android:inputType="text"
+            android:theme="@style/primaryForeground"
+            android:layout_below="@id/lehrerHeader"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lehrer"
+            android:gravity="center_vertical"
+            android:id="@+id/popupTextLehrer"
+            android:inputType="text"
+            android:theme="@style/primaryForeground"
+            android:layout_below="@id/lehrerHeader"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_toEndOf="@id/popupIconLehrer"
+            android:layout_toRightOf="@id/popupIconLehrer" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raum"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:id="@+id/raumHeader"
+            android:layout_marginLeft="14dp"
+            android:layout_marginStart="14dp"
+            android:layout_below="@id/popupTextLehrer"
+            android:layout_toEndOf="@id/popupIconRaum"
+            android:layout_toRightOf="@id/popupIconRaum"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_room"
+            android:gravity="center_vertical"
+            android:id="@+id/popupIconRaum"
+            android:inputType="text"
+            android:theme="@style/primaryForeground"
+            android:layout_below="@id/raumHeader"
+            android:layout_marginLeft="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginEnd="30dp"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Raum"
+            android:gravity="center_vertical"
+            android:id="@+id/popupTextRaum"
+            android:inputType="text"
+            android:theme="@style/primaryForeground"
+            android:layout_below="@id/raumHeader"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@id/popupIconLehrer"
+            android:layout_toRightOf="@id/popupIconLehrer"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

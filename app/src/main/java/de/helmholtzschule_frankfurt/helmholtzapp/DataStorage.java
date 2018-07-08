@@ -1,9 +1,12 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.sip.SipSession;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -17,12 +20,17 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.EventListener;
 import java.util.Scanner;
@@ -41,6 +49,9 @@ class DataStorage{
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     String[] klassen;
+    private ArrayList<StundenplanCell> stundenplan = new ArrayList<>();
+    private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:00", "14:45"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
+    private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -83,6 +94,7 @@ class DataStorage{
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
                 bar.setProgress(70);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
+                fillStundenplan(a);
                 bar.setProgress(100);
                 if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
                 parseMensaplan();
@@ -214,6 +226,85 @@ class DataStorage{
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + activity.getSharedPreferences("MySPFILE", 0).getString("klasse", "5a").toLowerCase());
         if (b) {
             FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse(activity));
+        }
+    }
+
+    public StundenplanCellTime getTimeAtHour(int hour, Activity activity){
+        if(Character.isDigit(getKlasse(activity).charAt(0))){ //Non - Oberstufe
+            return new StundenplanCellTime(unterMittelstufenZeiten[hour][0], unterMittelstufenZeiten[hour][1]);
+        }
+        return new StundenplanCellTime(oberstufenZeiten[hour][0], oberstufenZeiten[hour][1]);
+    }
+
+    public void fillStundenplan(Activity a){
+        int hours = 11;
+        /*if(stundenplan.isEmpty()){
+            for(int i = 0; i < hours * 6; i++){
+                if(i % 6 == 0){ //Time cell
+                    stundenplan.add(getTimeAtHour(i / 6, a));
+                }
+                else stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
+            }
+            return;
+        }*/
+
+        Gson gson = new Gson();
+        TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};
+        ArrayList<StundenplanItem> list = gson.fromJson(readFromInternalStorage(a.getBaseContext(), "stundenplan.json"), token.getType());
+        System.out.println(readFromInternalStorage(a.getBaseContext(), "stundenplan.json"));
+        readFromInternalStorage(a.getBaseContext(), "stundenplan.json");
+        stundenplan.clear();
+        for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
+        int index = 0;
+        for(int i = 0; i < stundenplan.size(); i++){
+            if(i % 6 == 0){
+                stundenplan.set(i, getTimeAtHour(i / 6, a));
+            }
+            else {
+                stundenplan.set(i, list.get(index++));
+            }
+        }
+    }
+
+    public void saveStundenplan(Context context){
+        Gson gson = new Gson();
+        ArrayList<StundenplanItem> list = new ArrayList<>();
+        for(StundenplanCell c : stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
+        String JSON = gson.toJson(list);
+        writeToInternalStorage(context, "stundenplan.json", JSON);
+    }
+
+    public ArrayList<StundenplanCell> getStundenplan() {
+        return stundenplan;
+    }
+
+    private String readFromInternalStorage(Context context, String saveFileName){
+        File file = new File(context.getFilesDir(), "dir");
+        File saveFile = new File(file, saveFileName);
+        String s = "";
+        try {
+            Scanner scanner = new Scanner(saveFile);
+            while (scanner.hasNextLine())s += scanner.nextLine();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return s;
+    }
+
+    private void writeToInternalStorage(Context context, String saveFileName, String saveBody){
+        File file = new File(context.getFilesDir(), "dir");
+        if(!file.exists())file.mkdir();
+        try {
+            File saveFile = new File(file, saveFileName);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
+            writer.append(saveBody);
+            writer.flush();
+            writer.close();
+            System.out.println("Saved String successfully to " + saveFile.getAbsolutePath());
+            System.out.println("File exists: " + saveFile.exists());
+        }
+        catch (Exception e){
+            e.printStackTrace();
         }
     }
 }

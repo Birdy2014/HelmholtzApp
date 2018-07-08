@@ -87,6 +87,7 @@ class DataStorage{
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = a.findViewById(R.id.progressBar2);
+
                 vertretungsplan.updateVertretungsplan();
                 bar.setProgress(35);
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
@@ -108,13 +109,7 @@ class DataStorage{
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
-                a.findViewById(R.id.loadingtext).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        ((TextView)a.findViewById(R.id.loadingtext)).setText("Download Timeout");
-                    }
-                });
-                return;
+                a.findViewById(R.id.loadingtext).post(() -> ((TextView)a.findViewById(R.id.loadingtext)).setText("Download Timeout"));
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -238,15 +233,6 @@ class DataStorage{
 
     public void fillStundenplan(Activity a){
         int hours = 11;
-        /*if(stundenplan.isEmpty()){
-            for(int i = 0; i < hours * 6; i++){
-                if(i % 6 == 0){ //Time cell
-                    stundenplan.add(getTimeAtHour(i / 6, a));
-                }
-                else stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
-            }
-            return;
-        }*/
 
         Gson gson = new Gson();
         TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};

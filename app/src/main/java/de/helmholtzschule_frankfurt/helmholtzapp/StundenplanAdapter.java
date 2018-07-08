@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -68,10 +69,6 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
     public void showPopup(StundenplanCell item){
         inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
-        /*popupWindow = new PopupWindow(popupView);
-        popupWindow.setWidth(LinearLayout.LayoutParams.MATCH_PARENT);
-        popupWindow.setHeight(100);
-        popupWindow.showAsDropDown(popupView, 0, 0);*/
         Dialog dialog = new Dialog(getContext());
         dialog.addContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         dialog.show();
@@ -90,6 +87,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
         ImageButton editButton = popupView.findViewById(R.id.popupButtonEdit);
         ImageButton applyButton = popupView.findViewById(R.id.popupButtonApply);
+        ImageButton colorButton = popupView.findViewById(R.id.popupButtonColor);
 
         editButton.setOnClickListener(click -> {
             applyButton.setVisibility(View.VISIBLE);
@@ -114,6 +112,21 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             DataStorage.getInstance().saveStundenplan(getContext());
 
             dialog.cancel();
+        });
+        colorButton.setOnClickListener(click ->{
+
+            inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            popupView = inflater.inflate(R.layout.color_chooser, null);
+            Dialog colorDialog = new Dialog(getContext());
+            colorDialog.addContentView(popupView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1000));
+            List<ImageButton> colors = new ArrayList<>();
+            for(StundenplanColor color : StundenplanColor.values()){
+                ImageButton button = new ImageButton(getContext());
+                button.setBackgroundColor(color.getCode());
+                colors.add(button);
+            }
+            //ArrayAdapter<ImageButton> adapter = new ArrayAdapter<ImageButton>(getContext(), R.id.colorGrid, colors);
+            colorDialog.show();
         });
     }
     private static void setEditable(EditText text, boolean b){

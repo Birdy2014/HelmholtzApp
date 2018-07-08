@@ -106,7 +106,17 @@
             android:layout_toEndOf="@id/popupIconLehrer"
             android:layout_toRightOf="@id/popupIconLehrer" />
 
-
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit"
+            android:id="@+id/popupButtonColor"
+            android:background="@drawable/popup_edit_button_background"
+            android:layout_below="@id/lehrerHeader"
+            android:layout_toEndOf="@+id/popupTextLehrer"
+            android:layout_toRightOf="@+id/popupTextLehrer"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp" />
 
         <TextView
             android:layout_width="wrap_content"

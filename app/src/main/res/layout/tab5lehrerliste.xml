@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="Lehrerliste"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:id="@+id/lehrerlisteText"
         android:layout_marginTop="10dp"

@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:textAlignment="center"
         android:text="News"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
         android:id="@+id/newsText"
         android:layout_marginTop="10dp"
@@ -36,7 +36,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp"
-        android:divider="@color/colorBackgroundGrey"/>
+        android:divider="@color/colorBackgroundGreyLight"/>
 
 </android.support.v4.widget.SwipeRefreshLayout>
 

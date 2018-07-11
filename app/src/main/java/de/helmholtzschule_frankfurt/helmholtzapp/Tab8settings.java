@@ -1,5 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.Switch;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 
@@ -49,6 +51,32 @@ public class Tab8settings extends Fragment {
             }
 
         });
+        Spinner hourSelect = getView().findViewById(R.id.settings_edit_hours);
+        ArrayList<Integer> list = new ArrayList<>();
+        for(int i = 6; i < 12; i++){
+            list.add(i);
+        }
+        adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, list);
+        hourSelect.setAdapter(adapter);
+        hourSelect.setSelection(list.indexOf(getActivity().getSharedPreferences("MySPFILE", 0).getInt("stundenzahl", 9)));
+        hourSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DataStorage.getInstance().hours = (int)hourSelect.getSelectedItem();
+                SharedPreferences mySPR = getActivity().getSharedPreferences("MySPFILE", 0);
+                SharedPreferences.Editor editor = mySPR.edit();
+                editor.putInt("stundenzahl", (int)hourSelect.getSelectedItem());
+                editor.apply();
+                DataStorage.getInstance().fillStundenplan(getActivity());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
         CheckBox box = getActivity().findViewById(R.id.settings_edit_push_notes);
         box.setOnClickListener(view1 -> {
             storage.setPushNotificationsActive(box.isChecked(), getActivity());

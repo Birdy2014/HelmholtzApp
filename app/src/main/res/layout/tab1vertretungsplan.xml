@@ -65,7 +65,7 @@
         android:layout_below="@+id/butShowAll"
         android:textSize="27sp"
         android:textAlignment="center"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         />
 
     <ToggleButton

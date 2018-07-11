@@ -1,21 +1,22 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
-import java.util.Arrays;
-
 public enum StundenplanColor {
 
+    ADD(0xFFFFFFFF),
     BLACK(0xFF000000),
-    GREY(0xFF404040),
-    RED(0xFFFF0000),
-    ORANGE(0xFFFF6A00),
+    GREY(0xFF7A7A7A),
+    BLUEGREY(0xFF35546B),
+    RED(0xFFFF1E1E),
+    ORANGE(0xFFFF7C26),
     YELLOW(0xFFFFD800),
-    LIGHTGREEN(0xFF4CFF00),
-    GREEN(0xFF00AA00),
+    LIGHTGREEN(0xFF3CBC65),
+    GREEN(0xFF007A00),
     LIGHTBLUE(0xFF0094FF),
-    BLUE(0xFF0026FF),
-    VIOLET(0xFFB200FF),
-    PINK(0xFFFF006E),
-    WHITE(0xFFFFFFFF);
+    BLUE(0xFF0019A8),
+    VIOLET(0xFF61008E),
+    PINK(0xFFFF33B0),
+    WHITE(0xFFFFFFFF),
+    BROWN(0xFF632700);
 
     private int code;
 
@@ -28,7 +29,12 @@ public enum StundenplanColor {
     }
 
     public int getTextColor(){
-        StundenplanColor[] blackBg = {YELLOW, WHITE};
-        return Arrays.asList(blackBg).contains(this) ? 0xFF000000 : 0xFFFFFFFF;
+        String cleanHex = Integer.toHexString(this.getCode()).substring(2);
+        double average = 0;
+        for(int i = 0; i < cleanHex.length(); i += 2){
+            average += Integer.parseInt(cleanHex.substring(i, i + 2), 16);
+        }
+        average /= 3;
+        return Math.abs(255 - average) > 127.5 ? WHITE.getCode() : BLACK.getCode();
     }
 }

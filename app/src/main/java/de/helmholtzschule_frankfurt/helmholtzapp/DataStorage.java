@@ -49,7 +49,9 @@ class DataStorage{
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     String[] klassen;
+    private StundenplanItem copiedItem = null;
     private ArrayList<StundenplanCell> stundenplan = new ArrayList<>();
+    public int hours;
     private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:00", "14:45"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
 
@@ -232,13 +234,11 @@ class DataStorage{
     }
 
     public void fillStundenplan(Activity a){
-        int hours = 11;
-
         Gson gson = new Gson();
         TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};
-        ArrayList<StundenplanItem> list = gson.fromJson(readFromInternalStorage(a.getBaseContext(), "stundenplan.json"), token.getType());
-        System.out.println(readFromInternalStorage(a.getBaseContext(), "stundenplan.json"));
-        readFromInternalStorage(a.getBaseContext(), "stundenplan.json");
+        SharedPreferences mySPR = a.getSharedPreferences("MySPFILE", 0);
+        hours = mySPR.getInt("stundenzahl", 9);
+        ArrayList<StundenplanItem> list = gson.fromJson(mySPR.getString("stundenplan", ""), token.getType());
         stundenplan.clear();
         for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
         int index = 0;
@@ -258,7 +258,10 @@ class DataStorage{
         ArrayList<StundenplanItem> list = new ArrayList<>();
         for(StundenplanCell c : stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
         String JSON = gson.toJson(list);
-        writeToInternalStorage(context, "stundenplan.json", JSON);
+        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
+        SharedPreferences.Editor editor = mySPR.edit();
+        editor.putString("stundenplan", JSON);
+        editor.apply();
     }
 
     public ArrayList<StundenplanCell> getStundenplan() {
@@ -293,5 +296,13 @@ class DataStorage{
         catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public StundenplanItem getCopiedItem() {
+        return copiedItem;
+    }
+
+    public void setCopiedItem(StundenplanItem copiedItem) {
+        this.copiedItem = copiedItem;
     }
 }

@@ -18,7 +18,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="15dp"
         android:text="Über die App"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"/>
 
     <TextView
@@ -67,7 +67,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="Feedback &amp; Hilfe"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_below="@id/impressum_link"
         android:textSize="20sp"/>
 
@@ -129,7 +129,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="Sonstiges"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorPrimaryDark"
         android:layout_below="@id/store_link"
         android:textSize="20sp"/>
 

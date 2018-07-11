@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_edit_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_box_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +33,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_edit" />
+                                      <entry key="outputName" value="ic_add" />
+                                      <entry key="theme" value="CUSTOM" />
+                                      <entry key="themeColor" value="ffffff" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -69,7 +71,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/opt/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_delete_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_check_circle_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -79,10 +81,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_reset" />
+                            <entry key="color" value="808080" />
+                            <entry key="height" value="32" />
+                            <entry key="outputName" value="ic_done_circle" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="$USER_HOME$/C:\Users\Jonas Schroeter" />
+                            <entry key="sourceFile" value="C:\Users\Jonas Schroeter\C:\Users\Jonas Schroeter" />
+                            <entry key="width" value="32" />
                           </map>
                         </option>
                       </PersistentState>

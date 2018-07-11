@@ -1,20 +1,15 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
 import android.text.method.KeyListener;
-import android.transition.AutoTransition;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -26,9 +21,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
@@ -48,7 +40,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
 
         String name = getItem(position).getName();
-        TextView nameView = (TextView)customView.findViewById(R.id.stundenplanCellName);
+        TextView nameView = customView.findViewById(R.id.stundenplanCellName);
         if(getItem(position) instanceof StundenplanItem){
             nameView.setTextColor(((StundenplanItem)getItem(position)).getTextColor());
             nameView.setBackgroundColor(((StundenplanItem)getItem(position)).getColor());
@@ -57,6 +49,37 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             nameView.setTextSize(15);
         }
         nameView.setText(name);
+        customView.setOnLongClickListener(view -> {
+            inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            popupView = inflater.inflate(R.layout.stundenplan_action_box, null);
+            Dialog actionDialog = new Dialog(getContext());
+            actionDialog.setContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+            /*Window dialogWindow = actionDialog.getWindow();
+            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
+            dialogWindow.setGravity(Gravity.START | Gravity.TOP);
+
+            System.out.println("X: " + customView.getX());
+            lp.x = (int)customView.getX();*/
+
+            Button copy = popupView.findViewById(R.id.copyButton);
+            Button put = popupView.findViewById(R.id.pasteButton);
+            copy.setOnClickListener(click -> {
+                DataStorage.getInstance().setCopiedItem((StundenplanItem)getItem(position));
+                this.notifyDataSetChanged();
+                DataStorage.getInstance().saveStundenplan(getContext());
+                actionDialog.cancel();
+            });
+            put.setOnClickListener(click -> {
+                ((StundenplanItem)getItem(position)).overwrite(DataStorage.getInstance().getCopiedItem());
+                this.notifyDataSetChanged();
+                DataStorage.getInstance().saveStundenplan(getContext());
+                actionDialog.cancel();
+            });
+            put.setVisibility(DataStorage.getInstance().getCopiedItem() == null ? View.GONE : View.VISIBLE);
+            actionDialog.show();
+            return true;
+        });
         customView.setOnClickListener(view -> {
             if(getItem(position) instanceof StundenplanCellTime){
 
@@ -67,6 +90,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         });
         return customView;
     }
+
     public void showPopup(StundenplanCell item, TextView view){
         inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
@@ -126,17 +150,15 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             Dialog colorDialog = new Dialog(getContext());
             colorDialog.addContentView(popupView, new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             ColorFieldAdapter adapter = new ColorFieldAdapter(getContext(), new ArrayList<>(Arrays.asList(StundenplanColor.values())), (StundenplanItem)item, colorDialog, this);
-            System.out.println("ColorArr Size: " + new ArrayList<>(Arrays.asList(StundenplanColor.values())).size());
             GridView gridView = popupView.findViewById(R.id.colorGrid);
             gridView.setAdapter(adapter);
             colorDialog.show();
         });
         resetButton.setOnClickListener(click -> {
+            item.setName("");
             lessonName.setText("");
             teacher.setText("");
             room.setText("");
-            //view.setBackgroundColor(StundenplanColor.WHITE.getCode());
-            //view.setTextColor(StundenplanColor.WHITE.getTextColor());
             ((StundenplanItem) item).setColor(StundenplanColor.WHITE);
             this.notifyDataSetChanged();
             DataStorage.getInstance().saveStundenplan(getContext());

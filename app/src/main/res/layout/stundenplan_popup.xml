@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/fachLayout"
-        android:background="@color/colorBackgroundGrey">
+        android:background="@color/colorBackgroundGreyLight">
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:src="@drawable/ic_reset"
             android:layout_toEndOf="@+id/fachHeader"
             android:layout_toRightOf="@+id/fachHeader"
-            android:background="@color/colorBackgroundGrey"
+            android:background="@color/colorBackgroundGreyLight"
             android:layout_marginStart="195dp"
             android:layout_marginLeft="195dp"
             android:layout_marginTop="25dp"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/popupButtonApply"
             android:src="@drawable/ic_done"
-            android:background="@color/colorBackgroundGrey"
+            android:background="@color/colorBackgroundGreyLight"
             android:layout_marginStart="190dp"
             android:layout_marginLeft="190dp"
             android:layout_marginTop="25dp"

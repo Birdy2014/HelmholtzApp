@@ -8,7 +8,7 @@
 
     <item >
         <shape android:shape="oval">
-            <solid android:color="@color/colorPrimary"/>
+            <solid android:color="@color/colorPrimaryDark"/>
             <size android:width="32dp" android:height="32dp"/>
         </shape>
     </item>

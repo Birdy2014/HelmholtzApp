@@ -1,6 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
-import javax.sql.StatementEvent;
+import static de.helmholtzschule_frankfurt.helmholtzapp.StundenplanColor.*;
 
 public class StundenplanItem extends StundenplanCell{
 
@@ -42,6 +42,17 @@ public class StundenplanItem extends StundenplanCell{
         setTextColor(color.getTextColor());
     }
 
+    public void setColor(int color){
+        this.color = color;
+        String cleanHex = Integer.toHexString(color).substring(2);
+        double average = 0;
+        for(int i = 0; i < cleanHex.length(); i += 2){
+            average += Integer.parseInt(cleanHex.substring(i, i + 2), 16);
+        }
+        average /= 3;
+        setTextColor(Math.abs(255 - average) > 127.5 ? WHITE.getCode() : BLACK.getCode());
+    }
+
     public int getTextColor() {
         return textColor;
     }
@@ -50,4 +61,10 @@ public class StundenplanItem extends StundenplanCell{
         this.textColor = textColor;
     }
 
+    public void overwrite(StundenplanItem item){
+        setName(item.getName());
+        setLehrer(item.getLehrer());
+        setRaum(item.getRaum());
+        setColor(item.getColor());;
+    }
 }

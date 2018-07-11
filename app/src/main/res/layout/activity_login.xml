@@ -40,7 +40,7 @@
             android:ems="10"
             android:hint="Passwort"
             android:inputType="numberPassword"
-            android:backgroundTint="@color/colorPrimaryDark"/>
+            android:backgroundTint="@color/colorPrimary"/>
 
         <Button
             android:id="@+id/bLogIn"

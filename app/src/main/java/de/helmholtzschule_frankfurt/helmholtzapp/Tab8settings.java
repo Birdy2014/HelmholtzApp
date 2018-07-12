@@ -1,7 +1,9 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,7 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -81,5 +83,25 @@ public class Tab8settings extends Fragment {
         box.setOnClickListener(view1 -> {
             storage.setPushNotificationsActive(box.isChecked(), getActivity());
         });
+        View exportView = getView().findViewById(R.id.settings_export);
+        exportView.setOnClickListener(click -> {
+            storage.exportStundenplan(getActivity());
+        });
+        View importView = getView().findViewById(R.id.settings_import);
+        importView.setOnClickListener(click -> {
+            if(storage.importStundenplan(getActivity())){
+                hourSelect.setSelection(list.size() - 1);
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case 1:
+                if(!(grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
+                    Toast.makeText(getContext(), "Permission denied to access your location", Toast.LENGTH_SHORT).show();
+                }
+        }
     }
 }

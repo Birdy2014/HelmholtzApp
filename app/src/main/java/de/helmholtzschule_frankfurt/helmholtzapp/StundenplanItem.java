@@ -50,7 +50,7 @@ public class StundenplanItem extends StundenplanCell{
             average += Integer.parseInt(cleanHex.substring(i, i + 2), 16);
         }
         average /= 3;
-        setTextColor(Math.abs(255 - average) > 127.5 ? WHITE.getCode() : BLACK.getCode());
+        setTextColor(Math.abs(255 - average) > DataStorage.getInstance().CONTRASTVAR ? WHITE.getCode() : BLACK.getCode());
     }
 
     public int getTextColor() {
@@ -66,5 +66,10 @@ public class StundenplanItem extends StundenplanCell{
         setLehrer(item.getLehrer());
         setRaum(item.getRaum());
         setColor(item.getColor());;
+    }
+
+    @Override
+    public String toString() {
+        return getName();
     }
 }

@@ -86,8 +86,8 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:id="@+id/lehrerHeader"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:layout_toEndOf="@id/popupIconLehrer"
             android:layout_toRightOf="@id/popupIconLehrer"/>
 
@@ -100,13 +100,13 @@
             android:inputType="text"
             android:theme="@style/primaryForeground"
             android:layout_below="@id/lehrerHeader"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <EditText
-            android:layout_width="120dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="Lehrer"
             android:gravity="center_vertical"
@@ -114,8 +114,8 @@
             android:inputType="text"
             android:theme="@style/primaryForeground"
             android:layout_below="@id/lehrerHeader"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_toEndOf="@id/popupIconLehrer"
             android:layout_toRightOf="@id/popupIconLehrer" />
 
@@ -128,8 +128,8 @@
             android:layout_below="@id/lehrerHeader"
             android:layout_toEndOf="@+id/lehrerHeader"
             android:layout_toRightOf="@+id/lehrerHeader"
-            android:layout_marginStart="90dp"
-            android:layout_marginLeft="90dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginLeft="140dp"
             android:visibility="invisible"/>
 
         <TextView
@@ -139,8 +139,8 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:id="@+id/raumHeader"
-            android:layout_marginLeft="14dp"
-            android:layout_marginStart="14dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
             android:layout_below="@id/popupTextLehrer"
             android:layout_toEndOf="@id/popupIconRaum"
             android:layout_toRightOf="@id/popupIconRaum"/>
@@ -154,13 +154,13 @@
             android:inputType="text"
             android:theme="@style/primaryForeground"
             android:layout_below="@id/raumHeader"
-            android:layout_marginLeft="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginEnd="30dp"/>
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"/>
 
         <EditText
-            android:layout_width="120dp"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
             android:text="Raum"
             android:gravity="center_vertical"
@@ -168,11 +168,11 @@
             android:inputType="text"
             android:theme="@style/primaryForeground"
             android:layout_below="@id/raumHeader"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginStart="0dp"
             android:layout_marginBottom="10dp"
             android:layout_toEndOf="@id/popupIconLehrer"
-            android:layout_toRightOf="@id/popupIconLehrer"/>
+            android:layout_toRightOf="@id/popupIconLehrer" />
 
     </RelativeLayout>
 

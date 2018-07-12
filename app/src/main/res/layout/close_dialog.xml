@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wirklich schließen?"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="20sp"
+            android:textColor="@color/colorWhite"
+            android:id="@+id/close_text"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Abbrechen"
+            android:id="@+id/close_button_cancel"
+            android:layout_below="@id/close_text"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimaryDark"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Schließen"
+            android:id="@+id/close_button_close"
+            android:layout_below="@id/close_text"
+            android:layout_toEndOf="@id/close_button_cancel"
+            android:layout_toRightOf="@id/close_button_cancel"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorPrimaryDark"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

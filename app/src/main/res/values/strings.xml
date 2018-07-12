@@ -8,4 +8,6 @@
     <string name="datenschutz"><u>Aktuelle Datenschutzerklärung</u></string>
     <string name="impressum"><u>Aktuelles Impressum</u></string>
     <string name="emailHelp">helmholtzapp.hilfe@gmail.com</string>
+    <string name="exportText">Der Stundenplan wird als Datei gesichert</string>
+    <string name="importText">Stundenplan aus Sicherungsverzeichnis importieren</string>
 </resources>

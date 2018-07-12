@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.sip.SipSession;
 import android.os.Build;
+import android.os.Environment;
 import android.support.annotation.RequiresApi;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -32,6 +34,7 @@ import java.net.URLConnection;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EventListener;
 import java.util.Scanner;
 
@@ -40,7 +43,6 @@ import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 class DataStorage{
 
     private static final DataStorage ourInstance = new DataStorage();
-    private String base64credentials;
     private Vertretungsplan vertretungsplan;
     private String mensaplanRawData;
     private String newsRawData;
@@ -52,6 +54,7 @@ class DataStorage{
     private StundenplanItem copiedItem = null;
     private ArrayList<StundenplanCell> stundenplan = new ArrayList<>();
     public int hours;
+    public final double CONTRASTVAR = 100; //smaller than 127.5 --> white text is preferred @stundenplan, changes influence behavior only after color change
     private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:00", "14:45"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
 
@@ -75,13 +78,8 @@ class DataStorage{
         klassen = list.toArray(new String[]{});
     }
 
-    private boolean isInitialized() {
-        return base64credentials != null;
-    }
-
     public void initialize(String base64credentials) {
-        //if (isInitialized()) return;
-        this.base64credentials = base64credentials;
+        String base64credentials1 = base64credentials;
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
@@ -123,7 +121,7 @@ class DataStorage{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    } //Do not remove this!!!
 
     private String download(String website) throws IOException {
         URLConnection connection = new URL(website).openConnection();
@@ -226,7 +224,7 @@ class DataStorage{
         }
     }
 
-    public StundenplanCellTime getTimeAtHour(int hour, Activity activity){
+    private StundenplanCellTime getTimeAtHour(int hour, Activity activity){
         if(Character.isDigit(getKlasse(activity).charAt(0))){ //Non - Oberstufe
             return new StundenplanCellTime(unterMittelstufenZeiten[hour][0], unterMittelstufenZeiten[hour][1]);
         }
@@ -279,7 +277,7 @@ class DataStorage{
             e.printStackTrace();
         }
         return s;
-    }
+    } //Useful?
 
     private void writeToInternalStorage(Context context, String saveFileName, String saveBody){
         File file = new File(context.getFilesDir(), "dir");
@@ -296,7 +294,7 @@ class DataStorage{
         catch (Exception e){
             e.printStackTrace();
         }
-    }
+    }//Useful?
 
     public StundenplanItem getCopiedItem() {
         return copiedItem;
@@ -304,5 +302,99 @@ class DataStorage{
 
     public void setCopiedItem(StundenplanItem copiedItem) {
         this.copiedItem = copiedItem;
+    }
+
+    public void exportStundenplan(Activity activity){
+        System.out.println(Arrays.toString(stundenplan.toArray()));
+        Gson gson = new Gson();
+        ArrayList<StundenplanItem> list = new ArrayList<>();
+        for(StundenplanCell c : stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
+        String JSON = gson.toJson(list);
+        writeToExternalStorage(JSON, "Stundenplan.json", activity);
+        Toast.makeText(activity.getBaseContext(),"Stundenplan wurde unter\n Documents/HelmholtzApp/Stundenplan.json gesichert.", Toast.LENGTH_SHORT).show();
+    }
+
+    public boolean importStundenplan(Activity activity){
+        String JSON = readFromExternalStorage("Stundenplan.json", activity);
+        if(JSON == null){
+            Toast.makeText(activity.getBaseContext(), "Keine Datei unter Documents/HelmholtzApp/Stundenplan.json vorhanden.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            System.out.println(JSON);
+            Gson gson = new Gson();
+            TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};
+            hours = 11;
+            SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
+            SharedPreferences.Editor editor = mySPR.edit();
+            editor.putInt("stundenzahl", hours);
+            editor.apply();
+            ArrayList<StundenplanItem> list = gson.fromJson(JSON, token.getType());
+            stundenplan.clear();
+            for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
+            int index = 0;
+            for(int i = 0; i < stundenplan.size(); i++){
+                if(i % 6 == 0){
+                    try {
+                        stundenplan.set(i, getTimeAtHour(i / 6, activity));
+                    }
+                    catch (IndexOutOfBoundsException e){
+                        break;
+                    }
+                }
+                else {
+                    try {
+                        stundenplan.set(i, list.get(index++));
+                    }
+                    catch (IndexOutOfBoundsException ignored){
+                    }
+                }
+            }
+        }
+        Toast.makeText(activity.getBaseContext(), "Stundenplan wurde erforlgreich importiert.", Toast.LENGTH_SHORT).show();
+        return true;
+    }
+
+    private void writeToExternalStorage(String data, String fileName, Activity activity){
+        if(Build.VERSION.SDK_INT > 22){
+            activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
+        }
+        File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        File dir = new File(root, "HelmholtzApp");
+        if(!dir.exists())dir.mkdir();
+        System.out.println(dir.getAbsolutePath());
+        try {
+            File saveFile = new File(dir, fileName);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
+            writer.append(data);
+            writer.flush();
+            writer.close();
+            System.out.println("Saved String successfully to " + saveFile.getAbsolutePath());
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    private String readFromExternalStorage(String fileName, Activity activity){
+        if(Build.VERSION.SDK_INT > 22){
+            activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
+        }
+        File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        File dir = new File(root, "HelmholtzApp");
+        try {
+            File saveFile = new File(dir, fileName);
+            if(saveFile.exists()){
+                StringBuilder s = new StringBuilder();
+                Scanner scanner = new Scanner(saveFile);
+                while (scanner.hasNextLine()) s.append(scanner.nextLine());
+                return s.toString();
+            }
+            else return null;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

@@ -2,7 +2,10 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.text.method.KeyListener;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -44,6 +47,10 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         if(getItem(position) instanceof StundenplanItem){
             nameView.setTextColor(((StundenplanItem)getItem(position)).getTextColor());
             nameView.setBackgroundColor(((StundenplanItem)getItem(position)).getColor());
+        }
+        else{
+            nameView.setBackgroundColor(0xFFFFFFFF);
+            nameView.setTextColor(0xFF000000);
         }
         if(!(getItem(position) instanceof StundenplanCellTime || getItem(position) instanceof StundenplanItem)){
             nameView.setTextSize(15);
@@ -100,15 +107,15 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
         EditText lessonName = popupView.findViewById(R.id.popupTextFach);
         lessonName.setText(item.getName());
-        setEditable(lessonName, false);
+        setEditable(lessonName, false, getContext());
 
         EditText teacher = popupView.findViewById(R.id.popupTextLehrer);
         teacher.setText(((StundenplanItem)item).getLehrer());
-        setEditable(teacher, false);
+        setEditable(teacher, false, getContext());
 
         EditText room = popupView.findViewById(R.id.popupTextRaum);
         room.setText(((StundenplanItem)item).getRaum());
-        setEditable(room, false);
+        setEditable(room, false, getContext());
 
         ImageButton editButton = popupView.findViewById(R.id.popupButtonEdit);
         ImageButton applyButton = popupView.findViewById(R.id.popupButtonApply);
@@ -121,9 +128,9 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             resetButton.setVisibility(View.VISIBLE);
             editButton.setVisibility(View.INVISIBLE);
 
-            setEditable(lessonName, true);
-            setEditable(teacher, true);
-            setEditable(room, true);
+            setEditable(lessonName, true, getContext());
+            setEditable(teacher, true, getContext());
+            setEditable(room, true, getContext());
         });
         applyButton.setOnClickListener(click -> {
             applyButton.setVisibility(View.INVISIBLE);
@@ -131,9 +138,9 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             resetButton.setVisibility(View.INVISIBLE);
             editButton.setVisibility(View.VISIBLE);
 
-            setEditable(lessonName, false);
-            setEditable(teacher, false);
-            setEditable(room, false);
+            setEditable(lessonName, false, getContext());
+            setEditable(teacher, false, getContext());
+            setEditable(room, false, getContext());
 
             item.setName(lessonName.getText().toString());
             ((StundenplanItem)item).setLehrer(teacher.getText().toString());
@@ -164,7 +171,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             DataStorage.getInstance().saveStundenplan(getContext());
         });
     }
-    private static void setEditable(EditText text, boolean b){
+    private static void setEditable(EditText text, boolean b, Context c){
         if(!b){
             text.setTag(text.getKeyListener());
             text.setKeyListener(null);

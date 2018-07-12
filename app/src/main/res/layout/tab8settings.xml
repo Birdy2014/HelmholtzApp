@@ -6,6 +6,16 @@
     tools:context="de.helmholtzschule_frankfurt.helmholtzapp.Tab8settings">
 
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Allgemein"
+            android:id="@+id/settings_allgemein_header"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
@@ -13,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/settings_text_klasse-ändern"
+            android:layout_below="@id/settings_allgemein_header"
             android:textSize="20dp"
             android:textStyle="bold"
             android:text="Klasse ändern" />
@@ -32,7 +43,7 @@
             android:layout_below="@+id/settings_edit_klasse"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:text="Push Nachrichten aktiv"
             android:textSize="20sp"
             android:layout_marginRight="110dp"
@@ -46,20 +57,39 @@
             android:layout_toRightOf="@id/settings_text_push"
             android:layout_toEndOf="@id/settings_text_push"
             android:layout_below="@id/settings_edit_klasse"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:checked="true"
             android:theme="@style/primaryDarkForeground"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/colorBorderGrey"
+            android:layout_below="@id/settings_text_push"
+            android:id="@+id/settings_rule1"
+            android:layout_marginTop="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Stundenplan"
+            android:id="@+id/settings_stundenplan_header"
+            android:layout_below="@id/settings_rule1"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp" />
 
         <TextView
             android:id="@+id/settings_text_hours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/settings_text_push"
+            android:layout_below="@+id/settings_stundenplan_header"
             android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
-            android:text="Stundenplan: Stundenanzahl"
+            android:text="Stundenanzahl"
             android:textSize="20sp"
             android:textStyle="bold" />
 
@@ -70,5 +100,62 @@
             android:layout_below="@+id/settings_text_hours"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_export"
+            android:layout_marginTop="10dp"
+            android:layout_below="@+id/settings_edit_hours">
+
+                <TextView
+                    android:id="@+id/settings_text_export"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Stundenplan sichern"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/settings_edit_export"
+                    android:text="@string/exportText"
+                    android:layout_below="@id/settings_text_export"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_import"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/settings_export">
+
+                <TextView
+                    android:id="@+id/settings_text_import"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Stundenplan importieren"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/settings_edit_import"
+                    android:text="@string/importText"
+                    android:layout_below="@id/settings_text_import"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"/>
+
+        </RelativeLayout>
+
 
 </RelativeLayout>

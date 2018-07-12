@@ -1,5 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,8 +13,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -35,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionbar.setDisplayHomeAsUpEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerLayout = findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
@@ -63,22 +68,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton button = (ImageButton) findViewById(R.id.refresh_toolbar);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                for (int i = 0; i < navigationView.getMenu().size(); i++){
-                    if(navigationView.getMenu().getItem(i).isChecked()){
-                        menuIndexSelected = i;
-                    }
+        ImageButton button = findViewById(R.id.refresh_toolbar);
+        button.setOnClickListener(view -> {
+            for (int i = 0; i < navigationView.getMenu().size(); i++){
+                if(navigationView.getMenu().getItem(i).isChecked()){
+                    menuIndexSelected = i;
                 }
-                Intent intent = new Intent(MainActivity.this, LoadingActivity.class);
-                intent.putExtra("fragmentIndex", menuIndexSelected);
-                startActivity(intent);
             }
+            Intent intent = new Intent(MainActivity.this, LoadingActivity.class);
+            intent.putExtra("fragmentIndex", menuIndexSelected);
+            startActivity(intent);
         });
         menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);
 
@@ -231,18 +233,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Dialog dialog = new Dialog(this);
+            //LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View dialogView = View.inflate(this, R.layout.close_dialog, null);
+            dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            Button cancelButton = dialogView.findViewById(R.id.close_button_cancel);
+            Button continueButton = dialogView.findViewById(R.id.close_button_close);
+            cancelButton.setOnClickListener(click -> dialog.cancel());
+            continueButton.setOnClickListener(click -> {
+                dialog.cancel();
+                super.onBackPressed();
+            });
+            dialog.show();
         }
     }
 }

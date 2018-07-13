@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.http.SslCertificate;
 import android.net.sip.SipSession;
 import android.os.Build;
 import android.os.Environment;
@@ -43,6 +44,7 @@ import java.util.Scanner;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 
 import static java.util.Calendar.FRIDAY;
+import static java.util.Calendar.JULY;
 import static java.util.Calendar.MONDAY;
 import static java.util.Calendar.SATURDAY;
 import static java.util.Calendar.SUNDAY;
@@ -67,6 +69,8 @@ class DataStorage{
     public final double CONTRASTVAR = 100; //smaller than 127.5 --> white text is preferred @stundenplan, changes influence behavior only after color change
     private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:00", "14:45"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
+    private int[] monthYear;
+    private ArrayList<ActionContainer> containers = new ArrayList<>();
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -111,6 +115,8 @@ class DataStorage{
                 parseMensaplan();
                 parseNews();
                 parseLehrerliste();
+                fillContainers();
+                monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
                 int index = a.getIntent().getIntExtra("fragmentIndex", 0);
                 Intent intent = new Intent(a, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
@@ -409,10 +415,19 @@ class DataStorage{
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    public ArrayList<CalendarItem> getCalendarList(int month){
-        //42 fields
+    public ArrayList<CalendarItem> getCalendarList(int month, int year){
         GregorianCalendar calendar = new GregorianCalendar();
-        calendar.set(Calendar.MONTH, month);
+        int today = calendar.get(Calendar.DAY_OF_MONTH);
+        int monthToday = calendar.get(Calendar.MONTH);
+        int yearToday = calendar.get(Calendar.YEAR);
+        if(month != -1 && year != -1) {
+            calendar.set(Calendar.MONTH, month);
+            calendar.set(Calendar.YEAR, year);
+        }
+        else {
+            calendar.set(Calendar.MONTH, monthYear[0]);
+            calendar.set(Calendar.YEAR, monthYear[1]);
+        }
         int monthMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int dayOfWeek = 0;
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -425,7 +440,7 @@ class DataStorage{
             case SATURDAY: dayOfWeek = 5; break;
             case SUNDAY: dayOfWeek = 6; break;
         }
-        int monthBefore = calendar.get(Calendar.MONTH) == 0 ? 11 : calendar.get(Calendar.MONTH) + 1;
+        int monthBefore = calendar.get(Calendar.MONTH) == 0 ? 11 : calendar.get(Calendar.MONTH) - 1;
         System.out.println("MonthBefore: " + monthBefore);
         if(monthBefore == 0)calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
         System.out.println("Year: " + calendar.get(Calendar.YEAR));
@@ -435,22 +450,162 @@ class DataStorage{
 
         ArrayList<CalendarItem> days = new ArrayList<>();
         for(int i = 0; i < 42; i++){
-            days.add(new CalendarItem(0, false));
+            days.add(new CalendarItem(0, false, false, -1));
         }
-        int x = monthBeforeMax - dayOfWeek - 1;
+        int x = monthBeforeMax - dayOfWeek + 1;
         for(int i = 0; i < dayOfWeek; i++){
             days.get(i).setDay(x++);
         }
 
         x = 1;
         for(int i = dayOfWeek; i < monthMax + dayOfWeek; i++){
-            days.get(i).setDay(x++);
+            if(calendar.get(Calendar.MONTH) == monthToday - 1 && x == today && calendar.get(Calendar.YEAR) == yearToday){
+                days.get(i).setToday(true);
+            }
             days.get(i).setActualMonth(true);
+
+            days.get(i).setDay(x++); //has to be last statement here
         }
         x = 1;
         for(int i = monthMax + dayOfWeek; i < 42; i++){
             days.get(i).setDay(x++);
         }
         return days;
+    }
+    public ArrayList<CalendarItem> addActionToList(ArrayList<CalendarItem> list, int start, int end, Action action, ActionType type){
+        if(type == ActionType.INTERNAL) {
+            int i = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == 1) break;
+            }//i is now the month's start
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == start) break;
+            }//i is now the defined start of the action
+
+            int actionIndex = 0;
+            int startIndex = i;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end) break;
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end) break;
+            }
+        }
+        else if(type == ActionType.OUTGOING){
+            int i = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == 1) break;
+            }//i is now the month's start
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == start) break;
+            }//i is now the defined start of the action
+
+            int actionIndex = 0;
+            int startIndex = i;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end) break;
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end) break;
+            }
+        }
+        else if(type == ActionType.INGOING){
+            int i = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == start) break;
+            }//i is now the defined start of the action
+
+            int actionIndex = 0;
+            int startIndex = i;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end) break;
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end) break;
+            }
+        }
+        else if(type == ActionType.EXTERNAL_IN){
+            int i = 0;
+            int startIndex = 0;
+            if(list.get(i).getDay() >= start) {
+                startIndex = i;
+            }
+            else {
+                for(; i < list.size(); i++){
+                    if(list.get(i).getDay() == start){
+                        startIndex = i;
+                        break;
+                    }
+                    if(list.get(i).getDay() == 1){
+                        return list;
+                    }
+                }
+            }
+            int actionIndex = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end) break;
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end) break;
+            }
+        }
+        else if(type == ActionType.EXTERNAL_OUT){
+            int i = 0;
+            for(; i < list.size(); i++){
+                if(list.get(i).getDay() == 1)break;
+            }//1st 1
+            i++;
+            for(; i < list.size(); i++){
+                if(list.get(i).getDay() == 1)break;
+            }//2nd 1
+
+            int startIndex = 0;
+            for(; i < list.size(); i++){
+                if(list.get(i).getDay() == start){
+                    startIndex = i;
+                    break;
+                }
+            }
+            if(i >= list.size())return list;
+            int actionIndex = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end) break;
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end) break;
+            }
+        }
+        return list;
+    }
+
+    public int[] getMonthYear() {
+        return monthYear;
+    }
+
+    public void setMonthYear(int[] monthYear) {
+        this.monthYear = monthYear;
+    }
+
+    public void fillContainers(){
+        containers.clear();
+        containers.add(new ActionContainer("Test", new ActionDate(2, Calendar.AUGUST, 2018), new ActionDate(4, Calendar.AUGUST, 2018)));
+    }
+    public ArrayList<ActionContainer> getContainers() {
+        return containers;
     }
 }

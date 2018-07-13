@@ -71,7 +71,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_check_circle_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_right_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -82,11 +82,9 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="808080" />
-                            <entry key="height" value="32" />
-                            <entry key="outputName" value="ic_done_circle" />
+                            <entry key="outputName" value="ic_arrow_right" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Jonas Schroeter\C:\Users\Jonas Schroeter" />
-                            <entry key="width" value="32" />
                           </map>
                         </option>
                       </PersistentState>

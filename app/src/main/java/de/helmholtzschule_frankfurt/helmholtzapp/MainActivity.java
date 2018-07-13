@@ -247,7 +247,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             drawer.closeDrawer(GravityCompat.START);
         } else {
             Dialog dialog = new Dialog(this);
-            //LayoutInflater inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View dialogView = View.inflate(this, R.layout.close_dialog, null);
             dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             Button cancelButton = dialogView.findViewById(R.id.close_button_cancel);

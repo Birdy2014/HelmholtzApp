@@ -47,7 +47,6 @@ public class Tab2benachrichtigungen extends Fragment {
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
 
-        lstMenu.setAdapter(menuAdapter);
         super.onViewCreated(view, savedInstanceState);
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

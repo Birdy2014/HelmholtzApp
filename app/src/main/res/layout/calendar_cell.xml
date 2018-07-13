@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="50dp"
+    android:layout_height="120dp"
+    android:background="@drawable/stundenplan_cell_background">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="viewEnd"
+        android:gravity="end"
+        android:text="24"
+        android:layout_marginRight="5dp"
+        android:id="@+id/calendarDateView"
+        android:textColor="#000000"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/dateSpot0"
+        android:layout_below="@id/calendarDateView"
+        android:layout_marginTop="5dp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/dateSpot1"
+        android:layout_below="@id/dateSpot0"
+        android:layout_marginTop="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/dateSpot2"
+        android:layout_below="@id/dateSpot1"
+        android:layout_marginTop="5dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/dateSpot3"
+        android:layout_below="@id/dateSpot2"
+        android:layout_marginTop="5dp"/>
+
+</RelativeLayout>

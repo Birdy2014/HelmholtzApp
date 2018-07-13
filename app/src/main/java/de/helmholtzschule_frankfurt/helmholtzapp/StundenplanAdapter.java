@@ -28,7 +28,6 @@ import java.util.Arrays;
 public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
     private View popupView;
-    private PopupWindow popupWindow;
     private LayoutInflater inflater;
 
     public StundenplanAdapter(Context context, ArrayList<StundenplanCell> list) {

@@ -35,10 +35,20 @@ import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.EventListener;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
+
+import static java.util.Calendar.FRIDAY;
+import static java.util.Calendar.MONDAY;
+import static java.util.Calendar.SATURDAY;
+import static java.util.Calendar.SUNDAY;
+import static java.util.Calendar.THURSDAY;
+import static java.util.Calendar.TUESDAY;
+import static java.util.Calendar.WEDNESDAY;
 
 class DataStorage{
 
@@ -396,5 +406,51 @@ class DataStorage{
             e.printStackTrace();
         }
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public ArrayList<CalendarItem> getCalendarList(int month){
+        //42 fields
+        GregorianCalendar calendar = new GregorianCalendar();
+        calendar.set(Calendar.MONTH, month);
+        int monthMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        int dayOfWeek = 0;
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        switch (calendar.get(Calendar.DAY_OF_WEEK)){
+            case MONDAY: dayOfWeek = 7; break;
+            case TUESDAY: dayOfWeek = 1; break;
+            case WEDNESDAY: dayOfWeek = 2; break;
+            case THURSDAY: dayOfWeek = 3; break;
+            case FRIDAY: dayOfWeek = 4; break;
+            case SATURDAY: dayOfWeek = 5; break;
+            case SUNDAY: dayOfWeek = 6; break;
+        }
+        int monthBefore = calendar.get(Calendar.MONTH) == 0 ? 11 : calendar.get(Calendar.MONTH) + 1;
+        System.out.println("MonthBefore: " + monthBefore);
+        if(monthBefore == 0)calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
+        System.out.println("Year: " + calendar.get(Calendar.YEAR));
+        calendar.set(Calendar.MONTH, monthBefore);
+        int monthBeforeMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+        System.out.println("MonthBeforeMax: " + monthBeforeMax);
+
+        ArrayList<CalendarItem> days = new ArrayList<>();
+        for(int i = 0; i < 42; i++){
+            days.add(new CalendarItem(0, false));
+        }
+        int x = monthBeforeMax - dayOfWeek - 1;
+        for(int i = 0; i < dayOfWeek; i++){
+            days.get(i).setDay(x++);
+        }
+
+        x = 1;
+        for(int i = dayOfWeek; i < monthMax + dayOfWeek; i++){
+            days.get(i).setDay(x++);
+            days.get(i).setActualMonth(true);
+        }
+        x = 1;
+        for(int i = monthMax + dayOfWeek; i < 42; i++){
+            days.get(i).setDay(x++);
+        }
+        return days;
     }
 }

@@ -16,7 +16,7 @@ public class Tab3kalender extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab2kalender, container, false);
+        View rootView = inflater.inflate(R.layout.tab3kalender, container, false);
         return rootView;
     }
 

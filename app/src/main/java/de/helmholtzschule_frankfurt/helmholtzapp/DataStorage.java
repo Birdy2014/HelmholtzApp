@@ -97,7 +97,7 @@ class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity a) throws NoConnectionException{
+    public void update(Activity a) throws NoConnectionException { //Do not remove that!!!
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = a.findViewById(R.id.progressBar2);
@@ -137,7 +137,7 @@ class DataStorage{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    } //Do not remove this!!!
+    }
 
     private String download(String website) throws IOException {
         URLConnection connection = new URL(website).openConnection();
@@ -472,6 +472,7 @@ class DataStorage{
         }
         return days;
     }
+
     public ArrayList<CalendarItem> addActionToList(ArrayList<CalendarItem> list, int start, int end, Action action, ActionType type){
         if(type == ActionType.INTERNAL) {
             int i = 0;
@@ -505,24 +506,42 @@ class DataStorage{
 
             int actionIndex = 0;
             int startIndex = i;
+            int x = 0;
             for (; i < list.size(); i++) {
                 if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
                     actionIndex = list.get(i).getFreeActionIndex();
-                if (list.get(i).getDay() == end) break;
+                if (list.get(i).getDay() == end){
+                    if(list.get(i).getDay() == end){
+                        if(x == 2)break;
+                        else x++;
+                    }
+                }
             }
+            x = 0;
             for (i = startIndex; i < list.size(); i++) {
                 list.get(i).addAction(action, actionIndex);
-                if (list.get(i).getDay() == end) break;
+                if (list.get(i).getDay() == end){
+                    if(list.get(i).getDay() == end){
+                        if(x == 2)break;
+                        else x++;
+                    }
+                }
             }
         }
         else if(type == ActionType.INGOING){
             int i = 0;
-            for (; i < list.size(); i++) {
-                if (list.get(i).getDay() == start) break;
-            }//i is now the defined start of the action
+            int startIndex = 0;
+            if(list.get(i).getDay() >= start)startIndex = i;
+            else {
+                for(; i < list.size(); i++){
+                    if(list.get(i).getDay() == start){
+                        startIndex = i;
+                        break;
+                    }
+                }
+            }
 
             int actionIndex = 0;
-            int startIndex = i;
             for (; i < list.size(); i++) {
                 if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
                     actionIndex = list.get(i).getFreeActionIndex();
@@ -590,6 +609,41 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
         }
+        if(type == ActionType.SPANNED){
+            int i = 0;
+            int startIndex = 0;
+            if(list.get(i).getDay() >= start)startIndex = i;
+            else {
+                for(; i < list.size(); i++){
+                    if(list.get(i).getDay() == start){
+                        startIndex = i;
+                        break;
+                    }
+                }
+            }
+            int actionIndex = 0;
+            int x = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+                if (list.get(i).getDay() == end){
+                    if(list.get(i).getDay() == end){
+                        if(x == 2)break;
+                        else x++;
+                    }
+                }
+            }
+            x = 0;
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
+                if (list.get(i).getDay() == end){
+                    if(list.get(i).getDay() == end){
+                        if(x == 2)break;
+                        else x++;
+                    }
+                }
+            }
+        }
         return list;
     }
 
@@ -603,8 +657,9 @@ class DataStorage{
 
     public void fillContainers(){
         containers.clear();
-        containers.add(new ActionContainer("Test", new ActionDate(2, Calendar.AUGUST, 2018), new ActionDate(4, Calendar.AUGUST, 2018)));
+        containers.add(new ActionContainer("Test", new ActionDate(2, Calendar.JUNE, 2018), new ActionDate(4, Calendar.AUGUST, 2019)));
     }
+
     public ArrayList<ActionContainer> getContainers() {
         return containers;
     }

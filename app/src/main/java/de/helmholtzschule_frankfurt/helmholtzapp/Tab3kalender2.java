@@ -20,6 +20,7 @@ import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.EXTERNAL_OUT;
 import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.INGOING;
 import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.INTERNAL;
 import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.OUTGOING;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.SPANNED;
 
 public class Tab3kalender2 extends Fragment{
 
@@ -91,7 +92,7 @@ public class Tab3kalender2 extends Fragment{
 
         for(ActionContainer container : storage.getContainers()){
             ActionType actionType = EXTERNAL;
-            if(container.getStartMonth() == month){
+            if(container.getStartMonth() == month && container.getStartYear() == year){
                 if(container.getStartYear() < container.getEndYear())actionType = OUTGOING;
                 else if(container.getStartYear() > container.getEndYear())actionType = INGOING;
                 else {
@@ -100,7 +101,7 @@ public class Tab3kalender2 extends Fragment{
                     else actionType = INTERNAL;
                 }
             }
-            else if(container.getEndMonth() == month){
+            else if(container.getEndMonth() == month && container.getEndYear() == year){
                 if(container.getStartYear() < container.getEndYear())actionType = INGOING;
                 else if(container.getStartYear() > container.getEndYear())actionType = OUTGOING;
                 else {
@@ -116,11 +117,28 @@ public class Tab3kalender2 extends Fragment{
                     if(container.getStartMonth() == monthBefore)actionType = EXTERNAL_IN;
                     else if(container.getStartMonth() == monthAfter)actionType = EXTERNAL_OUT;
                 }
-                //TODO überbrückende Actions
+                else {
+                    if(container.getStartYear() == container.getEndYear()){
+                        if(container.getStartMonth() < month && container.getEndMonth() > month && container.getStartYear() == year)actionType = SPANNED;
+                    }
+                    else {
+                        if(container.getStartYear() <= year && container.getEndYear() > year){
+                            if(container.getStartMonth() < month)actionType = SPANNED;
+                        }
+                        if(container.getStartYear() <= year){
+                            if(container.getEndYear() == year){
+                                if(container.getEndMonth() >= month) {
+                                    actionType = SPANNED;
+                                }
+                            }
+                        }
+                    }
+                }
             }
 
             ArrayList<CalendarItem> placeholder = new ArrayList<>(list);
             list.clear();
+            System.out.println(actionType.toString());
             list.addAll(storage.addActionToList(placeholder, container.getStartDay(), container.getEndDay(), container.getAction(), actionType));
 
         }

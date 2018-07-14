@@ -39,6 +39,9 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
         }
         dayView.setText(day);
 
+        //TODO implement user stuff
+
+
         return customView;
     }
     private int getDateSpotIndexByActionIndex(int index){

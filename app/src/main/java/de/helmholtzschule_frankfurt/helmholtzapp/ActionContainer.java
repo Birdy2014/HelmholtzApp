@@ -3,10 +3,8 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 public class ActionContainer {
 
     private Action action;
-    private ActionType actionType;
     private ActionDate startDate;
     private ActionDate endDate;
-    //TODO add month etc
 
     public ActionContainer(String actionName, ActionDate startDate, ActionDate endDate) {
         this.action = new Action(actionName, this);
@@ -33,8 +31,4 @@ public class ActionContainer {
     public int getEndMonth(){return endDate.getMonth();}
 
     public int getEndYear(){return endDate.getYear();}
-
-    public ActionType getActionType() {
-        return actionType;
-    }
 }

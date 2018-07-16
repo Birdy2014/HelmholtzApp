@@ -47,6 +47,9 @@ public class Tab3kalender2 extends Fragment{
         TextView date = getActivity().findViewById(R.id.calendarHeader);
         date.setText(new DateFormatSymbols().getMonths()[storage.getMonthYear()[0]] + " " + storage.getMonthYear()[1]);
 
+
+
+        //fix that
         ImageButton add = getActivity().findViewById(R.id.calendarButtonAdd);
         add.setOnClickListener(click -> {
             Dialog dialog = new Dialog(getActivity());
@@ -80,7 +83,7 @@ public class Tab3kalender2 extends Fragment{
                 }
             });
 
-            dialog.show();
+            //dialog.show();
             /*storage.getContainers().add(new ActionContainer("Test", new ActionDate(2, Calendar.JUNE, 2018), new ActionDate(9, Calendar.JULY, 2018)));
             ArrayList<CalendarItem> placeholder2 = new ArrayList<>(days);
             days.clear();

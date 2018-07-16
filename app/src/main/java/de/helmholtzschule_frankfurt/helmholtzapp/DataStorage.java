@@ -420,14 +420,12 @@ class DataStorage{
         int today = calendar.get(Calendar.DAY_OF_MONTH);
         int monthToday = calendar.get(Calendar.MONTH);
         int yearToday = calendar.get(Calendar.YEAR);
-        if(month != -1 && year != -1) {
-            calendar.set(Calendar.MONTH, month);
-            calendar.set(Calendar.YEAR, year);
+        if(month == -1 && year == -1) {
+            month = monthYear[0];
+            year = monthYear[1];
         }
-        else {
-            calendar.set(Calendar.MONTH, monthYear[0]);
-            calendar.set(Calendar.YEAR, monthYear[1]);
-        }
+        calendar.set(Calendar.MONTH, month);
+        calendar.set(Calendar.YEAR, year);
         int monthMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         int dayOfWeek = 0;
         calendar.set(Calendar.DAY_OF_MONTH, 1);
@@ -441,16 +439,17 @@ class DataStorage{
             case SUNDAY: dayOfWeek = 6; break;
         }
         int monthBefore = calendar.get(Calendar.MONTH) == 0 ? 11 : calendar.get(Calendar.MONTH) - 1;
-        System.out.println("MonthBefore: " + monthBefore);
         if(monthBefore == 0)calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) - 1);
-        System.out.println("Year: " + calendar.get(Calendar.YEAR));
         calendar.set(Calendar.MONTH, monthBefore);
         int monthBeforeMax = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-        System.out.println("MonthBeforeMax: " + monthBeforeMax);
+        int monthNext = month == 11 ? 0 : month + 1;
+        System.out.println("Month before: " + monthBefore);
+        System.out.println("Month: " + month);
+        System.out.println("Month next: " + monthNext);
 
         ArrayList<CalendarItem> days = new ArrayList<>();
         for(int i = 0; i < 42; i++){
-            days.add(new CalendarItem(0, false, false, -1));
+            days.add(new CalendarItem(0, false, false, monthBefore));
         }
         int x = monthBeforeMax - dayOfWeek + 1;
         for(int i = 0; i < dayOfWeek; i++){
@@ -463,12 +462,14 @@ class DataStorage{
                 days.get(i).setToday(true);
             }
             days.get(i).setActualMonth(true);
+            days.get(i).setMonth(month);
 
             days.get(i).setDay(x++); //has to be last statement here
         }
         x = 1;
         for(int i = monthMax + dayOfWeek; i < 42; i++){
             days.get(i).setDay(x++);
+            days.get(i).setMonth(monthNext);
         }
         return days;
     }
@@ -495,7 +496,7 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
         }
-        else if(type == ActionType.OUTGOING){
+        else if(type == ActionType.OUTGOING_I){
             int i = 0;
             for (; i < list.size(); i++) {
                 if (list.get(i).getDay() == 1) break;
@@ -512,8 +513,7 @@ class DataStorage{
                     actionIndex = list.get(i).getFreeActionIndex();
                 if (list.get(i).getDay() == end){
                     if(list.get(i).getDay() == end){
-                        if(x == 2)break;
-                        else x++;
+                        if(++x == 2)break;
                     }
                 }
             }
@@ -522,10 +522,28 @@ class DataStorage{
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end){
                     if(list.get(i).getDay() == end){
-                        if(x == 2)break;
-                        else x++;
+                        if(++x == 2)break;
                     }
                 }
+            }
+        }
+        else if(type == ActionType.OUTGOING_II){
+            int i = 0;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == 1) break;
+            }//i is now the month's start
+            for (; i < list.size(); i++) {
+                if (list.get(i).getDay() == start) break;
+            }//i is now the defined start of the action
+
+            int actionIndex = 0;
+            int startIndex = i;
+            for (; i < list.size(); i++) {
+                if (list.get(i).getFreeActionIndex() > actionIndex && list.get(i).getFreeActionIndex() != -1)
+                    actionIndex = list.get(i).getFreeActionIndex();
+            }
+            for (i = startIndex; i < list.size(); i++) {
+                list.get(i).addAction(action, actionIndex);
             }
         }
         else if(type == ActionType.INGOING){
@@ -657,7 +675,7 @@ class DataStorage{
 
     public void fillContainers(){
         containers.clear();
-        containers.add(new ActionContainer("Test", new ActionDate(2, Calendar.JUNE, 2018), new ActionDate(4, Calendar.AUGUST, 2019)));
+        //containers.add(new ActionContainer("Test", new ActionDate(26, Calendar.JUNE, 2018), new ActionDate(29, Calendar.JUNE, 2018)));
     }
 
     public ArrayList<ActionContainer> getContainers() {

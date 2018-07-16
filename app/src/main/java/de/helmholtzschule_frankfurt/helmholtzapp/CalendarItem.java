@@ -8,8 +8,9 @@ public class CalendarItem {
     private ArrayList<Action> actions; // 5 items
     private boolean isActualMonth;
     private boolean isToday;
+    private int month;
 
-    public CalendarItem(int day, boolean isActualMonth, boolean isToday, int isFirstAt) {
+    public CalendarItem(int day, boolean isActualMonth, boolean isToday, int month) {
         this.day = day;
         actions = new ArrayList<>();
         this.isActualMonth = isActualMonth;
@@ -17,7 +18,7 @@ public class CalendarItem {
         for(int i = 0; i < 5; i++){
             actions.add(null);
         }
-
+        setMonth(month);
     }
 
     public int getDay() {
@@ -69,5 +70,13 @@ public class CalendarItem {
 
     public void setToday(boolean today) {
         isToday = today;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
     }
 }

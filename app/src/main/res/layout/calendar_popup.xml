@@ -1,25 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Von"
-        android:id="@+id/calendarPopupText"/>
+        android:id="@+id/calendar_popup_header"
+        android:text="Termin hinzufügen"
+        android:textSize="20sp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_marginTop="10dp"
+        android:textAlignment="center"/>
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/calendarPopupEdit"
-        android:inputType="number"/>
+        android:text="Beginn"
+        android:id="@+id/calendar_popup_start_header"
+        android:layout_below="@id/calendar_popup_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_popup_edit_start_day"
+        android:inputType="number"
+        android:layout_below="@id/calendar_popup_start_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_popup_edit_start_month"
+        android:inputType="number"
+        android:layout_below="@id/calendar_popup_start_header"
+        android:layout_toEndOf="@id/calendar_popup_edit_start_day"
+        android:layout_toRightOf="@id/calendar_popup_edit_start_day"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"
+        />
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_popup_edit_start__year"
+        android:inputType="number"
+        android:layout_below="@id/calendar_popup_start_header"
+        android:layout_toEndOf="@id/calendar_popup_edit_start_month"
+        android:layout_toRightOf="@id/calendar_popup_edit_start_month"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/calendarPopupOk"/>
+        android:id="@+id/calendar_popup_apply"
+        android:layout_below="@id/calendar_popup_edit_start_day"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp" />
 
-</LinearLayout>
+</RelativeLayout>

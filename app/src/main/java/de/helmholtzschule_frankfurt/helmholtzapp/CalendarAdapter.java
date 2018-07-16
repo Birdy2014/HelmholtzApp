@@ -7,7 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.StundenplanColor.*;
 
@@ -31,7 +33,7 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
             dayView.setTextColor(0xFFADADAD);
         }
         if(getItem(position).isToday()){
-            view.setBackgroundColor(0x55006EFF);
+            view.setBackgroundColor(0x555A9016);//006EFF -> light blue
         }
         for(int i = 0; i < getItem(position).getActions().size(); i++){
             if(getItem(position).getActions().get(i) == null)continue;
@@ -40,7 +42,14 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
         dayView.setText(day);
 
         //TODO implement user stuff
-
+        customView.setOnClickListener(click -> {
+            if(getItem(position).isActualMonth()) {
+                System.out.println("Clicked " + getItem(position).getDay() + " " + DateFormatSymbols.getInstance().getMonths()[getItem(position).getMonth()]);
+            }
+            else {
+                System.out.println("Clicked " + getItem(position).getDay() + " " + DateFormatSymbols.getInstance().getMonths()[getItem(position).getMonth()]);
+            }
+        });
 
         return customView;
     }

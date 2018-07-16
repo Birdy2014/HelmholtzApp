@@ -132,4 +132,16 @@
         android:layout_marginRight="1dp"
         android:numColumns="7" />
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendarButtonAdd"
+        android:src="@drawable/ic_add_action"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/calendarGrid"/>
+
 </RelativeLayout>

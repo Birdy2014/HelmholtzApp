@@ -354,8 +354,7 @@ class DataStorage{
                     try {
                         stundenplan.set(i, getTimeAtHour(i / 6, activity));
                     }
-                    catch (IndexOutOfBoundsException e){
-                        break;
+                    catch (IndexOutOfBoundsException ignored){
                     }
                 }
                 else {
@@ -367,6 +366,7 @@ class DataStorage{
                 }
             }
         }
+        saveStundenplan(activity);
         Toast.makeText(activity.getBaseContext(), "Stundenplan wurde erforlgreich importiert.", Toast.LENGTH_SHORT).show();
         return true;
     }

@@ -1,5 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
@@ -52,44 +54,53 @@ public class Tab3kalender2 extends Fragment{
         //fix that
         ImageButton add = getActivity().findViewById(R.id.calendarButtonAdd);
         add.setOnClickListener(click -> {
+
             Dialog dialog = new Dialog(getActivity());
             View dialogView = View.inflate(getActivity(), R.layout.calendar_popup, null);
-            dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            Spinner startDay = dialogView.findViewById(R.id.calendar_popup_edit_start_day);
-            Spinner startMonth = dialogView.findViewById(R.id.calendar_popup_edit_start_month);
-            Spinner startYear = dialogView.findViewById(R.id.calendar_popup_edit_start__year);
+            TextView start = dialogView.findViewById(R.id.popup_start_view);
+            TextView end = dialogView.findViewById(R.id.popup_end_view);
 
+            start.setText(Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + ". " + DateFormatSymbols.getInstance().getMonths()[storage.getMonthYear()[0]] + " " + storage.getMonthYear()[1]);
+            start.setOnClickListener(click1 -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext());
 
-            addActualDataToSpinner(startYear, Calendar.getInstance().get(Calendar.YEAR), "year");
-            addActualDataToSpinner(startMonth, Calendar.getInstance().get(Calendar.MONTH), "month");
-            addActualDataToSpinner(startDay, Calendar.getInstance().get(Calendar.DAY_OF_MONTH), "day");
+                datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        System.out.println(i + " " + i1 + " " + i2);
 
-            startMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    ArrayList<Integer> days = new ArrayList<>();
-                    Calendar calendar = Calendar.getInstance();
-                    calendar.set(Calendar.MONTH, i);
-                    for(int j = 1; j <= calendar.getActualMaximum(Calendar.DAY_OF_MONTH); i++){
-                        days.add(i);
+                        start.setText(i2 + ". " + DateFormatSymbols.getInstance().getMonths()[i1] + " " + i);
                     }
-                    startMonth.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, days));
-                }
+                });
 
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
+                datePickerDialog.show();
             });
+            end.setText(start.getText());
+            end.setOnClickListener(click1 -> {
+                DatePickerDialog datePickerDialog = new DatePickerDialog(getContext());
 
-            //dialog.show();
-            /*storage.getContainers().add(new ActionContainer("Test", new ActionDate(2, Calendar.JUNE, 2018), new ActionDate(9, Calendar.JULY, 2018)));
-            ArrayList<CalendarItem> placeholder2 = new ArrayList<>(days);
-            days.clear();
-            days.addAll(addActions(placeholder2, storage.getMonthYear()[0], storage.getMonthYear()[1]));
-            adapter.notifyDataSetChanged();*/
+                datePickerDialog.setOnDateSetListener(new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
+                        System.out.println(i + " " + i1 + " " + i2);
+
+                        end.setText(i2 + ". " + DateFormatSymbols.getInstance().getMonths()[i1] + " " + i);
+
+                    }
+                });
+
+                datePickerDialog.show();
+            });
+            dialog.show();
         });
+            /*
+            dialog.show();
+            storage.getContainers().add(new ActionContainer("Test", new ActionDate(i2, i1, i), new ActionDate(9, Calendar.AUGUST, 2018)));
+                   days.clear();
+                   days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
+                    adapter.notifyDataSetChanged();*/
 
         ImageButton left = getActivity().findViewById(R.id.calendarButtonLeft);
         ImageButton right = getActivity().findViewById(R.id.calendarButtonRight);
@@ -228,35 +239,6 @@ public class Tab3kalender2 extends Fragment{
 
         }
         return list;
-    }
-
-    private void addActualDataToSpinner(Spinner spinner, int x, String key){
-        switch (key){
-            case "year": {
-                ArrayList<Integer> list = new ArrayList<>();
-                for(int i = x - 100; i <= x + 100; i++)list.add(i);
-                ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, list);
-                spinner.setAdapter(adapter);
-                spinner.setSelection(101);
-                break;
-            }
-            case "month":{
-                ArrayList<String> list = new ArrayList<>();
-                for(int i = 0; i < 12; i++){
-                    list.add(DateFormatSymbols.getInstance().getMonths()[i]);
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, list);
-                spinner.setAdapter(adapter);
-                spinner.setSelection(x);
-                break;
-            }
-            case "day": {
-                ArrayList<Integer> list = new ArrayList<>();
-                for(int i = 1; i < 32; i++)list.add(i);
-                ArrayAdapter<Integer> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_dropdown_item, list);
-                spinner.setSelection(x - 1);
-            }
-        }
     }
 
 }

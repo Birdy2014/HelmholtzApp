@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendar_popup_header"
         android:text="Termin hinzufügen"
@@ -25,26 +25,65 @@
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_popup_start_time"
+        android:text="08:00"
+        android:textSize="20sp"
+        android:layout_toEndOf="@id/calendar_popup_start_header"
+        android:layout_toRightOf="@id/calendar_popup_start_header"
+        android:layout_below="@id/calendar_popup_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/popup_start_view"
         android:layout_below="@id/calendar_popup_header"
-        android:layout_toEndOf="@id/calendar_popup_start_header"
-        android:layout_toRightOf="@id/calendar_popup_start_header"
+        android:layout_toEndOf="@id/calendar_popup_start_time"
+        android:layout_toRightOf="@id/calendar_popup_start_time"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
-        android:text="12. Oktober 2018"/>
+        android:text="12. Dezember 2018"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ende:   "
+        android:textSize="20sp"
+        android:id="@+id/calendar_popup_end_header"
+        android:layout_below="@id/calendar_popup_start_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_popup_end_time"
+        android:text="18:00"
+        android:textSize="20sp"
+        android:layout_toEndOf="@id/calendar_popup_end_header"
+        android:layout_toRightOf="@id/calendar_popup_end_header"
+        android:layout_below="@id/popup_start_view"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/popup_end_view"
         android:layout_below="@id/calendar_popup_start_header"
-        android:layout_toEndOf="@id/calendar_popup_start_header"
+        android:layout_toEndOf="@id/calendar_popup_end_time"
         android:layout_toRightOf="@id/calendar_popup_start_header"
         android:textSize="20sp"
         android:layout_marginTop="10dp"

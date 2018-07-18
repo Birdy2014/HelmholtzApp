@@ -2,9 +2,12 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.TimePickerDialog;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
+import android.support.annotation.StyleableRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,9 +20,11 @@ import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.*;
@@ -93,14 +98,54 @@ public class Tab3kalender2 extends Fragment{
 
                 datePickerDialog.show();
             });
+
+            Button apply = dialogView.findViewById(R.id.calendar_popup_apply);
+            apply.setOnClickListener(click1 -> {
+
+                storage.getContainers().add(new ActionContainer("Test", generateActionDateFromDate(start.getText().toString()), generateActionDateFromDate(end.getText().toString())));
+                days.clear();
+                days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
+                adapter.notifyDataSetChanged();
+            });
+
+            TextView startTime = dialogView.findViewById(R.id.calendar_popup_start_time);
+            TextView endTime = dialogView.findViewById(R.id.calendar_popup_end_time);
+
+            startTime.setOnClickListener(click1 -> {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.primaryDarkForeground, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        String hours = String.valueOf(i);
+                        if(hours.length() == 1)hours = "0" + hours;
+                        String minutes = String.valueOf(i1);
+                        if(minutes.length() == 1)minutes = "0" + minutes;
+                        startTime.setText(hours + ":" + minutes);
+                    }
+                }, 8, 0, true);
+
+                timePickerDialog.show();
+
+            });
+
+            endTime.setOnClickListener(click1 -> {
+                TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.primaryDarkForeground, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int i, int i1) {
+                        String hours = String.valueOf(i);
+                        if(hours.length() == 1)hours = "0" + hours;
+                        String minutes = String.valueOf(i1);
+                        if(minutes.length() == 1)minutes = "0" + minutes;
+                        endTime.setText(hours + ":" + minutes);
+                    }
+                },8, 0 , true);
+
+                timePickerDialog.show();
+
+            });
+
+
             dialog.show();
         });
-            /*
-            dialog.show();
-            storage.getContainers().add(new ActionContainer("Test", new ActionDate(i2, i1, i), new ActionDate(9, Calendar.AUGUST, 2018)));
-                   days.clear();
-                   days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
-                    adapter.notifyDataSetChanged();*/
 
         ImageButton left = getActivity().findViewById(R.id.calendarButtonLeft);
         ImageButton right = getActivity().findViewById(R.id.calendarButtonRight);
@@ -241,4 +286,13 @@ public class Tab3kalender2 extends Fragment{
         return list;
     }
 
+    private ActionDate generateActionDateFromDate(String s){
+        int day = Integer.parseInt(s.substring(0, s.indexOf(".")));
+        String monthString = s.substring(s.indexOf(".") + 2, s.lastIndexOf(" "));
+        System.out.println(monthString + "END");
+        int month = Arrays.asList(DateFormatSymbols.getInstance().getMonths()).indexOf(monthString);
+        int year = Integer.parseInt(s.substring(s.lastIndexOf(" ") + 1));
+        System.out.println(day + " " + month + " " + year);
+        return new ActionDate(day, month, year);
+    }
 }

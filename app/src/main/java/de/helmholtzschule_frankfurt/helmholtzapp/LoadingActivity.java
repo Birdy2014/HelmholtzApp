@@ -39,7 +39,8 @@ public class LoadingActivity extends AppCompatActivity{
                     textView.post(new Runnable() {
                         @Override
                         public void run() {
-                            textView.setText("Kein Internet");
+                            System.out.println("Keine Verbindung");
+                            textView.setText("Verbindung zum Server konnte nicht\nhergestellt werden");
                         }
                     });
                 } else {
@@ -60,6 +61,7 @@ public class LoadingActivity extends AppCompatActivity{
                             textView.post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    System.out.println("NoConnectionException");
                                     textView.setText("Kein Internet");
                                 }
                             });

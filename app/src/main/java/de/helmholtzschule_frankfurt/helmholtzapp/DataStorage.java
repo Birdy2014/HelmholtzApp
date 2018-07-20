@@ -71,6 +71,7 @@ class DataStorage{
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
+    private boolean isDebugRun = false; //TODO change before commit or release!!!
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -105,8 +106,16 @@ class DataStorage{
                 vertretungsplan.updateVertretungsplan();
                 bar.setProgress(35);
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
+                if(mensaplanRawData.equals("dError")){
+                    setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
+                    if(!isDebugRun)return;
+                }
                 bar.setProgress(45);
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
+                if(newsRawData.equals("dError")){ //checks for download possibility of HHS
+                    setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
+                    if(!isDebugRun)return;
+                }
                 bar.setProgress(70);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
                 fillStundenplan(a);
@@ -115,7 +124,7 @@ class DataStorage{
                 parseMensaplan();
                 parseNews();
                 parseLehrerliste();
-                fillContainers();
+                fillContainers(a);
                 monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
                 int index = a.getIntent().getIntExtra("fragmentIndex", 0);
                 Intent intent = new Intent(a, MainActivity.class);
@@ -125,7 +134,7 @@ class DataStorage{
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
-                a.findViewById(R.id.loadingtext).post(() -> ((TextView)a.findViewById(R.id.loadingtext)).setText("Download Timeout"));
+                setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -139,9 +148,20 @@ class DataStorage{
         }
     }
 
+    private void setTextViewText(Activity a, int id, String text){
+        a.findViewById(id).post(() -> ((TextView)a.findViewById(id)).setText(text));
+    }
+
     private String download(String website) throws IOException {
         URLConnection connection = new URL(website).openConnection();
-        InputStream inputStream = connection.getInputStream();
+
+        InputStream inputStream;
+        try {
+            inputStream = connection.getInputStream();
+        }
+        catch (FileNotFoundException e){
+            return "dError";
+        }
         Scanner scanner = new Scanner(inputStream);
         String data = "";
         while (scanner.hasNextLine()) {
@@ -194,7 +214,9 @@ class DataStorage{
         final boolean[] reachable = new boolean[1];
         Thread thread = new Thread(() -> {
             try {
-                URL url = new URL("http://www.helmholtzschule-frankfurt.de");
+                URL url;
+                if(!isDebugRun)url = new URL("http://www.helmholtzschule-frankfurt.de");
+                else url = new URL("https://www.google.com");
                 HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
                 Object objData = urlConnect.getContent();
                 reachable[0] = true;
@@ -673,12 +695,38 @@ class DataStorage{
         this.monthYear = monthYear;
     }
 
-    public void fillContainers(){
+    public void fillContainers(Context context){
         containers.clear();
-        //containers.add(new ActionContainer("Test", new ActionDate(26, Calendar.JUNE, 2018), new ActionDate(29, Calendar.JUNE, 2018)));
+        loadCalendar(context);
+        //Put here standards
     }
 
     public ArrayList<ActionContainer> getContainers() {
         return containers;
+    }
+
+    public void saveCalendar(Context context){
+        Gson gson = new Gson();
+        ArrayList<String> calendarStrings = new ArrayList<>();
+        for(ActionContainer container : containers){
+            calendarStrings.add(container.toString());
+        }
+        String JSON = gson.toJson(calendarStrings);
+        System.out.println(JSON); // TODO remove;
+        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
+        SharedPreferences.Editor editor = mySPR.edit();
+        editor.putString("calendar", JSON);
+        editor.apply();
+    }
+
+    public void loadCalendar(Context context){
+        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
+        String JSON = mySPR.getString("calendar", "[]");
+        Gson gson = new Gson();
+        TypeToken<ArrayList<String>> token = new TypeToken<ArrayList<String>>(){};
+        ArrayList<String> codes =  gson.fromJson(JSON, token.getType());
+        for(String code : codes){
+            containers.add(new ActionContainer(code));
+        }
     }
 }

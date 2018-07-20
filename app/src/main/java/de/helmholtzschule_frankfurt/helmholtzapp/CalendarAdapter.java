@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.StundenplanColor.*;
 
@@ -41,18 +42,27 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
         }
         dayView.setText(day);
 
-        //TODO implement user stuff
         customView.setOnClickListener(click -> {
-            if(getItem(position).isActualMonth()) {
-                System.out.println("Clicked " + getItem(position).getDay() + " " + DateFormatSymbols.getInstance().getMonths()[getItem(position).getMonth()]);
-            }
-            else {
-                System.out.println("Clicked " + getItem(position).getDay() + " " + DateFormatSymbols.getInstance().getMonths()[getItem(position).getMonth()]);
-            }
+            showActions(getItem(position));
         });
 
         return customView;
     }
+
+    private void showActions(CalendarItem item){
+        System.out.println("Actions of: " + item.getDay() + ". " + item.getMonth() + ".");
+        for(int i = 0; i < item.getActions().size(); i++){
+            Action action = item.getActions().get(i);
+            System.out.println("Slot " + i + ":");
+            if(action == null)System.out.println("Empty");
+            else {
+                System.out.println(action.getName());
+                System.out.println("Start: " + action.getParent().getStartDay() + ". " + action.getParent().getStartMonth() + ". " + action.getParent().getStartYear() + " " + action.getParent().getStartHour() + ":" + action.getParent().getStartMinute());
+                System.out.println("End: " + action.getParent().getEndDay() + ". " + action.getParent().getEndMonth() + ". " + action.getParent().getEndYear() + " " + action.getParent().getEndHour() + ":" + action.getParent().getEndMinute());
+            }
+        }
+    }
+
     private int getDateSpotIndexByActionIndex(int index){
         switch (index){
             case 0:

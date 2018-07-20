@@ -3,11 +3,11 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 public class Action {
 
     private String name;
-    private ActionContainer origin;
+    private ActionContainer parent;
 
     public Action(String name, ActionContainer container) {
         this.name = name;
-        origin = container;
+        parent = container;
     }
 
     public String getName() {
@@ -16,5 +16,14 @@ public class Action {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public ActionContainer getParent() {
+        return parent;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

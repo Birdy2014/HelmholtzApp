@@ -98,18 +98,20 @@ public class Tab3kalender2 extends Fragment{
 
                 datePickerDialog.show();
             });
+            TextView startTime = dialogView.findViewById(R.id.calendar_popup_start_time);
+            TextView endTime = dialogView.findViewById(R.id.calendar_popup_end_time);
 
             Button apply = dialogView.findViewById(R.id.calendar_popup_apply);
             apply.setOnClickListener(click1 -> {
 
-                storage.getContainers().add(new ActionContainer("Test", generateActionDateFromDate(start.getText().toString()), generateActionDateFromDate(end.getText().toString())));
+                storage.getContainers().add(new ActionContainer("Test", generateActionDateFromDate(start.getText().toString(), startTime.getText().toString()), generateActionDateFromDate(end.getText().toString(), endTime.getText().toString())));
                 days.clear();
                 days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
                 adapter.notifyDataSetChanged();
+                storage.saveCalendar(getContext());
             });
 
-            TextView startTime = dialogView.findViewById(R.id.calendar_popup_start_time);
-            TextView endTime = dialogView.findViewById(R.id.calendar_popup_end_time);
+
 
             startTime.setOnClickListener(click1 -> {
                 TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), R.style.primaryDarkForeground, new TimePickerDialog.OnTimeSetListener() {
@@ -286,13 +288,15 @@ public class Tab3kalender2 extends Fragment{
         return list;
     }
 
-    private ActionDate generateActionDateFromDate(String s){
+    private ActionDate generateActionDateFromDate(String s, String time){
         int day = Integer.parseInt(s.substring(0, s.indexOf(".")));
         String monthString = s.substring(s.indexOf(".") + 2, s.lastIndexOf(" "));
         System.out.println(monthString + "END");
         int month = Arrays.asList(DateFormatSymbols.getInstance().getMonths()).indexOf(monthString);
         int year = Integer.parseInt(s.substring(s.lastIndexOf(" ") + 1));
         System.out.println(day + " " + month + " " + year);
-        return new ActionDate(day, month, year);
+        int hours = Integer.parseInt(time.substring(0, time.indexOf(":")));
+        int minutes = Integer.parseInt(time.substring(time.indexOf(":") + 1));
+        return new ActionDate(minutes, hours, day, month, year);
     }
 }

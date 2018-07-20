@@ -104,6 +104,8 @@ public class Tab3kalender2 extends Fragment{
             Button apply = dialogView.findViewById(R.id.calendar_popup_apply);
             apply.setOnClickListener(click1 -> {
 
+
+                //TODO add name change
                 storage.getContainers().add(new ActionContainer("Test", generateActionDateFromDate(start.getText().toString(), startTime.getText().toString()), generateActionDateFromDate(end.getText().toString(), endTime.getText().toString())));
                 days.clear();
                 days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));

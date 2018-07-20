@@ -1,10 +1,13 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.DateFormatSymbols;
@@ -61,6 +64,16 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
                 System.out.println("End: " + action.getParent().getEndDay() + ". " + action.getParent().getEndMonth() + ". " + action.getParent().getEndYear() + " " + action.getParent().getEndHour() + ":" + action.getParent().getEndMinute());
             }
         }
+        Dialog dialog = new Dialog(getContext());
+        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.action_view, null);
+        dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+
+        ListView actionView = dialogView.findViewById(R.id.action_list_view);
+        ArrayList<ActionContainer> list = new ArrayList<>();
+        for(Action a : item.getActions())if(a != null)list.add(a.getParent());
+        actionView.setAdapter(new ActionAdapter(getContext(), list));
+
+        dialog.show();
     }
 
     private int getDateSpotIndexByActionIndex(int index){

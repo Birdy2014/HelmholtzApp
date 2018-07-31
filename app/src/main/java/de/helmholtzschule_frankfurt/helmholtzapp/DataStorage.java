@@ -150,6 +150,7 @@ class DataStorage{
             e.printStackTrace();
         }
     }
+
     private void setLoadingInfo(String text, Activity activity){
         setTextViewText(activity, R.id.loadingInfo, text + "...");
     }
@@ -520,6 +521,7 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end) break;
             }
@@ -547,6 +549,7 @@ class DataStorage{
             }
             x = 0;
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end){
                     if(list.get(i).getDay() == end){
@@ -571,6 +574,7 @@ class DataStorage{
                     actionIndex = list.get(i).getFreeActionIndex();
             }
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
             }
         }
@@ -594,6 +598,7 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end) break;
             }
@@ -622,6 +627,7 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end) break;
             }
@@ -651,6 +657,7 @@ class DataStorage{
                 if (list.get(i).getDay() == end) break;
             }
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end) break;
             }
@@ -681,6 +688,7 @@ class DataStorage{
             }
             x = 0;
             for (i = startIndex; i < list.size(); i++) {
+                if(i == startIndex)list.get(i).setFirstAt(actionIndex);
                 list.get(i).addAction(action, actionIndex);
                 if (list.get(i).getDay() == end){
                     if(list.get(i).getDay() == end){

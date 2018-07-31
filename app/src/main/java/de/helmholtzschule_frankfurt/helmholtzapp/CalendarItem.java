@@ -1,14 +1,16 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class CalendarItem {
 
     private int day;
-    private ArrayList<Action> actions; // 5 items
+    private ArrayList<Action> actions; // 3 items
     private boolean isActualMonth;
     private boolean isToday;
     private int month;
+    private HashSet<Integer> firstAt = new HashSet<>();
 
     public CalendarItem(int day, boolean isActualMonth, boolean isToday, int month) {
         this.day = day;
@@ -78,5 +80,13 @@ public class CalendarItem {
 
     public void setMonth(int month) {
         this.month = month;
+    }
+
+    public boolean isFirstAt(int index) {
+        return firstAt.contains(index);
+    }
+
+    public void setFirstAt(int index) {
+        firstAt.add(index);
     }
 }

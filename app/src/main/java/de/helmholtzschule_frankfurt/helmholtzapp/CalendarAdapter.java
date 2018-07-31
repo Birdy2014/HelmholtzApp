@@ -41,7 +41,13 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
         }
         for(int i = 0; i < getItem(position).getActions().size(); i++){
             if(getItem(position).getActions().get(i) == null)continue;
-            customView.findViewById(getDateSpotIndexByActionIndex(i)).setBackgroundColor(getBackgroundByActionIndex(i));
+            customView.findViewById(getDateSpotIndexByActionIndex(i)).setBackgroundColor(getBackgroundByActionIndex(i).getCode());
+            if(getItem(position).isFirstAt(i)){
+                TextView textView = customView.findViewById(getDateSpotIndexByActionIndex(i));
+                textView.setText(getItem(position).getActions().get(i).getName());
+                textView.setTextColor(getBackgroundByActionIndex(i).getTextColor());
+            }
+
         }
         dayView.setText(day);
 
@@ -64,6 +70,7 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
                 System.out.println("End: " + action.getParent().getEndDay() + ". " + action.getParent().getEndMonth() + ". " + action.getParent().getEndYear() + " " + action.getParent().getEndHour() + ":" + action.getParent().getEndMinute());
             }
         }
+        //TODO change ContentView when ActionList is empty
         Dialog dialog = new Dialog(getContext());
         View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.action_view, null);
         dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
@@ -84,21 +91,38 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
                 return R.id.dateSpot1;
             case 2:
                 return R.id.dateSpot2;
-            case 3:
-                return R.id.dateSpot3;
-            case 4:
-                return R.id.dateSpot4;
         }
         return 0;
     }
-    private int getBackgroundByActionIndex(int index){
-        switch (index){
-            case 0: return GREEN.getCode();
-            case 1: return BLUE.getCode();
-            case 2: return ORANGE.getCode();
-            case 3: return LIGHTGREEN.getCode();
-            case 4: return LIGHTBLUE.getCode();
+
+    private ActionColors getBackgroundByActionIndex(int index){
+        return ActionColors.values()[index];
+    }
+
+    enum ActionColors{
+
+        GREEN(0x55007A00),
+        BLUE(0x550019A8),
+        ORANGE(0x55FF7C26);
+
+        private int code;
+
+        ActionColors(int code){
+            this.code = code;
         }
-        return BLACK.getCode();
+
+        public int getCode() {
+            return code;
+        }
+
+        public int getTextColor(){
+            String cleanHex = Integer.toHexString(this.getCode()).substring(2);
+            double average = 0;
+            for(int i = 0; i < cleanHex.length(); i += 2){
+                average += Integer.parseInt(cleanHex.substring(i, i + 2), 16);
+            }
+            average /= 3;
+            return Math.abs(255 - average) > DataStorage.getInstance().CONTRASTVAR ? WHITE.getCode() : BLACK.getCode();
+        }
     }
 }

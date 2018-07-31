@@ -71,7 +71,7 @@ class DataStorage{
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
-    private boolean isDebugRun = false; //TODO change before commit or release!!!
+    public boolean isDebugRun = false; //TODO change before commit or release!!!
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -102,21 +102,24 @@ class DataStorage{
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = a.findViewById(R.id.progressBar2);
-
+                setLoadingInfo("Vertretungsplan wird heruntergeladen", a);
                 vertretungsplan.updateVertretungsplan();
                 bar.setProgress(35);
+                setLoadingInfo("Mensaplan wird heruntergeladen", a);
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
                 if(mensaplanRawData.equals("dError")){
                     setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
                     if(!isDebugRun)return;
                 }
                 bar.setProgress(45);
+                setLoadingInfo("News werden heruntergeladen", a);
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
                 if(newsRawData.equals("dError")){ //checks for download possibility of HHS
                     setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
                     if(!isDebugRun)return;
                 }
                 bar.setProgress(70);
+                setLoadingInfo("Lehrerliste wird heruntergeladen", a);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
                 fillStundenplan(a);
                 bar.setProgress(100);
@@ -146,6 +149,9 @@ class DataStorage{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+    private void setLoadingInfo(String text, Activity activity){
+        setTextViewText(activity, R.id.loadingInfo, text + "...");
     }
 
     private void setTextViewText(Activity a, int id, String text){

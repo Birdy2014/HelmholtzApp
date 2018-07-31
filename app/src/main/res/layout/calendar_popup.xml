@@ -18,10 +18,36 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Name:"
+        android:textSize="20sp"
+        android:id="@+id/calendar_popup_name_header"
+        android:layout_below="@id/calendar_popup_header"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textColor="@color/colorDefaultTextGrey"
+        android:minWidth="230dp"
+        android:maxWidth="230dp"
+        android:id="@+id/calendar_popup_name_content"
+        android:layout_below="@id/calendar_popup_header"
+        android:layout_toEndOf="@id/calendar_popup_name_header"
+        android:layout_toRightOf="@id/calendar_popup_name_header"
+        android:theme="@style/primaryDarkForeground"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Beginn:"
         android:textSize="20sp"
         android:id="@+id/calendar_popup_start_header"
-        android:layout_below="@id/calendar_popup_header"
+        android:layout_below="@id/calendar_popup_name_header"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
@@ -36,7 +62,7 @@
         android:textSize="20sp"
         android:layout_toEndOf="@id/calendar_popup_start_header"
         android:layout_toRightOf="@id/calendar_popup_start_header"
-        android:layout_below="@id/calendar_popup_header"
+        android:layout_below="@id/calendar_popup_name_header"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp" />
@@ -45,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/popup_start_view"
-        android:layout_below="@id/calendar_popup_header"
+        android:layout_below="@id/calendar_popup_name_header"
         android:layout_toEndOf="@id/calendar_popup_start_time"
         android:layout_toRightOf="@id/calendar_popup_start_time"
         android:textSize="20sp"
@@ -87,15 +113,18 @@
         android:layout_toRightOf="@id/calendar_popup_start_header"
         android:textSize="20sp"
         android:layout_marginTop="10dp"
-        android:text="12.November 2018"/>
+        android:text="12. November 2018"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/calendar_popup_apply"
         android:layout_below="@id/popup_end_view"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:text="Speichern"/>
 
 </RelativeLayout>

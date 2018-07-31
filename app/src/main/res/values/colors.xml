@@ -6,6 +6,7 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBackgroundGreyLight">#DDDDDD</color>
     <color name="colorBackgroundGrey">#DCDCDC</color>
+    <color name="colorDefaultTextGrey">#777777</color>
     <color name="colorBorderGrey">#999999</color>
     <color name="colorLightBorderGrey">#DDDDDD</color>
     <color name="colorLightGrey">#FEFEFE</color>

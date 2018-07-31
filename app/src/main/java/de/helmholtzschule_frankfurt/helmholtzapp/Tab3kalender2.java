@@ -3,22 +3,18 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.annotation.StyleableRes;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -27,7 +23,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.*;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.EXTERNAL;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.EXTERNAL_IN;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.EXTERNAL_OUT;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.INGOING;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.INTERNAL;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.OUTGOING_I;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.OUTGOING_II;
+import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.SPANNED;
 
 public class Tab3kalender2 extends Fragment{
 
@@ -56,7 +59,6 @@ public class Tab3kalender2 extends Fragment{
 
 
 
-        //fix that
         ImageButton add = getActivity().findViewById(R.id.calendarButtonAdd);
         add.setOnClickListener(click -> {
 
@@ -66,6 +68,8 @@ public class Tab3kalender2 extends Fragment{
 
             TextView start = dialogView.findViewById(R.id.popup_start_view);
             TextView end = dialogView.findViewById(R.id.popup_end_view);
+
+            EditText name = dialogView.findViewById(R.id.calendar_popup_name_content);
 
             start.setText(Calendar.getInstance().get(Calendar.DAY_OF_MONTH) + ". " + DateFormatSymbols.getInstance().getMonths()[storage.getMonthYear()[0]] + " " + storage.getMonthYear()[1]);
             start.setOnClickListener(click1 -> {
@@ -106,11 +110,12 @@ public class Tab3kalender2 extends Fragment{
 
 
                 //TODO add name change
-                storage.getContainers().add(new ActionContainer("Test", generateActionDateFromDate(start.getText().toString(), startTime.getText().toString()), generateActionDateFromDate(end.getText().toString(), endTime.getText().toString())));
+                storage.getContainers().add(new ActionContainer(name.getText().toString(), generateActionDateFromDate(start.getText().toString(), startTime.getText().toString()), generateActionDateFromDate(end.getText().toString(), endTime.getText().toString())));
                 days.clear();
                 days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
                 adapter.notifyDataSetChanged();
                 storage.saveCalendar(getContext());
+                dialog.cancel();
             });
 
 
@@ -126,7 +131,6 @@ public class Tab3kalender2 extends Fragment{
                         startTime.setText(hours + ":" + minutes);
                     }
                 }, 8, 0, true);
-
                 timePickerDialog.show();
 
             });

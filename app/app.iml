@@ -121,6 +121,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-idling-resource-2.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test.espresso:espresso-core-2.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.squareup:javawriter:2.1.1@jar" level="project" />
+    <orderEntry type="library" name="Gradle: ch.acra:acra-4.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:rules-0.5" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-license-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-media-compat-26.1.0" level="project" />
@@ -170,6 +171,7 @@
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-tasks-11.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-integration:1.3@jar" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-library:1.3@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Jonas Schroeter\.gradle\caches\transforms-1\files-1.1\HelmholtzDatabaseLib-1.1.aar\6189ee1ba7e05897dd4102a43da69e99:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:runtime-1.0.0" level="project" />
     <orderEntry type="library" name="Gradle: android-android-26" level="project" />
   </component>

@@ -10,4 +10,6 @@
     <string name="emailHelp">helmholtzapp.hilfe@gmail.com</string>
     <string name="exportText">Der Stundenplan wird als Datei gesichert</string>
     <string name="importText">Stundenplan aus Sicherungsverzeichnis importieren</string>
+    <string name="actionsEmpty">Keine Termine\nvorhanden</string>
+    <string name="crash_toast_text">Etwas ist scheifgelaufen:(\nBitte sende eine Mail an uns:)</string>
 </resources>

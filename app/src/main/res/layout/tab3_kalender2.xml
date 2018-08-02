@@ -144,4 +144,16 @@
         android:layout_marginRight="5dp"
         android:layout_below="@id/calendarGrid"/>
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendarButtonActual"
+        android:src="@drawable/ic_today"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_below="@id/calendarGrid"
+        android:layout_toLeftOf="@id/calendarButtonAdd"
+        android:layout_toStartOf="@id/calendarButtonAdd" />
+
 </RelativeLayout>

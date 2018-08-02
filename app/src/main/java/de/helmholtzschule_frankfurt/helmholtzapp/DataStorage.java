@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.http.SslCertificate;
-import android.net.sip.SipSession;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -33,18 +30,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.UnknownHostException;
-import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.EventListener;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 import static java.util.Calendar.FRIDAY;
-import static java.util.Calendar.JULY;
 import static java.util.Calendar.MONDAY;
 import static java.util.Calendar.SATURDAY;
 import static java.util.Calendar.SUNDAY;
@@ -55,6 +50,7 @@ import static java.util.Calendar.WEDNESDAY;
 class DataStorage{
 
     private static final DataStorage ourInstance = new DataStorage();
+    private HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
     private Vertretungsplan vertretungsplan;
     private String mensaplanRawData;
     private String newsRawData;
@@ -71,7 +67,7 @@ class DataStorage{
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
-    public boolean isDebugRun = false; //TODO change before commit or release!!!
+    private boolean isDebugRun = false; //TODO change before commit or release!!!
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -98,46 +94,46 @@ class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity a) throws NoConnectionException { //Do not remove that!!!
+    public void update(Activity activity) throws NoConnectionException { //Do not remove that!!!
         Thread thread = new Thread(() -> {
             try {
-                ProgressBar bar = a.findViewById(R.id.progressBar2);
-                setLoadingInfo("Vertretungsplan wird heruntergeladen", a);
+                ProgressBar bar = activity.findViewById(R.id.progressBar2);
+                setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
                 vertretungsplan.updateVertretungsplan();
                 bar.setProgress(35);
-                setLoadingInfo("Mensaplan wird heruntergeladen", a);
+                setLoadingInfo("Mensaplan wird heruntergeladen", activity);
                 mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
                 if(mensaplanRawData.equals("dError")){
-                    setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
+                    setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                     if(!isDebugRun)return;
                 }
                 bar.setProgress(45);
-                setLoadingInfo("News werden heruntergeladen", a);
+                setLoadingInfo("News werden heruntergeladen", activity);
                 newsRawData = download("http://helmholtzschule-frankfurt.de");
                 if(newsRawData.equals("dError")){ //checks for download possibility of HHS
-                    setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
+                    setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                     if(!isDebugRun)return;
                 }
                 bar.setProgress(70);
-                setLoadingInfo("Lehrerliste wird heruntergeladen", a);
+                setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
-                fillStundenplan(a);
+                loadStundenplan(activity);
                 bar.setProgress(100);
                 if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
                 parseMensaplan();
                 parseNews();
                 parseLehrerliste();
-                fillContainers(a);
+                fillContainers(activity);
                 monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
-                int index = a.getIntent().getIntExtra("fragmentIndex", 0);
-                Intent intent = new Intent(a, MainActivity.class);
+                int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
+                Intent intent = new Intent(activity, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
-                a.startActivity(intent);
-                a.finish();
+                activity.startActivity(intent);
+                activity.finish();
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
-                setTextViewText(a, R.id.loadingtext, "Download fehlgeschlagen");
+                setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -174,7 +170,6 @@ class DataStorage{
         while (scanner.hasNextLine()) {
             data += scanner.nextLine();
         }
-        System.out.println(data);
         return data;
     }
 
@@ -257,8 +252,7 @@ class DataStorage{
     }
 
     public String getKlasse(Activity activity) {
-        SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
-        return mySPR.getString("klasse", "");
+        return client.getKlasse();
     }
 
     public void setPushNotificationsActive(boolean b, Activity activity) {
@@ -276,12 +270,24 @@ class DataStorage{
         return new StundenplanCellTime(oberstufenZeiten[hour][0], oberstufenZeiten[hour][1]);
     }
 
-    public void fillStundenplan(Activity a){
+    public void loadStundenplan(Activity a){
         Gson gson = new Gson();
-        TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};
-        SharedPreferences mySPR = a.getSharedPreferences("MySPFILE", 0);
-        hours = mySPR.getInt("stundenzahl", 9);
-        ArrayList<StundenplanItem> list = gson.fromJson(mySPR.getString("stundenplan", ""), token.getType());
+        String JSON = client.readUserData("stundenplan");
+        StundenplanJsonObject jsonObject;
+        if(JSON.equals("NOT FOUND")){
+            ArrayList<StundenplanItem> items = new ArrayList<>();
+            for(int i = 0; i < 55; i++){
+                items.add(new StundenplanItem(null, null, null, null));
+            }
+            jsonObject = new StundenplanJsonObject(items, 11);
+        }
+        else {
+            jsonObject = gson.fromJson(JSON, StundenplanJsonObject.class);
+        }
+
+        ArrayList<StundenplanItem> list = jsonObject.getItems();
+        hours = jsonObject.getHours();
+
         stundenplan.clear();
         for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
         int index = 0;
@@ -297,14 +303,18 @@ class DataStorage{
     }
 
     public void saveStundenplan(Context context){
-        Gson gson = new Gson();
-        ArrayList<StundenplanItem> list = new ArrayList<>();
-        for(StundenplanCell c : stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
-        String JSON = gson.toJson(list);
-        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
-        SharedPreferences.Editor editor = mySPR.edit();
-        editor.putString("stundenplan", JSON);
-        editor.apply();
+        Thread thread = new Thread() {
+            @Override
+            public void run() {
+                Gson gson = new Gson();
+                ArrayList<StundenplanItem> list = new ArrayList<>();
+                for(StundenplanCell c :stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
+                StundenplanJsonObject jsonObject = new StundenplanJsonObject(list, hours);
+                String JSON = gson.toJson(jsonObject);
+                client.writeUserData("stundenplan",JSON);
+            }
+        };
+        thread.start();
     }
 
     public ArrayList<StundenplanCell> getStundenplan() {
@@ -504,6 +514,7 @@ class DataStorage{
     }
 
     public ArrayList<CalendarItem> addActionToList(ArrayList<CalendarItem> list, int start, int end, Action action, ActionType type){
+        System.out.println(type);
         if(type == ActionType.INTERNAL) {
             int i = 0;
             for (; i < list.size(); i++) {
@@ -709,36 +720,51 @@ class DataStorage{
         this.monthYear = monthYear;
     }
 
-    public void fillContainers(Context context){
+    private void fillContainers(Context context){
         containers.clear();
-        loadCalendar(context);
+        loadCalendar();
         //Put here standards
+    }
+
+    public void removeContainer(ActionContainer container){
+        for(int i = 0; i < containers.size(); i++){
+            if(containers.get(i).toString().equals(container.toString())){
+                containers.remove(i);
+            }
+        }
     }
 
     public ArrayList<ActionContainer> getContainers() {
         return containers;
     }
 
-    public void saveCalendar(Context context){
-        Gson gson = new Gson();
-        ArrayList<String> calendarStrings = new ArrayList<>();
-        for(ActionContainer container : containers){
-            calendarStrings.add(container.toString());
-        }
-        String JSON = gson.toJson(calendarStrings);
-        System.out.println(JSON); // TODO remove;
-        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
-        SharedPreferences.Editor editor = mySPR.edit();
-        editor.putString("calendar", JSON);
-        editor.apply();
+    public void saveCalendar(){
+        Thread thread = new Thread(){
+            @Override
+            public void run() {
+                Gson gson = new Gson();
+                ArrayList<String> calendarStrings = new ArrayList<>();
+                for(ActionContainer container : containers){
+                    calendarStrings.add(container.toString());
+                }
+                String JSON = gson.toJson(calendarStrings);
+
+                client.writeUserData("kalender", JSON);
+            }
+        };
+        thread.start();
     }
 
-    public void loadCalendar(Context context){
-        SharedPreferences mySPR = context.getSharedPreferences("MySPFILE", 0);
-        String JSON = mySPR.getString("calendar", "[]");
+    private void loadCalendar(){
         Gson gson = new Gson();
         TypeToken<ArrayList<String>> token = new TypeToken<ArrayList<String>>(){};
-        ArrayList<String> codes =  gson.fromJson(JSON, token.getType());
+        String JSON = client.readUserData("kalender");
+        ArrayList<String> codes;
+        if(JSON.equals("NOT FOUND")){
+            codes = new ArrayList<>();
+        }
+        else codes = gson.fromJson(JSON, token.getType());
+
         for(String code : codes){
             containers.add(new ActionContainer(code));
         }

@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -18,9 +21,8 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        boolean tryLoginAgain;
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        /*boolean tryLoginAgain;
+
 
         try {
             tryLoginAgain = getIntent().getStringExtra("tryLoginAgain").equals("true");
@@ -68,6 +70,15 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        });
+        });*/
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        System.out.println("PackageName: " + this.getPackageName());
+        HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
+        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+        WebView webView = findViewById(R.id.activity_login_web_view);
+        Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+        client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, getApplicationContext(), webView);
+        client.login(intent);
     }
 }

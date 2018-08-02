@@ -35,6 +35,8 @@ import static de.helmholtzschule_frankfurt.helmholtzapp.ActionType.SPANNED;
 public class Tab3kalender2 extends Fragment{
 
     DataStorage storage = DataStorage.getInstance();
+    public ArrayList<CalendarItem> days;
+    public CalendarAdapter adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,14 +47,16 @@ public class Tab3kalender2 extends Fragment{
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ArrayList<CalendarItem> days = storage.getCalendarList(-1, -1);
+        days = storage.getCalendarList(-1, -1);
         ArrayList<CalendarItem> placeholder = new ArrayList<>(days);
         days.clear();
         days.addAll(addActions(placeholder, storage.getMonthYear()[0], storage.getMonthYear()[1]));
         GridView grid = getActivity().findViewById(R.id.calendarGrid);
-        CalendarAdapter adapter = new CalendarAdapter(getContext(), days);
+        adapter = new CalendarAdapter(getContext(), days, this);
         grid.setAdapter(adapter);
         adapter.notifyDataSetChanged();
+
+
 
         TextView date = getActivity().findViewById(R.id.calendarHeader);
         date.setText(new DateFormatSymbols().getMonths()[storage.getMonthYear()[0]] + " " + storage.getMonthYear()[1]);
@@ -64,7 +68,8 @@ public class Tab3kalender2 extends Fragment{
 
             Dialog dialog = new Dialog(getActivity());
             View dialogView = View.inflate(getActivity(), R.layout.calendar_popup, null);
-            dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            dialog.setContentView(dialogView);
+            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
             TextView start = dialogView.findViewById(R.id.popup_start_view);
             TextView end = dialogView.findViewById(R.id.popup_end_view);
@@ -107,14 +112,11 @@ public class Tab3kalender2 extends Fragment{
 
             Button apply = dialogView.findViewById(R.id.calendar_popup_apply);
             apply.setOnClickListener(click1 -> {
-
-
-                //TODO add name change
                 storage.getContainers().add(new ActionContainer(name.getText().toString(), generateActionDateFromDate(start.getText().toString(), startTime.getText().toString()), generateActionDateFromDate(end.getText().toString(), endTime.getText().toString())));
                 days.clear();
                 days.addAll(addActions(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]), storage.getMonthYear()[0], storage.getMonthYear()[1]));
                 adapter.notifyDataSetChanged();
-                storage.saveCalendar(getContext());
+                storage.saveCalendar();
                 dialog.cancel();
             });
 
@@ -194,9 +196,23 @@ public class Tab3kalender2 extends Fragment{
             adapter.notifyDataSetChanged();
         });
 
+        ImageButton backToday = getActivity().findViewById(R.id.calendarButtonActual);
+        backToday.setOnClickListener(click -> {
+
+            storage.setMonthYear(new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)});
+            days.clear();
+            days.addAll(storage.getCalendarList(storage.getMonthYear()[0], storage.getMonthYear()[1]));
+            ArrayList<CalendarItem> placeholder2 = new ArrayList<>(days);
+            days.clear();
+            days.addAll(addActions(placeholder2, storage.getMonthYear()[0], storage.getMonthYear()[1]));
+            adapter.notifyDataSetChanged();
+            date.setText(new DateFormatSymbols().getMonths()[storage.getMonthYear()[0]] + " " + storage.getMonthYear()[1]);
+        });
+
         super.onViewCreated(view, savedInstanceState);
     }
-    private ArrayList<CalendarItem> addActions(ArrayList<CalendarItem> list, int month, int year){
+
+    public ArrayList<CalendarItem> addActions(ArrayList<CalendarItem> list, int month, int year){
 
         for(ActionContainer container : storage.getContainers()){
             ActionType actionType = EXTERNAL;
@@ -246,21 +262,23 @@ public class Tab3kalender2 extends Fragment{
                     if(container.getStartMonth() == monthBefore){
                         if(list.get(0).getDay() <= container.getStartDay())actionType = EXTERNAL_IN;
                     }
-                    else if(container.getStartMonth() == monthAfter){
-                        System.out.println(DateFormatSymbols.getInstance().getMonths()[month]);
-                        int i = 0;
-                        int x = 0;
-                        for(; i < list.size(); i++){
-                            if(list.get(i).getDay() == 1){
-                                System.out.println("i: " + i);
-                                if(++x == 2)break;
+                    else if(container.getStartMonth() == monthAfter) {
+                        if (container.getStartYear() == year) {
+                            System.out.println(DateFormatSymbols.getInstance().getMonths()[month]);
+                            int i = 0;
+                            int x = 0;
+                            for (; i < list.size(); i++) {
+                                if (list.get(i).getDay() == 1) {
+                                    System.out.println("i: " + i);
+                                    if (++x == 2) break;
+                                }
                             }
-                        }
-                        System.out.println("Index of 2nd 1: " + i);
-                        for(; i < list.size(); i++){
-                            if(list.get(i).getDay() == container.getStartDay()){
-                                actionType = EXTERNAL_OUT;
-                                break;
+                            System.out.println("Index of 2nd 1: " + i);
+                            for (; i < list.size(); i++) {
+                                if (list.get(i).getDay() == container.getStartDay()) {
+                                    actionType = EXTERNAL_OUT;
+                                    break;
+                                }
                             }
                         }
                     }

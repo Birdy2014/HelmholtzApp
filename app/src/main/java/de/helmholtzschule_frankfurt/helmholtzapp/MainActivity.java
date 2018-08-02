@@ -21,6 +21,14 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import org.acra.ACRA;
+import org.acra.ReportField;
+import org.acra.ReportingInteractionMode;
+import org.acra.annotation.ReportsCrashes;
+import org.acra.sender.HttpSender;
+
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
@@ -53,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-                ((TextView)findViewById(R.id.sub_text)).setText("Frankfurt am Main                 Klasse " + mySPR.getString("klasse", ""));
+                ((TextView)findViewById(R.id.sub_text)).setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
             }
 
             @Override

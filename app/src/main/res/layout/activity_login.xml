@@ -3,51 +3,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="de.helmholtzschule_frankfurt.helmholtzapp.LoginActivity"
-    android:layout_marginTop="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    android:orientation="vertical">
+    android:gravity="center_horizontal">
 
-        <EditText
-            android:id="@+id/etBenutzername"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:hint="Benutzername"
-            android:inputType="textPersonName"/>
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Login"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:id="@+id/newsText"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textStyle="bold"
-            android:text="Klasse wählen:" />
+    <EditText
+        android:id="@+id/etBenutzername"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Benutzername"
+        android:inputType="textPersonName"
+        android:theme="@style/primaryDarkForeground" />
 
-        <Spinner
-            android:id="@+id/choose_klasse"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/etBenutzername"
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Klasse wählen:"
+        android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etPasswort"
-            android:layout_width="match_parent"
-            android:layout_height="68dp"
-            android:ems="10"
-            android:hint="Passwort"
-            android:inputType="numberPassword"
-            android:backgroundTint="@color/colorPrimary"/>
+    <Spinner
+        android:id="@+id/choose_klasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etBenutzername"
+        android:background="@android:drawable/btn_dropdown"
+        android:spinnerMode="dropdown" />
 
-        <Button
-            android:id="@+id/bLogIn"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="LOGIN"
-            android:background="@drawable/button_login_background"
-            />
+    <EditText
+        android:id="@+id/etPasswort"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:ems="10"
+        android:hint="Passwort"
+        android:inputType="numberPassword"
+        android:theme="@style/primaryDarkForeground" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/bLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/button_login_background"
+        android:text="LOGIN" />-->
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/activity_login_web_view"/>
+
+</LinearLayout>

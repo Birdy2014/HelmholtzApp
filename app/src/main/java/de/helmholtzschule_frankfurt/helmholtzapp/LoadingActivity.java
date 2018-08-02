@@ -11,8 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class LoadingActivity extends AppCompatActivity{
     DataStorage dataStorage = DataStorage.getInstance();
@@ -29,7 +32,11 @@ public class LoadingActivity extends AppCompatActivity{
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
+        String[] credentials = client.getVertretungsplanCredentials("vertretungsplan");
+        String base64credentials = Base64.encodeToString((credentials[0] + ":" + credentials[1]).getBytes(), Base64.DEFAULT).trim();
 
+        dataStorage.initialize(base64credentials);
         Thread thread = new Thread() {
             @Override
             public void run() {

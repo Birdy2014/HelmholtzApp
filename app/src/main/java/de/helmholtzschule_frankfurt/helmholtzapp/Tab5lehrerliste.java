@@ -43,7 +43,6 @@ public class Tab5lehrerliste extends Fragment {
         lstMenu.setOnItemClickListener((adapterView, view1, i, l) -> {
             String itemString = ((LehrerItem)lstMenu.getItemAtPosition(i)).getText();
             String email = itemString.substring(itemString.indexOf("\n") + 1);
-            System.out.println(email);
 
             String uriString = "mailto:" + email;
 

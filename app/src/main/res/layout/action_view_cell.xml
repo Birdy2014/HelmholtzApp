@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/list_row_background">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:id="@+id/action_view_cell_colored">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/action_view_cell_start_view"
-        android:text="Test0"
+        android:text="11.Dezember, 8:00 Uhr"
         android:textSize="20sp"
         android:minWidth="185dp"
         android:layout_below="@id/action_view_cell_name"
@@ -40,11 +46,13 @@
         android:layout_height="wrap_content"
         android:id="@+id/action_view_cell_end_view"
         android:text="11. Dezember, 19:00 Uhr"
-        android:textSize="17sp"
+        android:textSize="20sp"
         android:minWidth="185dp"
         android:layout_below="@id/action_view_cell_start_view"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>
+
+    </RelativeLayout>
 
 </RelativeLayout>

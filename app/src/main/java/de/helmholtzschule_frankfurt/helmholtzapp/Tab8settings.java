@@ -1,6 +1,5 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -60,16 +59,13 @@ public class Tab8settings extends Fragment {
         }
         adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, list);
         hourSelect.setAdapter(adapter);
-        hourSelect.setSelection(list.indexOf(getActivity().getSharedPreferences("MySPFILE", 0).getInt("stundenzahl", 9)));
+        hourSelect.setSelection(list.indexOf(storage.hours));
         hourSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                DataStorage.getInstance().hours = (int)hourSelect.getSelectedItem();
-                SharedPreferences mySPR = getActivity().getSharedPreferences("MySPFILE", 0);
-                SharedPreferences.Editor editor = mySPR.edit();
-                editor.putInt("stundenzahl", (int)hourSelect.getSelectedItem());
-                editor.apply();
-                DataStorage.getInstance().fillStundenplan(getActivity());
+                storage.hours = (int)hourSelect.getSelectedItem();
+                storage.saveStundenplan(getContext());
+                storage.loadStundenplan(getActivity());
             }
 
             @Override

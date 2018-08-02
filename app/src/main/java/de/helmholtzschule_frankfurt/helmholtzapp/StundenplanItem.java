@@ -14,7 +14,6 @@ public class StundenplanItem extends StundenplanCell{
         setLehrer(lehrer);
         setRaum(raum);
         setColor(color);
-        setTextColor(color.getTextColor());
     }
 
     public String getLehrer() {
@@ -38,8 +37,14 @@ public class StundenplanItem extends StundenplanCell{
     }
 
     public void setColor(StundenplanColor color) {
-        this.color = color.getCode();
-        setTextColor(color.getTextColor());
+        if(color == null){
+            this.color = WHITE.getCode();
+            setTextColor(BLACK.getCode());
+        }
+        else {
+            this.color = color.getCode();
+            setTextColor(color.getTextColor());
+        }
     }
 
     public void setColor(int color){

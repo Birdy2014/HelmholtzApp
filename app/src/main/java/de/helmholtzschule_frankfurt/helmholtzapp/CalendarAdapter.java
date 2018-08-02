@@ -19,8 +19,11 @@ import static de.helmholtzschule_frankfurt.helmholtzapp.StundenplanColor.*;
 
 public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
 
-    public CalendarAdapter(Context context, ArrayList<CalendarItem> list) {
+    public Tab3kalender2 kalender2;
+
+    public CalendarAdapter(Context context, ArrayList<CalendarItem> list, Tab3kalender2 kalender2) {
         super(context, R.layout.calendar_cell, list);
+        this.kalender2 = kalender2;
     }
 
     @Override
@@ -70,15 +73,23 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
                 System.out.println("End: " + action.getParent().getEndDay() + ". " + action.getParent().getEndMonth() + ". " + action.getParent().getEndYear() + " " + action.getParent().getEndHour() + ":" + action.getParent().getEndMinute());
             }
         }
-        //TODO change ContentView when ActionList is empty
+        boolean actionsPresent = false;
+        for(Action a : item.getActions()){
+            if(a != null){
+                actionsPresent = true;
+                break;
+            }
+        }
         Dialog dialog = new Dialog(getContext());
-        View dialogView = LayoutInflater.from(getContext()).inflate(R.layout.action_view, null);
+        View dialogView = LayoutInflater.from(getContext()).inflate(actionsPresent ? R.layout.action_view : R.layout.action_view_empty, null);
         dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 
-        ListView actionView = dialogView.findViewById(R.id.action_list_view);
-        ArrayList<ActionContainer> list = new ArrayList<>();
-        for(Action a : item.getActions())if(a != null)list.add(a.getParent());
-        actionView.setAdapter(new ActionAdapter(getContext(), list));
+        if(actionsPresent) {
+            ListView actionView = dialogView.findViewById(R.id.action_list_view);
+            ArrayList<ActionContainer> list = new ArrayList<>();
+            for (Action a : item.getActions()) if (a != null) list.add(a.getParent());
+            actionView.setAdapter(new ActionAdapter(getContext(), list, this));
+        }
 
         dialog.show();
     }
@@ -95,7 +106,7 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
         return 0;
     }
 
-    private ActionColors getBackgroundByActionIndex(int index){
+    public ActionColors getBackgroundByActionIndex(int index){
         return ActionColors.values()[index];
     }
 

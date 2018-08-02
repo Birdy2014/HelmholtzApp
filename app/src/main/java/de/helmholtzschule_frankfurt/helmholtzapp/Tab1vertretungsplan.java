@@ -16,6 +16,7 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 import io.github.birdy2014.VertretungsplanLib.Vertretung;
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 /**
  * Created by Staudinger on 28.06.2017.
@@ -33,15 +34,14 @@ public class Tab1vertretungsplan extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ArrayList<Vertretung> daten = new ArrayList<Vertretung>();
+        ArrayList<Vertretung> daten = new ArrayList<>();
 
         ListAdapter MenuAdapter = new VertretungsplanAdapter(getContext(), daten);
         ListView lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
 
         lstMenu.setAdapter(MenuAdapter);
 
-        SharedPreferences mySPR = this.getContext().getSharedPreferences("MySPFILE", 0);
-        String klasse1 = mySPR.getString("klasse", "");
+        String klasse1 = HelmholtzDatabaseClient.getInstance().getKlasse();
 
         System.out.println("Why do java developers wear glasses?\nBecause they can\'t C#.");
         System.out.println("Programmiert von Jonas Schröter und Moritz Vogel.");

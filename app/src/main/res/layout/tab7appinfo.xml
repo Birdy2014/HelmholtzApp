@@ -156,4 +156,27 @@
         android:layout_toRightOf="@+id/datenschutz_ueberschrift"
         android:layout_below="@+id/sonstiges"/>
 
+    <TextView
+        android:id="@+id/datenschutz_login_ueberschrift"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Datenschutz des Logindienstes: "
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:layout_below="@id/datenschutz_link"
+        tools:layout_editor_absoluteY="152dp" />
+
+    <TextView
+        android:id="@+id/datenschutz_login_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginTop="8dp"
+        android:text="Datenschutzerklärung"
+        android:textColor="@color/colorHyperlink"
+        android:layout_toEndOf="@+id/datenschutz_login_ueberschrift"
+        android:layout_toRightOf="@+id/datenschutz_login_ueberschrift"
+        android:layout_below="@+id/datenschutz_link"/>
+
 </RelativeLayout>

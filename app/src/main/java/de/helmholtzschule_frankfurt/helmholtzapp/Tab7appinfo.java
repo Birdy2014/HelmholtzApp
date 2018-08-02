@@ -55,6 +55,15 @@ public class Tab7appinfo extends Fragment {
             startActivity(Intent.createChooser(intent, "Öffnen in"));
         });
 
+        TextView linkLoginDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_login_link);
+        linkLoginDatenschutz.setOnClickListener(listener -> {
+            String url = "https://helmholtz-database.000webhostapp.com/frontend/impressum.php";
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(intent, "Öffnen in"));
+        });
+
         TextView linkStore = (TextView) getActivity().findViewById(R.id.store_link);
         linkStore.setOnClickListener(listener -> {
             String url = "https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";

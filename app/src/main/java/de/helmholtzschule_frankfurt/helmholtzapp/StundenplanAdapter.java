@@ -73,13 +73,13 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             copy.setOnClickListener(click -> {
                 DataStorage.getInstance().setCopiedItem((StundenplanItem)getItem(position));
                 this.notifyDataSetChanged();
-                DataStorage.getInstance().saveStundenplan(getContext());
+                DataStorage.getInstance().saveStundenplan(false);
                 actionDialog.cancel();
             });
             put.setOnClickListener(click -> {
                 ((StundenplanItem)getItem(position)).overwrite(DataStorage.getInstance().getCopiedItem());
                 this.notifyDataSetChanged();
-                DataStorage.getInstance().saveStundenplan(getContext());
+                DataStorage.getInstance().saveStundenplan(false);
                 actionDialog.cancel();
             });
             put.setVisibility(DataStorage.getInstance().getCopiedItem() == null ? View.GONE : View.VISIBLE);
@@ -147,7 +147,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
             this.notifyDataSetChanged();
 
-            DataStorage.getInstance().saveStundenplan(getContext());
+            DataStorage.getInstance().saveStundenplan(false);
         });
         colorButton.setOnClickListener(click ->{
 
@@ -167,7 +167,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             room.setText("");
             ((StundenplanItem) item).setColor(StundenplanColor.WHITE);
             this.notifyDataSetChanged();
-            DataStorage.getInstance().saveStundenplan(getContext());
+            DataStorage.getInstance().saveStundenplan(false);
         });
     }
     private static void setEditable(EditText text, boolean b, Context c){

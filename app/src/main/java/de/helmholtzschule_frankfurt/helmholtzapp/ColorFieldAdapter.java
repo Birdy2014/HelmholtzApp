@@ -47,7 +47,7 @@ public class ColorFieldAdapter extends ArrayAdapter<StundenplanColor>{
             button.setOnClickListener(click -> {
                 item.setColor(color);
                 adapter.notifyDataSetChanged();
-                DataStorage.getInstance().saveStundenplan(getContext());
+                DataStorage.getInstance().saveStundenplan(false);
                 dialog.cancel();
             });
         }
@@ -67,7 +67,7 @@ public class ColorFieldAdapter extends ArrayAdapter<StundenplanColor>{
                     String hex = HEXView.getText().toString();
                     item.setColor(Color.parseColor(hex));
                     adapter.notifyDataSetChanged();
-                    DataStorage.getInstance().saveStundenplan(getContext());
+                    DataStorage.getInstance().saveStundenplan(false);
                     pickerDialog.cancel();
                     dialog.cancel();
                 });

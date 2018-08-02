@@ -93,6 +93,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.getMenu().getItem(menuIndexSelected).setChecked(true);
         switch (menuIndexSelected){
+            case 9: {
+                //Fallthrough expected, @Share function
+            }
             case 0: {
                 Tab0news news = new Tab0news();
                 FragmentManager manager = getSupportFragmentManager();
@@ -124,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
                 break;
             }
-            case 9: {
+            case 10: {
                 Tab8settings settings = new Tab8settings();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
@@ -233,6 +236,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!\nhttps://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
+                break;
             }
             case R.id.nav_stundenplan: {
                 Tab9Stundenplan stundenplan = new Tab9Stundenplan();

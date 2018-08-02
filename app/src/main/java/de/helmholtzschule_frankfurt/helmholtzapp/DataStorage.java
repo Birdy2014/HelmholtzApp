@@ -117,7 +117,7 @@ class DataStorage{
                 bar.setProgress(70);
                 setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
                 lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
-                loadStundenplan(activity);
+                loadStundenplan();
                 bar.setProgress(100);
                 if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
                 parseMensaplan();
@@ -251,7 +251,7 @@ class DataStorage{
         FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + klasse);
     }
 
-    public String getKlasse(Activity activity) {
+    public String getKlasse() {
         return client.getKlasse();
     }
 
@@ -259,24 +259,24 @@ class DataStorage{
         //add unsubscribeAll
         FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + activity.getSharedPreferences("MySPFILE", 0).getString("klasse", "5a").toLowerCase());
         if (b) {
-            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse(activity));
+            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse());
         }
     }
 
-    private StundenplanCellTime getTimeAtHour(int hour, Activity activity){
-        if(Character.isDigit(getKlasse(activity).charAt(0))){ //Non - Oberstufe
+    private StundenplanCellTime getTimeAtHour(int hour){
+        if(Character.isDigit(getKlasse().charAt(0))){ //Non - Oberstufe
             return new StundenplanCellTime(unterMittelstufenZeiten[hour][0], unterMittelstufenZeiten[hour][1]);
         }
         return new StundenplanCellTime(oberstufenZeiten[hour][0], oberstufenZeiten[hour][1]);
     }
 
-    public void loadStundenplan(Activity a){
+    public void loadStundenplan(){
         Gson gson = new Gson();
         String JSON = client.readUserData("stundenplan");
         StundenplanJsonObject jsonObject;
         if(JSON.equals("NOT FOUND")){
             ArrayList<StundenplanItem> items = new ArrayList<>();
-            for(int i = 0; i < 55; i++){
+            for(int i = 0; i < 66; i++){
                 items.add(new StundenplanItem(null, null, null, null));
             }
             jsonObject = new StundenplanJsonObject(items, 11);
@@ -293,25 +293,46 @@ class DataStorage{
         int index = 0;
         for(int i = 0; i < stundenplan.size(); i++){
             if(i % 6 == 0){
-                stundenplan.set(i, getTimeAtHour(i / 6, a));
+                stundenplan.set(i, getTimeAtHour(i / 6));
             }
             else {
-                if(list == null)continue;
-                stundenplan.set(i, list.get(index++));
+                try {
+                    stundenplan.set(i, list.get(index++));
+                }
+                catch (IndexOutOfBoundsException ignored){
+                }
             }
         }
     }
 
-    public void saveStundenplan(Context context){
+    public void refreshStundenplan(){
+        ArrayList<StundenplanCell> list = new ArrayList<>(stundenplan);
+        stundenplan.clear();
+        for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
+        for(int i = 0; i < stundenplan.size(); i++){
+            if(i % 6 == 0){
+                stundenplan.set(i, getTimeAtHour(i / 6));
+            }
+            else {
+                try {
+                    stundenplan.set(i, list.get(i));
+                }
+                catch (IndexOutOfBoundsException ignored){}
+            }
+        }
+    }
+
+    public void saveStundenplan(boolean refresh){
         Thread thread = new Thread() {
             @Override
             public void run() {
                 Gson gson = new Gson();
                 ArrayList<StundenplanItem> list = new ArrayList<>();
-                for(StundenplanCell c :stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
+                for(StundenplanCell c : stundenplan)if(c instanceof StundenplanItem)list.add(((StundenplanItem)c));
                 StundenplanJsonObject jsonObject = new StundenplanJsonObject(list, hours);
                 String JSON = gson.toJson(jsonObject);
                 client.writeUserData("stundenplan",JSON);
+                if(refresh) refreshStundenplan();
             }
         };
         thread.start();
@@ -380,10 +401,6 @@ class DataStorage{
             Gson gson = new Gson();
             TypeToken<ArrayList<StundenplanItem>> token = new TypeToken<ArrayList<StundenplanItem>>(){};
             hours = 11;
-            SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
-            SharedPreferences.Editor editor = mySPR.edit();
-            editor.putInt("stundenzahl", hours);
-            editor.apply();
             ArrayList<StundenplanItem> list = gson.fromJson(JSON, token.getType());
             stundenplan.clear();
             for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
@@ -391,7 +408,7 @@ class DataStorage{
             for(int i = 0; i < stundenplan.size(); i++){
                 if(i % 6 == 0){
                     try {
-                        stundenplan.set(i, getTimeAtHour(i / 6, activity));
+                        stundenplan.set(i, getTimeAtHour(i / 6));
                     }
                     catch (IndexOutOfBoundsException ignored){
                     }
@@ -405,8 +422,8 @@ class DataStorage{
                 }
             }
         }
-        saveStundenplan(activity);
-        Toast.makeText(activity.getBaseContext(), "Stundenplan wurde erforlgreich importiert.", Toast.LENGTH_SHORT).show();
+        saveStundenplan(false);
+        Toast.makeText(activity.getBaseContext(), "Stundenplan wurde erfolgreich importiert.", Toast.LENGTH_SHORT).show();
         return true;
     }
 

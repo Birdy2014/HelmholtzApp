@@ -8,6 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -48,7 +49,7 @@ public class Tab1vertretungsplan extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
 
-        final ToggleButton klasseButton = (ToggleButton) getView().findViewById(R.id.toggleButton3);
+        final CheckBox checkbox = (CheckBox) getView().findViewById(R.id.checkbox_vertretungsplan);
         final ToggleButton heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
 
         if (klasse1.charAt(0) == 'E' || klasse1.charAt(0) == 'Q' || klasse1.charAt(0) == 'e' || klasse1.charAt(0) == 'q') {
@@ -67,17 +68,17 @@ public class Tab1vertretungsplan extends Fragment {
             public void onClick(View view) {
                 VertretungsplanAdapter vertretungenAdapter;
                 ArrayList<Vertretung> list = new ArrayList<>();
-                if (klasseButton.isChecked() && heuteMorgen.isChecked()) {
+                if (checkbox.isChecked() && heuteMorgen.isChecked()) {
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(1))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(1));
-                } else if (klasseButton.isChecked() && !heuteMorgen.isChecked()) {
+                } else if (checkbox.isChecked() && !heuteMorgen.isChecked()) {
                     for (Vertretung vertretung : dataStorage.getVertretungsplan().getVertretungen().get(0))
                         list.add(vertretung);
                     vertretungenAdapter = new VertretungsplanAdapter(getContext(), list);
                     ((TextView) getView().findViewById(R.id.dateText)).setText(dataStorage.getVertretungsplan().getDate(0));
-                } else if (!klasseButton.isChecked() && heuteMorgen.isChecked()) {
+                } else if (!checkbox.isChecked() && heuteMorgen.isChecked()) {
                     for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(1)) {
                         if (v.getKlasse().contains(klasse)) list.add(v);
                     }
@@ -102,14 +103,14 @@ public class Tab1vertretungsplan extends Fragment {
             }
         });
 
-        klasseButton.setOnClickListener(new View.OnClickListener() {
+        checkbox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 VertretungsplanAdapter vertretungenAdapter;
                 ArrayList<Vertretung> list = new ArrayList<Vertretung>();
 
                 int heuteMorgenInt = !heuteMorgen.isChecked() ? 0 : 1;
-                if(klasseButton.isChecked()){
+                if(checkbox.isChecked()){
                     list.addAll(dataStorage.getVertretungsplan().getVertretungen().get(heuteMorgenInt));
                 }
                 else {

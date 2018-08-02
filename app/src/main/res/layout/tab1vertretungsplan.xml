@@ -15,12 +15,12 @@
         android:layout_marginBottom="10dp"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:text="Tag"/>
+        android:text="Tag" />
 
     <ToggleButton
         android:id="@+id/butShowAll"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/dateText"
         android:layout_alignStart="@+id/dateText"
         android:layout_below="@+id/dateText"
@@ -30,7 +30,37 @@
         android:text="heute"
         android:textOff="Heute"
         android:textOn="Morgen"
+        android:layout_marginLeft="-5dp"
+        android:layout_marginStart="-5dp"
         android:theme="@style/primaryForeground"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/dateText"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginRight="3dp"
+        android:background="#000000">
+
+        <CheckBox
+            android:id="@+id/checkbox_vertretungsplan"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:layout_margin="1dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:background="@color/colorWhite"
+            android:text="Alle Klassen anzeigen"
+            android:theme="@style/primaryDarkForeground" />
+
+    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
@@ -68,18 +98,6 @@
         android:textColor="@color/colorPrimaryDark"
         />
 
-    <ToggleButton
-        android:id="@+id/toggleButton3"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_alignEnd="@+id/swiperefresh_vertretungsplan"
-        android:layout_alignRight="@+id/swiperefresh_vertretungsplan"
-        android:layout_alignTop="@+id/butShowAll"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="ToggleButton"
-        android:textOff="Nur meine Klasse anzeigen"
-        android:textOn="Alle Klassen anzeigen"
-        android:theme="@style/primaryForeground"/>
+
 
 </RelativeLayout>

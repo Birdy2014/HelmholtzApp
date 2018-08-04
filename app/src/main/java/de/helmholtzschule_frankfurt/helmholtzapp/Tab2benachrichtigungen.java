@@ -33,7 +33,26 @@ public class Tab2benachrichtigungen extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        int heuteMorgenInt = ((ToggleButton)getActivity().findViewById(R.id.toggleButtonSwitch)).isChecked() ? 1 : 0;
+        ToggleButton button = getActivity().findViewById(R.id.toggleButtonSwitch);
+        changeList(button);
+        button.setOnClickListener(click -> {
+            changeList(button);
+        });
+
+        super.onViewCreated(view, savedInstanceState);
+        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Intent intent = new Intent(getContext(), LoadingActivity.class);
+                intent.putExtra("fragmentIndex", 2);
+                startActivity(intent);
+            }
+        });
+    }
+    private void changeList(ToggleButton button){
+        int heuteMorgenInt = button.isChecked() ? 1 : 0;
+        daten.clear();
         for(String s : dataStorage.getVertretungsplan().getNachrichten().get(heuteMorgenInt)){
             if(s.contains("Abwesende Klassen"))daten.add(new Benachrichtigung(s.substring(0, 17) + ":\n" + s.substring(18)));
             else if(s.contains("Blockierte Räume"))daten.add(new Benachrichtigung(s.substring(0, 16) + ":\n" + s.substring(17)));
@@ -46,16 +65,5 @@ public class Tab2benachrichtigungen extends Fragment {
         lstMenu = (ListView) getView().findViewById(R.id.nachrichtenview);
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
-
-        super.onViewCreated(view, savedInstanceState);
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Intent intent = new Intent(getContext(), LoadingActivity.class);
-                intent.putExtra("fragmentIndex", 2);
-                startActivity(intent);
-            }
-        });
     }
 }

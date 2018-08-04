@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class CalendarItem {
 
     private int day;
-    private ArrayList<Action> actions; // 3 items
+    private ArrayList<Action> actions; // 4 items
     private boolean isActualMonth;
     private boolean isToday;
     private int month;

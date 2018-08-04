@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="50dp"
-    android:layout_height="70dp"
+    android:layout_height="80dp"
     android:background="@drawable/stundenplan_cell_background">
 
     <RelativeLayout
@@ -41,6 +41,15 @@
             android:layout_height="15dp"
             android:id="@+id/dateSpot2"
             android:layout_below="@id/dateSpot1"
+            android:textSize="12sp"
+            android:textAlignment="center"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:id="@+id/dateSpot3"
+            android:layout_below="@id/dateSpot2"
             android:textSize="12sp"
             android:textAlignment="center"
             />

@@ -123,14 +123,14 @@
 
     <GridView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:id="@+id/calendarGrid"
         android:layout_below="@id/calendarHeader_Mo"
         android:layout_marginStart="3dp"
         android:layout_marginLeft="3dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
-        android:numColumns="7" />
+        android:numColumns="7"/>
 
     <ImageButton
         android:layout_width="wrap_content"
@@ -139,21 +139,23 @@
         android:src="@drawable/ic_add_action"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="3dp"
+        android:layout_alignParentBottom="true"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_below="@id/calendarGrid"/>
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/popup_edit_button_background"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/calendarButtonActual"
         android:src="@drawable/ic_today"
-        android:layout_marginTop="3dp"
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp"
-        android:layout_below="@id/calendarGrid"
+        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@id/calendarButtonAdd"
-        android:layout_toStartOf="@id/calendarButtonAdd" />
+        android:layout_toStartOf="@id/calendarButtonAdd"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/popup_edit_button_background"/>
 
 </RelativeLayout>

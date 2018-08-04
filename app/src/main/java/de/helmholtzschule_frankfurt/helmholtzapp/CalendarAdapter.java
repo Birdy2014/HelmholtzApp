@@ -96,12 +96,10 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
 
     private int getDateSpotIndexByActionIndex(int index){
         switch (index){
-            case 0:
-                return R.id.dateSpot0;
-            case 1:
-                return R.id.dateSpot1;
-            case 2:
-                return R.id.dateSpot2;
+            case 0: return R.id.dateSpot0;
+            case 1: return R.id.dateSpot1;
+            case 2: return R.id.dateSpot2;
+            case 3: return R.id.dateSpot3;
         }
         return 0;
     }
@@ -114,7 +112,8 @@ public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
 
         GREEN(0x55007A00),
         BLUE(0x550019A8),
-        ORANGE(0x55FF7C26);
+        ORANGE(0x55FF7C26),
+        YELLOW(0x55FFD800);
 
         private int code;
 

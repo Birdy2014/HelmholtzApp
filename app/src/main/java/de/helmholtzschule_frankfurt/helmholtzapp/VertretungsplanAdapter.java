@@ -2,7 +2,9 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,51 +37,99 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         String hinweis = getItem(position).getHinweis();
         String art = getItem(position).getArt();
 
-        TextView txtKlasse = (TextView) customView.findViewById(R.id.txtKlasse);
-        TextView txtStunde = (TextView) customView.findViewById(R.id.txtStunde);
-        TextView txtFach = (TextView) customView.findViewById(R.id.txtFach);
-        TextView txtVertretungslehrer = (TextView) customView.findViewById(R.id.txtVertretungslehrer);
-        TextView txtFuerLehrer = (TextView) customView.findViewById(R.id.txtFuerLehrer);
-        TextView txtRaum = (TextView) customView.findViewById(R.id.txtRaum);
-        TextView txtHinweis = (TextView) customView.findViewById(R.id.txtHinweis);
-        TextView txtArt = (TextView) customView.findViewById(R.id.txtArt);
+        if(fach.equals(""))fach = " ";
+        if(klasse.equals(""))klasse = " ";
+        if(stunde.equals(""))stunde = " ";
+        if(vertretungslehrer.equals(""))vertretungslehrer = " ";
+        if(fuerLehrer.equals(""))fuerLehrer = " ";
+        if(raum.equals(""))raum = " ";
+        if(hinweis.equals(""))hinweis = " ";
+        if(art.equals(""))art = " ";
 
-        txtFach.setText(!fach.equals("") ? fach : "-");
-        txtKlasse.setText(!klasse.equals("") ? klasse : "-");
-        txtStunde.setText("Stunde: " + (!stunde.equals("") ? stunde : " -"));
-        txtVertretungslehrer.setText(!vertretungslehrer.equals("") ? vertretungslehrer : "-");
-        txtFuerLehrer.setText(!fuerLehrer.equals("") ? fuerLehrer : " -");
-        if(raum.equals(""))txtRaum.setText("-");
-        txtRaum.setText(!raum.equals("") ? raum : "-");
-        txtHinweis.setText(!hinweis.equals("") ? hinweis : "   -");
-        txtArt.setText(!art.equals("") ? art : "   -");
+        if(stunde.contains("-")){
+            StringBuilder firstDigit = new StringBuilder();
+            for(int i = 0; i < stunde.length(); i++){
+                if(Character.isDigit(stunde.charAt(i)))firstDigit.append(stunde.charAt(i));
+                if(stunde.charAt(i) == '-')break;
+            }
+            StringBuilder secondDigit = new StringBuilder();
+            for(int i = stunde.indexOf("-") + 1; i < stunde.length(); i++){
+                if(Character.isDigit(stunde.charAt(i)))secondDigit.append(stunde.charAt(i));
+            }
+            stunde = firstDigit.toString() + " - " + secondDigit.toString();
+        }
 
+        String extra = stunde + "<!>" + art + "<!>" + fach + "<!>" + klasse + "<!>" + vertretungslehrer + "<!>" + fuerLehrer + "<!>" + raum + "<!>" + hinweis;
+
+        TextView stundeTxt = customView.findViewById(R.id.vertretungsplan_row_hour);
+        TextView artTxt = customView.findViewById(R.id.vertretungsplan_row_type);
+        TextView subTxt = customView.findViewById(R.id.vertretungsplan_row_sub);
+
+        stundeTxt.setText(stunde.equals(" ") ? "???" : stunde);
+        artTxt.setText(art.equals(" ") ? "???" : art);
+
+
+        String sub = (vertretungslehrer.equals(" ") ? "???" : vertretungslehrer) + " in " + (raum.equals(" ") ? "???" : raum);
+        subTxt.setText(sub);
+
+        int backgroundColor = R.color.colorWhite;
+        //TODO edit colors @colors.xml
         switch (art){
             case "Veranst.": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_veranstaltung));
+                backgroundColor = R.color.colorVeranstaltung;
                 break;
             }
             case "Vertretung": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_vertretung));
+                backgroundColor = R.color.colorVertretung;
                 break;
             }
             case "Sondereins.": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_sondereinsatz));
+                backgroundColor = R.color.colorSondereinsatz;
                 break;
             }
             case "Unterricht geändert": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_aenderung));
+                backgroundColor = R.color.colorAenderung;
                 break;
             }
             case "Trotz Absenz": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_absenz));
+                backgroundColor = R.color.colorAbsenz;
                 break;
             }
             case "Entfall": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_entfall));
+                backgroundColor = R.color.colorEntfall;
+                break;
             }
-            if(art.contains("Arbeiten"))customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten));
+            case "eigenv. Arb.": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten));
+                backgroundColor = R.color.colorEigArbeiten;
+                break;
+            }
+            case "Verlegung": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_verlegung));
+                backgroundColor = R.color.colorVerlegung;
+                break;
+            }
+            case "Raumänderung": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_raumaenderung));
+                backgroundColor = R.color.colorRaumaenderung;
+                break;
+            }
         }
+        if(art.contains("Arbeiten"))customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten)); //..dunno
+
+        int finalBackgroundColor = backgroundColor;
+        customView.setOnClickListener(click -> {
+            Intent intent = new Intent(getContext(), VertretungsActivity.class);
+            intent.putExtra("color", finalBackgroundColor);
+            intent.putExtra("vertretung", extra);
+            getContext().startActivity(intent);
+        });
 
         return customView;
     }

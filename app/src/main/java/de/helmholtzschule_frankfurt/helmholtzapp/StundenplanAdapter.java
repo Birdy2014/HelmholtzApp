@@ -100,8 +100,8 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
     public void showPopup(StundenplanCell item, TextView view){
         inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
-        Dialog dialog = new Dialog(getContext());
-        dialog.addContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        Dialog dialog = new Dialog(getContext()/*, R.style.full_screen_dialog*/);
+        dialog.addContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         dialog.show();
 
         EditText lessonName = popupView.findViewById(R.id.popupTextFach);
@@ -169,6 +169,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             this.notifyDataSetChanged();
             DataStorage.getInstance().saveStundenplan(false);
         });
+        if(lessonName.getText().toString().equals("") && teacher.getText().toString().equals("") && room.getText().toString().equals(""))editButton.performClick();
     }
     private static void setEditable(EditText text, boolean b, Context c){
         if(!b){

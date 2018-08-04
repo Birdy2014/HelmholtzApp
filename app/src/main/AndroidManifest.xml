@@ -32,6 +32,7 @@
             android:name="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
             android:screenOrientation="portrait" />
         <activity android:name="de.helmholtzschule_frankfurt.helmholtzapp.LoadingActivity"></activity>
+        <activity android:name=".VertretungsActivity"></activity>
     </application>
 
 </manifest>

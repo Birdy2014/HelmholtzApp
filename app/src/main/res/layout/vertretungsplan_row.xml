@@ -1,107 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/list_row_background">
+    android:background="@drawable/vertretungsplan_row_background_verlegung">
+
+   <TextView
+       android:layout_width="110dp"
+       android:layout_height="wrap_content"
+       android:textSize="35sp"
+       android:text="10 - 11"
+       android:textAlignment="center"
+       android:layout_marginLeft="10dp"
+       android:layout_marginStart="10dp"
+       android:layout_marginEnd="20dp"
+       android:layout_marginRight="20dp"
+       android:id="@+id/vertretungsplan_row_hour"
+       android:textColor="@color/colorWhite"
+       android:layout_marginTop="10dp"
+       android:layout_marginBottom="10dp"/>
 
     <TextView
-        android:id="@+id/txtKlasse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:text="8a"
+        android:textSize="15sp"
+        android:text="eigenv. Arb."
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:textAlignment="center" />
+        android:layout_marginStart="10dp"
+        android:id="@+id/vertretungsplan_row_type"
+        android:layout_toRightOf="@id/vertretungsplan_row_hour"
+        android:layout_toEndOf="@id/vertretungsplan_row_hour"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"/>
 
     <TextView
-        android:id="@+id/txtFach"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/txtKlasse"
-        android:layout_toEndOf="@+id/txtKlasse"
-        android:text="Info"
-
-        android:layout_marginRight="10dp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/txtRaum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_toRightOf="@id/txtFach"
-        android:layout_toEndOf="@id/txtFach"
-        android:text="TextView"
-        android:textAlignment="center"
-        tools:text="003" />
-
-    <TextView
-        android:id="@+id/txtStunde"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtKlasse"
+        android:textSize="15sp"
+        android:text="Hf in 208"
         android:layout_marginLeft="10dp"
-        android:text="Stunde 1-2"
-        android:textSize="17sp"
-        android:textAlignment="center" />
-
-    <TextView
-        android:id="@+id/txtVertretungslehrer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtStunde"
-        android:textSize="17sp"
-        android:layout_marginLeft="10dp"
-        tools:text="Ca" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="für"
-        android:textSize="17sp"
-        android:id="@+id/fuer_text"
-        android:layout_toRightOf="@id/txtVertretungslehrer"
-        android:layout_toEndOf="@id/txtVertretungslehrer"
-        android:layout_below="@id/txtStunde"
-        android:layout_marginLeft="3dp"
-        android:layout_marginRight="3dp" />
-
-    <TextView
-        android:id="@+id/txtFuerLehrer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/fuer_text"
-        android:layout_toEndOf="@id/fuer_text"
-        android:layout_below="@id/txtStunde"
-        android:layout_marginRight="10dp"
-        android:textSize="17sp"
-        android:textAlignment="center"
-        tools:text="Sta" />
-
-    <TextView
-        android:id="@+id/txtArt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtVertretungslehrer"
-        android:textAlignment="center"
-        android:textSize="17sp"
-        android:layout_marginLeft="10dp"
-        tools:text="Vertretung" />
-
-    <TextView
-        android:id="@+id/txtHinweis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtArt"
-        android:textSize="17sp"
-        android:layout_marginLeft="10dp"
-        tools:text="Test für App" />
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="10dp"
+        android:id="@+id/vertretungsplan_row_sub"
+        android:layout_toRightOf="@id/vertretungsplan_row_hour"
+        android:layout_toEndOf="@id/vertretungsplan_row_hour"
+        android:layout_below="@id/vertretungsplan_row_type"
+        android:textColor="@color/colorWhite"/>
 
 </RelativeLayout>

@@ -15,11 +15,13 @@
 
     <!--Vertretungsart-->
 
-    <color name="colorVertretung">#3A9637</color>
-    <color name="colorSondereinsatz">#B538A4</color>
-    <color name="colorAbsenz">#3A9637</color>
-    <color name="colorAenderung">#E5C834</color>
-    <color name="colorEigArbeiten">#57007F</color>
-    <color name="colorEntfall">#FF0000</color>
-    <color name="colorVeranstaltung">#FF7B23</color>
+    <color name="colorVertretung">#FF3A9637</color>
+    <color name="colorSondereinsatz">#FFB538A4</color>
+    <color name="colorAbsenz">#FF3A9637</color>
+    <color name="colorAenderung">#FFE5C834</color>
+    <color name="colorEigArbeiten">#FF57007F</color>
+    <color name="colorEntfall">#FFFF0000</color>
+    <color name="colorVeranstaltung">#FFFF7B23</color>
+    <color name="colorVerlegung">#FFA00023</color>
+    <color name="colorRaumaenderung">#0a0ab6</color>
 </resources>

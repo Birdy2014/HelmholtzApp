@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         WebView webView = findViewById(R.id.activity_login_web_view);
         Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, getApplicationContext(), webView);
         client.login(intent);
     }

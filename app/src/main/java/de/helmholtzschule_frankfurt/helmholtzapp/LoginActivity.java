@@ -16,67 +16,15 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
 public class LoginActivity extends AppCompatActivity {
-    boolean authorized;
-    DataStorage dataStorage = DataStorage.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        /*boolean tryLoginAgain;
-
-
-        try {
-            tryLoginAgain = getIntent().getStringExtra("tryLoginAgain").equals("true");
-        } catch (Exception e) {
-            tryLoginAgain = false;
-        }
-
-        if (!tryLoginAgain) {
-            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-            dataStorage.initialize(mySPR.getString("auth", "").trim());
-
-            Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        Spinner dropdown = (Spinner)findViewById(R.id.choose_klasse);
-
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, dataStorage.klassen);
-        dropdown.setAdapter(adapter);
-
-        Button btn = (Button) findViewById(R.id.bLogIn);
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-                SharedPreferences.Editor editor = mySPR.edit();
-
-                EditText editTextUsername = (EditText) findViewById(R.id.etBenutzername);
-                String username = editTextUsername.getText().toString().replaceAll(" ", "");
-
-                EditText editTextPassword = (EditText) findViewById(R.id.etPasswort);
-                String password = editTextPassword.getText().toString();
-
-                String klasse = dropdown.getSelectedItem().toString();
-
-                String base64credentials = Base64.encodeToString((username + ":" + password).getBytes(), Base64.DEFAULT).trim();
-
-                editor.putString("auth", base64credentials);
-                dataStorage.setKlasse(LoginActivity.this, klasse);
-                editor.apply();
-                dataStorage.initialize(base64credentials);
-
-                Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });*/
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         System.out.println("PackageName: " + this.getPackageName());
         HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-        WebView webView = findViewById(R.id.activity_login_web_view);
+        WebView webView = (WebView)findViewById(R.id.activity_login_web_view);
         Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, getApplicationContext(), webView);

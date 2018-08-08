@@ -17,10 +17,8 @@ public class VertretungsActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_vertretung);
 
-        ImageButton back = findViewById(R.id.activity_vertretung_arrow);
-        back.setOnClickListener(click -> {
-            super.onBackPressed();
-        });
+        ImageButton back = (ImageButton)findViewById(R.id.activity_vertretung_arrow);
+        back.setOnClickListener(click -> super.onBackPressed());
         super.onCreate(savedInstanceState);
 
         String[] data = getIntent().getStringExtra("vertretung").split("<!>");

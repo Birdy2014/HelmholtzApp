@@ -61,7 +61,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                ((TextView)findViewById(R.id.sub_text)).setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
+                TextView view = (TextView)findViewById(R.id.sub_text);
+                if(view != null){
+                    view.setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
+                }
             }
 
             @Override

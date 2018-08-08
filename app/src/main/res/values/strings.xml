@@ -6,6 +6,8 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="playStore"><u>Play Store</u></string>
     <string name="datenschutz"><u>Aktuelle Datenschutzerklärung</u></string>
+    <string name="datenschutzDatenbankHeader">Datenschutz des\nLogindienstes:</string>
+    <string name="datenschutzDatenbank"><u>HelmholtzDatabase</u></string>
     <string name="impressum"><u>Aktuelles Impressum</u></string>
     <string name="emailHelp">helmholtzapp.hilfe@gmail.com</string>
     <string name="exportText">Der Stundenplan wird als Datei gesichert</string>
@@ -13,5 +15,5 @@
     <string name="importText">Stundenplan aus Sicherungsverzeichnis importieren</string>
     <string name="clearText">Der Stundenplan wird unwiderruflich gelöscht</string>
     <string name="actionsEmpty">Keine Termine\nvorhanden</string>
-    <string name="crash_toast_text">Etwas ist scheifgelaufen:(\nBitte sende eine Mail an uns:)</string>
+    <string name="crash_toast_text">Etwas ist schiefgelaufen:(\nBitte sende eine Mail an uns:)</string>
 </resources>

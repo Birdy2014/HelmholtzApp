@@ -2,6 +2,7 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -102,7 +103,6 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
         Dialog dialog = new Dialog(getContext()/*, R.style.full_screen_dialog*/);
         dialog.addContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        dialog.show();
 
         EditText lessonName = popupView.findViewById(R.id.popupTextFach);
         lessonName.setText(item.getName());
@@ -115,6 +115,15 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         EditText room = popupView.findViewById(R.id.popupTextRaum);
         room.setText(((StundenplanItem)item).getRaum());
         setEditable(room, false, getContext());
+
+        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(DialogInterface dialogInterface) {
+                lessonName.clearFocus();
+                teacher.clearFocus();
+                room.clearFocus();
+            }
+        });
 
         ImageButton editButton = popupView.findViewById(R.id.popupButtonEdit);
         ImageButton applyButton = popupView.findViewById(R.id.popupButtonApply);
@@ -130,6 +139,8 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             setEditable(lessonName, true, getContext());
             setEditable(teacher, true, getContext());
             setEditable(room, true, getContext());
+
+            if(lessonName.isFocused())lessonName.clearFocus();
         });
         applyButton.setOnClickListener(click -> {
             applyButton.setVisibility(View.INVISIBLE);
@@ -150,7 +161,6 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             DataStorage.getInstance().saveStundenplan(false);
         });
         colorButton.setOnClickListener(click ->{
-
             inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             popupView = inflater.inflate(R.layout.color_chooser, null);
             Dialog colorDialog = new Dialog(getContext());
@@ -158,6 +168,16 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             ColorFieldAdapter adapter = new ColorFieldAdapter(getContext(), new ArrayList<>(Arrays.asList(StundenplanColor.values())), (StundenplanItem)item, colorDialog, this);
             GridView gridView = popupView.findViewById(R.id.colorGrid);
             gridView.setAdapter(adapter);
+            colorDialog.setOnDismissListener(dialogInterface -> {
+                setEditable(lessonName, true, getContext());
+                setEditable(teacher, true, getContext());
+                setEditable(room, true, getContext());
+            });
+
+            setEditable(lessonName, false, getContext());
+            setEditable(teacher, false, getContext());
+            setEditable(room, false, getContext());
+
             colorDialog.show();
         });
         resetButton.setOnClickListener(click -> {
@@ -170,6 +190,7 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
             DataStorage.getInstance().saveStundenplan(false);
         });
         if(lessonName.getText().toString().equals("") && teacher.getText().toString().equals("") && room.getText().toString().equals(""))editButton.performClick();
+        dialog.show();
     }
     private static void setEditable(EditText text, boolean b, Context c){
         if(!b){

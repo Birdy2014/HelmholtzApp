@@ -1,7 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,19 +12,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import org.acra.ACRA;
-import org.acra.ReportField;
-import org.acra.ReportingInteractionMode;
-import org.acra.annotation.ReportsCrashes;
-import org.acra.sender.HttpSender;
 
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
@@ -118,8 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case 3: {
-                //Tab3kalender kalender = new Tab3kalender();
-                Tab3kalender2 kalender = new Tab3kalender2();
+                Tab3kalender kalender = new Tab3kalender();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
                 break;
@@ -161,6 +153,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
         }
+        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+        if(mySPR.getBoolean("FR", true)){
+            showDialog();
+        }
+    }
+    public void showDialog(){
+        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+        SharedPreferences.Editor editor = mySPR.edit();
+        editor.putBoolean("FR", false);
+        editor.apply();
+
+        Dialog dialog = new Dialog(MainActivity.this);
+        View dialogView = View.inflate(MainActivity.this, R.layout.welcome_layout, new LinearLayout(MainActivity.this));
+        dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        Button button = dialogView.findViewById(R.id.buttonWelcome);
+        button.setOnClickListener(click -> dialog.cancel());
+        dialog.show();
     }
 
     @Override
@@ -175,7 +184,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
 
         switch (item.getItemId()){
             case R.id.nav_news: {
@@ -197,8 +205,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_kalender: {
-                //Tab3kalender kalender = new Tab3kalender();
-                Tab3kalender2 kalender = new Tab3kalender2();
+                Tab3kalender kalender = new Tab3kalender();
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
                 break;

@@ -16,4 +16,7 @@
     <string name="clearText">Der Stundenplan wird unwiderruflich gelöscht</string>
     <string name="actionsEmpty">Keine Termine\nvorhanden</string>
     <string name="crash_toast_text">Etwas ist schiefgelaufen:(\nBitte sende eine Mail an uns:)</string>
+    <string name="welcomeString">Danke dass du die Helmholtz-App installiert hast.\n\nGefällt dir die App? Stört dich etwas? Dann hinterlasse bitte eine Bewertung im PlayStore.\n\nStürzt die App ab oder verhält sich merkwürdig?\nDann sende eine Mail an uns, in der du erklärst, wie es dazu kam. Die Adresse findest du unter \"Über die App\"\n\nVielen Dank!</string>
+    <string name="welcomeButtonTxt">Alles klar</string>
+    <string name="descrReloadButton">ReloadButton</string>
 </resources>

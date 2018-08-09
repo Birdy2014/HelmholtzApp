@@ -21,13 +21,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        System.out.println("PackageName: " + this.getPackageName());
+        //System.out.println("PackageName: " + this.getPackageName());
         HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         WebView webView = (WebView)findViewById(R.id.activity_login_web_view);
         Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, getApplicationContext(), webView);
+        client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, LoginActivity.this, webView);
         client.login(intent);
     }
 }

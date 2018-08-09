@@ -73,7 +73,6 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         subTxt.setText(sub);
 
         int backgroundColor = R.color.colorWhite;
-        //TODO edit colors @colors.xml
         switch (art){
             case "Veranst.": {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_veranstaltung));

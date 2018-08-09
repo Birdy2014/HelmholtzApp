@@ -6,22 +6,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.GridView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import java.text.DateFormatSymbols;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Objects;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.StundenplanColor.*;
 
 public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
 
-    public Tab3kalender2 kalender2;
+    public Tab3kalender kalender2;
 
-    public CalendarAdapter(Context context, ArrayList<CalendarItem> list, Tab3kalender2 kalender2) {
+    public CalendarAdapter(Context context, ArrayList<CalendarItem> list, Tab3kalender kalender2) {
         super(context, R.layout.calendar_cell, list);
         this.kalender2 = kalender2;
     }

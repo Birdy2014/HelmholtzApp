@@ -67,7 +67,7 @@ class DataStorage{
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
-    private boolean isDebugRun = false; //TODO change before commit or release!!!
+    private boolean isDebugRun = false; //used when Website isn't reachable
 
     public static DataStorage getInstance() {
         return ourInstance;
@@ -90,7 +90,6 @@ class DataStorage{
     }
 
     public void initialize(String base64credentials) {
-        String base64credentials1 = base64credentials;
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 

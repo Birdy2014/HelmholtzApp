@@ -55,8 +55,13 @@ public class Tab8settings extends Fragment {
         hourSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                storage.hours = (int)hourSelect.getSelectedItem();
-                storage.saveStundenplan(true);
+                if(hasHourOverflow()){
+                    //TODO add dialog
+                }
+                else {
+                    storage.hours = (int) hourSelect.getSelectedItem();
+                    storage.saveStundenplan(true);
+                }
             }
 
             @Override
@@ -100,5 +105,9 @@ public class Tab8settings extends Fragment {
                     Toast.makeText(getContext(), "Permission denied to access your location", Toast.LENGTH_SHORT).show();
                 }
         }
+    }
+    private boolean hasHourOverflow(){
+        //TODO check if chosen hour limit stands in conflict with the actual plan
+        return false;
     }
 }

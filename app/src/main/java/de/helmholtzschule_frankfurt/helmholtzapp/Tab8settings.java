@@ -1,5 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -14,8 +15,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -55,8 +58,25 @@ public class Tab8settings extends Fragment {
         hourSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(hasHourOverflow()){
-                    //TODO add dialog
+                if(hasHourOverflow((int)hourSelect.getSelectedItem())){
+                    System.out.println("Hour Overflow");
+
+                    Dialog dialog = new Dialog(getContext());
+                    View dialogView = View.inflate(getContext(), R.layout.overflow_dialog, null);
+                    dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+
+                    Button cancelButton = dialogView.findViewById(R.id.close_button_cancel);
+                    cancelButton.setOnClickListener(click -> {
+                        hourSelect.setSelection(list.indexOf(storage.hours));
+                        dialog.cancel();
+                    });
+                    Button continueButton = dialogView.findViewById(R.id.close_button_close);
+                    continueButton.setOnClickListener(click -> {
+                        storage.hours = (int) hourSelect.getSelectedItem();
+                        storage.saveStundenplan(true);
+                        dialog.cancel();
+                    });
+                    dialog.show();
                 }
                 else {
                     storage.hours = (int) hourSelect.getSelectedItem();
@@ -106,8 +126,11 @@ public class Tab8settings extends Fragment {
                 }
         }
     }
-    private boolean hasHourOverflow(){
-        //TODO check if chosen hour limit stands in conflict with the actual plan
-        return false;
+    private boolean hasHourOverflow(int selected){
+        int lastIndex = 0;
+        for(int i = 0; i < storage.getStundenplan().size(); i++){
+            if(storage.getStundenplan().get(i) instanceof StundenplanItem && !storage.getStundenplan().get(i).getName().equals(""))lastIndex = i;
+        }
+        return selected * 6 <= lastIndex;
     }
 }

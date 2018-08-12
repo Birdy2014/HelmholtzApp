@@ -20,4 +20,5 @@
     <string name="welcomeButtonTxt">Alles klar</string>
     <string name="descrReloadButton">ReloadButton</string>
     <string name="overflowMsg">Durch diesen Vorgang\nwerden Stunden gelöscht. Fortfahren?</string>
+    <string name="loginText">Bitte melde dich mit deinem\nHelmholtzDatabase Account an.\nDu hast noch keinen Account? Dann erstelle ihn</string>
 </resources>

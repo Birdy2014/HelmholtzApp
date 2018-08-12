@@ -56,7 +56,6 @@ public class ActionAdapter extends ArrayAdapter<ActionContainer> {
             Dialog actionDialog = new Dialog(getContext());
             actionDialog.setContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-
             Button delete = popupView.findViewById(R.id.deleteButton);
             delete.setOnClickListener(click -> {
                 storage.removeContainer(getItem(position));

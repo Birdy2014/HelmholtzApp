@@ -18,4 +18,15 @@
         android:layout_marginRight="2dp"
         android:layout_marginTop="2dp"/>
 
+    <!--<Button
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editButton"
+        android:text="Termin bearbeiten"
+        android:background="@color/colorBackgroundGrey"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginRight="2dp"/>-->
+
 </LinearLayout>

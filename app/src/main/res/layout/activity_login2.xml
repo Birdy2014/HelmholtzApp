@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.LoginActivity"
+    android:gravity="center_horizontal"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginRight="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="Login"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        android:id="@+id/newsText"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp" />
+
+    <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loginText"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="3dp"
+            android:textAlignment="center"
+            android:id="@+id/login_info"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/login_info"
+            android:layout_toRightOf="@id/login_info"
+            android:text="hier"
+            android:layout_marginTop="59dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginStart="3dp" />
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etBenutzername"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="Benutzername"
+        android:inputType="textPersonName"
+        android:theme="@style/primaryDarkForeground" />
+
+    <EditText
+        android:id="@+id/etPasswort"
+        android:layout_width="match_parent"
+        android:layout_height="68dp"
+        android:ems="10"
+        android:hint="Passwort"
+        android:inputType="numberPassword"
+        android:theme="@style/primaryDarkForeground" />
+
+    <Button
+        android:id="@+id/bLogIn"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/button_login_background"
+        android:text="LOGIN" />
+
+</LinearLayout>

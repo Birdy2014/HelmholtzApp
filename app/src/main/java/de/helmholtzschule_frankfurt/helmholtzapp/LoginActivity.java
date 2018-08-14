@@ -17,6 +17,7 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -37,14 +37,14 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         String hinweis = getItem(position).getHinweis();
         String art = getItem(position).getArt();
 
-        if(fach.equals(""))fach = " ";
-        if(klasse.equals(""))klasse = " ";
-        if(stunde.equals(""))stunde = " ";
-        if(vertretungslehrer.equals(""))vertretungslehrer = " ";
-        if(fuerLehrer.equals(""))fuerLehrer = " ";
-        if(raum.equals(""))raum = " ";
-        if(hinweis.equals(""))hinweis = " ";
-        if(art.equals(""))art = " ";
+        if(fach.equals("") || fach.equals("---"))fach = " ";
+        if(klasse.equals("") || klasse.equals("---"))klasse = " ";
+        if(stunde.equals("") || stunde.equals("---"))stunde = " ";
+        if(vertretungslehrer.equals("") || vertretungslehrer.equals("---"))vertretungslehrer = " ";
+        if(fuerLehrer.equals("") || fuerLehrer.equals("---"))fuerLehrer = " ";
+        if(raum.equals("") || raum.equals("---"))raum = " ";
+        if(hinweis.equals("") || hinweis.equals("---"))hinweis = " ";
+        if(art.equals("") || art.equals("---"))art = " ";
 
         if(stunde.contains("-")){
             StringBuilder firstDigit = new StringBuilder();
@@ -69,7 +69,7 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         artTxt.setText(art.equals(" ") ? "???" : art);
 
 
-        String sub = (vertretungslehrer.equals(" ") ? "???" : vertretungslehrer) + " in " + (raum.equals(" ") ? "???" : raum);
+        String sub = (!fach.equals(" ") ? "(" + fach + ") " : "") + (vertretungslehrer.equals(" ") || vertretungslehrer.equals("+") ? fuerLehrer : vertretungslehrer) + " in " + (raum.equals(" ") ? "???" : raum);
         subTxt.setText(sub);
 
         int backgroundColor = R.color.colorWhite;
@@ -118,6 +118,10 @@ class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
                 customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_raumaenderung));
                 backgroundColor = R.color.colorRaumaenderung;
                 break;
+            }
+            case "Mitbetreuung": {
+                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_vertretung));
+                backgroundColor = R.color.colorVertretung;
             }
         }
         if(art.contains("Arbeiten"))customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten)); //..dunno

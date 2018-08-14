@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class Tab5lehrerliste extends Fragment {
@@ -20,6 +20,7 @@ public class Tab5lehrerliste extends Fragment {
     public ArrayList<LehrerItem> daten = new ArrayList<>();
     public LehrerAdapter menuAdapter;
     DataStorage dataStorage = DataStorage.getInstance();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class Tab5lehrerliste extends Fragment {
         }
         menuAdapter = new LehrerAdapter(this.getContext(), daten);
         lstMenu = (ListView) getView().findViewById(R.id.lehrer_list_view);
+        SearchView searchView = getView().findViewById(R.id.lehrerliste_search);
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
 
@@ -55,6 +57,36 @@ public class Tab5lehrerliste extends Fragment {
         });
 
         lstMenu.setAdapter(menuAdapter);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                boolean contains = false;
+                for(LehrerItem item : daten){
+                    if(item.getText().contains(query))contains = true;
+                }
+                if(contains){
+                    menuAdapter.getFilter().filter(query);
+                }else{
+                    Toast.makeText(getActivity(), "Kein Treffer",Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                boolean contains = false;
+                for(LehrerItem item : daten){
+                    if(item.getText().contains(newText))contains = true;
+                }
+                if(contains){
+                    menuAdapter.getFilter().filter(newText);
+                }else{
+                    Toast.makeText(getActivity(), "Kein Treffer",Toast.LENGTH_LONG).show();
+                }
+                return false;
+            }
+        });
         super.onViewCreated(view, savedInstanceState);
     }
 }

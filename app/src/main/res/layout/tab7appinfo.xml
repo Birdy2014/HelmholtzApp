@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:baselineAligned="false"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity"
     android:layout_marginLeft="10dp"
     android:layout_marginStart="20dp"
     android:layout_marginRight="10dp"

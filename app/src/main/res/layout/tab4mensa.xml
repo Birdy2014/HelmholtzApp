@@ -27,7 +27,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginRight="10dp"
     android:layout_below="@id/mensaplanText"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity">
 
     <ListView
         android:id="@+id/mensaMenu"

@@ -36,13 +36,27 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
+import de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity;
+import de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType;
+import de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload;
+import de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor;
+import de.helmholtzschule_frankfurt.helmholtzapp.exception.NoConnectionException;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Mensaplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.News;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanCell;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
-import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.LEHRERLISTE;
-import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.MENSAPLAN;
-import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.NEWS;
-import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.VERTRETUNGSPLAN;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload.LEHRERLISTE;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload.MENSAPLAN;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload.NEWS;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload.VERTRETUNGSPLAN;
 import static java.util.Calendar.FRIDAY;
 import static java.util.Calendar.MONDAY;
 import static java.util.Calendar.SATURDAY;
@@ -51,7 +65,7 @@ import static java.util.Calendar.THURSDAY;
 import static java.util.Calendar.TUESDAY;
 import static java.util.Calendar.WEDNESDAY;
 
-class DataStorage{
+public class DataStorage{
 
     private static final DataStorage ourInstance = new DataStorage();
     private HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
@@ -62,7 +76,7 @@ class DataStorage{
     private ArrayList<News> news;
     private String lehrerlisteRawData;
     private String[] lehrerliste;
-    String[] klassen;
+    private String[] klassen;
     private StundenplanItem copiedItem = null;
     private ArrayList<StundenplanCell> stundenplan = new ArrayList<>();
     public int hours;
@@ -109,9 +123,8 @@ class DataStorage{
                         if(newsRawData.equals("dError")){ //checks for download possibility of HHS
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                             newsRawData = "{}";
-                            if(!isDebugRun)return;
+                            //if(!isDebugRun)return;
                         }
-                        //newsRawData = "{}";
                         parseNews();
                     }
                     else if(e == VERTRETUNGSPLAN){
@@ -123,13 +136,20 @@ class DataStorage{
                         mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
                         if(mensaplanRawData.equals("dError")){
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-                            if(!isDebugRun)return;
+                            mensaplanRawData = "{}";
+                            //if(!isDebugRun)return;
                         }
+                        mensaplanRawData = "{}";
                         parseMensaplan();
                     }
                     else if(e == LEHRERLISTE){
                         setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
                         lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
+                        if(lehrerlisteRawData.equals("dError")){
+                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
+                            lehrerlisteRawData = "{}";
+                        }
+                        lehrerlisteRawData = "{}";
                         parseLehrerliste();
                     }
                     bar.setProgress(bar.getProgress() + stepSize);

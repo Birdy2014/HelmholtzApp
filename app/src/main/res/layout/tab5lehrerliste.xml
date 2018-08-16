@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.Tab5lehrerliste">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste">
 
     <TextView
         android:layout_width="match_parent"
@@ -20,13 +21,14 @@
         android:layout_marginStart="15dp" />
 
     <android.support.v7.widget.SearchView
-        android:layout_width="200dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:id="@+id/lehrerliste_search"
         android:layout_below="@id/lehrerlisteText"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="-5dp"
-        android:layout_marginStart="-14dp" />
+        android:layout_marginStart="-14dp"
+        app:queryHint="Suche"/>
 
     <ListView
         android:layout_width="match_parent"

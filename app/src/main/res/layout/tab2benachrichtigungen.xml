@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.Tab2benachrichtigungen">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab2benachrichtigungen">
 
     <TextView
         android:id="@+id/tab6Date"

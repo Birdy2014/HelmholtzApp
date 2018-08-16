@@ -18,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="de.helmholtzschule_frankfurt.helmholtzapp.LoginActivity"
+            android:name="de.helmholtzschule_frankfurt.helmholtzapp.activity.LoginActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait">
@@ -29,11 +29,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
+            android:name="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".LoadingActivity"/>
-        <activity android:name=".VertretungsActivity"/>
-        <activity android:name=".ActivitySend"/>
+        <activity android:name=".activity.LoadingActivity"/>
+        <activity android:name=".activity.VertretungsActivity"/>
+        <activity android:name=".activity.SendActivity"/>
         <!--<receiver android:name="SimpleWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

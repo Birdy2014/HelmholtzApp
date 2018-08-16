@@ -15,6 +15,9 @@ import android.util.Base64;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class LoadingActivity extends AppCompatActivity{
@@ -63,7 +66,17 @@ public class LoadingActivity extends AppCompatActivity{
                         finish();
                     } else {
                         try {
-                            dataStorage.update(LoadingActivity.this);
+                            int[] toDownload = getIntent().getIntArrayExtra("toDownload");
+                            ArrayList<EnumDownload> params = new ArrayList<>();
+                            if(toDownload == null || toDownload.length == 0 || toDownload[0] == -1){
+                                params.addAll(Arrays.asList(EnumDownload.values()));
+                            }
+                            else {
+                                for (int i : toDownload) {
+                                    params.add(EnumDownload.values()[i]);
+                                }
+                            }
+                            dataStorage.update(LoadingActivity.this, params.toArray(new EnumDownload[]{}));
                         } catch (NoConnectionException e) {
                             textView.post(new Runnable() {
                                 @Override

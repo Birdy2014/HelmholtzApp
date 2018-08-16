@@ -39,6 +39,10 @@ import java.util.Scanner;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
+import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.LEHRERLISTE;
+import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.MENSAPLAN;
+import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.NEWS;
+import static de.helmholtzschule_frankfurt.helmholtzapp.EnumDownload.VERTRETUNGSPLAN;
 import static java.util.Calendar.FRIDAY;
 import static java.util.Calendar.MONDAY;
 import static java.util.Calendar.SATURDAY;
@@ -93,42 +97,54 @@ class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity activity) throws NoConnectionException { //Do not remove that!!!
+    public void update(Activity activity, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
-                setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
-                vertretungsplan.updateVertretungsplan();
-                bar.setProgress(35);
-                setLoadingInfo("Mensaplan wird heruntergeladen", activity);
-                mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
-                if(mensaplanRawData.equals("dError")){
-                    setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-                    if(!isDebugRun)return;
+                int stepSize = 100 / downloads.length;
+                for(EnumDownload e : downloads){
+                    if(e == NEWS){
+                        setLoadingInfo("News werden heruntergeladen", activity);
+                        newsRawData = download("http://helmholtzschule-frankfurt.de");
+                        if(newsRawData.equals("dError")){ //checks for download possibility of HHS
+                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
+                            newsRawData = "{}";
+                            if(!isDebugRun)return;
+                        }
+                        //newsRawData = "{}";
+                        parseNews();
+                    }
+                    else if(e == VERTRETUNGSPLAN){
+                        setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
+                        vertretungsplan.updateVertretungsplan();
+                    }
+                    else if(e == MENSAPLAN){
+                        setLoadingInfo("Mensaplan wird heruntergeladen", activity);
+                        mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
+                        if(mensaplanRawData.equals("dError")){
+                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
+                            if(!isDebugRun)return;
+                        }
+                        parseMensaplan();
+                    }
+                    else if(e == LEHRERLISTE){
+                        setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
+                        lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
+                        parseLehrerliste();
+                    }
+                    bar.setProgress(bar.getProgress() + stepSize);
                 }
-                bar.setProgress(45);
-                setLoadingInfo("News werden heruntergeladen", activity);
-                newsRawData = download("http://helmholtzschule-frankfurt.de");
-                if(newsRawData.equals("dError")){ //checks for download possibility of HHS
-                    setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-                    if(!isDebugRun)return;
+                if(downloads.length == EnumDownload.values().length) {
+                    loadStundenplan();
+                    fillContainers(activity);
+                    monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
                 }
-                bar.setProgress(70);
-                setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
-                lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
-                loadStundenplan();
-                bar.setProgress(100);
-                if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
-                parseMensaplan();
-                parseNews();
-                parseLehrerliste();
-                fillContainers(activity);
-                monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
                 int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
                 activity.startActivity(intent);
                 activity.finish();
+                //if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");

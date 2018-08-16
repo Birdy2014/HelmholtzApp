@@ -30,9 +30,10 @@
         </activity>
         <activity
             android:name="de.helmholtzschule_frankfurt.helmholtzapp.MainActivity"
-            android:screenOrientation="portrait" />
-        <activity android:name="de.helmholtzschule_frankfurt.helmholtzapp.LoadingActivity"></activity>
-        <activity android:name=".VertretungsActivity"></activity>
+            android:screenOrientation="portrait"/>
+        <activity android:name=".LoadingActivity"/>
+        <activity android:name=".VertretungsActivity"/>
+        <activity android:name=".ActivitySend"/>
         <!--<receiver android:name="SimpleWidgetProvider" >
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />

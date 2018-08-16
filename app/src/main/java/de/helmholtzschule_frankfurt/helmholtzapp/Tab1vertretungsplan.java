@@ -138,6 +138,7 @@ public class Tab1vertretungsplan extends Fragment {
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
                 intent.putExtra("fragmentIndex", 1);
+                intent.putExtra("toDownload", new int[]{1});
                 startActivity(intent);
             }
         });

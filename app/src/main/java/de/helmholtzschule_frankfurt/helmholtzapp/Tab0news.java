@@ -59,6 +59,7 @@ public class Tab0news extends Fragment {
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
                 intent.putExtra("fragmentIndex", 0);
+                intent.putExtra("toDownload", new int[]{0});
                 startActivity(intent);
             }
         });

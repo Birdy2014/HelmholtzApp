@@ -3,7 +3,10 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +24,9 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.Calendar;
+import java.util.Date;
+
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,9 +34,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DrawerLayout mDrawerLayout;
     private static int menuIndexSelected = 0;
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Thread.setDefaultUncaughtExceptionHandler((thread, throwable) -> {
+            System.out.println("EXCEPTION!!!");
+            handleUncaughtException(thread, throwable);
+        });
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
@@ -76,6 +88,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         ImageButton button = (ImageButton)findViewById(R.id.refresh_toolbar);
         button.setOnClickListener(view -> {
+
+            if(true)throw new NullPointerException();//TODO REMOVE!!!
+
             for (int i = 0; i < navigationView.getMenu().size(); i++){
                 if(navigationView.getMenu().getItem(i).isChecked()){
                     menuIndexSelected = i;
@@ -83,6 +98,29 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             Intent intent = new Intent(MainActivity.this, LoadingActivity.class);
             intent.putExtra("fragmentIndex", menuIndexSelected);
+            int x = -1;
+            switch (menuIndexSelected){
+                case 0: {
+                    x = 0;
+                    break;
+                }
+                case 2: {
+                    x = 1;
+                    break;
+                }
+                case 1: {
+                    x = 1;
+                    break;
+                }
+                case 4: {
+                    x = 2;
+                    break;
+                }
+                case 5: {
+                    x = 3;
+                }
+            }
+            intent.putExtra("toDownload", new int[]{x});
             startActivity(intent);
         });
         menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);
@@ -261,6 +299,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
+
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
@@ -275,9 +316,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             cancelButton.setOnClickListener(click -> dialog.cancel());
             continueButton.setOnClickListener(click -> {
                 dialog.cancel();
-                super.onBackPressed();
+                this.finishAffinity();
             });
             dialog.show();
         }
+    }
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    public void handleUncaughtException(Thread thread, Throwable throwable){
+        String stacktrace = Log.getStackTraceString(throwable);
+        String message = throwable.getMessage();
+
+        Intent intent = new Intent(MainActivity.this, ActivitySend.class);
+        intent.putExtra("message", message);
+        intent.putExtra("stacktrace", stacktrace);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        System.exit(0);
     }
 }

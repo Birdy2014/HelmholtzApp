@@ -34,6 +34,7 @@ public class Tab4mensa extends Fragment {
             public void onRefresh() {
                 Intent intent = new Intent(getContext(), LoadingActivity.class);
                 intent.putExtra("fragmentIndex", 4);
+                intent.putExtra("toDownload", new int[]{2});
                 startActivity(intent);
             }
         });

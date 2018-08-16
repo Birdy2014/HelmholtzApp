@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ImageButton button = (ImageButton)findViewById(R.id.refresh_toolbar);
         button.setOnClickListener(view -> {
 
-            if(true)throw new NullPointerException();//TODO REMOVE!!!
-
             for (int i = 0; i < navigationView.getMenu().size(); i++){
                 if(navigationView.getMenu().getItem(i).isChecked()){
                     menuIndexSelected = i;

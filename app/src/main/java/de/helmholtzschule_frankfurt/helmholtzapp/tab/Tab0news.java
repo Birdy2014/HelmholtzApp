@@ -15,7 +15,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.News;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.NewsAdapter;
@@ -27,7 +27,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.adapter.NewsAdapter;
 
 public class Tab0news extends Fragment {
     public ListView lstMenu;
-    public ArrayList<News> daten;
+    public ArrayList<NewsItem> daten;
     public NewsAdapter menuAdapter;
     DataStorage dataStorage = DataStorage.getInstance();
 
@@ -38,7 +38,7 @@ public class Tab0news extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        daten = new ArrayList<News>();
+        daten = new ArrayList<NewsItem>();
 
         menuAdapter = new NewsAdapter(this.getContext(), dataStorage.getNews());
         lstMenu = (ListView) getView().findViewById(R.id.lstNews);
@@ -48,7 +48,7 @@ public class Tab0news extends Fragment {
         lstMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        News akt = (News) parent.getItemAtPosition(position);
+                        NewsItem akt = (NewsItem) parent.getItemAtPosition(position);
                         String url = akt.getUrl();
 
                         Intent intent = new Intent();

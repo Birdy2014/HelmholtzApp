@@ -3,7 +3,6 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
@@ -43,8 +42,8 @@ import de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor;
 import de.helmholtzschule_frankfurt.helmholtzapp.exception.NoConnectionException;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Mensaplan;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.News;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
@@ -72,8 +71,8 @@ public class DataStorage{
     private Vertretungsplan vertretungsplan;
     private String mensaplanRawData;
     private String newsRawData;
-    private ArrayList<Mensaplan> gerichte;
-    private ArrayList<News> news;
+    private ArrayList<MensaplanItem> gerichte;
+    private ArrayList<NewsItem> news;
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     private String[] klassen;
@@ -85,17 +84,16 @@ public class DataStorage{
     private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
-    private boolean isDebugRun = false; //used when Website isn't reachable
 
     public static DataStorage getInstance() {
         return ourInstance;
     }
 
     private DataStorage() {
-        String[] posfixes = {"a", "b", "c", "d", "e"};
+        String[] postfixes = {"a", "b", "c", "d", "e"};
         ArrayList<String> list = new ArrayList<>();
         for(int i = 5; i < 10; i++){
-            for(String s : posfixes){
+            for(String s : postfixes){
                 list.add(i + s);
             }
         }
@@ -111,7 +109,7 @@ public class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity activity, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!
+    public void update(Activity activity, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!a
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
@@ -123,7 +121,6 @@ public class DataStorage{
                         if(newsRawData.equals("dError")){ //checks for download possibility of HHS
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                             newsRawData = "{}";
-                            //if(!isDebugRun)return;
                         }
                         parseNews();
                     }
@@ -136,10 +133,7 @@ public class DataStorage{
                         mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
                         if(mensaplanRawData.equals("dError")){
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-                            mensaplanRawData = "{}";
-                            //if(!isDebugRun)return;
                         }
-                        mensaplanRawData = "{}";
                         parseMensaplan();
                     }
                     else if(e == LEHRERLISTE){
@@ -147,13 +141,12 @@ public class DataStorage{
                         lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
                         if(lehrerlisteRawData.equals("dError")){
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-                            lehrerlisteRawData = "{}";
                         }
-                        lehrerlisteRawData = "{}";
                         parseLehrerliste();
                     }
                     bar.setProgress(bar.getProgress() + stepSize);
                 }
+                setTextViewText(activity, R.id.loadingtext, "Wird konfiguriert");
                 if(downloads.length == EnumDownload.values().length) {
                     loadStundenplan();
                     fillContainers(activity);
@@ -164,7 +157,6 @@ public class DataStorage{
                 intent.putExtra("fragmentIndex", index);
                 activity.startActivity(intent);
                 activity.finish();
-                //if (mensaplanRawData == null || newsRawData == null || lehrerlisteRawData == null)return;
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
@@ -211,13 +203,21 @@ public class DataStorage{
     private void parseMensaplan() {
         gerichte = new ArrayList<>();
 
-        Gson gson = new Gson();
-        String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {}.getType());
-        gerichte.add(new Mensaplan("Montag", data[0][0], data[0][1], data[0][2]));
-        gerichte.add(new Mensaplan("Dienstag", data[1][0], data[1][1], data[1][2]));
-        gerichte.add(new Mensaplan("Mittwoch", data[2][0], data[2][1], data[2][2]));
-        gerichte.add(new Mensaplan("Donnerstag", data[3][0], data[3][1], data[3][2]));
-        gerichte.add(new Mensaplan("Freitag", data[4][0], data[4][1], data[4][2]));
+        if(!mensaplanRawData.equals("dError")) {
+            Gson gson = new Gson();
+            String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {
+            }.getType());
+            gerichte.add(new MensaplanItem("Montag", data[0][0], data[0][1], data[0][2]));
+            gerichte.add(new MensaplanItem("Dienstag", data[1][0], data[1][1], data[1][2]));
+            gerichte.add(new MensaplanItem("Mittwoch", data[2][0], data[2][1], data[2][2]));
+            gerichte.add(new MensaplanItem("Donnerstag", data[3][0], data[3][1], data[3][2]));
+            gerichte.add(new MensaplanItem("Freitag", data[4][0], data[4][1], data[4][2]));
+        }
+        else {
+            for(String s : new String[]{"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"}){
+                gerichte.add(new MensaplanItem(s, "Download fehlgeschlagen", "Download fehlgeschlagen", "Download fehlgeschlagen"));
+            }
+        }
     }
 
     private void parseNews(){
@@ -226,12 +226,12 @@ public class DataStorage{
         Document doc = Jsoup.parse(newsRawData);
         Elements titles = doc.getElementsByClass("node__title");
         for(Element e : titles){
-            News news = new News(e.children().get(0).children().get(0).html(), "http://helmholtzschule-frankfurt.de" + e.children().get(0).attr("href"));
+            NewsItem news = new NewsItem(e.children().get(0).children().get(0).html(), "http://helmholtzschule-frankfurt.de" + e.children().get(0).attr("href"));
             this.news.add(news); // adding object to news list
         }
     }
 
-    public ArrayList<News> getNews() {
+    public ArrayList<NewsItem> getNews() {
         return news;
     }
 
@@ -239,7 +239,7 @@ public class DataStorage{
         return vertretungsplan;
     }
 
-    public ArrayList<Mensaplan> getGerichte() {
+    public ArrayList<MensaplanItem> getGerichte() {
         return gerichte;
     }
 
@@ -251,9 +251,7 @@ public class DataStorage{
         final boolean[] reachable = new boolean[1];
         Thread thread = new Thread(() -> {
             try {
-                URL url;
-                if(!isDebugRun)url = new URL("http://www.helmholtzschule-frankfurt.de");
-                else url = new URL("https://www.google.com");
+                URL url = new URL("https://www.google.com");
                 HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
                 Object objData = urlConnect.getContent();
                 reachable[0] = true;
@@ -272,29 +270,24 @@ public class DataStorage{
 
     private void parseLehrerliste() {
         Gson gson = new Gson();
-        lehrerliste = gson.fromJson(lehrerlisteRawData, new TypeToken<String[]>() {}.getType());
+        if(!lehrerlisteRawData.equals("dError"))lehrerliste = gson.fromJson(lehrerlisteRawData, new TypeToken<String[]>() {}.getType());
+        else lehrerliste = new String[]{"Download fehlgeschlagen"};
     }
 
-    public void setKlasse(Activity activity, String klasse){
-        SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
-        SharedPreferences.Editor editor = mySPR.edit();
-
-        editor.putString("klasse", klasse);
-        editor.apply();
-
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + mySPR.getString("klasse", "5a").toLowerCase());
-        FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + klasse);
-    }
-
-    public String getKlasse() {
+    private String getKlasse() {
         return client.getKlasse();
     }
 
-    public void setPushNotificationsActive(boolean b, Activity activity) {
-        //add unsubscribeAll
-        FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + activity.getSharedPreferences("MySPFILE", 0).getString("klasse", "5a").toLowerCase());
+    public void setPushNotificationsActive(boolean b) {
+        unsubscribeAll();
         if (b) {
-            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse());
+            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse().toLowerCase());
+        }
+    }
+
+    private void unsubscribeAll() {
+        for (String s : klassen) {
+            FirebaseMessaging.getInstance().unsubscribeFromTopic("de.HhsFra." + s.toLowerCase());
         }
     }
 

@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Mensaplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 
-public class MensaAdapter extends ArrayAdapter<Mensaplan> {
+public class MensaAdapter extends ArrayAdapter<MensaplanItem> {
 
-    public MensaAdapter(Context context, ArrayList<Mensaplan> list) {
+    public MensaAdapter(Context context, ArrayList<MensaplanItem> list) {
         super(context, R.layout.mensa_row, list);
 
     }

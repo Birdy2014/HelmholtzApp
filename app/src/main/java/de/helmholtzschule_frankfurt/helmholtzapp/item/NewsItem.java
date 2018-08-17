@@ -4,11 +4,11 @@ package de.helmholtzschule_frankfurt.helmholtzapp.item;
  * Created by Julian on 28.06.2017.
  */
 
-public class News {
+public class NewsItem {
     String titel;
     String url;
 
-    public News(String titel, String url) {
+    public NewsItem(String titel, String url) {
         this.titel = titel;
         this.url = url;
     }

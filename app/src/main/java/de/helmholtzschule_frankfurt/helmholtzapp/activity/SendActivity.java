@@ -17,7 +17,7 @@ public class SendActivity extends AppCompatActivity{
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_send);
 

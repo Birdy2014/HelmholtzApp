@@ -95,7 +95,7 @@ public class Tab8settings extends Fragment {
 
         CheckBox box = getActivity().findViewById(R.id.settings_edit_push_notes);
         box.setOnClickListener(view1 -> {
-            storage.setPushNotificationsActive(box.isChecked(), getActivity());
+            storage.setPushNotificationsActive(box.isChecked());
         });
         View exportView = getView().findViewById(R.id.settings_export);
         exportView.setOnClickListener(click -> {

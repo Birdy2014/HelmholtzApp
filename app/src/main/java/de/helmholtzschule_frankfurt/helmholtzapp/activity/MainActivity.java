@@ -328,6 +328,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 
+        System.out.println(stacktrace);
+
         Intent intent = new Intent(MainActivity.this, SendActivity.class);
         intent.putExtra("message", message);
         intent.putExtra("stacktrace", stacktrace);

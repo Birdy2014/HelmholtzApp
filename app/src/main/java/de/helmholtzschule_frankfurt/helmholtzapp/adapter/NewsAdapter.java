@@ -9,16 +9,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.News;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 
 /**
  * Created by Julian on 28.06.2017.
  */
 
-public class NewsAdapter extends ArrayAdapter<News> {
+public class NewsAdapter extends ArrayAdapter<NewsItem> {
 
-    public NewsAdapter(Context context, ArrayList<News> list) {
+    public NewsAdapter(Context context, ArrayList<NewsItem> list) {
         super(context, R.layout.news_row, list);
     }
 

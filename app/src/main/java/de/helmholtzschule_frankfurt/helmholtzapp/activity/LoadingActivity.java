@@ -99,6 +99,8 @@ public class LoadingActivity extends AppCompatActivity{
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 
+        System.out.println(stacktrace);
+
         Intent intent = new Intent(LoadingActivity.this, SendActivity.class);
         intent.putExtra("message", message);
         intent.putExtra("stacktrace", stacktrace);

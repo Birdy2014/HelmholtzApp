@@ -1,14 +1,14 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.item;
 
 
-public class Mensaplan {
+public class MensaplanItem {
     String tag;
     String fleisch;
     String veg;
     String dessert;
 
 
-    public Mensaplan(String tag, String fleisch, String veg, String dessert) {
+    public MensaplanItem(String tag, String fleisch, String veg, String dessert) {
         this.tag = tag;
         this.fleisch = fleisch;
         this.veg = veg;

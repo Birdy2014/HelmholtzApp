@@ -31,16 +31,15 @@
         <activity
             android:name="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.LoadingActivity"/>
-        <activity android:name=".activity.VertretungsActivity"/>
-        <activity android:name=".activity.SendActivity"/>
-        <!--<receiver android:name="SimpleWidgetProvider" >
-            <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-            </intent-filter>
-            <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/simple_widget_info" />
-        </receiver>-->
+        <activity
+            android:name=".activity.LoadingActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.VertretungsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.SendActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

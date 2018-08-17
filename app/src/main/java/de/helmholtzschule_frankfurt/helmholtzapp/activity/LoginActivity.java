@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 
+        System.out.println(stacktrace);
+
         Intent intent = new Intent(LoginActivity.this, SendActivity.class);
         intent.putExtra("message", message);
         intent.putExtra("stacktrace", stacktrace);

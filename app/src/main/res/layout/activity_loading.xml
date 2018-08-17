@@ -51,6 +51,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/loadingInfo"
         android:layout_marginTop="30dp"
-        android:textAlignment="center"/>
+        android:textAlignment="center"
+        android:text="Downloads werden vorbereitet..."/>
 
 </LinearLayout>

@@ -1,6 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -40,7 +41,7 @@ public class LoadingActivity extends AppCompatActivity{
         String[] credentials = client.getVertretungsplanCredentials("vertretungsplan");
         String base64credentials = Base64.encodeToString((credentials[0] + ":" + credentials[1]).getBytes(), Base64.DEFAULT).trim();
 
-        dataStorage.initialize(base64credentials);
+        if(getIntent().getIntArrayExtra("toDownload") == null) dataStorage.initialize(base64credentials);
         Thread thread = new Thread() {
             @Override
             public void run() {

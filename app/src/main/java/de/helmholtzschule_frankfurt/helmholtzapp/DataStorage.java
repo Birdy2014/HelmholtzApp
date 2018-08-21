@@ -3,6 +3,7 @@ package de.helmholtzschule_frankfurt.helmholtzapp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
@@ -127,6 +128,7 @@ public class DataStorage{
                     else if(e == VERTRETUNGSPLAN){
                         setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
                         vertretungsplan.updateVertretungsplan();
+                        System.out.println("Vertretungsplan updated!");
                     }
                     else if(e == MENSAPLAN){
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
@@ -146,13 +148,15 @@ public class DataStorage{
                     }
                     bar.setProgress(bar.getProgress() + stepSize);
                 }
-                setTextViewText(activity, R.id.loadingtext, "Wird konfiguriert");
+                setLoadingInfo("Wird konfiguriert", activity);
+                int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
                 if(downloads.length == EnumDownload.values().length) {
                     loadStundenplan();
                     fillContainers(activity);
                     monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
+                    SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
+                    index = mySPR.getInt("standardTab", 0);
                 }
-                int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
                 activity.startActivity(intent);

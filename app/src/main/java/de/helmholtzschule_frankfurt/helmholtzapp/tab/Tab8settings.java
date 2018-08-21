@@ -2,6 +2,7 @@ package de.helmholtzschule_frankfurt.helmholtzapp.tab;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -116,6 +117,34 @@ public class Tab8settings extends Fragment {
             }
             storage.saveStundenplan(false);
             Toast.makeText(getActivity().getBaseContext(), "Stundenplan wurde erfolgreich geleert.", Toast.LENGTH_SHORT).show();
+        });
+
+        Spinner standardTab = getView().findViewById(R.id.settings_edit_tab);
+        ArrayList<String> indices = new ArrayList<>();
+        indices.add("News");
+        indices.add("Vertretungsplan");
+        indices.add("Benachrichtigungen");
+        indices.add("Kalender");
+        indices.add("Mensaplan");
+        indices.add("Lehrerliste");
+        indices.add("Hausaufgaben");
+        indices.add("Stundenplan");
+
+        ArrayAdapter indexAdapter = new ArrayAdapter(getContext(), R.layout.spinner_dropdown_item, indices);
+        standardTab.setAdapter(indexAdapter);
+        SharedPreferences mySPR = getActivity().getSharedPreferences("MySPFILE", 0);
+        standardTab.setSelection(mySPR.getInt("standardTab", 0));
+        standardTab.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                SharedPreferences.Editor editor = mySPR.edit();
+                editor.putInt("standardTab", i);
+                System.out.println(i);
+                editor.apply();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {}
         });
     }
 

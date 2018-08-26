@@ -21,7 +21,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         Thread.setDefaultUncaughtExceptionHandler(this::handleUncaughtException);
-        //System.out.println("PackageName: " + this.getPackageName());
         HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         WebView webView = (WebView)findViewById(R.id.activity_login_web_view);

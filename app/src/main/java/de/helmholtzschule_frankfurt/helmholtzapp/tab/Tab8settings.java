@@ -19,18 +19,23 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoginActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
+import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
 public class Tab8settings extends Fragment {
 
     DataStorage storage = DataStorage.getInstance();
+    HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -120,15 +125,8 @@ public class Tab8settings extends Fragment {
         });
 
         Spinner standardTab = getView().findViewById(R.id.settings_edit_tab);
-        ArrayList<String> indices = new ArrayList<>();
-        indices.add("News");
-        indices.add("Vertretungsplan");
-        indices.add("Benachrichtigungen");
-        indices.add("Kalender");
-        indices.add("Mensaplan");
-        indices.add("Lehrerliste");
-        indices.add("Hausaufgaben");
-        indices.add("Stundenplan");
+        String[] tabs = {"News", "Vertretungsplan", "Benachrichtigungen", "Kalender", "Mensaplan", "Lehrerliste", "Hausaufgaben", "Stundenplan"};
+        ArrayList<String> indices = new ArrayList<>(Arrays.asList(tabs));
 
         ArrayAdapter indexAdapter = new ArrayAdapter(getContext(), R.layout.spinner_dropdown_item, indices);
         standardTab.setAdapter(indexAdapter);
@@ -146,6 +144,17 @@ public class Tab8settings extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {}
         });
+
+        View logged = getActivity().findViewById(R.id.settings_logged);
+        logged.setOnClickListener(click -> {
+            client.logout();
+            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+        });
+
+        TextView loggedAs = getActivity().findViewById(R.id.settings_text_logged);
+        loggedAs.setText("Angemeldet als: " + client.getUsername());
     }
 
     @Override

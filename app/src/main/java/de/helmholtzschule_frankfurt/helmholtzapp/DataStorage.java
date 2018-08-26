@@ -110,7 +110,7 @@ public class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity activity, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!a
+    public void update(Activity activity, boolean backgroundProcess, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!a
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
@@ -159,6 +159,7 @@ public class DataStorage{
                 }
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
+                intent.putExtra("background", backgroundProcess);
                 activity.startActivity(intent);
                 activity.finish();
             }

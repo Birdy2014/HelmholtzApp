@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout mDrawerLayout;
     private static int menuIndexSelected = 0;
+    private static boolean beenKilled = false;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -47,6 +48,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(this::handleUncaughtException);
         setContentView(R.layout.activity_main);
+        moveTaskToBack(getIntent().getBooleanExtra("background", false));
+
+        beenKilled = false;
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -336,5 +340,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         System.exit(0);
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        System.out.println("Killed!");
+        this.finishAffinity();
     }
 }

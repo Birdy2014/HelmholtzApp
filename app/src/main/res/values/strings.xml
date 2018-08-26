@@ -22,4 +22,5 @@
     <string name="overflowMsg">Durch diesen Vorgang\nwerden Stunden gelöscht. Fortfahren?</string>
     <string name="loginText">Bitte melde dich mit deinem\nHelmholtzDatabase Account an.\nDu hast noch keinen Account? Dann erstelle ihn</string>
     <string name="textCrash">Oh, etwas ist schiefgelaufen:(\n\nDrücke \"Weiter\" um\neine E-mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
+    <string name="textLogout">Abmelden</string>
 </resources>

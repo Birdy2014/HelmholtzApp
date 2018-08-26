@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
@@ -24,7 +23,7 @@ public class SendActivity extends AppCompatActivity{
         String message = getIntent().getStringExtra("message");
         String stacktrace = getIntent().getStringExtra("stacktrace");
 
-        Button button = findViewById(R.id.crashButton);
+        Button button = (Button)findViewById(R.id.crashButton);
         button.setOnClickListener(click -> {
 
 

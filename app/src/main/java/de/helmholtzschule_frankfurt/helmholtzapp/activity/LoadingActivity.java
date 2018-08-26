@@ -1,7 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -16,13 +15,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
+import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload;
 import de.helmholtzschule_frankfurt.helmholtzapp.exception.NoConnectionException;
-import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class LoadingActivity extends AppCompatActivity{
     DataStorage dataStorage = DataStorage.getInstance();
+    private boolean isInForeground = true;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -78,7 +78,8 @@ public class LoadingActivity extends AppCompatActivity{
                                     params.add(EnumDownload.values()[i]);
                                 }
                             }
-                            dataStorage.update(LoadingActivity.this, params.toArray(new EnumDownload[]{}));
+                            System.out.println("Is in Foreground? " + isInForeground);
+                            dataStorage.update(LoadingActivity.this, !isInForeground, params.toArray(new EnumDownload[]{}));
                         } catch (NoConnectionException e) {
                             textView.post(new Runnable() {
                                 @Override
@@ -108,5 +109,17 @@ public class LoadingActivity extends AppCompatActivity{
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         System.exit(0);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        isInForeground = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isInForeground = true;
     }
 }

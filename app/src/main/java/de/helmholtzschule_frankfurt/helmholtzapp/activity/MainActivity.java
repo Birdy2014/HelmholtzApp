@@ -333,6 +333,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String message = throwable.getMessage();
 
         System.out.println(stacktrace);
+        if(throwable instanceof RuntimeException)System.out.println("Killed!");
 
         Intent intent = new Intent(MainActivity.this, SendActivity.class);
         intent.putExtra("message", message);
@@ -341,13 +342,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         startActivity(intent);
         System.exit(0);
 
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        System.out.println("Killed!");
-        this.finishAffinity();
     }
 }

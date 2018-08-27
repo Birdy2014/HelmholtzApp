@@ -1,6 +1,9 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -333,14 +336,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         String message = throwable.getMessage();
 
         System.out.println(stacktrace);
-        if(throwable instanceof RuntimeException)System.out.println("Killed!");
-
-        Intent intent = new Intent(MainActivity.this, SendActivity.class);
-        intent.putExtra("message", message);
-        intent.putExtra("stacktrace", stacktrace);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-        System.exit(0);
-
+        if(stacktrace.contains("Unable to start")){
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            int mPendingIntentId = 69;
+            AlarmManager mgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
+            finishAffinity();
+            System.exit(0);
+        }
+        else {
+            Intent intent = new Intent(MainActivity.this, SendActivity.class);
+            intent.putExtra("message", message);
+            intent.putExtra("stacktrace", stacktrace);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            System.exit(0);
+        }
     }
 }

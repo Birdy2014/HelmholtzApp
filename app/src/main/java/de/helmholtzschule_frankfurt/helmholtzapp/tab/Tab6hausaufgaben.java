@@ -11,16 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 import android.widget.TextView;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- */
 public class Tab6hausaufgaben extends Fragment {
 
     WebView webView;

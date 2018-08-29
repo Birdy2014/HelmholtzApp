@@ -15,15 +15,11 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.NewsAdapter;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 
-
-/**
- * Created by Staudinger on 28.06.2017.
- */
 
 public class Tab0news extends Fragment {
     public ListView lstMenu;

@@ -1,6 +1,9 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.tab;
 
+import android.app.AlarmManager;
 import android.app.Dialog;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -149,12 +152,16 @@ public class Tab8settings extends Fragment {
         logged.setOnClickListener(click -> {
             client.logout();
             Intent intent = new Intent(getActivity(), LoginActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
+            int mPendingIntentId = 69;
+            AlarmManager mgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
+            PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
+            getActivity().finishAffinity();
+            System.exit(0);
         });
 
         TextView loggedAs = getActivity().findViewById(R.id.settings_text_logged);
-        loggedAs.setText("Angemeldet als: " + client.getUsername());
+        loggedAs.setText(String.format("Angemeldet als: %s", client.getUsername()));
     }
 
     @Override

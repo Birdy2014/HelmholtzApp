@@ -1,8 +1,5 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.item;
 
-/**
- * Created by Julian on 28.06.2017.
- */
 
 public class NewsItem {
     String titel;

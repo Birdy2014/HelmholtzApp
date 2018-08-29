@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -80,6 +82,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 TextView view = (TextView)findViewById(R.id.sub_text);
                 if(view != null){
                     view.setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
+                }
+                ImageView imageView = (ImageView)findViewById(R.id.imageView);
+                if(imageView != null){
+                    imageView.setOnClickListener(click -> {
+                        Intent intent = new Intent();
+                        intent.setAction(Intent.ACTION_VIEW);
+                        intent.setData(Uri.parse("http://helmholtzschule-frankfurt.de"));
+                        startActivity(Intent.createChooser(intent, "Öffnen in"));
+                    });
                 }
             }
 

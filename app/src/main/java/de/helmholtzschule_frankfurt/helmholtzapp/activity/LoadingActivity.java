@@ -48,12 +48,9 @@ public class LoadingActivity extends AppCompatActivity{
                 TextView textView = (TextView) findViewById(R.id.loadingtext);
 
                 if (!dataStorage.isInternetReachable()) {
-                    textView.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            System.out.println("Keine Verbindung");
-                            textView.setText("Verbindung zum Server konnte nicht\nhergestellt werden");
-                        }
+                    textView.post(() -> {
+                        System.out.println("Keine Verbindung");
+                        textView.setText("Verbindung zum Server konnte nicht\nhergestellt werden");
                     });
                 } else {
                     final boolean authorized;
@@ -81,12 +78,9 @@ public class LoadingActivity extends AppCompatActivity{
                             System.out.println("Is in Foreground? " + isInForeground);
                             dataStorage.update(LoadingActivity.this, !isInForeground, params.toArray(new EnumDownload[]{}));
                         } catch (NoConnectionException e) {
-                            textView.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    System.out.println("NoConnectionException");
-                                    textView.setText("Kein Internet");
-                                }
+                            textView.post(() -> {
+                                System.out.println("NoConnectionException");
+                                textView.setText("Kein Internet");
                             });
                         }
 

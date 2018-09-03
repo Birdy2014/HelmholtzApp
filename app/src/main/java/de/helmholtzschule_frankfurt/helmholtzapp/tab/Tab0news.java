@@ -9,7 +9,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -41,29 +40,23 @@ public class Tab0news extends Fragment {
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
 
-        lstMenu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        NewsItem akt = (NewsItem) parent.getItemAtPosition(position);
-                        String url = akt.getUrl();
+        lstMenu.setOnItemClickListener((parent, view1, position, id) -> {
+            NewsItem akt = (NewsItem) parent.getItemAtPosition(position);
+            String url = akt.getUrl();
 
-                        Intent intent = new Intent();
-                        intent.setAction(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse(url));
-                        startActivity(Intent.createChooser(intent, "Öffnen in"));
-                    }
-                }
+            Intent intent = new Intent();
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(intent, "Öffnen in"));
+        }
         );
 
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_news);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Intent intent = new Intent(getContext(), LoadingActivity.class);
-                intent.putExtra("fragmentIndex", 0);
-                intent.putExtra("toDownload", new int[]{0});
-                startActivity(intent);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Intent intent = new Intent(getContext(), LoadingActivity.class);
+            intent.putExtra("fragmentIndex", 0);
+            intent.putExtra("toDownload", new int[]{0});
+            startActivity(intent);
         });
 
         super.onViewCreated(view, savedInstanceState);

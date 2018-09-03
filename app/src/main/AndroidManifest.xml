@@ -40,6 +40,9 @@
         <activity
             android:name=".activity.SendActivity"
             android:screenOrientation="portrait"/>
+
+
+
     </application>
 
 </manifest>

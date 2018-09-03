@@ -28,7 +28,6 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
         //customView.setBackgroundResource(R.drawable.boxes);
 
         String titel = getItem(position).getTitel();
-        String url = getItem(position).getUrl();
 
 
         TextView txtTitel = (TextView) customView.findViewById(R.id.txtTitel);

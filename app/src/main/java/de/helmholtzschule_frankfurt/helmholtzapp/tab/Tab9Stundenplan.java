@@ -12,8 +12,8 @@ import java.util.ArrayList;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.StundenplanAdapter;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 
 public class Tab9Stundenplan extends Fragment {
 

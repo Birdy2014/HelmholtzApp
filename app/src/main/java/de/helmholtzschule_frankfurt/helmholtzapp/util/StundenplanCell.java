@@ -1,6 +1,4 @@
-package de.helmholtzschule_frankfurt.helmholtzapp.item;
-
-import android.widget.ArrayAdapter;
+package de.helmholtzschule_frankfurt.helmholtzapp.util;
 
 public class StundenplanCell {
 

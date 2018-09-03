@@ -45,9 +45,9 @@ import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
@@ -132,7 +132,7 @@ public class DataStorage{
                     }
                     else if(e == MENSAPLAN){
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
-                        mensaplanRawData = download("https://unforkablefood.000webhostapp.com");
+                        mensaplanRawData = download("https://tools.lazybird.me/helmholtzApp/mensaplan/");
                         if(mensaplanRawData.equals("dError")){
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                         }
@@ -140,7 +140,7 @@ public class DataStorage{
                     }
                     else if(e == LEHRERLISTE){
                         setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
-                        lehrerlisteRawData = download("http://unforkablefood.000webhostapp.com/lehrerliste/lehrerliste.json");
+                        lehrerlisteRawData = download("https://tools.lazybird.me/helmholtzApp/lehrerliste/lehrerliste.json");
                         if(lehrerlisteRawData.equals("dError")){
                             setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                         }

@@ -21,10 +21,10 @@ import java.util.Arrays;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanCell;
-import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 
 public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
 
@@ -57,48 +57,41 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
         }
         nameView.setText(name);
         customView.setOnLongClickListener(view -> {
-            inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            popupView = inflater.inflate(R.layout.stundenplan_action_box, null);
-            Dialog actionDialog = new Dialog(getContext());
-            actionDialog.setContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            if(getItem(position) instanceof StundenplanItem) {
+                inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                popupView = inflater.inflate(R.layout.stundenplan_action_box, null);
+                Dialog actionDialog = new Dialog(getContext());
+                actionDialog.setContentView(popupView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
-            /*Window dialogWindow = actionDialog.getWindow();
-            WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-            dialogWindow.setGravity(Gravity.START | Gravity.TOP);
-
-            System.out.println("X: " + customView.getX());
-            lp.x = (int)customView.getX();*/
-
-            Button copy = popupView.findViewById(R.id.copyButton);
-            Button put = popupView.findViewById(R.id.pasteButton);
-            copy.setOnClickListener(click -> {
-                DataStorage.getInstance().setCopiedItem((StundenplanItem)getItem(position));
-                this.notifyDataSetChanged();
-                DataStorage.getInstance().saveStundenplan(false);
-                actionDialog.cancel();
-            });
-            put.setOnClickListener(click -> {
-                ((StundenplanItem)getItem(position)).overwrite(DataStorage.getInstance().getCopiedItem());
-                this.notifyDataSetChanged();
-                DataStorage.getInstance().saveStundenplan(false);
-                actionDialog.cancel();
-            });
-            put.setVisibility(DataStorage.getInstance().getCopiedItem() == null ? View.GONE : View.VISIBLE);
-            actionDialog.show();
-            return true;
+                Button copy = popupView.findViewById(R.id.copyButton);
+                Button put = popupView.findViewById(R.id.pasteButton);
+                copy.setOnClickListener(click -> {
+                    DataStorage.getInstance().setCopiedItem((StundenplanItem) getItem(position));
+                    this.notifyDataSetChanged();
+                    DataStorage.getInstance().saveStundenplan(false);
+                    actionDialog.cancel();
+                });
+                put.setOnClickListener(click -> {
+                    ((StundenplanItem) getItem(position)).overwrite(DataStorage.getInstance().getCopiedItem());
+                    this.notifyDataSetChanged();
+                    DataStorage.getInstance().saveStundenplan(false);
+                    actionDialog.cancel();
+                });
+                put.setVisibility(DataStorage.getInstance().getCopiedItem() == null ? View.GONE : View.VISIBLE);
+                actionDialog.show();
+                return true;
+            }
+            return false;
         });
         customView.setOnClickListener(view -> {
-            if(getItem(position) instanceof StundenplanCellTime){
-
-            }
-            else if(getItem(position) instanceof StundenplanItem){
-                showPopup(getItem(position), nameView);
+            if(getItem(position) instanceof StundenplanItem){
+                showPopup(getItem(position));
             }
         });
         return customView;
     }
 
-    public void showPopup(StundenplanCell item, TextView view){
+    private void showPopup(StundenplanCell item){
         inflater = (LayoutInflater)getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stundenplan_popup, null);
         Dialog dialog = new Dialog(getContext()/*, R.style.full_screen_dialog*/);

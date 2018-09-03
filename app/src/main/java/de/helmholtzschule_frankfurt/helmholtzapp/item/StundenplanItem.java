@@ -2,8 +2,10 @@ package de.helmholtzschule_frankfurt.helmholtzapp.item;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 
-import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.*;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.BLACK;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.WHITE;
 
 public class StundenplanItem extends StundenplanCell {
 

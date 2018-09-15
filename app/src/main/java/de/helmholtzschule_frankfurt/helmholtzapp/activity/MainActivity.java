@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(this::handleUncaughtException);
         setContentView(R.layout.activity_main);
-        moveTaskToBack(getIntent().getBooleanExtra("background", false));
+        boolean b = getIntent().getBooleanExtra("background", false);
+        if (b) moveTaskToBack(true);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

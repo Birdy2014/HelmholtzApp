@@ -35,12 +35,12 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor;
-import de.helmholtzschule_frankfurt.helmholtzapp.exception.NoConnectionException;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
@@ -50,6 +50,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.TaskCheck;
 import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
@@ -110,7 +111,7 @@ public class DataStorage{
         vertretungsplan = new Vertretungsplan(base64credentials);
     }
 
-    public void update(Activity activity, boolean backgroundProcess, EnumDownload... downloads) throws NoConnectionException { //Do not remove that!!!a
+    public void update(Activity activity, EnumDownload... downloads) {
         Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
@@ -120,7 +121,6 @@ public class DataStorage{
                         setLoadingInfo("News werden heruntergeladen", activity);
                         newsRawData = download("http://helmholtzschule-frankfurt.de");
                         if(newsRawData.equals("dError")){ //checks for download possibility of HHS
-                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                             newsRawData = "{}";
                         }
                         parseNews();
@@ -134,7 +134,6 @@ public class DataStorage{
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
                         mensaplanRawData = download("https://tools.lazybird.me/helmholtzApp/mensaplan/");
                         if(mensaplanRawData.equals("dError")){
-                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                         }
                         parseMensaplan();
                     }
@@ -142,7 +141,6 @@ public class DataStorage{
                         setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
                         lehrerlisteRawData = download("https://tools.lazybird.me/helmholtzApp/lehrerliste/lehrerliste.json");
                         if(lehrerlisteRawData.equals("dError")){
-                            setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
                         }
                         parseLehrerliste();
                     }
@@ -159,15 +157,17 @@ public class DataStorage{
                 }
                 Intent intent = new Intent(activity, MainActivity.class);
                 intent.putExtra("fragmentIndex", index);
-                intent.putExtra("background", backgroundProcess);
+                intent.putExtra("background", !(new TaskCheck().execute(activity).get()));
                 activity.startActivity(intent);
                 activity.finish();
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
-                setTextViewText(activity, R.id.loadingtext, "Download fehlgeschlagen");
-            }
-            catch (IOException e) {
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
         });
@@ -303,11 +303,11 @@ public class DataStorage{
         return new StundenplanCellTime(oberstufenZeiten[hour][0], oberstufenZeiten[hour][1]);
     }
 
-    public void loadStundenplan(){
+    private void loadStundenplan() {
         Gson gson = new Gson();
         String JSON = client.readUserData("stundenplan");
         StundenplanJsonObject jsonObject;
-        if(JSON.equals("NOT FOUND")){
+        if (JSON.equals("")) {
             ArrayList<StundenplanItem> items = new ArrayList<>();
             for(int i = 0; i < 66; i++){
                 items.add(new StundenplanItem(null, null, null, null));
@@ -338,7 +338,7 @@ public class DataStorage{
         }
     }
 
-    public void refreshStundenplan(){
+    private void refreshStundenplan() {
         ArrayList<StundenplanCell> list = new ArrayList<>(stundenplan);
         stundenplan.clear();
         for(int i = 0; i < hours * 6; i++)stundenplan.add(new StundenplanItem(null, null, null, StundenplanColor.WHITE));
@@ -810,7 +810,7 @@ public class DataStorage{
         TypeToken<ArrayList<String>> token = new TypeToken<ArrayList<String>>(){};
         String JSON = client.readUserData("kalender");
         ArrayList<String> codes;
-        if(JSON.equals("NOT FOUND")){
+        if (JSON.equals("")) {
             codes = new ArrayList<>();
         }
         else codes = gson.fromJson(JSON, token.getType());

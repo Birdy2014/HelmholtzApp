@@ -26,13 +26,6 @@
         android:id="@+id/progressBar"
         android:progressDrawable="@drawable/circular_progress_bar" />
 
-    <TextView
-        android:text="Lädt"
-        android:layout_marginTop="20dp"
-        android:id="@+id/loadingtext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"/>
 
     <ProgressBar
         android:id="@+id/progressBar2"

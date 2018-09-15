@@ -126,7 +126,6 @@
     <orderEntry type="library" name="Gradle: com.android.support:support-core-ui-26.1.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:runner-0.5" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-core-utils-26.1.0" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Jonas Schroeter\.gradle\caches\transforms-1\files-1.1\HelmholtzDatabaseLib-1.1.aar\275be817eb06993e4a1dd56c3209b72e:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-messaging-11.8.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: com.android.support.test:exposed-instrumentation-api-publish-0.5" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-analytics-impl-11.8.0" level="project" />
@@ -149,6 +148,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-26.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-fragment-26.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:common:1.0.0@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:C.\Users\Jonas Schroeter\.gradle\caches\transforms-1\files-1.1\HelmholtzDatabaseLib-1.2.aar\e2c4915b8e816f55a232d70bd00bf4cb:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.firebase:firebase-iid-license-11.8.0" level="project" />
     <orderEntry type="library" name="Gradle: com.madgag.spongycastle:core:1.51.0.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-basement-11.8.0" level="project" />

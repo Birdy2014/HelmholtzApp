@@ -5,9 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="de.helmholtzschule_frankfurt.helmholtzapp.activity.LoginActivity"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:layout_marginLeft="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginRight="10dp">
 
-    <!--<TextView
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -21,6 +25,29 @@
         android:layout_marginEnd="15dp"
         android:layout_marginStart="15dp" />
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/loginText"
+            android:layout_marginTop="20dp"
+            android:lineSpacingExtra="3dp"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/login_info"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/login_info"
+            android:text="hier"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
     <EditText
         android:id="@+id/etBenutzername"
         android:layout_width="match_parent"
@@ -31,29 +58,13 @@
         android:inputType="textPersonName"
         android:theme="@style/primaryDarkForeground" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Klasse wählen:"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/choose_klasse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/etBenutzername"
-        android:background="@android:drawable/btn_dropdown"
-        android:spinnerMode="dropdown" />
-
     <EditText
         android:id="@+id/etPasswort"
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:ems="10"
         android:hint="Passwort"
-        android:inputType="numberPassword"
+        android:inputType="textPassword"
         android:theme="@style/primaryDarkForeground" />
 
     <Button
@@ -61,11 +72,6 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/button_login_background"
-        android:text="LOGIN" />-->
-
-    <WebView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activity_login_web_view"/>
+        android:text="LOGIN" />
 
 </LinearLayout>

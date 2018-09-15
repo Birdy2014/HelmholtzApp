@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Process;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
@@ -30,7 +31,7 @@ import java.util.Arrays;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
-import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoginActivity;
+import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
@@ -151,13 +152,17 @@ public class Tab8settings extends Fragment {
         View logged = getActivity().findViewById(R.id.settings_logged);
         logged.setOnClickListener(click -> {
             client.logout();
-            Intent intent = new Intent(getActivity(), LoginActivity.class);
+            System.out.println(client.getUsername());
+            System.out.println(mySPR.getString("tokenstundenplan", "FAIL"));
+            System.out.println(mySPR.getString("tokenkalender", "FAIL"));
+            System.out.println(mySPR.getString("tokenvertretungsplan", "FAIL"));
+            Intent intent = new Intent(getActivity(), LoadingActivity.class);
             int mPendingIntentId = 69;
             AlarmManager mgr = (AlarmManager)getActivity().getSystemService(Context.ALARM_SERVICE);
             PendingIntent mPendingIntent = PendingIntent.getActivity(getActivity(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
+            mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 100, mPendingIntent);
             getActivity().finishAffinity();
-            System.exit(0);
+            Process.killProcess(Process.myPid());
         });
 
         TextView loggedAs = getActivity().findViewById(R.id.settings_text_logged);

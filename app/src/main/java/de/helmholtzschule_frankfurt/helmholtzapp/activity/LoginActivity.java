@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.webkit.WebView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
@@ -17,28 +18,37 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 public class LoginActivity extends AppCompatActivity {
 
 
+    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Thread.setDefaultUncaughtExceptionHandler(this::handleUncaughtException);
 
-        if(DataStorage.getInstance().isInternetReachable()) {
-            setContentView(R.layout.activity_login);
-            HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
-            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-            WebView webView = (WebView) findViewById(R.id.activity_login_web_view);
-            Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, LoginActivity.this, webView);
-            client.login(intent);
-        }
-        else {
-            setContentView(R.layout.connection_failed);
-        }
+        setContentView(R.layout.activity_login);
+        HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
+        Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        EditText username = findViewById(R.id.etBenutzername);
+        EditText password = findViewById(R.id.etPasswort);
+
+        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+
+        Button button = findViewById(R.id.bLogIn);
+        button.setOnClickListener(click -> {
+            System.out.println("CLICKED!");
+            if (client.validateAndRequestTokens(username.getText().toString(), password.getText().toString())) {
+                System.out.println("START LOADING!!!!!");
+                startActivity(intent);
+                this.finish();
+            } else {
+                Toast.makeText(this, "Falscher Benutzername oder Passwort", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void handleUncaughtException(Thread thread, Throwable throwable){
+    public void handleUncaughtException(Thread thread, Throwable throwable) {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 

@@ -11,13 +11,13 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
-        android:icon="@drawable/hhs_logo_2"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:roundIcon="@drawable/hhs_logo_2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            
             android:name="de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
@@ -40,8 +40,6 @@
         <activity
             android:name=".activity.SendActivity"
             android:screenOrientation="portrait"/>
-
-
 
     </application>
 

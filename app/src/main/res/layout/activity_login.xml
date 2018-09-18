@@ -42,8 +42,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/login_register"
             android:layout_below="@id/login_info"
-            android:text="hier"
+            android:text="@string/linkRegister"
+            android:textColor="@color/colorHyperlink"
             android:layout_centerHorizontal="true" />
 
     </RelativeLayout>

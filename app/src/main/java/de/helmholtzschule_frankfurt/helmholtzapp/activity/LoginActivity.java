@@ -1,7 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -32,8 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         EditText username = findViewById(R.id.etBenutzername);
         EditText password = findViewById(R.id.etPasswort);
 
-        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-
         Button button = findViewById(R.id.bLogIn);
         button.setOnClickListener(click -> {
             System.out.println("CLICKED!");
@@ -44,6 +42,14 @@ public class LoginActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(this, "Falscher Benutzername oder Passwort", Toast.LENGTH_LONG).show();
             }
+        });
+
+        findViewById(R.id.login_register).setOnClickListener(click -> {
+            String url = "https://helmholtz-database.000webhostapp.com/frontend/login.php?site=https://helmholtz-database.000webhostapp.com/dashboard/&service=Dashboard";
+            Intent webIntent = new Intent();
+            webIntent.setAction(Intent.ACTION_VIEW);
+            webIntent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(webIntent, "Öffnen in"));
         });
     }
 

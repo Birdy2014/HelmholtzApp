@@ -3,14 +3,9 @@ package de.helmholtzschule_frankfurt.helmholtzapp.tab;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.ColorStateList;
-import android.content.res.XmlResourceParser;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
-import android.text.Spanned;
-import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,7 +54,7 @@ public class Tab7appinfo extends Fragment {
 
         TextView linkLoginDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_login_link);
         linkLoginDatenschutz.setOnClickListener(listener -> {
-            String url = "https://helmholtz-database.000webhostapp.com/frontend/impressum.php";
+            String url = "https://helmholtz-database.000webhostapp.com/dashboard/impressum.php";
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));

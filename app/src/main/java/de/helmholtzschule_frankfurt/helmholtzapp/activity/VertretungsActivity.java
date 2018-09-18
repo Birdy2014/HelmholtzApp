@@ -7,6 +7,8 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -19,25 +21,32 @@ public class VertretungsActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setContentView(R.layout.activity_vertretung);
         Thread.setDefaultUncaughtExceptionHandler(this::handleUncaughtException);
-        ImageButton back = (ImageButton)findViewById(R.id.activity_vertretung_arrow);
+        ImageButton back = (ImageButton) findViewById(R.id.activity_vertretung_arrow);
         back.setOnClickListener(click -> super.onBackPressed());
         super.onCreate(savedInstanceState);
 
         String[] data = getIntent().getStringExtra("vertretung").split("<!>");
         String[] headers = {"", "", "Fach", "Klasse", "Lehrer", "Für", "Raum", "Hinweis"};
         int background = getIntent().getIntExtra("color", R.color.colorWhite);
+        if (background != R.color.colorWhite && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            window.setStatusBarColor(getResources().getColor(background));
+        }
 
         findViewById(R.id.activity_vertretung_background).setBackground(getResources().getDrawable(background));
         findViewById(R.id.activity_vertretung_arrow).setBackground(getResources().getDrawable(background));
 
-        int[] views = {R.id.activity_vertretung_hour, R.id.activity_vertretung_type, R.id.activity_vertretung_fach_text, R.id.activity_vertretung_klasse_text, R.id.activity_vertretung_lehrer_text, R.id.activity_vertretung_fuer_text,  R.id.activity_vertretung_raum_text, R.id.activity_vertretung_hinweis_text};
+        int[] views = {R.id.activity_vertretung_hour, R.id.activity_vertretung_type, R.id.activity_vertretung_fach_text, R.id.activity_vertretung_klasse_text, R.id.activity_vertretung_lehrer_text, R.id.activity_vertretung_fuer_text, R.id.activity_vertretung_raum_text, R.id.activity_vertretung_hinweis_text};
 
-        for(int i = 0; i < views.length; i++){
-            ((TextView)findViewById(views[i])).setText((!headers[i].equals("") ? headers[i] + "\n" : "") + (data[i].equals("") || data[i].equals(" ") ? "???" : data[i]));
+        for (int i = 0; i < views.length; i++) {
+            ((TextView) findViewById(views[i])).setText((!headers[i].equals("") ? headers[i] + "\n" : "") + (data[i].equals("") || data[i].equals(" ") ? "???" : data[i]));
         }
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void handleUncaughtException(Thread thread, Throwable throwable){
+    public void handleUncaughtException(Thread thread, Throwable throwable) {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 

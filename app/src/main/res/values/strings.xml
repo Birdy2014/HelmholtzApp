@@ -9,7 +9,7 @@
     <string name="datenschutzDatenbankHeader">Datenschutz des\nLogindienstes:</string>
     <string name="datenschutzDatenbank"><u>HelmholtzDatabase</u></string>
     <string name="impressum"><u>Aktuelles Impressum</u></string>
-    <string name="emailHelp">helmholtzapp.hilfe@gmail.com</string>
+    <string name="emailHelp">helmholtzapp.support@lazybird.me</string>
     <string name="exportText">Der Stundenplan wird als Datei gesichert</string>
     <string name="kontoText">Öffnet das Dashboard im Browser</string>
     <string name="importText">Stundenplan aus Sicherungsverzeichnis importieren</string>
@@ -23,4 +23,5 @@
     <string name="loginText">Bitte melde dich mit deinem\nHelmholtzDatabase Account an.\nDu hast noch keinen Account? Dann erstelle ihn</string>
     <string name="textCrash">Oh, etwas ist schiefgelaufen:(\n\nDrücke \"Weiter\" um\neine E-mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
     <string name="textLogout">Abmelden</string>
+    <string name="linkRegister"><u>hier</u></string>
 </resources>

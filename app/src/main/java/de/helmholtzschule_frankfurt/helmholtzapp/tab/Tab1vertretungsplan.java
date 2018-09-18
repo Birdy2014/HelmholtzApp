@@ -19,7 +19,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.VertretungsplanAdapter;
-import io.github.birdy2014.VertretungsplanLib.Vertretung;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Vertretung;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
@@ -73,42 +73,40 @@ public class Tab1vertretungsplan extends Fragment {
         });
     }
 
-    private void switchData(ToggleButton heuteMorgen, CheckBox checkBox, String klasse){
+    private void switchData(ToggleButton heuteMorgen, CheckBox checkBox, String klasse) {
         daten.clear();
-        int heuteMorgenInt = !heuteMorgen.isChecked() ? 0 : 1;
-        if(checkBox.isChecked()){
-            daten.addAll(dataStorage.getVertretungsplan().getVertretungen().get(heuteMorgenInt));
-        }
-        else {
-            for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(heuteMorgenInt)) {
+        String heuteMorgenString = !heuteMorgen.isChecked() ? "heute" : "morgen";
+        if (checkBox.isChecked()) {
+            daten.addAll(dataStorage.getVertretungsplan().getData().get(heuteMorgenString));
+        } else {
+            for (Vertretung v : dataStorage.getVertretungsplan().getData().get(heuteMorgenString)) {
                 if (v.getKlasse().contains(klasse)) daten.add(v);
             }
         }
-        setDateText(heuteMorgenInt);
+        setDateText(heuteMorgenString);
         vertretungenAdapter[0].notifyDataSetChanged();
-        ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText(daten.isEmpty() ? "Keine Vertretungen" : "");
+        ((TextView) getActivity().findViewById(R.id.placeHolderText)).setText(daten.isEmpty() ? "Keine Vertretungen" : "");
     }
 
     public void dataAccess(String klasse) {
         daten.clear();
-        for (Vertretung v : dataStorage.getVertretungsplan().getVertretungen().get(0)) {
+        for (Vertretung v : dataStorage.getVertretungsplan().getData().get("heute")) {
             if (v.getKlasse().contains(klasse)) daten.add(v);
         }
-        if (daten.isEmpty()){
-            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
-        }
-        else {
-            ((TextView)getActivity().findViewById(R.id.placeHolderText)).setText("");
+        if (daten.isEmpty()) {
+            ((TextView) getActivity().findViewById(R.id.placeHolderText)).setText("Keine Vertretungen");
+        } else {
+            ((TextView) getActivity().findViewById(R.id.placeHolderText)).setText("");
         }
 
-        setDateText(0);
+        setDateText("heute");
         vertretungenAdapter[0] = new VertretungsplanAdapter(getContext(), daten);
         vertretungenAdapter[0].notifyDataSetChanged();
         lstMenu.setAdapter(vertretungenAdapter[0]);
     }
 
-    private void setDateText(int i){
-        String dateTextRaw = dataStorage.getVertretungsplan().getDate(i);
+    private void setDateText(String heuteMorgen) {
+        String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
         ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.dateText)).setText(String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1)));
     }
 }

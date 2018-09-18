@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.VertretungsActivity;
-import io.github.birdy2014.VertretungsplanLib.Vertretung;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Vertretung;
 
 public class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 

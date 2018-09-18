@@ -59,8 +59,6 @@ public class LoadingActivity extends AppCompatActivity {
         String[] credentials = client.getVertretungsplanCredentials("vertretungsplan");
         String base64credentials = Base64.encodeToString((credentials[0] + ":" + credentials[1]).getBytes(), Base64.DEFAULT).trim();
 
-        if (getIntent().getIntArrayExtra("toDownload") == null)
-            dataStorage.initialize(base64credentials);
         Thread thread = new Thread() {
             @Override
             public void run() {

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
@@ -55,19 +56,19 @@ public class Tab2benachrichtigungen extends Fragment {
         });
     }
     private void changeList(ToggleButton button){
-        int heuteMorgenInt = button.isChecked() ? 1 : 0;
+        String heuteMorgenString = button.isChecked() ? "morgen" : "heute";
         daten.clear();
-        for(String s : dataStorage.getVertretungsplan().getNachrichten().get(heuteMorgenInt)){
-            if(s.contains("Abwesende Klassen"))daten.add(new Benachrichtigung(s.substring(0, 17) + ":\n" + s.substring(18)));
-            else if(s.contains("Blockierte Räume"))daten.add(new Benachrichtigung(s.substring(0, 16) + ":\n" + s.substring(17)));
-            else if(s.contains("Betroffene Klassen"))daten.add(new Benachrichtigung(s.substring(0, 18) + ":\n" + s.substring(19)));
-            else if(s.contains("Betroffene Räume"))daten.add(new Benachrichtigung(s.substring(0, 16) + ":\n" + s.substring(17)));
-            else daten.add(new Benachrichtigung(s));
+        for (String s : dataStorage.getBenachrichtigungsplan().getData().get(heuteMorgenString)) {
+            daten.add(new Benachrichtigung(s));
         }
-        ((TextView)getActivity().findViewById(R.id.tab6Date)).setText(dataStorage.getVertretungsplan().getDate(heuteMorgenInt));
+        setDateText(heuteMorgenString);
         menuAdapter = new BenachrichtigungAdapter(this.getContext(), daten);
         lstMenu = (ListView) getView().findViewById(R.id.nachrichtenview);
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
+    }
+    private void setDateText(String heuteMorgen){
+        String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
+        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tab6Date)).setText(String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1)));
     }
 }

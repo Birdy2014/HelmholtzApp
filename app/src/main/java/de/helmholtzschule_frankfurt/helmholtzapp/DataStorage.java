@@ -47,11 +47,12 @@ import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.Benachrichtigungsplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.TaskCheck;
-import io.github.birdy2014.VertretungsplanLib.Vertretungsplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.Vertretungsplan;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.enums.EnumDownload.LEHRERLISTE;
@@ -70,11 +71,21 @@ public class DataStorage{
 
     private static final DataStorage ourInstance = new DataStorage();
     private HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
+
+
     private Vertretungsplan vertretungsplan;
+    private Benachrichtigungsplan benachrichtigungsplan;
+
+    //raw JSON Strings
     private String mensaplanRawData;
     private String newsRawData;
+    private String vertretungsplanRawData;
+    private String benachrichtigungenRawData;
+
+    //parsed lists
     private ArrayList<MensaplanItem> gerichte;
     private ArrayList<NewsItem> news;
+
     private String lehrerlisteRawData;
     private String[] lehrerliste;
     private String[] klassen;
@@ -107,10 +118,6 @@ public class DataStorage{
         klassen = list.toArray(new String[]{});
     }
 
-    public void initialize(String base64credentials) {
-        vertretungsplan = new Vertretungsplan(base64credentials);
-    }
-
     public void update(Activity activity, EnumDownload... downloads) {
         Thread thread = new Thread(() -> {
             try {
@@ -127,8 +134,9 @@ public class DataStorage{
                     }
                     else if(e == VERTRETUNGSPLAN){
                         setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
-                        vertretungsplan.updateVertretungsplan();
-                        System.out.println("Vertretungsplan updated!");
+                        vertretungsplanRawData = download("https://api.lazybird.me/vertretungsplanParser/vertretungsplan?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+                        benachrichtigungenRawData = download("https://api.lazybird.me/vertretungsplanParser/nachrichten?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+                        parseVertretungsplan();
                     }
                     else if(e == MENSAPLAN){
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
@@ -163,11 +171,8 @@ public class DataStorage{
             }
             catch (UnknownHostException e){
                 System.out.println("Download error. How to fix it?");
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+            }
+            catch (Exception e) {
                 e.printStackTrace();
             }
         });
@@ -225,6 +230,14 @@ public class DataStorage{
         }
     }
 
+    //Vertretungsplan & Nachrichten
+    private void parseVertretungsplan(){
+        Gson gson = new Gson();
+        System.out.println("https://api.lazybird.me/vertretungsplanParser/vertretungsplan?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+        vertretungsplan = gson.fromJson(vertretungsplanRawData, Vertretungsplan.class);
+        benachrichtigungsplan = gson.fromJson(benachrichtigungenRawData, Benachrichtigungsplan.class);
+    }
+
     private void parseNews(){
         news = new ArrayList<>();
 
@@ -244,6 +257,10 @@ public class DataStorage{
         return vertretungsplan;
     }
 
+    public Benachrichtigungsplan getBenachrichtigungsplan() {
+        return benachrichtigungsplan;
+    }
+
     public ArrayList<MensaplanItem> getGerichte() {
         return gerichte;
     }
@@ -260,7 +277,8 @@ public class DataStorage{
                 HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
                 Object objData = urlConnect.getContent();
                 reachable[0] = true;
-            } catch (Exception e) {
+            }
+            catch (Exception e) {
                 reachable[0] = false;
             }
         });

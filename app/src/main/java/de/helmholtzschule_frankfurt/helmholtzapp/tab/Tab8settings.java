@@ -54,7 +54,7 @@ public class Tab8settings extends Fragment {
 
         View dashBoard = getView().findViewById(R.id.settings_dashboard);
         dashBoard.setOnClickListener(click -> {
-            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://helmholtz-database.000webhostapp.com"));
+            Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://helmholtz-database.lazybird.me/"));
             startActivity(browser);
             this.getActivity().finishAffinity();
         });

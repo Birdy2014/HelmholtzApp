@@ -76,4 +76,12 @@
         android:background="@drawable/button_login_background"
         android:text="LOGIN" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_protection"
+        android:text="@string/login_datenschutz"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/colorHyperlink" />
+
 </LinearLayout>

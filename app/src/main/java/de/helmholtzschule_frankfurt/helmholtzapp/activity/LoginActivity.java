@@ -51,6 +51,14 @@ public class LoginActivity extends AppCompatActivity {
             webIntent.setData(Uri.parse(url));
             startActivity(Intent.createChooser(webIntent, "Öffnen in"));
         });
+
+        findViewById(R.id.login_protection).setOnClickListener(click -> {
+            String url = "https://helmholtz-database.lazybird.me/login/impressum.html";
+            Intent webIntent = new Intent();
+            webIntent.setAction(Intent.ACTION_VIEW);
+            webIntent.setData(Uri.parse(url));
+            startActivity(Intent.createChooser(webIntent, "Öffnen in"));
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)

@@ -54,7 +54,7 @@ public class Tab7appinfo extends Fragment {
 
         TextView linkLoginDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_login_link);
         linkLoginDatenschutz.setOnClickListener(listener -> {
-            String url = "https://helmholtz-database.000webhostapp.com/dashboard/impressum.php";
+            String url = "https://helmholtz-database.lazybird.me/dashboard/impressum.php";
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));

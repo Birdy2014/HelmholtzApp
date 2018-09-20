@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.login_register).setOnClickListener(click -> {
-            String url = "https://helmholtz-database.000webhostapp.com/frontend/login.php?site=https://helmholtz-database.000webhostapp.com/dashboard/&service=Dashboard";
+            String url = "https://helmholtz-database.lazybird.me/login/desktop.html?site=https://helmholtz-database.lazybird.me/dashboard/&service=Dashboard";
             Intent webIntent = new Intent();
             webIntent.setAction(Intent.ACTION_VIEW);
             webIntent.setData(Uri.parse(url));

@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_share: {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!\nhttps://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";
+                String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!" + getResources().getString(R.id.store_link);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
                 break;

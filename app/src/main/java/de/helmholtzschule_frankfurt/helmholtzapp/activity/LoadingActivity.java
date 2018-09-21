@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,9 +23,7 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class LoadingActivity extends AppCompatActivity {
     DataStorage dataStorage = DataStorage.getInstance();
-    private boolean isInBackground = false;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +88,6 @@ public class LoadingActivity extends AppCompatActivity {
         thread.start();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void handleUncaughtException(Thread thread, Throwable throwable) {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();

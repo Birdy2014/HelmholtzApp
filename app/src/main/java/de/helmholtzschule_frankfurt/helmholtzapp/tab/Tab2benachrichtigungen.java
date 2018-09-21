@@ -14,11 +14,11 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 import java.util.Objects;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.BenachrichtigungAdapter;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
 
 public class Tab2benachrichtigungen extends Fragment {
 
@@ -67,8 +67,10 @@ public class Tab2benachrichtigungen extends Fragment {
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
     }
-    private void setDateText(String heuteMorgen){
+
+    private void setDateText(String heuteMorgen) {
         String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
-        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tab6Date)).setText(String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1)));
+        String dateText = String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1));
+        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.dateText)).setText(dateText.substring(0, dateText.indexOf("Woche")));
     }
 }

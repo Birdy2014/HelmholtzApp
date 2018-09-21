@@ -47,4 +47,13 @@
         android:textAlignment="center"
         android:text="Downloads werden vorbereitet..."/>
 
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/button_retry"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_retry"
+        android:background="@drawable/popup_edit_button_background"
+        android:visibility="gone" />
+
 </LinearLayout>

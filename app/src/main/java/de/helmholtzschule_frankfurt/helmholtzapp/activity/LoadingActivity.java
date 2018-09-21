@@ -8,12 +8,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
@@ -37,9 +40,24 @@ public class LoadingActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        TextView textView = (TextView) findViewById(R.id.loadingInfo);
+        TextView textView = findViewById(R.id.loadingInfo);
         if (!dataStorage.isInternetReachable()) {
-            textView.setText("Verbindung zum Server fehlgeschlagen");
+            final int[] i = {10};
+            ImageButton retry = findViewById(R.id.button_retry);
+            retry.setOnClickListener(click -> this.recreate());
+            Timer timer = new Timer();
+            TimerTask task = new TimerTask() {
+                @Override
+                public void run() {
+                    textView.post(() -> textView.setText("Verbindung zum Server fehlgeschlagen" + "\n\n" + "Erneut versuchen in " + i[0]--));
+                    if (i[0] == 0) {
+                        timer.cancel();
+                        textView.post(() -> textView.setText("Erneut versuchen"));
+                        retry.post(() -> retry.setVisibility(View.VISIBLE));
+                    }
+                }
+            };
+            timer.schedule(task, 0, 1000);
             return;
         }
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
@@ -55,9 +73,6 @@ public class LoadingActivity extends AppCompatActivity {
             //this.finish();
             return;
         }
-
-        String[] credentials = client.getVertretungsplanCredentials("vertretungsplan");
-        String base64credentials = Base64.encodeToString((credentials[0] + ":" + credentials[1]).getBytes(), Base64.DEFAULT).trim();
 
         Thread thread = new Thread() {
             @Override

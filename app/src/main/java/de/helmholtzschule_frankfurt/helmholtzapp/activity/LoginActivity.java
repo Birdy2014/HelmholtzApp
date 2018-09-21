@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
@@ -40,7 +41,7 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 this.finish();
             } else {
-                Toast.makeText(this, "Falscher Benutzername oder Passwort", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, DataStorage.getInstance().isInternetReachable() ? "Falscher Benutzername oder Passwort" : "Keine Internetverbindung", Toast.LENGTH_LONG).show();
             }
         });
 

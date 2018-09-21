@@ -23,7 +23,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/content/ic_add_box_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_autorenew_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,7 +33,8 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="ic_add" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="outputName" value="ic_retry" />
                                       <entry key="theme" value="CUSTOM" />
                                       <entry key="themeColor" value="ffffff" />
                                     </map>
@@ -71,7 +72,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_bookmark_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/N:/Programme/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_autorenew_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -81,10 +82,12 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="808080" />
-                            <entry key="outputName" value="ic_hint" />
+                            <entry key="color" value="ffffff" />
+                            <entry key="height" value="32" />
+                            <entry key="outputName" value="ic_retry" />
                             <entry key="overrideSize" value="true" />
                             <entry key="sourceFile" value="C:\Users\Jonas Schroeter\C:\Users\Jonas Schroeter" />
+                            <entry key="width" value="32" />
                           </map>
                         </option>
                       </PersistentState>

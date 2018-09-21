@@ -73,59 +73,52 @@ public class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         String sub = (!fach.equals(" ") ? "(" + fach + ") " : "") + (vertretungslehrer.equals(" ") || vertretungslehrer.equals("+") ? fuerLehrer : vertretungslehrer) + " in " + (raum.equals(" ") ? "???" : raum);
         subTxt.setText(sub);
 
+        View backgroundView = customView.findViewById(R.id.backgroundView);
+
         int backgroundColor = R.color.colorWhite;
         switch (art){
             case "Veranst.": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_veranstaltung));
                 backgroundColor = R.color.colorVeranstaltung;
                 break;
             }
             case "Vertretung": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_vertretung));
                 backgroundColor = R.color.colorVertretung;
                 break;
             }
             case "Sondereins.": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_sondereinsatz));
                 backgroundColor = R.color.colorSondereinsatz;
                 break;
             }
             case "Unterricht geändert": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_aenderung));
                 backgroundColor = R.color.colorAenderung;
                 break;
             }
             case "Trotz Absenz": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_absenz));
                 backgroundColor = R.color.colorAbsenz;
                 break;
             }
             case "Entfall": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_entfall));
                 backgroundColor = R.color.colorEntfall;
                 break;
             }
             case "eigenv. Arb.": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten));
                 backgroundColor = R.color.colorEigArbeiten;
                 break;
             }
             case "Verlegung": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_verlegung));
                 backgroundColor = R.color.colorVerlegung;
                 break;
             }
             case "Raumänderung": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_raumaenderung));
                 backgroundColor = R.color.colorRaumaenderung;
                 break;
             }
             case "Mitbetreuung": {
-                customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_vertretung));
                 backgroundColor = R.color.colorVertretung;
             }
         }
-        if(art.contains("Arbeiten"))customView.setBackground(getContext().getResources().getDrawable(R.drawable.vertretungsplan_row_background_eigarbeiten)); //..dunno
+        if (art.contains("Arbeiten")) backgroundColor = R.color.colorEigArbeiten;
+        backgroundView.setBackgroundColor(getContext().getResources().getColor(backgroundColor));
 
         int finalBackgroundColor = backgroundColor;
         customView.setOnClickListener(click -> {

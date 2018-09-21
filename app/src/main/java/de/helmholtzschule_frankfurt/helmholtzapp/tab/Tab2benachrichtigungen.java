@@ -46,13 +46,10 @@ public class Tab2benachrichtigungen extends Fragment {
 
         super.onViewCreated(view, savedInstanceState);
         SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_benachrichtigungen);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Intent intent = new Intent(getContext(), LoadingActivity.class);
-                intent.putExtra("fragmentIndex", 2);
-                startActivity(intent);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Intent intent = new Intent(getContext(), LoadingActivity.class);
+            intent.putExtra("fragmentIndex", 2);
+            startActivity(intent);
         });
     }
     private void changeList(ToggleButton button){
@@ -71,6 +68,6 @@ public class Tab2benachrichtigungen extends Fragment {
     private void setDateText(String heuteMorgen) {
         String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
         String dateText = String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1));
-        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.dateText)).setText(dateText.substring(0, dateText.indexOf("Woche")));
+        ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tab6Date)).setText(dateText.substring(0, dateText.indexOf("Woche")));
     }
 }

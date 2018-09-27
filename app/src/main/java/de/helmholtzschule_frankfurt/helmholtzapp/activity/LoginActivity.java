@@ -30,19 +30,23 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        EditText username = findViewById(R.id.etBenutzername);
-        EditText password = findViewById(R.id.etPasswort);
+        EditText usernameInput = findViewById(R.id.etBenutzername);
+        EditText passwordInput = findViewById(R.id.etPasswort);
 
         Button button = findViewById(R.id.bLogIn);
         button.setOnClickListener(click -> {
             System.out.println("CLICKED!");
-            if (client.validateAndRequestTokens(username.getText().toString(), password.getText().toString())) {
-                System.out.println("START LOADING!!!!!");
-                startActivity(intent);
-                this.finish();
-            } else {
-                Toast.makeText(this, DataStorage.getInstance().isInternetReachable() ? "Falscher Benutzername oder Passwort" : "Keine Internetverbindung", Toast.LENGTH_LONG).show();
-            }
+            if (DataStorage.getInstance().isInternetReachable()) {
+                String username = usernameInput.getText().toString().trim();
+                String password = passwordInput.getText().toString().trim();
+                if (client.validateAndRequestTokens(username, password)) {
+                    System.out.println("START LOADING!!!!!");
+                    startActivity(intent);
+                    this.finish();
+                } else {
+                    Toast.makeText(this, "Falscher Benutzername oder Passwort", Toast.LENGTH_LONG).show();
+                }
+            } else Toast.makeText(this, "Keine Internetverbindung", Toast.LENGTH_LONG).show();
         });
 
         findViewById(R.id.login_register).setOnClickListener(click -> {

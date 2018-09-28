@@ -67,7 +67,7 @@ public class Tab2benachrichtigungen extends Fragment {
 
     private void setDateText(String heuteMorgen) {
         String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
-        if (dateTextRaw == null) return;
+        if (dateTextRaw == null || dateTextRaw.equals("")) return;
         String dateText = String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1));
         ((TextView) Objects.requireNonNull(getView()).findViewById(R.id.tab6Date)).setText(dateText.substring(0, dateText.indexOf("Woche")));
     }

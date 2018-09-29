@@ -107,6 +107,7 @@ public class Tab1vertretungsplan extends Fragment {
 
     private void setDateText(String heuteMorgen) {
         String dateTextRaw = dataStorage.getVertretungsplan().getMeta().get(heuteMorgen);
+        if (dateTextRaw == null || dateTextRaw.equals("")) return;
         //Switches day name and date
         String dateText = String.format("%s %s%s", dateTextRaw.substring(dateTextRaw.indexOf(" ") + 1, dateTextRaw.indexOf(",") + 1), dateTextRaw.substring(0, dateTextRaw.indexOf(" ")), dateTextRaw.substring(dateTextRaw.indexOf(",") + 1));
         //removes Woche A/B

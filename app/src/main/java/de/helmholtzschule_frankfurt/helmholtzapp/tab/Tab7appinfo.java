@@ -3,6 +3,7 @@ package de.helmholtzschule_frankfurt.helmholtzapp.tab;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -33,10 +34,11 @@ public class Tab7appinfo extends Fragment {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
+        Resources resources = getActivity().getResources();
 
         TextView linkImpressum = (TextView) getActivity().findViewById(R.id.impressum_link);
         linkImpressum.setOnClickListener(listener -> {
-            String url = "http://www.helmholtzschule-frankfurt.de/impressum-app";
+            String url = resources.getString(R.string.hhs_app_impressum_app);
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
@@ -45,7 +47,7 @@ public class Tab7appinfo extends Fragment {
 
         TextView linkDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_link);
         linkDatenschutz.setOnClickListener(listener -> {
-            String url = "http://www.helmholtzschule-frankfurt.de/datenschutz-app";
+            String url = resources.getString(R.string.hhs_app_datenschutz_app);
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
@@ -54,7 +56,7 @@ public class Tab7appinfo extends Fragment {
 
         TextView linkLoginDatenschutz = (TextView) getActivity().findViewById(R.id.datenschutz_login_link);
         linkLoginDatenschutz.setOnClickListener(listener -> {
-            String url = "https://helmholtz-database.lazybird.me/login/impressum.html";
+            String url = resources.getString(R.string.hhs_app_impressum_database);
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
@@ -63,7 +65,8 @@ public class Tab7appinfo extends Fragment {
 
         TextView linkStore = (TextView) getActivity().findViewById(R.id.store_link);
         linkStore.setOnClickListener(listener -> {
-            String url = "https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&hl=de";
+
+            String url = getResources().getString(R.string.hhs_app_store);
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));

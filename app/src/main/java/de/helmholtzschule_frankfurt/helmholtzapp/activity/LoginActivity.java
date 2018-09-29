@@ -1,6 +1,7 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.login_register).setOnClickListener(click -> {
-            String url = "https://helmholtz-database.lazybird.me/";
+            String url = getResources().getString(R.string.hhs_app_register);
             Intent webIntent = new Intent();
             webIntent.setAction(Intent.ACTION_VIEW);
             webIntent.setData(Uri.parse(url));
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.login_protection).setOnClickListener(click -> {
-            String url = "https://helmholtz-database.lazybird.me/login/impressum.html";
+            String url = getResources().getString(R.string.hhs_app_impressum_database);
             Intent webIntent = new Intent();
             webIntent.setAction(Intent.ACTION_VIEW);
             webIntent.setData(Uri.parse(url));

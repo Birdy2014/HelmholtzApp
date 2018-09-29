@@ -25,5 +25,16 @@
     <string name="textLogout">Abmelden</string>
     <string name="linkRegister"><u>hier</u></string>
     <string name="login_datenschutz"><u>Datenschutz des Logindienstes</u></string>
-    <string name="linkStore">https://play.google.com/store/apps/details?id=de.helmholtzschule_frankfurt.helmholtzapp&amp;hl=de</string>
+    
+
+    <string name="hhs_app_store">https://tools.lazybird.me/redirect.php?target=hhs-app-store</string>
+    <string name="hhs_app_vertretungsplan">https://tools.lazybird.me/redirect.php?target=hhs-app-vertretungsplan&amp;noredirect&amp;username=</string>
+    <string name="hhs_app_benachrichtigungen">https://tools.lazybird.me/redirect.php?target=hhs-app-benachrichtigungen&amp;noredirect&amp;username=</string>
+    <string name="hhs_app_mensaplan">https://tools.lazybird.me/redirect.php?target=hhs-app-mensaplan&amp;noredirect</string>
+    <string name="hhs_app_lehrerliste">https://tools.lazybird.me/redirect.php?target=hhs-app-lehrerliste&amp;noredirect</string>
+    <string name="hhs_app_register">https://tools.lazybird.me/redirect.php?target=hhs-app-register</string>
+    <string name="hhs_app_impressum_database">https://tools.lazybird.me/redirect.php?target=hhs-app-impressum-database</string>
+    <string name="hhs_app_impressum_app">https://tools.lazybird.me/redirect.php?target=hhs-app-impressum-app</string>
+    <string name="hhs_app_datenschutz_app">https://tools.lazybird.me/redirect.php?target=hhs-app-datenschutz-app</string>
+    <string name="hhs_app_dashboard">https://tools.lazybird.me/redirect.php?target=hhs-app-dashboard</string>
 </resources>

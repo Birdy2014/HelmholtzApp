@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Environment;
 import android.support.annotation.RequiresApi;
@@ -123,6 +124,7 @@ public class DataStorage{
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
                 int stepSize = 100 / downloads.length;
+                Resources resources = activity.getResources();
                 for(EnumDownload e : downloads){
                     if(e == NEWS){
                         setLoadingInfo("News werden heruntergeladen", activity);
@@ -134,20 +136,20 @@ public class DataStorage{
                     }
                     else if(e == VERTRETUNGSPLAN){
                         setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
-                        vertretungsplanRawData = download("https://api.lazybird.me/vertretungsplanParser/vertretungsplan?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
-                        benachrichtigungenRawData = download("https://api.lazybird.me/vertretungsplanParser/nachrichten?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+                        vertretungsplanRawData = download(resources.getString(R.string.hhs_app_vertretungsplan) + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+                        benachrichtigungenRawData = download(resources.getString(R.string.hhs_app_benachrichtigungen) + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
                         parseVertretungsplan();
                     }
                     else if(e == MENSAPLAN){
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
-                        mensaplanRawData = download("https://tools.lazybird.me/helmholtzApp/mensaplan/");
+                        mensaplanRawData = download(resources.getString(R.string.hhs_app_mensaplan));
                         if(mensaplanRawData.equals("dError")){
                         }
                         parseMensaplan();
                     }
                     else if(e == LEHRERLISTE){
                         setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
-                        lehrerlisteRawData = download("https://tools.lazybird.me/helmholtzApp/lehrerliste/lehrerliste.json");
+                        lehrerlisteRawData = download(resources.getString(R.string.hhs_app_lehrerliste));
                         if(lehrerlisteRawData.equals("dError")){
                         }
                         parseLehrerliste();
@@ -233,7 +235,6 @@ public class DataStorage{
     //Vertretungsplan & Nachrichten
     private void parseVertretungsplan(){
         Gson gson = new Gson();
-        System.out.println("https://api.lazybird.me/vertretungsplanParser/vertretungsplan?username=" + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
         vertretungsplan = gson.fromJson(vertretungsplanRawData, Vertretungsplan.class);
         benachrichtigungsplan = gson.fromJson(benachrichtigungenRawData, Benachrichtigungsplan.class);
     }

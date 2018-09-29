@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     imageView.setOnClickListener(click -> {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("http://helmholtzschule-frankfurt.de"));
+                        intent.setData(Uri.parse("https://tools.lazybird.me/redirect.php?target=hhs-app-hhs-web"));
                         startActivity(Intent.createChooser(intent, "Öffnen in"));
                     });
                 }
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_share: {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
-                String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!" + getResources().getString(R.string.linkStore);
+                String shareBody = "Lade dir jetzt die kostenlose Helmholtz - App herunter!" + getResources().getString(R.string.hhs_app_store);
                 sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                 startActivity(Intent.createChooser(sharingIntent, "Teilen via"));
                 break;

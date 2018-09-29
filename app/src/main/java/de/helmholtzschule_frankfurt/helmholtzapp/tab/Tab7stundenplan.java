@@ -21,7 +21,7 @@ public class Tab9Stundenplan extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab9stundenplan, container, false);
+        View rootView = inflater.inflate(R.layout.tab7stundenplan, container, false);
         super.onCreateView(inflater, container, savedInstanceState);
 
         return rootView;

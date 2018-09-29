@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab8settings">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab10settings">
 
         <ScrollView
             android:layout_width="match_parent"

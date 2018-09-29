@@ -26,6 +26,8 @@ public class Tab2benachrichtigungen extends Fragment {
     public ArrayList<Benachrichtigung> daten = new ArrayList<>();
     public BenachrichtigungAdapter menuAdapter;
     DataStorage dataStorage = DataStorage.getInstance();
+    ToggleButton button;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -38,7 +40,8 @@ public class Tab2benachrichtigungen extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        ToggleButton button = getActivity().findViewById(R.id.toggleButtonSwitch);
+        button = getActivity().findViewById(R.id.toggleButtonSwitch);
+        button.post(() -> button.setChecked(false));
         changeList(button);
         button.setOnClickListener(click -> {
             changeList(button);

@@ -25,6 +25,9 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class Tab1vertretungsplan extends Fragment {
 
+    CheckBox checkbox;
+    ToggleButton heuteMorgen;
+
     DataStorage dataStorage = DataStorage.getInstance();
     ArrayList<Vertretung> daten = new ArrayList<>();
     final VertretungsplanAdapter[] vertretungenAdapter = new VertretungsplanAdapter[1];
@@ -44,9 +47,11 @@ public class Tab1vertretungsplan extends Fragment {
         System.out.println("Programmiert von Jonas Schröter und Moritz Vogel.");
 
         lstMenu = (ListView) getView().findViewById(R.id.lstMenu);
-        CheckBox checkbox = (CheckBox) getView().findViewById(R.id.checkbox_vertretungsplan);
-        ToggleButton heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
 
+        checkbox = (CheckBox) getView().findViewById(R.id.checkbox_vertretungsplan);
+        checkbox.post(() -> checkbox.setChecked(false));
+        heuteMorgen = (ToggleButton) getView().findViewById(R.id.butShowAll);
+        heuteMorgen.post(() -> heuteMorgen.setChecked(false));
 
         String klasseTemp = HelmholtzDatabaseClient.getInstance().getKlasse();
         if (klasseTemp.charAt(0) == 'E' || klasseTemp.charAt(0) == 'Q' || klasseTemp.charAt(0) == 'e' || klasseTemp.charAt(0) == 'q') {

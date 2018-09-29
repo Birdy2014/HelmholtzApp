@@ -44,7 +44,7 @@ public class Tab8settings extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.tab8settings, container, false);
+        return inflater.inflate(R.layout.tab10settings, container, false);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)

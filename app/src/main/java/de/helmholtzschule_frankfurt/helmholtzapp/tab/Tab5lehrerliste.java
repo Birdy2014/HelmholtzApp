@@ -25,7 +25,7 @@ public class Tab5lehrerliste extends Fragment {
     public ArrayList<LehrerItem> daten = new ArrayList<>();
     public LehrerAdapter menuAdapter;
     DataStorage dataStorage = DataStorage.getInstance();
-
+    SearchView searchView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,10 +43,14 @@ public class Tab5lehrerliste extends Fragment {
         }
         menuAdapter = new LehrerAdapter(this.getContext(), daten);
         lstMenu = (ListView) getView().findViewById(R.id.lehrer_list_view);
-        SearchView searchView = getView().findViewById(R.id.lehrerliste_search);
+
         lstMenu.setAdapter(menuAdapter);
         menuAdapter.notifyDataSetChanged();
-
+        searchView = getView().findViewById(R.id.lehrerliste_search);
+        searchView.post(() -> {
+            searchView.setQuery("", false);
+            view.requestFocus();
+        });
         lstMenu.setOnItemClickListener((adapterView, view1, i, l) -> {
             String itemString = ((LehrerItem)lstMenu.getItemAtPosition(i)).getText();
             String email = itemString.substring(itemString.indexOf("\n") + 1);

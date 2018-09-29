@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="15dp"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste">
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:layout_width="match_parent"

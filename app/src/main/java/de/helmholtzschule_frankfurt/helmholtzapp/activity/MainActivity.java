@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,21 +31,31 @@ import android.widget.TextView;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab0news;
+import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab10settings;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab1vertretungsplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab2benachrichtigungen;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab3kalender;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab4mensa;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab6hausaufgaben;
-import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab7appinfo;
-import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab8settings;
-import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab9Stundenplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab7stundenplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab8appinfo;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
     private static int menuIndexSelected = 0;
+    private Tab0news tabNews = new Tab0news();
+    private Tab1vertretungsplan tabVertretungsplan = new Tab1vertretungsplan();
+    private Tab2benachrichtigungen tabBenachrichtigungen = new Tab2benachrichtigungen();
+    private Tab3kalender tabKalender = new Tab3kalender();
+    private Tab4mensa tabMensa = new Tab4mensa();
+    private Tab5lehrerliste tabLehrerliste = new Tab5lehrerliste();
+    private Tab6hausaufgaben tabHausaufgaben = new Tab6hausaufgaben();
+    private Tab7stundenplan tabStundenplan = new Tab7stundenplan();
+    private Tab8appinfo tabAppinfo = new Tab8appinfo();
+    private Tab10settings tabSettings = new Tab10settings();
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -77,9 +88,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             @Override
             public void onDrawerOpened(View drawerView) {
-                TextView view = (TextView)findViewById(R.id.sub_text);
-                if(view != null){
-                    view.setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
+                //Hide keyboard
+                InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                View view = getCurrentFocus();
+                if (view == null) view = new View(getApplication());
+                inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                TextView textView = (TextView) findViewById(R.id.sub_text);
+                if (textView != null) {
+                    textView.setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
                 }
                 ImageView imageView = (ImageView)findViewById(R.id.imageView);
                 if(imageView != null){
@@ -143,77 +159,77 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);
 
-        navigationView.getMenu().getItem(menuIndexSelected).setChecked(true);
-        switch (menuIndexSelected){
-            case 9: {
-                //Fallthrough expected, @Share function
-            }
-            case 0: {
-                Tab0news news = new Tab0news();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
-                break;
-            }
-            case 1: {
-                Tab1vertretungsplan vertretungsplan = new Tab1vertretungsplan();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
-                break;
-            }
-            case 2: {
-                Tab2benachrichtigungen benachrichtigungen = new Tab2benachrichtigungen();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, benachrichtigungen, benachrichtigungen.getTag()).commit();
-                break;
-            }
-            case 3: {
-                Tab3kalender kalender = new Tab3kalender();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
-                break;
-            }
-            case 4: {
-                Tab4mensa mensa = new Tab4mensa();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
-                break;
-            }
-            case 10: {
-                Tab8settings settings = new Tab8settings();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
-                break;
-            }
-            case 5: {
-                Tab5lehrerliste lehrerListe = new Tab5lehrerliste();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
-                break;
-            }
-            case 8 :{
-                Tab7appinfo about = new Tab7appinfo();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
-                break;
-            }
-            case 6: {
-                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
-                break;
-            }
-            case 7: {
-                Tab9Stundenplan stundenplan = new Tab9Stundenplan();
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, stundenplan, stundenplan.getTag()).commit();
-                break;
-            }
-        }
+        switchTab(menuIndexSelected, navigationView);
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         if(mySPR.getBoolean("FR", true)){
             showDialog();
         }
     }
+
+    private void switchTab(int index, NavigationView navigationView) {
+        navigationView.getMenu().getItem(index).setChecked(true);
+        //Hide keyboard
+        InputMethodManager inputManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        View view = getCurrentFocus();
+        if (view == null) view = new View(this);
+        inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        switch (index) {
+            case 9: {
+                //Fallthrough expected, @Share function
+            }
+            case 0: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabNews, tabNews.getTag()).commit();
+                break;
+            }
+            case 1: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabVertretungsplan, tabVertretungsplan.getTag()).commit();
+                break;
+            }
+            case 2: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabBenachrichtigungen, tabBenachrichtigungen.getTag()).commit();
+                break;
+            }
+            case 3: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabKalender, tabKalender.getTag()).commit();
+                break;
+            }
+            case 4: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabMensa, tabMensa.getTag()).commit();
+                break;
+            }
+            case 5: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabLehrerliste, tabLehrerliste.getTag()).commit();
+                break;
+            }
+            case 6: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabHausaufgaben, tabHausaufgaben.getTag()).commit();
+                break;
+            }
+            case 7: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabStundenplan, tabStundenplan.getTag()).commit();
+                break;
+            }
+            case 8: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabAppinfo, tabAppinfo.getTag()).commit();
+                break;
+            }
+            case 10: {
+                FragmentManager manager = getSupportFragmentManager();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabSettings, tabSettings.getTag()).commit();
+                break;
+            }
+        }
+    }
+
     public void showDialog(){
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         SharedPreferences.Editor editor = mySPR.edit();
@@ -240,60 +256,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-
         switch (item.getItemId()){
             case R.id.nav_news: {
-                Tab0news news = new Tab0news();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, news, news.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabNews, tabNews.getTag()).commit();
                 break;
             }
             case R.id.nav_vertretungsplan: {
-                Tab1vertretungsplan vertretungsplan = new Tab1vertretungsplan();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, vertretungsplan, vertretungsplan.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabVertretungsplan, tabVertretungsplan.getTag()).commit();
                 break;
             }
             case R.id.nav_nachrichten: {
-                Tab2benachrichtigungen benachrichtigungen = new Tab2benachrichtigungen();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, benachrichtigungen, benachrichtigungen.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabBenachrichtigungen, tabBenachrichtigungen.getTag()).commit();
                 break;
             }
             case R.id.nav_kalender: {
-                Tab3kalender kalender = new Tab3kalender();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, kalender, kalender.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabKalender, tabKalender.getTag()).commit();
                 break;
             }
             case R.id.nav_mensaplan: {
-                Tab4mensa mensa = new Tab4mensa();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, mensa, mensa.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabMensa, tabMensa.getTag()).commit();
                 break;
             }
             case R.id.nav_settings: {
-                Tab8settings settings = new Tab8settings();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, settings, settings.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabSettings, tabSettings.getTag()).commit();
                 break;
             }
             case R.id.nav_lehrerliste: {
-                Tab5lehrerliste lehrerListe = new Tab5lehrerliste();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, lehrerListe, lehrerListe.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabLehrerliste, tabLehrerliste.getTag()).commit();
                 break;
             }
             case R.id.nav_about: {
-                Tab7appinfo about = new Tab7appinfo();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, about, about.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabAppinfo, tabAppinfo.getTag()).commit();
                 break;
             }
             case R.id.nav_homework: {
-                Tab6hausaufgaben hausaufgaben = new Tab6hausaufgaben();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, hausaufgaben, hausaufgaben.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabHausaufgaben, tabHausaufgaben.getTag()).commit();
                 break;
             }
             case R.id.nav_share: {
@@ -305,13 +311,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_stundenplan: {
-                Tab9Stundenplan stundenplan = new Tab9Stundenplan();
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, stundenplan, stundenplan.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabStundenplan, tabStundenplan.getTag()).commit();
                 break;
             }
         }
-
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

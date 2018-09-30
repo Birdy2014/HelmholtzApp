@@ -1,184 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:baselineAligned="false"
-    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity"
-    android:layout_marginLeft="10dp"
     android:layout_marginStart="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginEnd="10dp"
     android:layout_marginRight="10dp"
-    android:layout_marginEnd="10dp">
+    android:baselineAligned="false"
+    tools:context="de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/about_app"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="15dp"
-        android:text="Über die App"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="20sp"/>
 
-    <TextView
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/version_view2"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_below="@+id/about_app"
-        android:textColor="#000000"
-        android:text="Version:"/>
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/impressum_ueberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Impressum: "
-        android:textColor="#000000"
-        android:layout_below="@+id/version_view2"/>
+        <TextView
+            android:id="@+id/about_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Über die App"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/impressum_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/impressum"
-        android:textColor="@color/colorHyperlink"
-        android:layout_toEndOf="@+id/impressum_ueberschrift"
-        android:layout_toRightOf="@+id/impressum_ueberschrift"
-        android:layout_below="@id/version_view2" />
+        <TextView
+            android:id="@+id/version_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/about_app"
+            android:layout_marginTop="16dp"
+            android:text="Version:"
+            android:textColor="#000000" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBorderGrey"
-        android:layout_below="@id/impressum_link"
-        android:id="@+id/rule1"/>
+        <TextView
+            android:id="@+id/impressum_ueberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/version_view2"
+            android:layout_marginTop="16dp"
+            android:text="Impressum: "
+            android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/feedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Feedback &amp; Hilfe"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@id/impressum_link"
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/impressum_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/version_view2"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/impressum_ueberschrift"
+            android:layout_toRightOf="@+id/impressum_ueberschrift"
+            android:text="@string/impressum"
+            android:textColor="@color/colorHyperlink" />
 
-    <TextView
-        android:id="@+id/feedbackmail_ueberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="E-Mail: "
-        android:textColor="#000000"
-        android:layout_below="@+id/feedback" />
+        <View
+            android:id="@+id/rule1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/impressum_link"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorBorderGrey" />
 
-    <TextView
-        android:id="@+id/feedbackmail_address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="8dp"
-        android:text=""
-        android:textColor="@color/colorHyperlink"
-        android:layout_toEndOf="@+id/feedbackmail_ueberschrift"
-        android:layout_toRightOf="@+id/feedbackmail_ueberschrift"
-        android:layout_below="@id/feedback"/>
+        <TextView
+            android:id="@+id/feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rule1"
+            android:layout_marginTop="20dp"
+            android:text="Feedback &amp; Hilfe"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/store_ueberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="App bewerten: "
-        android:textColor="#000000"
-        android:layout_below="@+id/feedbackmail_address" />
+        <TextView
+            android:id="@+id/feedbackmail_ueberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feedback"
+            android:layout_marginTop="16dp"
+            android:text="E-Mail: "
+            android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/store_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/playStore"
-        android:textColor="@color/colorHyperlink"
-        android:layout_toEndOf="@+id/store_ueberschrift"
-        android:layout_toRightOf="@+id/store_ueberschrift"
-        android:layout_below="@id/feedbackmail_address" />
+        <TextView
+            android:id="@+id/feedbackmail_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/feedback"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/feedbackmail_ueberschrift"
+            android:layout_toRightOf="@+id/feedbackmail_ueberschrift"
+            android:text=""
+            android:textColor="@color/colorHyperlink" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBorderGrey"
-        android:layout_below="@id/store_link"
-        android:id="@+id/rule2"/>
+        <TextView
+            android:id="@+id/store_ueberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/feedbackmail_address"
+            android:layout_marginTop="16dp"
+            android:text="App bewerten: "
+            android:textColor="#000000" />
 
-    <TextView
-        android:id="@+id/sonstiges"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="Sonstiges"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_below="@id/store_link"
-        android:textSize="20sp"/>
+        <TextView
+            android:id="@+id/store_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/feedbackmail_address"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/store_ueberschrift"
+            android:layout_toRightOf="@+id/store_ueberschrift"
+            android:text="@string/playStore"
+            android:textColor="@color/colorHyperlink" />
 
-    <TextView
-        android:id="@+id/datenschutz_ueberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Datenschutz: "
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:layout_below="@id/sonstiges"
-        tools:layout_editor_absoluteY="152dp" />
+        <View
+            android:id="@+id/rule2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/store_link"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorBorderGrey" />
 
-    <TextView
-        android:id="@+id/datenschutz_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/datenschutz"
-        android:textColor="@color/colorHyperlink"
-        android:layout_toEndOf="@+id/datenschutz_ueberschrift"
-        android:layout_toRightOf="@+id/datenschutz_ueberschrift"
-        android:layout_below="@+id/sonstiges"/>
+        <TextView
+            android:id="@+id/sonstiges"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rule2"
+            android:layout_marginTop="20dp"
+            android:text="Sonstiges"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/datenschutz_login_ueberschrift"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="-10dp"
-        android:layout_marginRight="-10dp"
-        android:text="@string/datenschutzDatenbankHeader"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:layout_below="@id/datenschutz_link"
-        tools:layout_editor_absoluteY="152dp" />
+        <TextView
+            android:id="@+id/datenschutz_ueberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/sonstiges"
+            android:layout_marginTop="16dp"
+            android:text="Datenschutz: "
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteY="152dp" />
 
-    <TextView
-        android:id="@+id/datenschutz_login_link"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="15dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/datenschutzDatenbank"
-        android:textColor="@color/colorHyperlink"
-        android:layout_toEndOf="@+id/datenschutz_login_ueberschrift"
-        android:layout_toRightOf="@+id/datenschutz_login_ueberschrift"
-        android:layout_below="@+id/datenschutz_link"/>
+        <TextView
+            android:id="@+id/datenschutz_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sonstiges"
+            android:layout_marginTop="16dp"
+            android:layout_toEndOf="@+id/datenschutz_ueberschrift"
+            android:layout_toRightOf="@+id/datenschutz_ueberschrift"
+            android:text="@string/datenschutz"
+            android:textColor="@color/colorHyperlink" />
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/datenschutz_login_ueberschrift"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/datenschutz_link"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="-10dp"
+            android:layout_marginRight="-10dp"
+            android:text="@string/datenschutzDatenbankHeader"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            tools:layout_editor_absoluteY="152dp" />
+
+        <TextView
+            android:id="@+id/datenschutz_login_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/datenschutz_link"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="10dp"
+            android:layout_toEndOf="@+id/datenschutz_login_ueberschrift"
+            android:layout_toRightOf="@+id/datenschutz_login_ueberschrift"
+            android:text="@string/datenschutzDatenbank"
+            android:textColor="@color/colorHyperlink" />
+
+    </RelativeLayout>
+
+</ScrollView>

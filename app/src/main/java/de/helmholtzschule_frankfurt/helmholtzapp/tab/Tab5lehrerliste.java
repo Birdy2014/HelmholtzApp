@@ -67,6 +67,7 @@ public class Tab5lehrerliste extends Fragment {
 
         lstMenu.setAdapter(menuAdapter);
 
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {

@@ -15,7 +15,7 @@ import android.widget.TextView;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 
 
-public class Tab7appinfo extends Fragment {
+public class Tab8appinfo extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.tab8appinfo, container, false);

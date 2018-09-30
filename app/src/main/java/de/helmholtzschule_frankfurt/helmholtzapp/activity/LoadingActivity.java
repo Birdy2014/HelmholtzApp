@@ -37,7 +37,7 @@ public class LoadingActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         TextView textView = findViewById(R.id.loadingInfo);
-        if (!dataStorage.isInternetReachable()) {
+        if (!dataStorage.isServerReachable()) {
             final int[] i = {10};
             ImageButton retry = findViewById(R.id.button_retry);
             retry.setOnClickListener(click -> this.recreate());

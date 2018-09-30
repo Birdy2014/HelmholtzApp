@@ -36,7 +36,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
-public class Tab8settings extends Fragment {
+public class Tab10settings extends Fragment {
 
     DataStorage storage = DataStorage.getInstance();
     HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();

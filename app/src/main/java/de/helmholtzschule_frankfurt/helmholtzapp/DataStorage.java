@@ -270,11 +270,11 @@ public class DataStorage{
         return lehrerliste;
     }
 
-    public boolean isInternetReachable() {
+    public boolean isServerReachable() {
         final boolean[] reachable = new boolean[1];
         Thread thread = new Thread(() -> {
             try {
-                URL url = new URL("https://www.google.com");
+                URL url = new URL("https://helmholtz-database.lazybird.me");
                 HttpURLConnection urlConnect = (HttpURLConnection)url.openConnection();
                 Object objData = urlConnect.getContent();
                 reachable[0] = true;

@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         Button button = findViewById(R.id.bLogIn);
         button.setOnClickListener(click -> {
             System.out.println("CLICKED!");
-            if (DataStorage.getInstance().isInternetReachable()) {
+            if (DataStorage.getInstance().isServerReachable()) {
                 String username = usernameInput.getText().toString().trim();
                 String password = passwordInput.getText().toString().trim();
                 if (client.validateAndRequestTokens(username, password)) {

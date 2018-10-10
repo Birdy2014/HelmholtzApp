@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/list_row_background_lt"
+    android:paddingRight="0dp"
+    android:paddingEnd="0dp"
+    android:paddingBottom="0dp">
 
     <TextView
         android:id="@+id/mensa_row_day"
@@ -13,6 +16,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold" />
 
@@ -21,11 +26,10 @@
         android:layout_width="110dp"
         android:layout_height="70dp"
         android:layout_below="@+id/mensa_row_day"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/cell_background_tbr"
         android:text="Fleisch:"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contentMeat"
@@ -33,6 +37,7 @@
         android:layout_height="70dp"
         android:layout_below="@+id/mensa_row_day"
         android:layout_toRightOf="@+id/headerMeat"
+        android:background="@drawable/cell_background_tbr"
         android:text="TextView" />
 
     <TextView
@@ -40,11 +45,10 @@
         android:layout_width="110dp"
         android:layout_height="70dp"
         android:layout_below="@+id/headerMeat"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/cell_background_br"
         android:text="Vegetarisch:"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contentVeg"
@@ -55,6 +59,7 @@
         android:layout_alignParentRight="true"
         android:layout_toEndOf="@+id/headerMeat"
         android:layout_toRightOf="@+id/headerMeat"
+        android:background="@drawable/cell_background_br"
         android:text="TextView" />
 
     <TextView
@@ -64,11 +69,10 @@
         android:layout_below="@+id/headerVeg"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/cell_background_br"
         android:text="Salatteller:"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contentSalad"
@@ -77,8 +81,9 @@
         android:layout_below="@+id/headerVeg"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/headerVeg"
-        android:layout_toRightOf="@+id/headerVeg"
+        android:layout_toEndOf="@+id/headerSalad"
+        android:layout_toRightOf="@+id/headerSalad"
+        android:background="@drawable/cell_background_br"
         android:text="TextView" />
 
     <TextView
@@ -88,11 +93,10 @@
         android:layout_below="@+id/headerSalad"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/cell_background_br"
         android:text="Nudeln:"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contentNoodles"
@@ -101,8 +105,9 @@
         android:layout_below="@+id/headerSalad"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/headerVeg"
-        android:layout_toRightOf="@+id/headerVeg"
+        android:layout_toEndOf="@+id/headerNoodles"
+        android:layout_toRightOf="@+id/headerNoodles"
+        android:background="@drawable/cell_background_br"
         android:text="TextView" />
 
     <TextView
@@ -112,11 +117,10 @@
         android:layout_below="@+id/headerNoodles"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
+        android:background="@drawable/cell_background_br"
         android:text="Dessert:"
-        android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/contentDessert"
@@ -125,8 +129,9 @@
         android:layout_below="@+id/headerNoodles"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/headerVeg"
-        android:layout_toRightOf="@+id/headerVeg"
+        android:layout_toEndOf="@+id/headerDessert"
+        android:layout_toRightOf="@+id/headerDessert"
+        android:background="@drawable/cell_background_br"
         android:text="TextView" />
 
 </RelativeLayout>

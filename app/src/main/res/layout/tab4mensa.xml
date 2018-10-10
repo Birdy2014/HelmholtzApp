@@ -33,7 +33,8 @@
         android:id="@+id/mensaMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="#FEFEFE"/>
+        android:divider="#FEFEFE"
+        android:dividerHeight="10dp" />
 
 </android.support.v4.widget.SwipeRefreshLayout>
 

@@ -37,6 +37,7 @@
     <string name="hhs_app_impressum_app">https://tools.lazybird.me/redirect.php?target=hhs-app-impressum-app</string>
     <string name="hhs_app_datenschutz_app">https://tools.lazybird.me/redirect.php?target=hhs-app-datenschutz-app</string>
     <string name="hhs_app_dashboard">https://tools.lazybird.me/redirect.php?target=hhs-app-dashboard</string>
+    <string name="hhs_app_news">https://tools.lazybird.me/redirect.php?target=hhs-app-news</string>
 
 
     <string name="emptyVertretungsplan">{\"meta\":{\"code\":200,\"heute\":\"35.05 Bugtag, Woche X\",\"morgen\":\"36.05 Bugtag, Woche X\"},\"data\":{\"heute\":[],\"morgen\":[]}}</string>

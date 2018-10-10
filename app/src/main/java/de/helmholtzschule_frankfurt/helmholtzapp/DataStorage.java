@@ -16,11 +16,6 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -50,6 +45,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.Benachrichtigungsplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.Mensaplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.NewsCollection;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
@@ -78,15 +74,13 @@ public class DataStorage{
     private Vertretungsplan vertretungsplan;
     private Benachrichtigungsplan benachrichtigungsplan;
     private Mensaplan mensaplan;
+    private NewsCollection newsCollection;
 
     //raw JSON Strings
     private String mensaplanRawData;
     private String newsRawData;
     private String vertretungsplanRawData;
     private String benachrichtigungenRawData;
-
-    //parsed lists
-    private ArrayList<NewsItem> news;
 
     private String lehrerlisteRawData;
     private String[] lehrerliste;
@@ -128,10 +122,7 @@ public class DataStorage{
                 for(EnumDownload e : downloads){
                     if(e == NEWS){
                         setLoadingInfo("News werden heruntergeladen", activity);
-                        newsRawData = download("http://helmholtzschule-frankfurt.de");
-                        if(newsRawData.equals("dError")){ //checks for download possibility of HHS
-                            newsRawData = "{}";
-                        }
+                        newsRawData = download(resources.getString(R.string.hhs_app_news));
                         parseNews();
                     }
                     else if(e == VERTRETUNGSPLAN){
@@ -225,18 +216,12 @@ public class DataStorage{
     }
 
     private void parseNews(){
-        news = new ArrayList<>();
-
-        Document doc = Jsoup.parse(newsRawData);
-        Elements titles = doc.getElementsByClass("node__title");
-        for(Element e : titles){
-            NewsItem news = new NewsItem(e.children().get(0).children().get(0).html(), "http://helmholtzschule-frankfurt.de" + e.children().get(0).attr("href"));
-            this.news.add(news); // adding object to news list
-        }
+        Gson gson = new Gson();
+        newsCollection = gson.fromJson(newsRawData, NewsCollection.class);
     }
 
     public ArrayList<NewsItem> getNews() {
-        return news;
+        return newsCollection.getData();
     }
 
     public Vertretungsplan getVertretungsplan() {

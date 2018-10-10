@@ -2,34 +2,44 @@ package de.helmholtzschule_frankfurt.helmholtzapp.item;
 
 
 public class MensaplanItem {
-    String tag;
-    String fleisch;
-    String veg;
-    String dessert;
+    private String fleisch;
+    private String vegetarisch;
+    private String salat;
+    private String pasta;
+    private String dessert;
 
 
-    public MensaplanItem(String tag, String fleisch, String veg, String dessert) {
-        this.tag = tag;
+    public MensaplanItem(String fleisch, String veg, String salad, String noodles, String dessert) {
         this.fleisch = fleisch;
-        this.veg = veg;
+        this.vegetarisch = veg;
+        this.salat = salad;
+        this.pasta = noodles;
         this.dessert = dessert;
     }
 
-    public String getTag() {
-        return tag;
-    }
-
-    public String getFleisch() {
+    public String getMeat() {
         return fleisch;
     }
 
     public String getVeg() {
-        return veg;
+        return vegetarisch;
+    }
+
+    public String getSalad() {
+        return salat;
+    }
+
+    public String getNoodles() {
+        return pasta;
     }
 
     public String getDessert() {
         return dessert;
     }
 
+    @Override
+    public String toString() {
+        return getMeat() + " " + getVeg() + " " + getSalad() + " " + getNoodles() + " " + getDessert();
+    }
 }
 

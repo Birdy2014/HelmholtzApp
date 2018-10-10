@@ -49,6 +49,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.item.NewsItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.Benachrichtigungsplan;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.Mensaplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCell;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanCellTime;
 import de.helmholtzschule_frankfurt.helmholtzapp.util.StundenplanJsonObject;
@@ -76,6 +77,7 @@ public class DataStorage{
 
     private Vertretungsplan vertretungsplan;
     private Benachrichtigungsplan benachrichtigungsplan;
+    private Mensaplan mensaplan;
 
     //raw JSON Strings
     private String mensaplanRawData;
@@ -84,7 +86,6 @@ public class DataStorage{
     private String benachrichtigungenRawData;
 
     //parsed lists
-    private ArrayList<MensaplanItem> gerichte;
     private ArrayList<NewsItem> news;
 
     private String lehrerlisteRawData;
@@ -120,7 +121,6 @@ public class DataStorage{
     }
 
     public void update(Activity activity, EnumDownload... downloads) {
-        Thread thread = new Thread(() -> {
             try {
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
                 int stepSize = 100 / downloads.length;
@@ -138,20 +138,22 @@ public class DataStorage{
                         setLoadingInfo("Vertretungsplan wird heruntergeladen", activity);
                         vertretungsplanRawData = download(resources.getString(R.string.hhs_app_vertretungsplan) + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
                         benachrichtigungenRawData = download(resources.getString(R.string.hhs_app_benachrichtigungen) + client.getVertretungsplanCredentials("vertretungsplan")[0] + "&password=" + client.getVertretungsplanCredentials("vertretungsplan")[1]);
+                        if (vertretungsplanRawData.equals("dError")) {
+                            vertretungsplanRawData = activity.getResources().getString(R.string.emptyVertretungsplan);
+                        }
+                        if (benachrichtigungenRawData.equals("dError")) {
+                            benachrichtigungenRawData = activity.getResources().getString(R.string.emptyBenachrichtigungen);
+                        }
                         parseVertretungsplan();
                     }
                     else if(e == MENSAPLAN){
                         setLoadingInfo("Mensaplan wird heruntergeladen", activity);
                         mensaplanRawData = download(resources.getString(R.string.hhs_app_mensaplan));
-                        if(mensaplanRawData.equals("dError")){
-                        }
                         parseMensaplan();
                     }
                     else if(e == LEHRERLISTE){
                         setLoadingInfo("Lehrerliste wird heruntergeladen", activity);
                         lehrerlisteRawData = download(resources.getString(R.string.hhs_app_lehrerliste));
-                        if(lehrerlisteRawData.equals("dError")){
-                        }
                         parseLehrerliste();
                     }
                     bar.setProgress(bar.getProgress() + stepSize);
@@ -177,13 +179,6 @@ public class DataStorage{
             catch (Exception e) {
                 e.printStackTrace();
             }
-        });
-        thread.start();
-        try {
-            thread.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 
     private void setLoadingInfo(String text, Activity activity){
@@ -213,22 +208,12 @@ public class DataStorage{
     }
 
     private void parseMensaplan() {
-        gerichte = new ArrayList<>();
-
         if(!mensaplanRawData.equals("dError")) {
             Gson gson = new Gson();
-            String[][] data = gson.fromJson(mensaplanRawData, new TypeToken<String[][]>() {
-            }.getType());
-            gerichte.add(new MensaplanItem("Montag", data[0][0], data[0][1], data[0][2]));
-            gerichte.add(new MensaplanItem("Dienstag", data[1][0], data[1][1], data[1][2]));
-            gerichte.add(new MensaplanItem("Mittwoch", data[2][0], data[2][1], data[2][2]));
-            gerichte.add(new MensaplanItem("Donnerstag", data[3][0], data[3][1], data[3][2]));
-            gerichte.add(new MensaplanItem("Freitag", data[4][0], data[4][1], data[4][2]));
+            mensaplan = gson.fromJson(mensaplanRawData, Mensaplan.class);
         }
         else {
-            for(String s : new String[]{"Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag"}){
-                gerichte.add(new MensaplanItem(s, "Download fehlgeschlagen", "Download fehlgeschlagen", "Download fehlgeschlagen"));
-            }
+
         }
     }
 
@@ -262,8 +247,8 @@ public class DataStorage{
         return benachrichtigungsplan;
     }
 
-    public ArrayList<MensaplanItem> getGerichte() {
-        return gerichte;
+    public ArrayList<MensaplanItem> getMensaEssen() {
+        return mensaplan.getData();
     }
 
     public String[] getLehrerliste() {

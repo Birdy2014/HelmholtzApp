@@ -16,12 +16,12 @@
     <string name="clearText">Der Stundenplan wird unwiderruflich gelöscht</string>
     <string name="actionsEmpty">Keine Termine\nvorhanden</string>
     <string name="crash_toast_text">Etwas ist schiefgelaufen:(\nBitte sende eine Mail an uns:)</string>
-    <string name="welcomeString">Danke dass du die Helmholtz-App installiert hast.\n\nGefällt dir die App? Stört dich etwas? Dann hinterlasse bitte eine Bewertung im PlayStore.\n\nStürzt die App ab oder verhält sich merkwürdig?\nDann sende eine Mail an uns, in der du erklärst, wie es dazu kam. Die Adresse findest du unter \"Über die App\"\n\nVielen Dank!</string>
+    <string name="welcomeString">Danke dass du die Helmholtz-App installiert hast.\n\nGefällt dir die App? Stört dich etwas? Dann hinterlasse bitte eine Bewertung im PlayStore.\n\nStürzt die App ab oder verhält sich merkwürdig?\nDann sende eine Mail an uns, in der du erklärst, wie es dazu kam. Die Adresse findest du unter "Über die App"\n\nVielen Dank!</string>
     <string name="welcomeButtonTxt">Alles klar</string>
     <string name="descrReloadButton">ReloadButton</string>
     <string name="overflowMsg">Durch diesen Vorgang\nwerden Stunden gelöscht. Fortfahren?</string>
     <string name="loginText">Bitte melde dich mit deinem\nHelmholtzDatabase Account an.\nDu hast noch keinen Account? Dann erstelle ihn </string>
-    <string name="textCrash"><b>Oh, etwas ist schiefgelaufen:(</b>\n\nDrücke \"Weiter\" um\neine E-mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
+    <string name="textCrash"><b>Oh, etwas ist schiefgelaufen:(</b>\n\nDrücke "Weiter" um\neine E-mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
     <string name="textLogout">Abmelden</string>
     <string name="linkRegister"><u>hier</u></string>
     <string name="login_datenschutz"><u>Datenschutz des Logindienstes</u></string>
@@ -37,4 +37,8 @@
     <string name="hhs_app_impressum_app">https://tools.lazybird.me/redirect.php?target=hhs-app-impressum-app</string>
     <string name="hhs_app_datenschutz_app">https://tools.lazybird.me/redirect.php?target=hhs-app-datenschutz-app</string>
     <string name="hhs_app_dashboard">https://tools.lazybird.me/redirect.php?target=hhs-app-dashboard</string>
+
+
+    <string name="emptyVertretungsplan">{\"meta\":{\"code\":200,\"heute\":\"35.05 Bugtag, Woche X\",\"morgen\":\"36.05 Bugtag, Woche X\"},\"data\":{\"heute\":[],\"morgen\":[]}}</string>
+    <string name="emptyBenachrichtigungen">{\"meta\":{\"code\":200,\"heute\":\"35.05 Bugtag, Woche X\",\"morgen\":\"36.05 Bugtag, Woche X\"},\"data\":{\"heute\":[\"Es konnten keine Daten empfangen werden.\"],\"morgen\":[\"Es konnten keine Daten empfangen werden.\"]}}</string>
 </resources>

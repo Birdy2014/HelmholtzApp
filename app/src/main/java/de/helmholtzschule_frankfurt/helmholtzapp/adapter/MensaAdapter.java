@@ -17,7 +17,6 @@ public class MensaAdapter extends ArrayAdapter<MensaplanItem> {
 
     public MensaAdapter(Context context, ArrayList<MensaplanItem> list) {
         super(context, R.layout.mensa_row, list);
-
     }
 
 
@@ -26,20 +25,56 @@ public class MensaAdapter extends ArrayAdapter<MensaplanItem> {
         LayoutInflater Menu2Inflater = LayoutInflater.from(getContext());
         View customView = Menu2Inflater.inflate(R.layout.mensa_row, parent, false);
 
-        String tag = getItem(position).getTag();
-        String fleisch = getItem(position).getFleisch();
-        String veg = getItem(position).getVeg();
-        String dessert = getItem(position).getDessert();
+        MensaplanItem item = getItem(position);
 
-        TextView txtTag = (TextView) customView.findViewById(R.id.moTxtTag);
-        TextView txtFleisch = (TextView) customView.findViewById(R.id.moTxtFleisch);
-        TextView txtVeg = (TextView) customView.findViewById(R.id.moTxtVeg);
-        TextView txtDessert = (TextView) customView.findViewById(R.id.moTxtDes);
+        String day;
+        switch (position) {
+            case 0: {
+                day = "Montag";
+                break;
+            }
+            case 1: {
+                day = "Dienstag";
+                break;
+            }
+            case 2: {
+                day = "Mittwoch";
+                break;
+            }
+            case 3: {
+                day = "Donnerstag";
+                break;
+            }
+            case 4: {
+                day = "Freitag";
+                break;
+            }
+            default: {
+                day = "DAY_NOT_FOUND";
+            }
+        }
 
-        txtTag.setText(tag);
-        txtFleisch.setText(fleisch);
+        String meat = item.getMeat();
+        String veg = item.getVeg();
+        String salad = item.getSalad();
+        String noodles = item.getNoodles();
+        String dessert = item.getDessert();
+
+        TextView txtDay = (TextView) customView.findViewById(R.id.mensa_row_day);
+        TextView txtMeat = (TextView) customView.findViewById(R.id.contentMeat);
+        TextView txtVeg = (TextView) customView.findViewById(R.id.contentVeg);
+        TextView txtSalad = customView.findViewById(R.id.contentSalad);
+        TextView txtNoodles = customView.findViewById(R.id.contentNoodles);
+        TextView txtDessert = (TextView) customView.findViewById(R.id.contentDessert);
+
+        txtDay.setText(day);
+        txtMeat.setText(meat);
         txtVeg.setText(veg);
+        txtSalad.setText(salad);
+        txtNoodles.setText(noodles);
         txtDessert.setText(dessert);
+
+        System.out.println(item.toString());
         return customView;
     }
 

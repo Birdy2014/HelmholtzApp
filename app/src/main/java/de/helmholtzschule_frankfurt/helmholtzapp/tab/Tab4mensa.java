@@ -27,21 +27,18 @@ public class Tab4mensa extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        mensaAdapter = new MensaAdapter(getView().getContext(), dataStorage.getGerichte());
+        mensaAdapter = new MensaAdapter(getView().getContext(), dataStorage.getMensaEssen());
         lstMenu = (ListView) getView().findViewById(R.id.mensaMenu);
 
         lstMenu.setAdapter(mensaAdapter);
         mensaAdapter.notifyDataSetChanged();
 
-        SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.swiperefresh_mensa);
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                Intent intent = new Intent(getContext(), LoadingActivity.class);
-                intent.putExtra("fragmentIndex", 4);
-                intent.putExtra("toDownload", new int[]{2});
-                startActivity(intent);
-            }
+        SwipeRefreshLayout swipeRefreshLayout = getView().findViewById(R.id.swiperefresh_mensa);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            Intent intent = new Intent(getContext(), LoadingActivity.class);
+            intent.putExtra("fragmentIndex", 4);
+            intent.putExtra("toDownload", new int[]{2});
+            startActivity(intent);
         });
 
         super.onViewCreated(view, savedInstanceState);

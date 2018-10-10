@@ -1,91 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/mensaMenu"
+
+    <TextView
+        android:id="@+id/mensa_row_day"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/list_row_background"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp">
+        android:layout_height="35dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
+    <TextView
+        android:id="@+id/headerMeat"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/mensa_row_day"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Fleisch:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/moTxtTag"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/contentMeat"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/mensa_row_day"
+        android:layout_toRightOf="@+id/headerMeat"
+        android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/imageFleisch"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/moTxtTag"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_meat" />
+    <TextView
+        android:id="@+id/headerVeg"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerMeat"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Vegetarisch:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/moTxtFleisch"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/moTxtTag"
-            android:layout_toRightOf="@+id/imageFleisch"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/contentVeg"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerMeat"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/headerMeat"
+        android:layout_toRightOf="@+id/headerMeat"
+        android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/imageVeg"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_below="@+id/imageFleisch"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_leaf" />
+    <TextView
+        android:id="@+id/headerSalad"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerVeg"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Salatteller:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/moTxtVeg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageFleisch"
-            android:layout_toEndOf="@+id/imageFleisch"
-            android:layout_toRightOf="@+id/imageFleisch"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/contentSalad"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerVeg"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/headerVeg"
+        android:layout_toRightOf="@+id/headerVeg"
+        android:text="TextView" />
 
-        <ImageView
-            android:id="@+id/imageDes"
-            android:layout_width="50dp"
-            android:layout_height="60dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/imageVeg"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            app:srcCompat="@drawable/ic_dessert" />
+    <TextView
+        android:id="@+id/headerNoodles"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerSalad"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Nudeln:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/moTxtDes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/imageVeg"
-            android:layout_toEndOf="@+id/imageVeg"
-            android:layout_toRightOf="@+id/imageVeg"
-            android:text="TextView" />
+    <TextView
+        android:id="@+id/contentNoodles"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerSalad"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/headerVeg"
+        android:layout_toRightOf="@+id/headerVeg"
+        android:text="TextView" />
 
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/headerDessert"
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerNoodles"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Dessert:"
+        android:textStyle="bold"
+        android:textSize="18sp" />
 
+    <TextView
+        android:id="@+id/contentDessert"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_below="@+id/headerNoodles"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_toEndOf="@+id/headerVeg"
+        android:layout_toRightOf="@+id/headerVeg"
+        android:text="TextView" />
 
-</LinearLayout>
+</RelativeLayout>

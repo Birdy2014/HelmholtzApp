@@ -56,6 +56,7 @@ public class LoadingActivity extends AppCompatActivity {
             timer.schedule(task, 0, 1000);
             return;
         }
+
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
         client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, LoadingActivity.this);

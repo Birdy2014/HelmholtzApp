@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 
 public class ActionAdapter extends ArrayAdapter<ActionContainer> {
 

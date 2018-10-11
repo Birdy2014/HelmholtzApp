@@ -11,14 +11,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
-import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Action;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab3kalender;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
 
-import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.*;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.BLACK;
+import static de.helmholtzschule_frankfurt.helmholtzapp.enums.StundenplanColor.WHITE;
 
 public class CalendarAdapter extends ArrayAdapter<CalendarItem>{
 

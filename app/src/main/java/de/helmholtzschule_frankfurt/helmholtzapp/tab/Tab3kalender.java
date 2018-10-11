@@ -23,13 +23,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
-import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionDate;
-import de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType;
-import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.adapter.CalendarAdapter;
+import de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.CalendarItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionContainer;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.ActionDate;
 
 import static de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType.EXTERNAL;
 import static de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType.EXTERNAL_IN;

@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
 
 public class BenachrichtigungAdapter extends ArrayAdapter{
 

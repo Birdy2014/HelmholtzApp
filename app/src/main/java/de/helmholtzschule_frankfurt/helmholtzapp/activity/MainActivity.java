@@ -330,17 +330,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            Dialog dialog = new Dialog(this);
-            View dialogView = View.inflate(this, R.layout.close_dialog, null);
-            dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-            Button cancelButton = dialogView.findViewById(R.id.close_button_cancel);
-            Button continueButton = dialogView.findViewById(R.id.close_button_close);
-            cancelButton.setOnClickListener(click -> dialog.cancel());
-            continueButton.setOnClickListener(click -> {
-                dialog.cancel();
-                this.finishAffinity();
-            });
-            dialog.show();
+            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+
+            int indexTab = 0;
+            NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+            for (int i = 0; i < navigationView.getMenu().size(); i++) {
+                if (navigationView.getMenu().getItem(i).isChecked()) {
+                    indexTab = i;
+                }
+            }
+            System.out.println("ST: " + mySPR.getInt("standardTab", 0) + " Index: " + indexTab);
+            if (mySPR.getInt("standardTab", 0) == indexTab) {
+                Dialog dialog = new Dialog(this);
+                View dialogView = View.inflate(this, R.layout.close_dialog, null);
+                dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+                Button cancelButton = dialogView.findViewById(R.id.close_button_cancel);
+                Button continueButton = dialogView.findViewById(R.id.close_button_close);
+                cancelButton.setOnClickListener(click -> dialog.cancel());
+                continueButton.setOnClickListener(click -> {
+                    dialog.cancel();
+                    this.finishAffinity();
+                });
+                dialog.show();
+            } else {
+                switchTab(mySPR.getInt("standardTab", 0), navigationView);
+            }
         }
     }
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)

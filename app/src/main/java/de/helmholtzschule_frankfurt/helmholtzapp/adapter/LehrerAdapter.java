@@ -9,8 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.LehrerItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.LehrerItem;
 
 public class LehrerAdapter extends ArrayAdapter{
 

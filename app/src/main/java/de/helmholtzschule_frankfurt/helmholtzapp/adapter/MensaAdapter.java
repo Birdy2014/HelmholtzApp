@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
+import de.helmholtzschule_frankfurt.helmholtzapp.item.MensaplanItem;
 
 public class MensaAdapter extends ArrayAdapter<MensaplanItem> {
 

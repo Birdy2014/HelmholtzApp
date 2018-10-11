@@ -3,8 +3,6 @@ package de.helmholtzschule_frankfurt.helmholtzapp.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import de.helmholtzschule_frankfurt.helmholtzapp.item.Benachrichtigung;
-
 public class Benachrichtigungsplan {
 
     private HashMap<String, ArrayList<String>> data;

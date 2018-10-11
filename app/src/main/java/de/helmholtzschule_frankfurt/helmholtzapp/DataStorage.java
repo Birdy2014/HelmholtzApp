@@ -31,7 +31,6 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
-import java.util.concurrent.ExecutionException;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.enums.ActionType;

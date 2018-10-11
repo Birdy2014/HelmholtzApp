@@ -1,7 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;

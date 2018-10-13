@@ -329,6 +329,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
+        } else if (tabHausaufgaben.isVisible()) {
+            tabHausaufgaben.goBack();
         } else {
             SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
 

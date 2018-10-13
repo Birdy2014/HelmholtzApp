@@ -235,6 +235,10 @@ public class DataStorage{
         return mensaplan.getData();
     }
 
+    public String getMensaWeek() {
+        return mensaplan.getMeta().get("calendarWeek");
+    }
+
     public String[] getLehrerliste() {
         return lehrerliste;
     }

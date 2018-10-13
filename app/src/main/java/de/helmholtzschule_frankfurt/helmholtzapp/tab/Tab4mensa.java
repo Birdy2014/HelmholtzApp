@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
@@ -40,7 +41,7 @@ public class Tab4mensa extends Fragment {
             intent.putExtra("toDownload", new int[]{2});
             startActivity(intent);
         });
-
+        ((TextView) getActivity().findViewById(R.id.mensaplanWeek)).setText("Kalenderwoche " + dataStorage.getMensaWeek());
         super.onViewCreated(view, savedInstanceState);
     }
 }

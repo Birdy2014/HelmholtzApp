@@ -28,7 +28,7 @@ import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
  */
 public class Tab6hausaufgaben extends Fragment {
 
-    WebView webView;
+    private WebView webView;
     private static String lastSelectedClass = null;
 
     public class MyWebViewClient extends WebViewClient {
@@ -111,5 +111,9 @@ public class Tab6hausaufgaben extends Fragment {
             Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse("https://play.google.com/store/apps/details?id=com.hmwk.homework"));
             startActivity(browser);
         });
+    }
+
+    public void goBack() {
+        webView.goBack();
     }
 }

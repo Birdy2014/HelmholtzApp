@@ -33,6 +33,15 @@
                 android:contentDescription="@string/descrReloadButton"
                 android:padding="10dp"/>
 
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/showAlert"
+                android:src="@drawable/ic_notification_inactive"
+                android:layout_gravity="end"
+                android:background="@color/colorPrimaryDark"
+                android:padding="10dp" />
+
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>

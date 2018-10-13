@@ -38,7 +38,7 @@
     <string name="hhs_app_datenschutz_app">https://tools.lazybird.me/redirect.php?target=hhs-app-datenschutz-app</string>
     <string name="hhs_app_dashboard">https://tools.lazybird.me/redirect.php?target=hhs-app-dashboard</string>
     <string name="hhs_app_news">https://tools.lazybird.me/redirect.php?target=hhs-app-news</string>
-
+    <string name="hhs_app_alert_message">https://tools.lazybird.me/redirect.php?target=hhs-app-alert-message&amp;noredirect</string>
 
     <string name="emptyVertretungsplan">{\"meta\":{\"code\":200,\"heute\":\"35.05 Bugtag, Woche X\",\"morgen\":\"36.05 Bugtag, Woche X\"},\"data\":{\"heute\":[],\"morgen\":[]}}</string>
     <string name="emptyBenachrichtigungen">{\"meta\":{\"code\":200,\"heute\":\"35.05 Bugtag, Woche X\",\"morgen\":\"36.05 Bugtag, Woche X\"},\"data\":{\"heute\":[\"Es konnten keine Daten empfangen werden.\"],\"morgen\":[\"Es konnten keine Daten empfangen werden.\"]}}</string>

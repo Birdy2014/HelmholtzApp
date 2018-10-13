@@ -29,6 +29,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.HashMap;
+
+import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab0news;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab10settings;
@@ -66,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         boolean b = getIntent().getBooleanExtra("background", false);
         if (b) moveTaskToBack(true);
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         ActionBar actionbar = getSupportActionBar();
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         actionbar.setHomeButtonEnabled(true);
         actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
 
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         mDrawerLayout.addDrawerListener(toggle);
@@ -97,8 +100,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (textView != null) {
                     textView.setText("Frankfurt am Main                 Klasse " + HelmholtzDatabaseClient.getInstance().getKlasse());
                 }
-                ImageView imageView = (ImageView)findViewById(R.id.imageView);
-                if(imageView != null){
+                ImageView imageView = (ImageView) findViewById(R.id.imageView);
+                if (imageView != null) {
                     imageView.setOnClickListener(click -> {
                         Intent intent = new Intent();
                         intent.setAction(Intent.ACTION_VIEW);
@@ -119,21 +122,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
-        NavigationView navigationView = (NavigationView)findViewById(R.id.nav_view);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        ImageButton button = (ImageButton)findViewById(R.id.refresh_toolbar);
+        ImageButton button = (ImageButton) findViewById(R.id.refresh_toolbar);
         button.setOnClickListener(view -> {
 
-            for (int i = 0; i < navigationView.getMenu().size(); i++){
-                if(navigationView.getMenu().getItem(i).isChecked()){
+            for (int i = 0; i < navigationView.getMenu().size(); i++) {
+                if (navigationView.getMenu().getItem(i).isChecked()) {
                     menuIndexSelected = i;
                 }
             }
             Intent intent = new Intent(MainActivity.this, LoadingActivity.class);
             intent.putExtra("fragmentIndex", menuIndexSelected);
             int x = -1;
-            switch (menuIndexSelected){
+            switch (menuIndexSelected) {
                 case 0: {
                     x = 0;
                     break;
@@ -157,12 +160,40 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("toDownload", new int[]{x});
             startActivity(intent);
         });
+        ImageButton notification = findViewById(R.id.showAlert);
+        if (DataStorage.getInstance().getMessage() != null) {
+            HashMap<String, String> msg = DataStorage.getInstance().getMessage();
+            SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
+            int id = Integer.parseInt(mySPR.getString("latestAlertID", "0"));
+            if (Integer.parseInt(msg.get("id")) > id) {
+                notification.setImageResource(R.drawable.ic_notification_active);
+            }
+            notification.setOnClickListener(click -> {
+                Dialog dialog = new Dialog(MainActivity.this);
+                View dialogView = View.inflate(MainActivity.this, R.layout.layout_notification, new LinearLayout(MainActivity.this));
+                dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                Button dialogButton = dialogView.findViewById(R.id.dialogButton);
+                dialogButton.setOnClickListener(click1 -> dialog.cancel());
+                TextView notificationText = dialogView.findViewById(R.id.notificationText);
+                notificationText.setText(msg.get("message"));
+                dialog.show();
+                notification.setImageResource(R.drawable.ic_notification_inactive);
+                SharedPreferences.Editor editor = mySPR.edit();
+                editor.putString("latestAlertID", msg.get("id"));
+                editor.apply();
+
+            });
+        }
+
         menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);
 
         switchTab(menuIndexSelected, navigationView);
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-        if(mySPR.getBoolean("FR", true)){
-            showDialog();
+        if (mySPR.getBoolean("FR", true)) {
+            SharedPreferences.Editor editor = mySPR.edit();
+            editor.putBoolean("FR", false);
+            editor.apply();
+            showNewDialog(R.layout.welcome_layout);
         }
     }
 
@@ -230,16 +261,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
-    public void showDialog(){
-        SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
-        SharedPreferences.Editor editor = mySPR.edit();
-        editor.putBoolean("FR", false);
-        editor.apply();
+    public void showNewDialog(int layout) {
 
         Dialog dialog = new Dialog(MainActivity.this);
-        View dialogView = View.inflate(MainActivity.this, R.layout.welcome_layout, new LinearLayout(MainActivity.this));
+        View dialogView = View.inflate(MainActivity.this, layout, new LinearLayout(MainActivity.this));
         dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        Button button = dialogView.findViewById(R.id.buttonWelcome);
+        Button button = dialogView.findViewById(R.id.dialogButton);
         button.setOnClickListener(click -> dialog.cancel());
         dialog.show();
     }
@@ -256,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.nav_news: {
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabNews, tabNews.getTag()).commit();
@@ -316,17 +343,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
         }
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
 
-
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout)findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else if (tabHausaufgaben.isVisible()) {
@@ -359,22 +385,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         }
     }
+
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
-    public void handleUncaughtException(Thread thread, Throwable throwable){
+    public void handleUncaughtException(Thread thread, Throwable throwable) {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
 
         System.out.println(stacktrace);
-        if(stacktrace.contains("Unable to start")){
+        if (stacktrace.contains("Unable to start")) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             int mPendingIntentId = 69;
-            AlarmManager mgr = (AlarmManager)getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+            AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
             PendingIntent mPendingIntent = PendingIntent.getActivity(getApplicationContext(), mPendingIntentId, intent, PendingIntent.FLAG_CANCEL_CURRENT);
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
             finishAffinity();
             System.exit(0);
-        }
-        else {
+        } else {
             Intent intent = new Intent(MainActivity.this, SendActivity.class);
             intent.putExtra("message", message);
             intent.putExtra("stacktrace", stacktrace);

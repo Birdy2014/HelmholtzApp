@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.MainActivity;
@@ -80,8 +81,10 @@ public class DataStorage{
     private String newsRawData;
     private String vertretungsplanRawData;
     private String benachrichtigungenRawData;
-
     private String lehrerlisteRawData;
+    private String rawMessage;
+
+    private HashMap<String, String> message;
     private String[] lehrerliste;
     private String[] klassen;
     private StundenplanItem copiedItem = null;
@@ -148,6 +151,9 @@ public class DataStorage{
                     }
                     bar.setProgress(bar.getProgress() + stepSize);
                 }
+                rawMessage = download(resources.getString(R.string.hhs_app_alert_message));
+                parseMessage();
+
                 setLoadingInfo("Wird konfiguriert", activity);
                 int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
                 if(downloads.length == EnumDownload.values().length) {
@@ -219,6 +225,14 @@ public class DataStorage{
         newsCollection = gson.fromJson(newsRawData, NewsCollection.class);
     }
 
+    private void parseMessage() {
+        Gson gson = new Gson();
+        if (rawMessage.equals("{}")) {
+            message = null;
+        }
+        message = gson.fromJson(rawMessage, HashMap.class);
+    }
+
     public ArrayList<NewsItem> getNews() {
         return newsCollection.getData();
     }
@@ -237,6 +251,10 @@ public class DataStorage{
 
     public String getMensaWeek() {
         return mensaplan.getMeta().get("calendarWeek");
+    }
+
+    public HashMap<String, String> getMessage() {
+        return message;
     }
 
     public String[] getLehrerliste() {

@@ -183,6 +183,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 editor.apply();
 
             });
+        } else {
+            notification.setVisibility(View.GONE);
         }
 
         menuIndexSelected = getIntent().getIntExtra("fragmentIndex", 0);

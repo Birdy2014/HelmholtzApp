@@ -42,8 +42,7 @@ public class Tab0news extends Fragment {
 
         lstMenu.setOnItemClickListener((parent, view1, position, id) -> {
             NewsItem akt = (NewsItem) parent.getItemAtPosition(position);
-            String url = akt.getUrl();
-
+                    String url = "http://helmholtzschule-frankfurt.de/" + akt.getUrl();
             Intent intent = new Intent();
             intent.setAction(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));

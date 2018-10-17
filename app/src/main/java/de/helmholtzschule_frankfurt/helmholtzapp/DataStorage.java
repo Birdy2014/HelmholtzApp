@@ -226,11 +226,7 @@ public class DataStorage{
     }
 
     private void parseMessage() {
-        Gson gson = new Gson();
-        if (rawMessage.equals("{}")) {
-            message = null;
-        }
-        message = gson.fromJson(rawMessage, HashMap.class);
+        message = rawMessage.equals("{}") ? null : new Gson().fromJson(rawMessage, HashMap.class);
     }
 
     public ArrayList<NewsItem> getNews() {

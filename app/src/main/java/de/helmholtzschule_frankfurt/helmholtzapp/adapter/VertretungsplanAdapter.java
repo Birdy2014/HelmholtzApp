@@ -75,7 +75,7 @@ public class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
 
         View backgroundView = customView.findViewById(R.id.backgroundView);
 
-        int backgroundColor = R.color.colorWhite;
+        int backgroundColor = R.color.colorDefault;
         switch (art){
             case "Veranst.": {
                 backgroundColor = R.color.colorVeranstaltung;
@@ -115,6 +115,10 @@ public class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
             }
             case "Mitbetreuung": {
                 backgroundColor = R.color.colorVertretung;
+                break;
+            }
+            case "Tausch": {
+                backgroundColor = R.color.colorTausch;
             }
         }
         if (art.contains("Arbeiten")) backgroundColor = R.color.colorEigArbeiten;

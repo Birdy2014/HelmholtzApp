@@ -21,7 +21,7 @@
     <string name="descrReloadButton">ReloadButton</string>
     <string name="overflowMsg">Durch diesen Vorgang\nwerden Stunden gelöscht. Fortfahren?</string>
     <string name="loginText">Bitte melde dich mit deinem\nHelmholtzDatabase Account an.\nDu hast noch keinen Account? Dann erstelle ihn </string>
-    <string name="textCrash"><b>Oh, etwas ist schiefgelaufen:(</b>\n\nDrücke "Weiter" um\neine E-mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
+    <string name="textCrash"><b>Oh, etwas ist schiefgelaufen:(</b>\n\nDrücke den Pfeil, um\neine E-Mail an uns zu senden,\ndie den Fehlerbericht enthält.\nSo können wir diesen Fehler\nschnellstmöglich beheben.\nVielen Dank!</string>
     <string name="textLogout">Abmelden</string>
     <string name="linkRegister"><u>hier</u></string>
     <string name="login_datenschutz"><u>Datenschutz des Logindienstes</u></string>

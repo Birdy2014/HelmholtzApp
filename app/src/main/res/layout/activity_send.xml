@@ -3,36 +3,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/colorWhite"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:lineSpacingExtra="10dp"
         android:text="@string/textCrash"
         android:textAlignment="center"
-        android:textSize="20sp"/>
+        android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/crashButton"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Weiter"
-        android:textStyle="italic" />
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/send_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/popup_edit_button_background"
+            android:src="@drawable/ic_notification_inactive"
+            android:layout_marginRight="15dp"
+            android:layout_marginEnd="15dp" />
+
+        <ImageButton
+            android:id="@+id/crashButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/send_notification"
+            android:layout_toRightOf="@id/send_notification"
+            android:background="@drawable/popup_edit_button_background"
+            android:src="@drawable/ic_next"
+            android:layout_marginBottom="10dp" />
+
+    </RelativeLayout>
 
     <ImageView
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_launcher"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:contentDescription="logo"
+        android:src="@drawable/ic_launcher"
         tools:ignore="HardcodedText" />
 
 </LinearLayout>

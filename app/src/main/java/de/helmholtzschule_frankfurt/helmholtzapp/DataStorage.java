@@ -118,6 +118,7 @@ public class DataStorage{
 
     public void update(Activity activity, EnumDownload... downloads) {
             try {
+                SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
                 ProgressBar bar = activity.findViewById(R.id.progressBar2);
                 int stepSize = 100 / downloads.length;
                 Resources resources = activity.getResources();
@@ -154,13 +155,14 @@ public class DataStorage{
                 rawMessage = download(resources.getString(R.string.hhs_app_alert_message));
                 parseMessage();
 
+                checkForClass(mySPR);
+
                 setLoadingInfo("Wird konfiguriert", activity);
                 int index = activity.getIntent().getIntExtra("fragmentIndex", 0);
                 if(downloads.length == EnumDownload.values().length) {
                     loadStundenplan();
                     fillContainers(activity);
                     monthYear = new int[]{Calendar.getInstance().get(Calendar.MONTH), Calendar.getInstance().get(Calendar.YEAR)};
-                    SharedPreferences mySPR = activity.getSharedPreferences("MySPFILE", 0);
                     index = mySPR.getInt("standardTab", 0);
                 }
                 Intent intent = new Intent(activity, MainActivity.class);
@@ -177,6 +179,28 @@ public class DataStorage{
             }
     }
 
+    private void checkForClass(SharedPreferences mySPR) {
+        if (!mySPR.getString("klasse", "FAILED").equals("FAILED")) {
+            String theClass = mySPR.getString("klasse", "");
+            System.out.println("STRING EXISTS, " + theClass);
+            if (!theClass.equals(client.getKlasse().toLowerCase())) {
+                setPushNotificationsActive(true);
+                SharedPreferences.Editor editor = mySPR.edit();
+                editor.putString("klasse", client.getKlasse().toLowerCase());
+                editor.apply();
+                System.out.println("NOT EQUAL!");
+            } else {
+                System.out.println("STRINGS ARE EQUAL");
+            }
+        } else {
+            System.out.println("STRING DOESNT EXIST");
+            setPushNotificationsActive(true);
+            SharedPreferences.Editor editor = mySPR.edit();
+            editor.putString("klasse", client.getKlasse().toLowerCase());
+            editor.apply();
+        }
+    }
+
     private void setLoadingInfo(String text, Activity activity){
         setTextViewText(activity, R.id.loadingInfo, text + "...");
     }
@@ -185,7 +209,7 @@ public class DataStorage{
         a.findViewById(id).post(() -> ((TextView)a.findViewById(id)).setText(text));
     }
 
-    private String download(String website) throws IOException {
+    public String download(String website) throws IOException {
         URLConnection connection = new URL(website).openConnection();
 
         InputStream inputStream;
@@ -289,10 +313,12 @@ public class DataStorage{
         return client.getKlasse();
     }
 
-    public void setPushNotificationsActive(boolean b) {
+    private void setPushNotificationsActive(boolean b) {
         unsubscribeAll();
+        System.out.println("UNSUBSCRIBED!");
         if (b) {
-            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + getKlasse().toLowerCase());
+            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + client.getKlasse().toLowerCase());
+            System.out.println("SUBSCRIBED TO: " + "de.HhsFra." + client.getKlasse().toLowerCase());
         }
     }
 

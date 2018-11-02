@@ -1,9 +1,6 @@
 package de.helmholtzschule_frankfurt.helmholtzapp.activity;
 
-import android.app.AlarmManager;
 import android.app.Dialog;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
@@ -28,6 +25,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -160,7 +159,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("toDownload", new int[]{x});
             startActivity(intent);
         });
-        ImageButton notification = findViewById(R.id.showAlert);
+        ImageButton notification = (ImageButton) findViewById(R.id.showAlert);
         if (DataStorage.getInstance().getMessage() != null) {
             HashMap<String, String> msg = DataStorage.getInstance().getMessage();
             SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
@@ -172,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Dialog dialog = new Dialog(MainActivity.this);
                 View dialogView = View.inflate(MainActivity.this, R.layout.layout_notification, new LinearLayout(MainActivity.this));
                 dialog.setContentView(dialogView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-                Button dialogButton = dialogView.findViewById(R.id.dialogButton);
+                ImageButton dialogButton = dialogView.findViewById(R.id.dialogButton);
                 dialogButton.setOnClickListener(click1 -> dialog.cancel());
                 TextView notificationText = dialogView.findViewById(R.id.notificationText);
                 notificationText.setText(msg.get("message"));
@@ -196,6 +195,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             editor.putBoolean("FR", false);
             editor.apply();
             showNewDialog(R.layout.welcome_layout);
+            FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + HelmholtzDatabaseClient.getInstance().getKlasse().toLowerCase());
         }
     }
 
@@ -392,9 +392,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public void handleUncaughtException(Thread thread, Throwable throwable) {
         String stacktrace = Log.getStackTraceString(throwable);
         String message = throwable.getMessage();
-
         System.out.println(stacktrace);
-        if (stacktrace.contains("Unable to start")) {
+        /*if (stacktrace.contains("Unable to start")) {
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             int mPendingIntentId = 69;
             AlarmManager mgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
@@ -402,13 +401,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             mgr.set(AlarmManager.RTC, System.currentTimeMillis() + 10, mPendingIntent);
             finishAffinity();
             System.exit(0);
-        } else {
+        } else {*/
             Intent intent = new Intent(MainActivity.this, SendActivity.class);
             intent.putExtra("message", message);
             intent.putExtra("stacktrace", stacktrace);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
             System.exit(0);
-        }
+        //}
     }
 }

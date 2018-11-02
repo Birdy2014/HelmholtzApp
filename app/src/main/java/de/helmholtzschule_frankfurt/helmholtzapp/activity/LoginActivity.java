@@ -30,10 +30,10 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, LoadingActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        EditText usernameInput = findViewById(R.id.etBenutzername);
-        EditText passwordInput = findViewById(R.id.etPasswort);
+        EditText usernameInput = (EditText) findViewById(R.id.etBenutzername);
+        EditText passwordInput = (EditText) findViewById(R.id.etPasswort);
 
-        Button button = findViewById(R.id.bLogIn);
+        Button button = (Button) findViewById(R.id.bLogIn);
         button.setOnClickListener(click -> {
             System.out.println("CLICKED!");
             if (DataStorage.getInstance().isServerReachable()) {

@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -58,7 +57,6 @@ public class Tab10settings extends Fragment {
             startActivity(browser);
             this.getActivity().finishAffinity();
         });
-
         Spinner hourSelect = getView().findViewById(R.id.settings_edit_hours);
         ArrayList<Integer> list = new ArrayList<>();
         for(int i = 6; i < 12; i++){
@@ -102,11 +100,6 @@ public class Tab10settings extends Fragment {
             }
         });
 
-
-        CheckBox box = getActivity().findViewById(R.id.settings_edit_push_notes);
-        box.setOnClickListener(view1 -> {
-            storage.setPushNotificationsActive(box.isChecked());
-        });
         View exportView = getView().findViewById(R.id.settings_export);
         exportView.setOnClickListener(click -> {
             storage.exportStundenplan(getActivity());

@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
@@ -22,19 +23,27 @@
     <style name="primaryDarkForeground" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
     <style name="primaryForeground" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="lightGreenFont" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorAccent">#c1f9ac</item>
     </style>
 
     <style name="colorGreen" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">#FF00AA00</item>
     </style>
+
     <style name="colorRed" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">#FFFF0000</item>
     </style>
+
     <style name="colorBlue" parent="ThemeOverlay.AppCompat.Light">
         <item name="colorAccent">#FF0019A8</item>
     </style>
+
     <style name="full_screen_dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
@@ -42,7 +51,6 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
     </style>
-
 
 
 </resources>

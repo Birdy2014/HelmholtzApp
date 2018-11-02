@@ -36,10 +36,10 @@ public class LoadingActivity extends AppCompatActivity {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-        TextView textView = findViewById(R.id.loadingInfo);
+        TextView textView = (TextView) findViewById(R.id.loadingInfo);
         if (!dataStorage.isServerReachable()) {
             final int[] i = {10};
-            ImageButton retry = findViewById(R.id.button_retry);
+            ImageButton retry = (ImageButton) findViewById(R.id.button_retry);
             retry.setOnClickListener(click -> this.recreate());
             Timer timer = new Timer();
             TimerTask task = new TimerTask() {
@@ -56,7 +56,6 @@ public class LoadingActivity extends AppCompatActivity {
             timer.schedule(task, 0, 1000);
             return;
         }
-
         SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
         HelmholtzDatabaseClient client = HelmholtzDatabaseClient.getInstance();
         client.init(new String[]{"vertretungsplan", "kalender", "stundenplan"}, mySPR, LoadingActivity.this);
@@ -67,7 +66,6 @@ public class LoadingActivity extends AppCompatActivity {
             Intent intent = new Intent(LoadingActivity.this, LoginActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-            //this.finish();
             return;
         }
 

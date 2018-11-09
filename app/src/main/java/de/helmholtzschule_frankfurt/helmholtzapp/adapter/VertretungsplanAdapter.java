@@ -124,6 +124,11 @@ public class VertretungsplanAdapter extends ArrayAdapter<Vertretung> {
         if (art.contains("Arbeiten")) backgroundColor = R.color.colorEigArbeiten;
         backgroundView.setBackgroundColor(getContext().getResources().getColor(backgroundColor));
 
+
+        if (!hinweis.equals(" ")) {
+            customView.findViewById(R.id.hint_present).setVisibility(View.VISIBLE);
+        }
+
         int finalBackgroundColor = backgroundColor;
         customView.setOnClickListener(click -> {
             Intent intent = new Intent(getContext(), VertretungsActivity.class);

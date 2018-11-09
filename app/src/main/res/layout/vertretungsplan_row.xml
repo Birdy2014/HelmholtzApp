@@ -53,6 +53,17 @@
             android:layout_below="@id/vertretungsplan_row_type"
             android:textColor="@color/colorWhite" />
 
+        <ImageView
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/ic_important"
+            android:id="@+id/hint_present"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:visibility="gone" />
+
     </RelativeLayout>
 
 </RelativeLayout>

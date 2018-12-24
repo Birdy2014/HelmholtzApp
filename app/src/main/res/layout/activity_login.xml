@@ -79,6 +79,12 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Probleme bei der Anmeldung?"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/login_protection"
         android:text="@string/login_datenschutz"
         android:layout_marginTop="20dp"

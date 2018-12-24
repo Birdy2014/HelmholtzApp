@@ -497,6 +497,8 @@ public class DataStorage{
             activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
         }
         File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        if(!root.exists())root.mkdir();
+        System.out.println(root.getAbsolutePath());
         File dir = new File(root, "HelmholtzApp");
         if(!dir.exists())dir.mkdir();
         System.out.println(dir.getAbsolutePath());

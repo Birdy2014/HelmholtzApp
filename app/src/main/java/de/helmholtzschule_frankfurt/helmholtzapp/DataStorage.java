@@ -514,7 +514,7 @@ public class DataStorage{
             e.printStackTrace();
         }
     }
-
+    //TEST
     private String readFromExternalStorage(String fileName, Activity activity){
         if(Build.VERSION.SDK_INT > 22){
             activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);

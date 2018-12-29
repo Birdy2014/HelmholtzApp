@@ -88,6 +88,8 @@ public class StundenplanAdapter extends ArrayAdapter<StundenplanCell>{
                 showPopup(getItem(position));
             }
         });
+        System.out.println(customView.getLayoutParams().width);
+        customView.requestLayout();
         return customView;
     }
 

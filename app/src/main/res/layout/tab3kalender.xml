@@ -37,100 +37,105 @@
         android:layout_marginEnd="5dp"
         android:layout_marginRight="5dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/calendarDayHeaders"
+        android:layout_below="@id/calendarButtonLeft"
+        android:weightSum="7"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginRight="2dp"
+        android:layout_marginEnd="2dp">
+
     <TextView
-        android:layout_width="51dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Mo"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Mo"
-        android:layout_below="@+id/calendarButtonLeft"
         android:background="@drawable/stundenplan_cell_background"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"/>
+        android:layout_weight="1"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Di"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Di"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Mo"
-        android:layout_toRightOf="@+id/calendarHeader_Mo"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"
+        />
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Mi"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Mi"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Di"
-        android:layout_toRightOf="@+id/calendarHeader_Di"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"/>
 
     <TextView
-        android:layout_width="51dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Do"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Do"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Mi"
-        android:layout_toRightOf="@+id/calendarHeader_Mi"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Fr"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Fr"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Do"
-        android:layout_toRightOf="@+id/calendarHeader_Do"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"/>
 
     <TextView
-        android:layout_width="51dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="Sa"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_Sa"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Fr"
-        android:layout_toRightOf="@+id/calendarHeader_Fr"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"/>
 
     <TextView
-        android:layout_width="50dp"
+        android:layout_width="0dp"
         android:layout_height="30dp"
         android:text="So"
         android:textAlignment="center"
         android:textSize="20sp"
         android:id="@+id/calendarHeader_So"
-        android:layout_below="@+id/calendarButtonLeft"
-        android:layout_toEndOf="@+id/calendarHeader_Sa"
-        android:layout_toRightOf="@+id/calendarHeader_Sa"
-        android:background="@drawable/stundenplan_cell_background"/>
+        android:background="@drawable/stundenplan_cell_background"
+        android:layout_weight="1"/>
+
+    </LinearLayout>
 
     <GridView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/calendarGrid"
-        android:layout_below="@id/calendarHeader_Mo"
-        android:layout_marginStart="3dp"
-        android:layout_marginLeft="3dp"
-        android:layout_marginEnd="1dp"
+        android:layout_below="@id/calendarDayHeaders"
+        android:numColumns="7"
+        android:scrollbars="none"
+        android:scrollbarAlwaysDrawVerticalTrack="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:layout_marginRight="1dp"
-        android:numColumns="7"/>
+        android:layout_marginEnd="1dp"
+        android:scrollbarStyle="insideOverlay"/>
 
     <ImageButton
         android:layout_width="wrap_content"

@@ -335,6 +335,18 @@ public class DataStorage{
         return new StundenplanCellTime(oberstufenZeiten[hour][0], oberstufenZeiten[hour][1]);
     }
 
+    public int[] getSchoolStartTime(int day){
+        for(int i = day + 1; i < getStundenplan().size(); i+= 6){
+            if(!getStundenplan().get(i).getName().equals("")){
+                String timeString = getStundenplan().get(((i + 1) / 6) * 6) .getName();
+                int hour = Integer.parseInt(timeString.substring(0, timeString.indexOf(":")));
+                int minute = Integer.parseInt(timeString.substring(timeString.indexOf(":") + 1, timeString.indexOf("\n")));
+                return new int[]{hour, minute};
+            }
+        }
+        return new int[]{30, 0}; // Marker
+    }
+
     private void loadStundenplan() {
         Gson gson = new Gson();
         String JSON = client.readUserData("stundenplan");
@@ -492,7 +504,7 @@ public class DataStorage{
         return true;
     }
 
-    private void writeToExternalStorage(String data, String fileName, Activity activity){
+    public void writeToExternalStorage(String data, String fileName, Activity activity){
         if(Build.VERSION.SDK_INT > 22){
             activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
         }

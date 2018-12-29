@@ -42,7 +42,7 @@
             android:name=".activity.SendActivity"
             android:screenOrientation="portrait" />
 
-        <service android:name=".util.NotificationReciever">
+        <service android:name=".util.NotificationReceiver">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -54,6 +54,8 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorPrimary" />
+
+        <receiver android:name=".util.SimpleTasks$AlarmReceiver"/>
     </application>
 
 </manifest>

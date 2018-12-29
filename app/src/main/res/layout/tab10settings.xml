@@ -76,12 +76,44 @@
 
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/settings_muting"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical"
+            android:layout_below="@id/settings_dashboard">
+
+            <TextView
+                android:id="@+id/settings_text_muting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:text="Automatisches Stummschalten"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/settings_edit_muting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@id/settings_text_muting"
+                android:layout_toRightOf="@id/settings_text_muting"
+                android:layout_marginRight="10dp"
+                android:layout_marginEnd="10dp"
+                android:theme="@style/primaryDarkForeground"/>
+
+        </RelativeLayout>
+
 
         <TextView
             android:id="@+id/settings_text_tab"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/settings_dashboard"
+            android:layout_below="@+id/settings_muting"
             android:layout_marginStart="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="20dp"

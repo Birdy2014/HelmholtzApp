@@ -3,6 +3,7 @@ package de.helmholtzschule_frankfurt.helmholtzapp.util;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.service.notification.StatusBarNotification;
@@ -16,7 +17,7 @@ import com.google.firebase.messaging.RemoteMessage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 
-public class NotificationReciever extends FirebaseMessagingService {
+public class NotificationReceiver extends FirebaseMessagingService {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override

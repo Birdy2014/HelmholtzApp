@@ -28,6 +28,7 @@ import android.widget.TextView;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
@@ -42,6 +43,8 @@ import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab6hausaufgaben;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab7stundenplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab8appinfo;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.NotificationReceiver;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.SimpleTasks;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -193,9 +196,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (mySPR.getBoolean("FR", true)) {
             SharedPreferences.Editor editor = mySPR.edit();
             editor.putBoolean("FR", false);
+            editor.putBoolean("MUTING_ACTIVE", true);
             editor.apply();
             showNewDialog(R.layout.welcome_layout);
             FirebaseMessaging.getInstance().subscribeToTopic("de.HhsFra." + HelmholtzDatabaseClient.getInstance().getKlasse().toLowerCase());
+            SimpleTasks.setAlarm(this);
         }
     }
 

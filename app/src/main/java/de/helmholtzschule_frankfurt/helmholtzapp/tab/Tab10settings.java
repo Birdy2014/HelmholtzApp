@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +33,7 @@ import de.helmholtzschule_frankfurt.helmholtzapp.DataStorage;
 import de.helmholtzschule_frankfurt.helmholtzapp.R;
 import de.helmholtzschule_frankfurt.helmholtzapp.activity.LoadingActivity;
 import de.helmholtzschule_frankfurt.helmholtzapp.item.StundenplanItem;
+import de.helmholtzschule_frankfurt.helmholtzapp.util.SimpleTasks;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
 
 
@@ -160,6 +162,19 @@ public class Tab10settings extends Fragment {
 
         TextView loggedAs = getActivity().findViewById(R.id.settings_text_logged);
         loggedAs.setText(String.format("Angemeldet als: %s", client.getUsername()));
+
+
+        Switch mutingEdit = getActivity().findViewById(R.id.settings_edit_muting);
+        mutingEdit.setChecked(mySPR.getBoolean("MUTING_ACTIVE", true));
+        mutingEdit.setOnClickListener(click -> {
+            if(mutingEdit.isChecked()){
+                SimpleTasks.setAlarm(this.getActivity());
+            }
+            else SimpleTasks.cancelAlarms(this.getActivity());
+            SharedPreferences.Editor editor = mySPR.edit();
+            editor.putBoolean("MUTING_ACTIVE", !mySPR.getBoolean("MUTING_ACTIVE", true));
+            editor.apply();
+        });
     }
 
     @Override

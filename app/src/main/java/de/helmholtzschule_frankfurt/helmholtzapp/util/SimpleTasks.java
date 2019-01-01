@@ -65,8 +65,7 @@ public class SimpleTasks {
         calendar.set(Calendar.HOUR_OF_DAY, startTime[0]);
         calendar.set(Calendar.MINUTE, startTime[1]);
         manager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
-
-        System.out.println("I have been activated!");
+        System.out.println("Alarm set to: " + calendar.get(Calendar.DAY_OF_MONTH) + "." + (calendar.get(Calendar.MONTH) + 1)+ "." + calendar.get(Calendar.YEAR) + "  " + calendar.get(Calendar.HOUR_OF_DAY) + ":" + calendar.get(Calendar.MINUTE));
 
         GregorianCalendar test = new GregorianCalendar();
         test.set(Calendar.HOUR_OF_DAY, 18);
@@ -87,7 +86,7 @@ public class SimpleTasks {
         @Override
         public void onReceive(Context context, Intent intent) {
             if(context.getSharedPreferences("MySPFILE", 0).getBoolean("MUTING_ACTIVE", true)){
-                //setAlarm(context);
+                setAlarm(context);
                 AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
                 System.out.println("ALARM!!!");
                 if(!intent.getBooleanExtra("NO_START", false)) {

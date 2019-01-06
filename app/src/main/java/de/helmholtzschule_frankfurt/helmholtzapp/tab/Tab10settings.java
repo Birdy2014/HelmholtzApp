@@ -165,14 +165,17 @@ public class Tab10settings extends Fragment {
 
 
         Switch mutingEdit = getActivity().findViewById(R.id.settings_edit_muting);
-        mutingEdit.setChecked(mySPR.getBoolean("MUTING_ACTIVE", true));
+        mutingEdit.setChecked(mySPR.getBoolean("MUTING_ACTIVE", false));
         mutingEdit.setOnClickListener(click -> {
             if(mutingEdit.isChecked()){
+                if (Build.VERSION.SDK_INT > 22) {
+                    getActivity().requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
+                }
                 SimpleTasks.setAlarm(this.getActivity());
             }
             else SimpleTasks.cancelAlarms(this.getActivity());
             SharedPreferences.Editor editor = mySPR.edit();
-            editor.putBoolean("MUTING_ACTIVE", !mySPR.getBoolean("MUTING_ACTIVE", true));
+            editor.putBoolean("MUTING_ACTIVE", !mySPR.getBoolean("MUTING_ACTIVE", false));
             editor.apply();
         });
     }
@@ -182,7 +185,7 @@ public class Tab10settings extends Fragment {
         switch (requestCode){
             case 1:
                 if(!(grantResults.length > 0) && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED){
-                    Toast.makeText(getContext(), "Permission denied to access your location", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Trash", Toast.LENGTH_SHORT).show();
                 }
         }
     }

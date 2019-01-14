@@ -63,7 +63,7 @@ public class SimpleTasks {
 
 
         int[] startTime = today >= 4 ? storage.getSchoolStartTime(0) : storage.getSchoolStartTime(today + 1);
-        if (startTime[0] == 30) intent.putExtra("NO_START", true);
+        if (startTime[0] == 30) intent.putExtra("NO_START", true); //TODO check if this is being executed too often
         calendar.set(Calendar.HOUR_OF_DAY, startTime[0]);
         calendar.set(Calendar.MINUTE, startTime[1]);
         manager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);

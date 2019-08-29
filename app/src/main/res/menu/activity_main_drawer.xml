@@ -26,10 +26,6 @@
             android:id="@+id/nav_lehrerliste"
             android:title="Lehrerliste" />
         <item
-            android:icon="@drawable/ic_homework"
-            android:id="@+id/nav_homework"
-            android:title="Hausaufgaben" />
-        <item
             android:icon="@drawable/ic_stundenplan_2"
             android:id="@+id/nav_stundenplan"
             android:title="Stundenplan" />

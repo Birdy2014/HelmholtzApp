@@ -39,7 +39,6 @@ import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab2benachrichtigungen;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab3kalender;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab4mensa;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab5lehrerliste;
-import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab6hausaufgaben;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab7stundenplan;
 import de.helmholtzschule_frankfurt.helmholtzapp.tab.Tab8appinfo;
 import io.github.birdy2014.libhelmholtzdatabase.HelmholtzDatabaseClient;
@@ -54,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Tab3kalender tabKalender = new Tab3kalender();
     private Tab4mensa tabMensa = new Tab4mensa();
     private Tab5lehrerliste tabLehrerliste = new Tab5lehrerliste();
-    private Tab6hausaufgaben tabHausaufgaben = new Tab6hausaufgaben();
     private Tab7stundenplan tabStundenplan = new Tab7stundenplan();
     private Tab8appinfo tabAppinfo = new Tab8appinfo();
     private Tab10settings tabSettings = new Tab10settings();
@@ -136,25 +134,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             intent.putExtra("fragmentIndex", menuIndexSelected);
             int x = -1;
             switch (menuIndexSelected) {
-                case 0: {
+                case 0: { //News
                     x = 0;
                     break;
                 }
-                case 2: {
+                case 1: { //V-Plan
                     x = 1;
                     break;
                 }
-                case 1: {
+                case 2: { // Benachrichtigungen
                     x = 1;
                     break;
                 }
-                case 4: {
+
+                case 4: { // Mensaplan
                     x = 2;
-                    break;
                 }
-                case 5: {
+
+                case 5: { //Lehrerliste
                     x = 3;
                 }
+            }
+
+            if(menuIndexSelected == 3 || (menuIndexSelected >= 6)){
+                return;
             }
             intent.putExtra("toDownload", new int[]{x});
             startActivity(intent);
@@ -208,7 +211,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (view == null) view = new View(this);
         inputManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         switch (index) {
-            case 9: {
+            case 8: {
                 //Fallthrough expected, @Share function
             }
             case 0: {
@@ -243,20 +246,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
             case 6: {
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabHausaufgaben, tabHausaufgaben.getTag()).commit();
+                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabStundenplan, tabStundenplan.getTag()).commit();
                 break;
             }
             case 7: {
                 FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabStundenplan, tabStundenplan.getTag()).commit();
-                break;
-            }
-            case 8: {
-                FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabAppinfo, tabAppinfo.getTag()).commit();
                 break;
             }
-            case 10: {
+            case 9: {
                 FragmentManager manager = getSupportFragmentManager();
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabSettings, tabSettings.getTag()).commit();
                 break;
@@ -327,11 +325,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabAppinfo, tabAppinfo.getTag()).commit();
                 break;
             }
-            case R.id.nav_homework: {
-                FragmentManager manager = getSupportFragmentManager();
-                manager.beginTransaction().replace(R.id.relativelayout_for_fragment, tabHausaufgaben, tabHausaufgaben.getTag()).commit();
-                break;
-            }
             case R.id.nav_share: {
                 Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                 sharingIntent.setType("text/plain");
@@ -358,8 +351,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
-        } else if (tabHausaufgaben.isVisible()) {
-            tabHausaufgaben.goBack();
         } else {
             SharedPreferences mySPR = getSharedPreferences("MySPFILE", 0);
 

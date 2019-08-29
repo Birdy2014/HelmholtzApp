@@ -23,7 +23,7 @@ public class SimpleTasks {
 
     private static DataStorage storage = DataStorage.getInstance();
 
-    public static int getDayOfWeek() {
+    private static int getDayOfWeek() {
         GregorianCalendar calendar = new GregorianCalendar();
         switch (calendar.get(Calendar.DAY_OF_WEEK)) {
             case Calendar.MONDAY: {

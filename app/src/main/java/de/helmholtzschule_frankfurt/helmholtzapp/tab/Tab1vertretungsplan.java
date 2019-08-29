@@ -58,7 +58,7 @@ public class Tab1vertretungsplan extends Fragment {
             klasseTemp = Character.toUpperCase(klasseTemp.charAt(0)) + klasseTemp.substring(1);
         } else {
             int indexLetter = klasseTemp.length() - 1;
-            klasseTemp = klasseTemp.substring(0, indexLetter) + Character.toLowerCase(klasseTemp.charAt(indexLetter));
+            klasseTemp = klasseTemp.substring(0, indexLetter) + Character.toUpperCase(klasseTemp.charAt(indexLetter)); // Formatänderung
         }
 
         final String klasse = klasseTemp;
@@ -85,7 +85,7 @@ public class Tab1vertretungsplan extends Fragment {
             daten.addAll(dataStorage.getVertretungsplan().getData().get(heuteMorgenString));
         } else {
             for (Vertretung v : dataStorage.getVertretungsplan().getData().get(heuteMorgenString)) {
-                if (v.getKlasse().contains(klasse)) daten.add(v);
+                if (v.getKlasse().contains(klasse) || v.getKlasse().contains("0" + klasse)) daten.add(v); // wichtig wegen der Vertretungsplan-Formatänderung: Alt: 6c, neu 06C
             }
         }
         setDateText(heuteMorgenString);

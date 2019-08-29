@@ -91,8 +91,8 @@ public class DataStorage{
     private ArrayList<StundenplanCell> stundenplan = new ArrayList<>();
     public int hours;
     public final double CONTRASTVAR = 100; //smaller than 127.5 --> white text is preferred @stundenplan, changes influence behavior only after color change
-    private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:00", "14:45"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
-    private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"14:50", "15:35"}, {"15:40", "16:25"}, {"16:30", "17:15"}, {"17:15", "18:00"}};
+    private String[][] unterMittelstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"14:10", "14:55"}, {"15:00", "15:45"}, {"15:50", "16:35"}, {"16:40", "17:25"}, {"17:25", "18:10"}};
+    private String[][] oberstufenZeiten = {{"08:00", "08:45"}, {"08:50", "09:35"}, {"09:55", "10:40"}, {"10:45", "11:30"}, {"11:50", "12:35"}, {"12:40", "13:25"}, {"13:30", "14:15"}, {"15:00", "15:45"}, {"15:50", "16:35"}, {"16:40", "17:25"}, {"17:25", "18:10"}};
     private int[] monthYear;
     private ArrayList<ActionContainer> containers = new ArrayList<>();
 
@@ -508,7 +508,10 @@ public class DataStorage{
         if(Build.VERSION.SDK_INT > 22){
             activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
         }
-        File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        File root = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        }
         if(!root.exists())root.mkdir();
         System.out.println(root.getAbsolutePath());
         File dir = new File(root, "HelmholtzApp");
@@ -531,7 +534,10 @@ public class DataStorage{
         if(Build.VERSION.SDK_INT > 22){
             activity.requestPermissions(new String[]{"android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE"}, 1);
         }
-        File root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        File root = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            root = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).toURI());
+        }
         File dir = new File(root, "HelmholtzApp");
         try {
             File saveFile = new File(dir, fileName);
